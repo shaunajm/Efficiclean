@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/conorbh/EfficiClean/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c323c36ecc68965c4cfb460f7721113d2b61ed03">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a47d297a31993d92d8214c7c1d4619bfa1bc1042/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/7afbe986f5fe021b8b61baceeea0cfc759dc2d80/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="ceda0650ec225b9c0143ed8ff1c010d4e621a423">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_14df6bb57c05c01f744d30cc0cae1f6c1809b587.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/69136f0024ee506e5d48b59fa6b05d8245a3ebc4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_ebf72938f90a8659cd2c5e243f9144ef03729583.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/0d1d985832b515666293c2ab1f7d9926fd63c68c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="760ff0a866a9b3b7fe4a91cfe6439d9dc93cea7c">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_e68eb321f2cb7a7a65b6870dfdba49421e6c93df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/fac034fc0378e9b7c83a88f574eb9e89d79ae5e7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_f5d1200a15a29bd7299c30d9ce78ea5174c1f540.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/ff1dfb86bc9421e3c286ce740723a409a56d190d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_5522a9fa310f391527bf4da8eebddda3ff01d394.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/afacb033bf9b762109a2b91430d2ba1bf82d2078/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_a4698a52a777c6126f50240ce9a9d65eb2b82d16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/bc8ac0e89550c12203bba63275a099677368a6e8/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_ea73b4059bdf9464c252b351bf6cedc2863096f5.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/conorbh/EfficiClean/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a2fad9c8c8685c693bb6e1d94b1eb86329af9bdb">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_db9555a16ae4fbd2090020906002782668ef2e28/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/6c44894dfd9a9f056c18b43921a50fe9830d6be0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_fc40d3f981b00ced726228ce766d1fde18cd3227.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/503f9dd621245eac64d7cc720171df8a7a53c116/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_1cfd5021e76373065af7a01a8c51e6c9f59e5f68.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/296a47917e5419247c55f526ea405a1e06e047d4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_38112a8a2c30534a7f058ec7df335f9ab808cc5a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_405e2ee8e1674eabf08df206fa2f083d58ee6b2d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/3eac82e9976fe1c31a4a3b928aa3bcf52ef4b252/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_ebf999c3580b3703fba168c0fc98914cc8184a30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/core-3.2.1_2be4ae5e96b2368603239899e0ad661bcc4d8740.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_985f8db125daf1058f360090aec2556bda725a2e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/11902f56bd647f46981515ff6fc42fc8741b1a81/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_2008d3bc9f4145c2df33d16cb52954647d5890cb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/03e4ec87c6704b0b6bbffafa2329730e1eb6bcbc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_2c8109befe9b52ddcccbae6657b27c7664998712.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/57b42c90debc2c9af784438a2eac45d5ca4b653d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_a02da66ef4c66d7faac836c06c5baf2d0a763edf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/bc8c506a09b5fe9662c6c6db53529587e839c53c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_6541fd793ca851faff86f4d4bb78c14207e248fd.jar" />
+    </item>
+
+</items>
