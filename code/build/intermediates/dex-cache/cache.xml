@@ -65,6 +65,15 @@
         <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_a4698a52a777c6126f50240ce9a9d65eb2b82d16.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c08614f4f518dfc3312225b4a2d3fe54809496c0">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_97aa29b21cc1695c701751d2dd1af2f0b81266ea/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/home/conorbh/.android/build-cache/bc8ac0e89550c12203bba63275a099677368a6e8/output/jars/classes.jar"
         jumboMode="false"
@@ -99,6 +108,15 @@
         revision="26.0.1"
         sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
         <dex dex="/home/conorbh/EfficiClean/app/build/intermediates/pre-dexed/debug/classes_1cfd5021e76373065af7a01a8c51e6c9f59e5f68.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c323c36ecc68965c4cfb460f7721113d2b61ed03">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fd5121e6d2fc11ca32ef1fc98e81969ec50e3a6e/classes.dex" />
     </item>
     <item
         is-multidex="false"
