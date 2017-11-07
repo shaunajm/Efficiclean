@@ -1,5 +1,5 @@
 # Built application files
-/*/build/
+build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -9,7 +9,7 @@ local.properties
 
 # User-specific configurations
 app/.idea/
-../.idea/
+.idea/
 .idea/libraries/
 .idea/workspace.xml
 .idea/tasks.xml
