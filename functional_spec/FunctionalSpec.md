@@ -377,17 +377,14 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 ### Use Case 1
 
 | **Use Case 1**             |Login to App                                                  |
-| ---------------------------|:------------------------------------------------:|
-|__Goal in Context__        | Guest inputs details and accesses their account|
-|__Scope & Level__          | |
-|__Preconditions__          | User has scanned their QR code and has been brought to the login page,User has an internet connection|
-|__Success End Condition__  | User is successfully logged in|
-|__Failed End Condition__   | User cannot access their account|
-|__Primary, Secondary Actors__| Guest,Housekeeping Staff, Supervisor, Client|
-|__Trigger__                | User inputs their details at the login screen|
-
-|                            |                   |                              |
 |----------------------------|:-----------------:|:----------------------------:|
+|__Goal in Context__        |                    | Guest inputs details and accesses their account|
+|__Scope & Level__          |                     ||
+|__Preconditions__          |                     |User has scanned their QR code and has been brought to the login page,User has an internet connection|
+|__Success End Condition__  |                     |User is successfully logged in|
+|__Failed End Condition__   |                    | User cannot access their account|
+|__Primary, Secondary Actors__|                    | Guest,Housekeeping Staff, Supervisor, Client|
+|__Trigger__                |                     |User inputs their details at the login screen|
 | __Description__            |__Step__           |__Action__                    |
 |                            |1                  |User is presented with the login screen.|
 |                            |2                  |User enters their forename and surname.|
@@ -406,17 +403,14 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 ### Use Case 2
 
 | **Use Case 2**             | Select Status                                    |
-| ---------------------------|:------------------------------------------------:|
-|__Goal in Context__        |User selects the status of their room.|
-|__Scope & Level__          | |
-|__Preconditions__          | User has logged into their account.|
-|__Success End Condition__  | User has successfully selected their room’s status.|
-|__Failed End Condition__   |User cannot select their room’s status.|
-|__Primary, Secondary Actors__| Guest, Client|
-|__Trigger__                | User selects the room’s status.|
-
-|                            |                   |                              |
 |----------------------------|:-----------------:|:----------------------------:|
+|__Goal in Context__        |                    |User selects the status of their room.|
+|__Scope & Level__          |                    | |
+|__Preconditions__          |                     |User has logged into their account.|
+|__Success End Condition__  |                    | User has successfully selected their room’s status.|
+|__Failed End Condition__   |                    |User cannot select their room’s status.|
+|__Primary, Secondary Actors__|                    | Guest, Client|
+|__Trigger__                |                    | User selects the room’s status.|
 | __Description__            |__Step__           |__Action__                    |
 |                            |1                  |User presented with select status screen.|
 |                            |2                  |User selects either “Do not disturb”, “Please service my room” or “Checking out”.|
@@ -433,17 +427,14 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 ### Use Case 3
 
 | **Use Case 3**             |Supervisor Approval                                                  |
-| ---------------------------|:------------------------------------------------:|
-|__Goal in Context__        | Staff place room in status “Supervisor Approval”|
-|__Scope & Level__          | |
-|__Preconditions__          | Staff member has logged in, accepted a room and has internet connection.|
-|__Success End Condition__  | Room has been marked as “Supervisor Approval”|
-|__Failed End Condition__   | Room has not been given “Supervisor Approval” status|
-|__Primary, Secondary Actors__| Housekeeping Staff, Supervisor, Client|
-|__Trigger__                | Staff member sends room to “Supervisor Approval”|
-
-|                            |                   |                              |
 |----------------------------|:-----------------:|:----------------------------:|
+|__Goal in Context__        |                    | Staff place room in status “Supervisor Approval”|
+|__Scope & Level__          |                     ||
+|__Preconditions__          |                     |Staff member has logged in, accepted a room and has internet connection.|
+|__Success End Condition__  |                     |Room has been marked as “Supervisor Approval”|
+|__Failed End Condition__   |                     |Room has not been given “Supervisor Approval” status|
+|__Primary, Secondary Actors__|                    |Housekeeping Staff, Supervisor, Client|
+|__Trigger__                |                     |Staff member sends room to “Supervisor Approval”|
 | __Description__            |__Step__           |__Action__                    |
 |                            |1                  |Staff member notices a hazard in the room.|
 |                            |2                  |Staff member flags room for supervisor approval.|
@@ -463,17 +454,14 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 ### Use Case 4
 
 | **Use Case 4**             |Request Break                                     |
-| ---------------------------|:------------------------------------------------:|
-|__Goal in Context__        | Staff team request a break.|
-|__Scope & Level__          | |
-|__Preconditions__          | Staff team have logged in to the app and have an internet connection.|
-|__Success End Condition__  | Team have successfully requested a break.|
-|__Failed End Condition__   | Team are unable to request a break.|
-|__Primary, Secondary Actors__| Housekeeping Staff, Supervisor, Client|
-|__Trigger__                | Staff member click into request break option.|
-
-|                            |                   |                              |
 |----------------------------|:-----------------:|:----------------------------:|
+|__Goal in Context__        |                    | Staff team request a break.|
+|__Scope & Level__          |                    | |
+|__Preconditions__          |                    | Staff team have logged in to the app and have an internet connection.|
+|__Success End Condition__  |                    | Team have successfully requested a break.|
+|__Failed End Condition__   |                    | Team are unable to request a break.|
+|__Primary, Secondary Actors__|                   | Housekeeping Staff, Supervisor, Client|
+|__Trigger__                | Staff member click into request break option.|
 | __Description__            |__Step__           |__Action__                    |
 |                            |1                  |Staff member opens the request break option from the home screen.|
 |                            |2                  |They first input the time they would like to go on break.|
@@ -491,17 +479,14 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 ### Use Case 5
 
 | **Use Case 5**             |Report Absence                                    |
-| ---------------------------|:------------------------------------------------:|
-|__Goal in Context__        | Supervisor reports a staff member as absent|
-|__Scope & Level__          | |
-|__Preconditions__          |Supervisor has logged in and has internet connection.|
-|__Success End Condition__  | Staff member is reported as absent.|
-|__Failed End Condition__   | Staff member has not been reported as absent.|
-|__Primary, Secondary Actors__| Supervisor, Client|
-|__Trigger__                | Supervisor clicks “Report Absence” on home screen.|
-
-|                            |                   |                              |
 |----------------------------|:-----------------:|:----------------------------:|
+|__Goal in Context__        |                    | Supervisor reports a staff member as absent|
+|__Scope & Level__          | |
+|__Preconditions__          |                    |Supervisor has logged in and has internet connection.|
+|__Success End Condition__  |                    | Staff member is reported as absent.|
+|__Failed End Condition__   |                    | Staff member has not been reported as absent.|
+|__Primary, Secondary Actors__|                    | Supervisor, Client|
+|__Trigger__                |                    | Supervisor clicks “Report Absence” on home screen.|
 | __Description__            |__Step__           |__Action__                    |
 |                            |1                  |Supervisor selects “Report Absence”|
 |                            |2                  |Supervisor types in the name of the staff member who is absent.|
