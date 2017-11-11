@@ -374,6 +374,8 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ## Use Case Descriptions
 
+### Use Case 1
+
 | **Use Case 1**             |Login to App                                                  |
 | ---------------------------|:------------------------------------------------:|
 |__Goal in Context__        | Guest inputs details and accesses their account|
@@ -401,6 +403,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                            |2c                 |User brought to second login page where they must enter their password.|
 
 &nbsp;
+### Use Case 2
 
 | **Use Case 2**             | Select Status                                    |
 | ---------------------------|:------------------------------------------------:|
@@ -427,6 +430,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                            |1a                |User doesn’t use the application. User places tag on their door.|
 
 &nbsp;
+### Use Case 3
 
 | **Use Case 3**             |Supervisor Approval                                                  |
 | ---------------------------|:------------------------------------------------:|
@@ -456,6 +460,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                            |1a                 |Staff member has requested a break.|
 |                            |1b                 |This room is submitted for supervisor approval.|
 &nbsp;
+### Use Case 4
 
 | **Use Case 4**             |Request Break                                     |
 | ---------------------------|:------------------------------------------------:|
@@ -483,6 +488,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                            |1a                 |Team are asked by supervisor to go on break at a certain time.|
 |                            |1b                 |Supervisor will input the break time into the system.|
 &nbsp;
+### Use Case 5
 
 | **Use Case 5**             |Report Absence                                    |
 | ---------------------------|:------------------------------------------------:|
