@@ -365,8 +365,159 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 # **4. System Architecture**
 
+
 # **5. High-Level Design**
+
+## Context Diagram
+
+## Use Case Diagram
+
+## Use Case Descriptions
+
+| **Use Case 1**             |Login to App                                                  |
+| ---------------------------|:------------------------------------------------:|
+|__Goal in Context__        | Guest inputs details and accesses their account|
+|__Scope & Level__          | |
+|__Preconditions__          | User has scanned their QR code and has been brought to the login page,User has an internet connection|
+|__Success End Condition__  | User is successfully logged in|
+|__Failed End Condition__   | User cannot access their account|
+|__Primary, Secondary Actors__| Guest,Housekeeping Staff, Supervisor, Client|
+|__Trigger__                | User inputs their details at the login screen|
+
+|                            |                   |                              |
+|----------------------------|:-----------------:|:----------------------------:|
+| __Description__            |__Step__           |__Action__                    |
+|                            |1                  |User is presented with the login screen.|
+|                            |2                  |User enters their forename and surname.|
+|                            |3                  |User clicks login button.|
+|                            |4                  |Client verifies user’s details.|
+|                            |5                  |User is successfully logged in.|
+|__Extensions__              |__Step__           |__Branching Action__                    |
+|                            |2a                 |User does not enter the name of the guest staying in this room.|
+|                            |2b                 |User is asked to contact reception.|
+|__Variations__              |__Step__           |__Branching Action__                        |
+|                            |2a                |User is a member of staff|
+|                            |2b                 |User enters their username and “staff”|
+|                            |2c                 |User brought to second login page where they must enter their password.|
+
+&nbsp;
+
+| **Use Case 2**             | Select Status                                    |
+| ---------------------------|:------------------------------------------------:|
+|__Goal in Context__        |User selects the status of their room.|
+|__Scope & Level__          | |
+|__Preconditions__          | User has logged into their account.|
+|__Success End Condition__  | User has successfully selected their room’s status.|
+|__Failed End Condition__   |User cannot select their room’s status.|
+|__Primary, Secondary Actors__| Guest, Client|
+|__Trigger__                | User selects the room’s status.|
+
+|                            |                   |                              |
+|----------------------------|:-----------------:|:----------------------------:|
+| __Description__            |__Step__           |__Action__                    |
+|                            |1                  |User presented with select status screen.|
+|                            |2                  |User selects either “Do not disturb”, “Please service my room” or “Checking out”.|
+|                            |3                  |Client returns pop up to inform guest what status they have selected.|
+|                            |4                  |The room is either marked as “Do not disturb” or added to the queue.|
+|                            |5                  |Room status has been successfully selected.|
+|__Extensions__              |__Step__           |__Branching Action__                    |
+|                            |2a                 |User selects “Do not disturb” but changes their mind.|
+|                            |2b                 |Hotel can have an inbuilt time to select status by and this status can be changed before this time.|
+|__Variations__              |__Step__           |__Branching Action__                        |
+|                            |1a                |User doesn’t use the application. User places tag on their door.|
+
+&nbsp;
+
+| **Use Case 3**             |Supervisor Approval                                                  |
+| ---------------------------|:------------------------------------------------:|
+|__Goal in Context__        | Staff place room in status “Supervisor Approval”|
+|__Scope & Level__          | |
+|__Preconditions__          | Staff member has logged in, accepted a room and has internet connection.|
+|__Success End Condition__  | Room has been marked as “Supervisor Approval”|
+|__Failed End Condition__   | Room has not been given “Supervisor Approval” status|
+|__Primary, Secondary Actors__| Housekeeping Staff, Supervisor, Client|
+|__Trigger__                | Staff member sends room to “Supervisor Approval”|
+
+|                            |                   |                              |
+|----------------------------|:-----------------:|:----------------------------:|
+| __Description__            |__Step__           |__Action__                    |
+|                            |1                  |Staff member notices a hazard in the room.|
+|                            |2                  |Staff member flags room for supervisor approval.|
+|                            |3                  |Staff member inputs a description of the hazard in the room.|
+|                            |4                  |They click submit to supervisor.|
+|                            |5                  |Client verifies that a description has been input.|
+|                            |6                  |Room is placed in “Supervisor Approval” |
+|__Extensions__              |__Step__           |__Branching Action__                    |
+|                            |2a                 |Staff member notices hazard such as blood.|
+|                            |2b                 |Staff member must leave the room and then place room in “Supervisor Approval” status.|
+|__Variations__              |__Step__           |__Branching Action__                        |
+|                            |1a                 |Room is cleaned and doesn’t contain a hazard.|
+|                            |1b                 |Room is marked as “Cleaned” and sent into “Supervisor Approval” status.|
+|                            |1a                 |Staff member has requested a break.|
+|                            |1b                 |This room is submitted for supervisor approval.|
+&nbsp;
+
+| **Use Case 4**             |Request Break                                     |
+| ---------------------------|:------------------------------------------------:|
+|__Goal in Context__        | Staff team request a break.|
+|__Scope & Level__          | |
+|__Preconditions__          | Staff team have logged in to the app and have an internet connection.|
+|__Success End Condition__  | Team have successfully requested a break.|
+|__Failed End Condition__   | Team are unable to request a break.|
+|__Primary, Secondary Actors__| Housekeeping Staff, Supervisor, Client|
+|__Trigger__                | Staff member click into request break option.|
+
+|                            |                   |                              |
+|----------------------------|:-----------------:|:----------------------------:|
+| __Description__            |__Step__           |__Action__                    |
+|                            |1                  |Staff member opens the request break option from the home screen.|
+|                            |2                  |They first input the time they would like to go on break.|
+|                            |3                  |Secondly, they select the duration of the break they wish to take.|
+|                            |4                  |They then click submit.|
+|                            |5                  |The client ensures that a valid time and duration are selected.|
+|                            |6                  |The break has been accepted and sent to the supervisor for approval. |
+|__Extensions__              |__Step__           |__Branching Action__                    |
+|                            |5a                 |A valid time and duration are not entered.|
+|                            |5b                 |An error message is presented to the staff member to edit their submission.|
+|__Variations__              |__Step__           |__Branching Action__                        |
+|                            |1a                 |Team are asked by supervisor to go on break at a certain time.|
+|                            |1b                 |Supervisor will input the break time into the system.|
+&nbsp;
+
+| **Use Case 5**             |Report Absence                                    |
+| ---------------------------|:------------------------------------------------:|
+|__Goal in Context__        | Supervisor reports a staff member as absent|
+|__Scope & Level__          | |
+|__Preconditions__          |Supervisor has logged in and has internet connection.|
+|__Success End Condition__  | Staff member is reported as absent.|
+|__Failed End Condition__   | Staff member has not been reported as absent.|
+|__Primary, Secondary Actors__| Supervisor, Client|
+|__Trigger__                | Supervisor clicks “Report Absence” on home screen.|
+
+|                            |                   |                              |
+|----------------------------|:-----------------:|:----------------------------:|
+| __Description__            |__Step__           |__Action__                    |
+|                            |1                  |Supervisor selects “Report Absence”|
+|                            |2                  |Supervisor types in the name of the staff member who is absent.|
+|                            |3                  |Supervisor submits this.|
+|                            |4                  |Client checks that this is a valid staff name.|
+|                            |5                  |Client removes this staff member from their pair for the day.|
+|                            |6                  |Client reorganises the pairs the way in which the hotel has selected.|
+|                            |7                  |New teams are posted.|
+|__Extensions__              |__Step__           |__Branching Action__                    |
+|                            |4a                 |Supervisor has not entered a valid staff name|
+|                            |4b                 |They are asked to check the name and try again.|
+
+&nbsp;
+
 
 # **6. Preliminary Schedule**
 
 # **7. Appendices**
+
+-   Firebase: https://firebase.google.com/
+
+-   SVG Map Maker: http://mapsvg.com/mapsvg/
+
+-   ZXing: https://zxing.org/w/decode.jspx
+   
