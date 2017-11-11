@@ -376,28 +376,28 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ### Use Case 1
 
-| **Use Case 1**             |Login to App                                                  |
+| **Use Case 1**             |Login to App      |  Details                       |
 |----------------------------|:-----------------:|:----------------------------:|
-|__Goal in Context__        |                    | Guest inputs details and accesses their account|
-|__Scope & Level__          |                     ||
-|__Preconditions__          |                     |User has scanned their QR code and has been brought to the login page,User has an internet connection|
-|__Success End Condition__  |                     |User is successfully logged in|
-|__Failed End Condition__   |                    | User cannot access their account|
-|__Primary, Secondary Actors__|                    | Guest,Housekeeping Staff, Supervisor, Client|
-|__Trigger__                |                     |User inputs their details at the login screen|
-| __Description__            |__Step__           |__Action__                    |
-|                            |1                  |User is presented with the login screen.|
-|                            |2                  |User enters their forename and surname.|
-|                            |3                  |User clicks login button.|
-|                            |4                  |Client verifies user’s details.|
-|                            |5                  |User is successfully logged in.|
-|__Extensions__              |__Step__           |__Branching Action__                    |
-|                            |2a                 |User does not enter the name of the guest staying in this room.|
-|                            |2b                 |User is asked to contact reception.|
-|__Variations__              |__Step__           |__Branching Action__                        |
-|                            |2a                |User is a member of staff|
-|                            |2b                 |User enters their username and “staff”|
-|                            |2c                 |User brought to second login page where they must enter their password.|
+|__Goal in Context__          |                  | Guest inputs details and accesses their account|
+|__Scope & Level__            |                  ||
+|__Preconditions__            |                  |User has scanned their QR code and has been brought to the login page,User has an internet connection|
+|__Success End Condition__    |                  |User is successfully logged in|
+|__Failed End Condition__     |                  | User cannot access their account|
+|__Primary, Secondary Actors__|                  | Guest,Housekeeping Staff, Supervisor, Client|
+|__Trigger__                  |                  |User inputs their details at the login screen|
+| __Description__             |__Step__           |__Action__                    |
+|                             |1                  |User is presented with the login screen.|
+|                             |2                  |User enters their forename and surname.|
+|                             |3                  |User clicks login button.|
+|                             |4                  |Client verifies user’s details.|
+|                             |5                  |User is successfully logged in.|
+|__Extensions__               |__Step__           |__Branching Action__                    |
+|                             |2a                 |User does not enter the name of the guest staying in this room.|
+|                             |2b                 |User is asked to contact reception.|
+|__Variations__               |__Step__           |__Branching Action__                        |
+|                             |2a                |User is a member of staff|
+|                             |2b                 |User enters their username and “staff”|
+|                             |2c                 |User brought to second login page where they must enter their password.|
 
 &nbsp;
 ### Use Case 2
