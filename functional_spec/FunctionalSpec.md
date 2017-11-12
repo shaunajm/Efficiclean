@@ -374,7 +374,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ## Use Case Descriptions
 
-### Use Case 1
+### Use Case 1 : Login to App
 
 | **Use Case 1**             |Login to App      |  Details|
 |----------------------------|:-----------------:|:----------------------------:                                                                       |
@@ -399,7 +399,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                             |2c                |User brought to second login page where they must enter their password.                              |
 
 &nbsp;
-### Use Case 2
+### Use Case 2 : Select Status
 
 | **Use Case 2**              | Select Status     | Details                                                                                             |
 |-----------------------------|:-----------------:|:----------------------------:                                                                       |
@@ -422,7 +422,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                             |1a                 |User doesn’t use the application. User places tag on their door.                                     |
 
 &nbsp;
-### Use Case 3
+### Use Case 3 : Supervisor Approval
 
 | **Use Case 3**              |Supervisor Approval |Details                                                                                             |
 |-----------------------------|:-----------------:|:----------------------------:                                                                       |
@@ -448,7 +448,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                             |1a                 |Staff member has requested a break.                                                                  |
 |                             |1b                 |This room is submitted for supervisor approval.                                                      |
 &nbsp;
-### Use Case 4
+### Use Case 4 : Request Break
 
 | **Use Case 4**              |Request Break      |Details                                                                                              |
 |-----------------------------|:-----------------:|:----------------------------:                                                                       |
@@ -472,7 +472,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 |                             |1a                 |Team are asked by supervisor to go on break at a certain time.                                       |
 |                             |1b                 |Supervisor will input the break time into the system.                                                |
 &nbsp;
-### Use Case 5
+### Use Case 5 : Report Absence
 
 | **Use Case 5**              |Report Absence     |Details                                                                                              |
 |-----------------------------|:-----------------:|:----------------------------:                                                                       |
@@ -498,6 +498,20 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 
 # **6. Preliminary Schedule**
+
+|**Critical Task Name**                  |**Start Date** |**End Date** |**Duration (in days)**|
+|----------------------------------------|:-------------:|:-------- --:|:--------------------:|
+|Project Proposals                       |23/10/2017     |27/10/2017   |4                     |
+|Draw User Interface Mock-Ups            |30/10/2017     |03/11/2017   |4                     |
+|Functional Specification                |01/11/2017     |01/12/2017   |30                    |
+|Basic Developement                      |01/11/2017     |08/01/2018   |68                    |
+|Design Process                          |13/11/2017     |18/12/2017   |35                    |
+|Basic Testing                           |11/12/2017     |08/01/2018   |28                    |
+|Exam Break                              |08/01/2018     |29/01/2018   |21                    |
+|Developement                            |29/01/2018     |05/03/2018   |35                    |
+|Testing                                 |05/02/2018     |09/03/2018   |32                    |
+|Presentations                           |12/03/2018     |23/03/2018   |11                    |
+
 
 # **7. Appendices**
 
