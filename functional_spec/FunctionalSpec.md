@@ -499,8 +499,10 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 # **6. Preliminary Schedule**
 
+### Critical Tasks
+
 |**Critical Task Name**                  |**Start Date** | **End Date**|**Duration (in days)**|
-|----------------------------------------|:-------------:|:-------- --:|:--------------------:|
+|----------------------------------------|:-------------:|:-----------:|:--------------------:|
 |Project Proposals                       |23/10/2017     |27/10/2017   |4                     |
 |Draw User Interface Mock-Ups            |30/10/2017     |03/11/2017   |4                     |
 |Functional Specification                |01/11/2017     |01/12/2017   |30                    |
