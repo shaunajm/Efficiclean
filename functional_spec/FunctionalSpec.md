@@ -363,9 +363,13 @@ The supervisor also has a map view, so the same issues of the housekeeping staff
 #### Dependencies with other requirements
 The supervisor deals mainly with staff. The supervisor decides their break time and staff might also have to revisit a room if it is deemed not up to standard. They must also approve any serious damages or hazardous waste in rooms. Along with guests and staff, supervisors utilise the login function.
 
+&nbsp;
+
 # **4. System Architecture**
 
 ![](media/System Architecture.jpg)
+
+&nbsp;
 
 
 # **5. High-Level Design**
@@ -374,9 +378,13 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ![](media/Context Diagram (1).jpg)
 
+&nbsp;
+
 ## Use Case Diagram
 
 ![](media/EfficiClean.jpg)
+
+&nbsp;
 
 ## Use Case Descriptions
 
