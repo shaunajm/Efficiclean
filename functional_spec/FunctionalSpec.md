@@ -365,12 +365,18 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 # **4. System Architecture**
 
+![](media/System Architecture.jpg)
+
 
 # **5. High-Level Design**
 
 ## Context Diagram
 
+![](media/Context Diagram (1).jpg)
+
 ## Use Case Diagram
+
+![](media/EfficiClean.jpg)
 
 ## Use Case Descriptions
 
@@ -498,6 +504,10 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 
 # **6. Preliminary Schedule**
+
+### Gantt Chart
+
+![](media/Gant Chart.jpg)
 
 ### Critical Tasks
 
