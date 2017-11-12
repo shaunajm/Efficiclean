@@ -14,6 +14,8 @@
 	+ [2.3 Operational Scenarios](#23-operational-scenarios)
 	+ [2.4 Constraints](#24-constraints)
 - [**3. Functional Requirements**](#3-functional-requirements)
+ 	+ [3.1 External Requirements](#31-external-requirements)
+ 	+ [3.2 Functional Requirements](#32-functional-requirements)
 - [**4. System Architecture**](#4-system-architecture)
 - [**5. High-Level Design**](#5-high-level-design)
 - [**6. Preliminary Schedule**](#6-preliminary-schedule)
