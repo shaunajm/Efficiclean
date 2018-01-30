@@ -1,26 +1,28 @@
 package com.app.efficiclean;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.content.Intent;
 import com.google.firebase.database.*;
+import java.util.ArrayList;
 
 public class GuestLogin extends AppCompatActivity {
 
-    private EditText forename;
-    private EditText surname;
-    private String relevantGuestName;
-    private String relevantStaffName;
-    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference mStaffRef = mRootRef.child("staff").child("name");
-    private DatabaseReference mGuestRef = mRootRef.child("guest").child("name");
+    private AlertDialog alertDialog;
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference mGuestRef = db.getReference().child("guests");
+    private DatabaseReference mStaffRef = db.getReference().child("staff");
+    private ArrayList<Guest> guestList;
+    private ArrayList<Staff> staffList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_login);
+        this.alertDialog = new AlertDialog.Builder(GuestLogin.this).create();
     }
 
     @Override
@@ -30,7 +32,11 @@ public class GuestLogin extends AppCompatActivity {
         mGuestRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                relevantGuestName = dataSnapshot.getValue(String.class);
+                guestList = new ArrayList<Guest>();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Guest guest = ds.getValue(Guest.class);
+                    guestList.add(guest);
+                }
             }
 
             @Override
@@ -42,7 +48,11 @@ public class GuestLogin extends AppCompatActivity {
         mStaffRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                relevantStaffName = dataSnapshot.getValue(String.class);
+                staffList = new ArrayList<Staff>();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Staff staff = ds.getValue(Staff.class);
+                    staffList.add(staff);
+                }
             }
 
             @Override
@@ -53,16 +63,38 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void loginButtonClick(View view) {
-        this.forename = (EditText) findViewById(R.id.etForename);
-        this.surname = (EditText) findViewById(R.id.etSurname);
-        String name = this.forename.getText().toString() + " " + this.surname.getText().toString();
-        if (this.relevantGuestName.equals(name)) {
-            Intent guest = new Intent(getApplicationContext(), GuestHome.class);
-            startActivity(guest);
-        } else if (this.relevantStaffName.equals(name)) {
-            Intent staff = new Intent (getApplicationContext(), StaffHome.class);
-            startActivity(staff);
+        EditText forename = (EditText) findViewById(R.id.etForename);
+        EditText surname = (EditText) findViewById(R.id.etSurname);
+        String fString = forename.getText().toString().trim();
+        String sString = surname.getText().toString().trim();
+        if (fString.equals("staff")) {
+            staffLogin(fString, sString);
+        } else {
+            guestLogin(fString, sString);
         }
+    }
+
+    private void staffLogin(String fString, String sString) {
+        for (Staff staff : this.staffList) {
+            if (staff.getUsername().equals(sString)) {
+                Intent staffPage = new Intent(getApplicationContext(), StaffHome.class);
+                startActivity(staffPage);
+            }
+        }
+    }
+
+    private void guestLogin(String fString, String sString) {
+        for (Guest guest : this.guestList) {
+            if (guest.getForename().equals(fString) && guest.getSurname().equals(sString)) {
+                Intent guestPage = new Intent(getApplicationContext(), GuestHome.class);
+                startActivity(guestPage);
+            }
+        }
+    }
+
+    private void errorMessage() {
+        this.alertDialog.setMessage("Could not find details. Please try again.");
+        this.alertDialog.show();
     }
 
 }
