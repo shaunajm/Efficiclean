@@ -217,5 +217,23 @@
         sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
         <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/support-annotations-26.1.0_6817f53877fe8cfbdbd94abc8fb35ceeab52200a.jar" />
     </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/ade2c8bdb149c8eca15994f0ea6f1e7019204bc0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="19e55bee106350a20251b6aa7bd30fa5e25c36c8">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_ea088206796a22a883f5b3269a5edf0518b5f363.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/conorbh/.android/build-cache/c14df6fff140f90650014130f2ed054b2e7db659/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e9dc052d4d36b53c3a1bb2d5bf634fcac5d35037">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_678abdae23851a2f120047ee8842eababa2232b0.jar" />
+    </item>
 
 </items>

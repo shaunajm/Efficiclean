@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.content.Intent;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import java.util.ArrayList;
 
@@ -13,10 +14,9 @@ public class GuestLogin extends AppCompatActivity {
 
     private AlertDialog alertDialog;
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private DatabaseReference mGuestRef = db.getReference().child("guests");
-    private DatabaseReference mStaffRef = db.getReference().child("staff");
     private ArrayList<Guest> guestList;
-    private ArrayList<Staff> staffList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +44,6 @@ public class GuestLogin extends AppCompatActivity {
 
             }
         });
-
-        mStaffRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                staffList = new ArrayList<Staff>();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Staff staff = ds.getValue(Staff.class);
-                    staffList.add(staff);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     public void loginButtonClick(View view) {
@@ -67,19 +51,11 @@ public class GuestLogin extends AppCompatActivity {
         EditText surname = (EditText) findViewById(R.id.etSurname);
         String fString = forename.getText().toString().trim();
         String sString = surname.getText().toString().trim();
-        if (fString.equals("staff")) {
-            staffLogin(fString, sString);
+        if (fString.equals("staff1")) {
+            Intent staffPage = new Intent(getApplicationContext(), StaffLogin.class);
+            startActivity(staffPage);
         } else {
             guestLogin(fString, sString);
-        }
-    }
-
-    private void staffLogin(String fString, String sString) {
-        for (Staff staff : this.staffList) {
-            if (staff.getUsername().equals(sString)) {
-                Intent staffPage = new Intent(getApplicationContext(), StaffHome.class);
-                startActivity(staffPage);
-            }
         }
     }
 
