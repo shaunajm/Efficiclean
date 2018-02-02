@@ -3,282 +3,120 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\fe3a9d204b4b6642c8eddb91ede45fc83ccfe46f\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/94c2b5c2e36971356337d7189a91c5154d615ced/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="760ff0a866a9b3b7fe4a91cfe6439d9dc93cea7c">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_feafdeddf789ac12eaad517ee118111c5df05eed.jar" />
+        sha1="ed04a0ae7198b0d5d0e965d6afdb0fe784dcfbee">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_471b676d1d7d042ed8978a151128cfef05023d2a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\08a2a4a5e41f83c8ecb00229d00b96bfd00f9c61\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/2433223fa1b87c392797bcc6329280979c71998b/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b09006b74a6b6ad5d696af2d85db540f7723521e">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_b81f125787ded4fc9e8ecf7c8eeaeff26488456c.jar" />
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_b7a0e72b4c5327116f3e95f1a4e96b17f4b5f09e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\286b3edc7888071d88bafe9c869a32bcc9d160b3\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/10ae30d849c6c0692d951a751922b2690464b918/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="508f50705b4fde51a16259f29c854201a3044516">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_b36afe364834366c3b62dd7f6fd8a5432af1ec70.jar" />
+        sha1="6746a3078625563a9eb381920f34e47ccd6bab87">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_86e0e25d43683e663538f8bd87bb2a1e66ae2eb3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\376d7d108a45093dadf426b4bf28dba918e6cc7b\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/0a894d3e9184914607f426ed98bc0d95a8227dd6/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_222514ea8ca4bcc54dffa18d3dcb7a44ae0249cf.jar" />
+        sha1="233d88c6f961d2a84758dfe27b7af61318190c7b">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_07e56b28dc1f5a2805477eb35d2065b3c88ffbc7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\6b6028dd0d68c523a4c25c6b677309a70beb5489\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/42c490bd5f7483fa1e4bf384ec0b79f928f4bbf3/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_1e141e1dc32424903ec7fca6912d7bcd1b6b82bb.jar" />
+        sha1="1b982cc8b5ab6f788690238dbe3ac3bb19f88b1a">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_b34138ae7c5669cbb34d822d72b1d766196252da.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\c220710de21e61da536eeaffb66edac9b001f3d4\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/80c9a67b89881d6df1342d11f11667b20f7a2a3b/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="fd6ae8c61bd548b134265ef3c37807d4efcc854c">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_3c72275236dab150f33b8e40cda41d1c0e816d3b.jar" />
+        sha1="c5bc72ad3250d065128d1d7514279be703e57bd0">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_30dfca2255837e0884d04414d9367c5b44934716.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\55c936c2d045a867f82eaec525a298add9b966dc\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/ff3cc3abced4c15071996f5cd98d4fa1c0955ee5/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="4d7b1a23cecd2855bdfbd8266650d140e9e6977c">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_f2dd0e20d3367a054006142e69b92c9ccb5f577e.jar" />
+        sha1="d2af2ef4d987d753f2e8ee2d1480ab964d5c7273">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_cbeb9eb941bc917a0ef2e8cc4a4d99910236eb9f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
+        jar="/home/conorbh/.android/build-cache/4a1311f7abcfbe940115c8aa2f604307df8cabd9/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\support-annotations-26.1.0_2e5b2015c786f8009819aa2ae79c99a941198261.jar" />
+        sha1="264ad23f9752aabecfa41115c52a25a023a08839">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_0b6537f86b4257f6c60c6bce437dc27620b6f8ea.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\d1e0e55c52167bd089b295858bbc80cb194fdad3\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/015d55976ae68361d5babdc1ad4ff8a7c4e27bce/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b0ae7bfe4591746f6491a4a270ee56712062d1ca">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_abb020fb72f6a11ca2def96764a0f1e4084092cd.jar" />
+        sha1="fe94ced585bffcf3c7f788a294cc54e6785544ac">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_173de22c8a72b517700bdbca82271bfa9c49b21f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\a763772080bcd1cabe31dd0bcb6cc7211b4cab1c\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/837a746bece4debe5935e7dcb5ad669a28e68832/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="225f093d9a041f8206d812d3055a886a816ac365">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_a0dab813a9fd3726e25ce51645735ab849af6d88.jar" />
+        sha1="42c9659c973e311ffdb645ed057e5053e0ab5c78">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_1423f0ee6885c793fbed14265061694133558853.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\44abd8eb1723a3a4de8c78902687d7abc9e5924a\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/fbfe7e0025655a5353620738db7503a51d4cd022/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="108c3cdbdb89a05d388a170bd3549b1e43ad6d54">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_183ad6ca252af10a0a009669da887b1ee3129a61.jar" />
+        sha1="e6aeff19a2ce1eb896557be73cb9ceb56f8d1cf3">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_f685118138fbde3585b9e573af0cf34f934ed135.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jar="/home/conorbh/.android/build-cache/7c76d8f52cb2dc7729a3220a6c18a3ecacfdc588/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\common-1.0.0_789bea5f49ad2109c1b5806532812f8ecfb513d9.jar" />
+        sha1="122de0d704f76d2bb5cb9db66e00fe90a0a41e78">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_e5ebb968e8b00d377a4fd951bdd266763d29690b.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\57d2b5fdf79b6427c0d1d0901651a1f17a74eeca\output\jars\classes.jar"
+        jar="/home/conorbh/.android/build-cache/d0012cad554883eef7990f6845a34adfeb16d29f/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_f4db0aa88fa0d59f125faa8b4de199df664f15fa.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.gradle\caches\modules-2\files-2.1\com.android.support.constraint\constraint-layout-solver\1.0.2\b9cd8fc6bd15cb915735d34535db30ece0c44603\constraint-layout-solver-1.0.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_06247963a012b2f603225af0f0d78e9c6ec153b1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\596e2c699a2aa70352cebcec657288c33d3732c3\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_fcfe3b83ec4d348aeb992b14ec0f69703312eae6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\b71d34a64119c7c894ca92e04eb9bfd16d376436\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="ceda0650ec225b9c0143ed8ff1c010d4e621a423">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_93db212037b6d201bd5017e894a94772b35f03c4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\2da04373ebf031976be27a3094e6006855541330\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_b85ce4dffc0100a47299c722f78d1f8d072c9f36.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\2a1bba60960ba3a721e8ee4ffa1c712f9e96d25f\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_36a895628821fa8fdac5f08174531630154676eb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\084d1e53b39db9caa8e136fa7b8eb792ccc41339\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_fc59e92dc9de201a9ad05d139e407b1feea0b3b7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\b149732fb5589e418803a910855065429f6e5d9a\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_001142d32f805a1992a67e8d72dab57c80dc1062.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\054a385796801a0cf3459e9178e68e81b11d4f16\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="a0b869be21f2e39e9b337bec395d9a7e111da21e">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_692b6eeadaa1e6ed94056d58d559da0da960df44.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\common-1.0.0_a699b1ca0102b709eec002eb7ebbc40d4a1c5359.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\633f5bc17105b389c3f00ba3523873a9a220ae12\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_0b29da0c52d72571a75fbd6775252a581fe987a1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\dbb32b73be1dcfe6f9f4b78da8a7285fb4e7c82b\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_552b21c15e8d1f6e9c6b2831e32816d85f363602.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\54400ef14dde1aeab125743e753d2892ac8418a5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="e9dc052d4d36b53c3a1bb2d5bf634fcac5d35037">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_d396a00f4695e2b0670842bcfcf3d3c0b17f6a02.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\b300d1698651ee1ddb44da9ddd245f719b611f21\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="1eb02c1033c29e736e558db646bbf0d522fecb53">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_9eea6d26b8a4938f5b7b3482d622ab650203e661.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\e0312b3ba21957a8282b8109eb47c1ab26c009a6\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="19e55bee106350a20251b6aa7bd30fa5e25c36c8">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_2238d0f7e2fba418c2294d897a404e05cc03c1d3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\5c1d5f6d83468fd83b37ee2813c86de1a77691e5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_ca8281e033b915847386de8c62e5d9ab0c0fda7a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\4e1366af5f23c1a945e3fa07a217913384b2e2e0\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_eee3ee90d7bab4114649bc5a7714adc0ea4acb88.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.android\build-cache\38c5196db2a0efa72e5fa4d29cdd52e315e1f8e8\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\classes_8d7431351dca4d23c166740dd25a8ffe10df268e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Shauna\.gradle\caches\modules-2\files-2.1\com.google.zxing\core\3.2.1\2287494d4f5f9f3a9a2bb6980e3f32053721b315\core-3.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
-        <dex dex="C:\Users\Shauna\Desktop\2018-CA326-chanlon-efficiclean\code\app\build\intermediates\pre-dexed\debug\core-3.2.1_8087dd354d09f9abd76d66100ceea434e9ee49a2.jar" />
+        sha1="0a23c4daa97697118d96f2b09d1dbaf9ea943d8d">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_0a55728cbc7c34b75409ab856e2db97e062ca8fc.jar" />
     </item>
 
 </items>

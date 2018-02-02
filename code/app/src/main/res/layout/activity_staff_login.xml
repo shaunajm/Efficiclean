@@ -71,7 +71,6 @@
             android:textSize="20sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
-            android:onClick="staffLoginButtonClick"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:id="@+id/btStaffLogin" android:layout_marginLeft="8dp"
