@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.app.efficiclean.StaffHome">
+
+    <TableLayout
+            android:layout_width="478dp"
+            android:layout_height="537dp"
+            android:stretchColumns="1"
+            android:visibility="visible"
+            android:id="@+id/tbToBeApproved"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="47dp">
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="38dp" android:text="Rooms to be approved:" android:layout_span="3"
+                    android:padding="30dip" android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="35dp" android:text="301" android:layout_span="3"
+                    android:padding="22dip" android:id="@+id/textView5" android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="35dp" android:text="408" android:layout_span="3"
+                    android:padding="22dip" android:id="@+id/textView6" android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="35dp" android:text="126" android:layout_span="3"
+                    android:padding="22dip" android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="35dp" android:text="311" android:layout_span="3"
+                    android:padding="22dip" android:gravity="center"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="35dp" android:text="410" android:layout_span="3"
+                    android:padding="22dip" android:id="@+id/textView4" android:gravity="center"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+
+
+        </TableRow>
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>
