@@ -117,5 +117,4 @@
             app:layout_constraintTop_toBottomOf="@+id/etReason" app:layout_constraintHorizontal_bias="0.502"
     />
 
-
-
+</android.support.constraint.ConstraintLayout>

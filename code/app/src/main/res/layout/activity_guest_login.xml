@@ -41,12 +41,44 @@
             android:textColorHint="#FFF"
             android:background="@color/colorPrimary"
             android:padding="10sp"
+            android:hint="Hotel ID"
+            android:ems="10"
+            android:id="@+id/etHotelID" android:layout_marginTop="57dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvEnterDetails" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintHorizontal_bias="0.503"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/myGold"
+            android:textColorHint="#FFF"
+            android:background="@color/colorPrimary"
+            android:padding="10sp"
+            android:hint="Room Number"
+            android:ems="10"
+            android:id="@+id/etRoomNumber" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etHotelID" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/myGold"
+            android:textColorHint="#FFF"
+            android:background="@color/colorPrimary"
+            android:padding="10sp"
             android:hint="Forename"
             android:ems="10"
-            android:id="@+id/etForename"
-            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" app:layout_constraintHorizontal_bias="0.503"
-            android:layout_marginTop="83dp" app:layout_constraintTop_toBottomOf="@+id/tvEnterDetails"/>
+            android:id="@+id/etForename" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etRoomNumber" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <EditText
             android:layout_width="wrap_content"
@@ -59,23 +91,22 @@
             android:padding="10sp"
             android:hint="Surname"
             android:ems="10"
-            android:id="@+id/etSurname"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintHorizontal_bias="0.503"
-            android:layout_marginTop="18dp" app:layout_constraintTop_toBottomOf="@+id/etForename"/>
+            android:id="@+id/etSurname" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etForename" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
             android:text="Login"
             android:textSize="20sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
-            android:onClick="loginButtonClick"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:id="@+id/btLogin" android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent" android:layout_marginTop="112dp"
-            app:layout_constraintTop_toBottomOf="@+id/etSurname"/>
+            android:id="@+id/btLogin" android:layout_marginTop="46dp"
+            app:layout_constraintTop_toBottomOf="@+id/etSurname" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
