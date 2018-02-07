@@ -26,9 +26,7 @@ public class GuestLogin extends AppCompatActivity {
     private EditText forename;
     private EditText surname;
     private Button loginBtn;
-    private String guestKey;
-    private String guestForename;
-    private String guestSurname;
+    private Guest guest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +66,15 @@ public class GuestLogin extends AppCompatActivity {
 
                 //Login user if not null
                 if (user != null) {
+                    //Create Bundle to pass information to next activity
+                    Bundle bundle = new Bundle();
+                    bundle.putString("hotelID", hotelID.getText().toString().trim());
+                    bundle.putSerializable("thisGuest", guest);
+
                     Intent guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
+                    guestHomePage.putExtras(bundle);
                     startActivity(guestHomePage);
+                    finish();
                 }
             }
         };
@@ -110,7 +115,7 @@ public class GuestLogin extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Get guest unique id key
-                guestKey = dataSnapshot.getValue(String.class);
+                String guestKey = dataSnapshot.getValue(String.class);
 
                 if (guestKey != null) {
                     //Create DatabaseReference to specified guest
@@ -121,8 +126,7 @@ public class GuestLogin extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //Get guests values from Firebase
-                            guestForename = dataSnapshot.child("forename").getValue(String.class);
-                            guestSurname = dataSnapshot.child("surname").getValue(String.class);
+                            guest = dataSnapshot.getValue(Guest.class);
 
                             //Start validation process
                             validateValues(rNumber, fString, sString);
@@ -147,7 +151,7 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     private void validateValues(String rNumber, String fString, String sString) {
-        if (guestForename != null && guestSurname != null && guestForename.equals(fString) && guestSurname.equals(sString)){        //Validates that input data matches values from database
+        if (guest != null && guest.getForename().equals(fString) && guest.getSurname().equals(sString)){        //Validates that input data matches values from database
             //Create user email and password for authentication
             String pString = fString.toLowerCase() + sString.toLowerCase() + rNumber;
             String eString = pString + "@efficiclean.com";

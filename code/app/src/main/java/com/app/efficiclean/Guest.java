@@ -1,10 +1,12 @@
 package com.app.efficiclean;
 
-public class Guest {
+import java.io.Serializable;
+
+public class Guest implements Serializable {
 
     private String forename;
+    private String roomNumber;
     private String surname;
-    private int roomNumber;
 
     public Guest() {
     }
@@ -25,11 +27,11 @@ public class Guest {
         this.surname = surname;
     }
 
-    public int getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 }

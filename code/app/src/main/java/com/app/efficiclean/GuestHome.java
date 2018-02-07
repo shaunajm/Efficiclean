@@ -1,53 +1,71 @@
 package com.app.efficiclean;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class GuestHome extends AppCompatActivity {
 
-    private AlertDialog alertDialog;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mRootRef;
+    private Guest guest;
+    private String hotelID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_home);
-        this.alertDialog = new AlertDialog.Builder(GuestHome.this).create();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            hotelID = extras.getString("hotelID");
+            guest = (Guest) extras.getSerializable("thisGuest");
+        }
+
+        //Get instance of Firebase database
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+
+        //Create Firebase authenticator
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
+
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //Add authentication listener
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     public void pleaseServiceButtonClick(View view) {
-        this.alertDialog.setMessage("Thank you! Your room has been added to the queue and will be serviced shortly.");
-        this.alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        this.alertDialog.show();
+        mRootRef.child(hotelID).child("jobs").push().setValue(guest);
+        Toast.makeText(GuestHome.this, "Thank you! Your room has been added to the queue and will be serviced shortly.",
+                Toast.LENGTH_LONG).show();
     }
 
     public void doNotDisturbButtonClick(View view) {
-        this.alertDialog.setMessage("Your room has been marked 'Do not disturb'. If you would like your room to be cleaned, click 'Please service my room'.");
-        this.alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        this.alertDialog.show();
+        Toast.makeText(GuestHome.this, "Your room has been marked 'Do not disturb'. If you would like your room to be cleaned, click 'Please service my room'.",
+                Toast.LENGTH_LONG).show();
     }
 
     public void checkingOutButtonClick(View view) {
-        this.alertDialog.setMessage("Thank you for using EfficiClean! We hope you enjoyed your stay.");
-        this.alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        this.alertDialog.show();
+        Toast.makeText(GuestHome.this, "Thank you for using EfficiClean! We hope you enjoyed your stay.",
+                Toast.LENGTH_LONG).show();
     }
 }
