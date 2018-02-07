@@ -43,12 +43,28 @@
             android:textColorHint="#FFF"
             android:background="@color/colorPrimary"
             android:padding="10sp"
+            android:hint="Hotel ID"
+            android:ems="10"
+            android:id="@+id/etStaffHotelID"
+            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="78dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvEnterPassword" app:layout_constraintHorizontal_bias="0.503"/>
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textColor="@color/myGold"
+            android:textColorHint="#FFF"
+            android:background="@color/colorPrimary"
+            android:padding="10sp"
             android:hint="Username"
             android:ems="10"
             android:id="@+id/etUsername" android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="82dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvEnterPassword" app:layout_constraintHorizontal_bias="0.503"/>
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etStaffHotelID" app:layout_constraintHorizontal_bias="0.503"/>
 
     <EditText
             android:layout_width="wrap_content"
@@ -61,10 +77,10 @@
             android:padding="10sp"
             android:hint="Password"
             android:ems="10"
-            android:id="@+id/etPassword"
-            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" app:layout_constraintHorizontal_bias="0.503"
-            android:layout_marginTop="19dp" app:layout_constraintTop_toBottomOf="@+id/etUsername"/>
+            android:id="@+id/etPassword" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/etUsername" app:layout_constraintHorizontal_bias="0.49"/>
 
     <Button
             android:text="Login"
@@ -73,10 +89,10 @@
             android:background="@drawable/roundbutton"
             android:layout_width="150sp"
             android:layout_height="wrap_content"
-            android:id="@+id/btStaffLogin" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="113dp"
-            app:layout_constraintTop_toBottomOf="@+id/etPassword"/>
+            android:id="@+id/btStaffLogin" android:layout_marginTop="82dp"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>
