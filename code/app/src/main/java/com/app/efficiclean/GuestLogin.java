@@ -21,10 +21,10 @@ public class GuestLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mRootRef;
-    private EditText hotelID;
-    private EditText roomNumber;
-    private EditText forename;
-    private EditText surname;
+    public EditText hotelID;
+    public EditText roomNumber;
+    public EditText forename;
+    public EditText surname;
     private Button loginBtn;
     private Guest guest;
 
@@ -88,7 +88,7 @@ public class GuestLogin extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-    private void loginButtonClick() {
+    public void loginButtonClick() {
         //Get input values from EditText boxes
         String hNumber = hotelID.getText().toString().trim();
         String rNumber = roomNumber.getText().toString().trim();
@@ -106,7 +106,7 @@ public class GuestLogin extends AppCompatActivity {
         }
     }
 
-    private void setValidationValues(final String hNumber, final String rNumber, final String fString, final String sString) {
+    public void setValidationValues(final String hNumber, final String rNumber, final String fString, final String sString) {
         //Create DatabaseReference to specified hotel room
         DatabaseReference mRoomRef = mRootRef.child(hNumber).child("rooms").child(rNumber).child("currentGuest");
 
@@ -150,7 +150,7 @@ public class GuestLogin extends AppCompatActivity {
         });
     }
 
-    private void validateValues(String rNumber, String fString, String sString) {
+    public void validateValues(String rNumber, String fString, String sString) {
         if (guest != null && guest.getForename().equals(fString) && guest.getSurname().equals(sString)){        //Validates that input data matches values from database
             //Create user email and password for authentication
             String pString = fString.toLowerCase() + sString.toLowerCase() + rNumber;
