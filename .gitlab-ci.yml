@@ -22,7 +22,7 @@ stages:
 build:
   stage: build
   script:
-    - code/gradlew assembleDebug
+    - code/gradlew init
   artifacts:
     paths:
     - code/app/build/outputs/
@@ -30,5 +30,5 @@ build:
 unitTests:
   stage: test
   script:
-    - code/gradlew code/test
+    - code/gradlew test
 
