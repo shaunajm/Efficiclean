@@ -13,7 +13,6 @@ before_script:
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x code/gradlew
-  - code/gradlew tasks
 
 stages:
   - build
