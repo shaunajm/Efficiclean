@@ -29,5 +29,5 @@ build:
 unitTests:
   stage: test
   script:
-    - code/gradlew test
+    - code/gradlew code/app/test
 
