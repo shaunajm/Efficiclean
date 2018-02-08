@@ -35,6 +35,14 @@ stages:
 
     - chmod +x code/gradlew
 
+build_debug:
+  <<: *build_template_def
+  only:
+    - develop
+
+  script:
+    - code/gradlew assembleDebug
+
 unit_test:
   stage: code/app/src/test
   only:
