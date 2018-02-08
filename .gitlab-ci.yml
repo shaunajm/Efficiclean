@@ -10,12 +10,6 @@ before_script:
   - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
   - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
   - unzip -q android-sdk.zip -d android-sdk-linux
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "android-${ANDROID_TARGET_SDK}"
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "platform-tools"
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools-${ANDROID_BUILD_TOOLS}"
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "extra-android-m2repository"
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "extra-google-google_play_services"
-#  - echo y | android-sdk-linux/tools/bin/sdkmanager "extra-google-m2repository"
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x code/gradlew
@@ -27,7 +21,7 @@ stages:
 build:
   stage: build
   script:
-    - code/gradlew assembleDebug
+    - code/gradlew code/assembleDebug
   artifacts:
     paths:
     - code/app/build/outputs/
@@ -35,5 +29,5 @@ build:
 unitTests:
   stage: test
   script:
-    - code/gradlew test
+    - code/gradlew code/test
 
