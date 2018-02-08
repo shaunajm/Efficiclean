@@ -3,219 +3,120 @@
 
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/fe841ccad8844c9f604b98bce1b7e20d1240e1e9/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/94c2b5c2e36971356337d7189a91c5154d615ced/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="a0b869be21f2e39e9b337bec395d9a7e111da21e">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_09b5639d95f15a17ca840420d5cfd0d54cc5fb17.jar" />
+        sha1="ed04a0ae7198b0d5d0e965d6afdb0fe784dcfbee">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_471b676d1d7d042ed8978a151128cfef05023d2a.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/415f4623bbdf16017cd03f643a2e0d560ebee7b6/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/2433223fa1b87c392797bcc6329280979c71998b/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_63c5777c9053c18b394574b35fc827cf396ddb1c.jar" />
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_b7a0e72b4c5327116f3e95f1a4e96b17f4b5f09e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/990d179b717a5fe473df9db1c95f21d47003c842/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/10ae30d849c6c0692d951a751922b2690464b918/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_e43ffe3e1e3894a623f7733638bd4d424886552a.jar" />
+        sha1="6746a3078625563a9eb381920f34e47ccd6bab87">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_86e0e25d43683e663538f8bd87bb2a1e66ae2eb3.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/4ed79bc5309d2d5be6cd29b9c9a1e801251ce5eb/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/0a894d3e9184914607f426ed98bc0d95a8227dd6/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b0ae7bfe4591746f6491a4a270ee56712062d1ca">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_a9209f3de4d2cf6f40d8ede59e130f21d7a7be05.jar" />
+        sha1="233d88c6f961d2a84758dfe27b7af61318190c7b">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_07e56b28dc1f5a2805477eb35d2065b3c88ffbc7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/810500bd515d293f680f1fd985f59591ec221c3d/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/42c490bd5f7483fa1e4bf384ec0b79f928f4bbf3/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_acb8abb25ca857c248b219f35be6dc60be63e3e3.jar" />
+        sha1="1b982cc8b5ab6f788690238dbe3ac3bb19f88b1a">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_b34138ae7c5669cbb34d822d72b1d766196252da.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/252f3403fc11a6fcc25af49b7bdefa0dd22ebfd4/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/80c9a67b89881d6df1342d11f11667b20f7a2a3b/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_e8a30671aae450b822ec62705439e9c224483791.jar" />
+        sha1="c5bc72ad3250d065128d1d7514279be703e57bd0">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_30dfca2255837e0884d04414d9367c5b44934716.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/4ef6e43c1428e41500ecf05e59955c1e7235e4bb/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/ff3cc3abced4c15071996f5cd98d4fa1c0955ee5/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="108c3cdbdb89a05d388a170bd3549b1e43ad6d54">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_2c25ef178c6c8c3db84e5f33a4f95c6214156e26.jar" />
+        sha1="d2af2ef4d987d753f2e8ee2d1480ab964d5c7273">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_cbeb9eb941bc917a0ef2e8cc4a4d99910236eb9f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/be596338403656fa576c38d0168d4c7890aedba7/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/4a1311f7abcfbe940115c8aa2f604307df8cabd9/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="225f093d9a041f8206d812d3055a886a816ac365">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_666e51009071d5271b91996d81bc8e14356e3f9f.jar" />
+        sha1="264ad23f9752aabecfa41115c52a25a023a08839">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_0b6537f86b4257f6c60c6bce437dc27620b6f8ea.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar"
+        jar="/home/conorbh/.android/build-cache/015d55976ae68361d5babdc1ad4ff8a7c4e27bce/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/common-1.0.0_3db22a1554f205fbdc78c21100236ff0c89f2559.jar" />
+        sha1="fe94ced585bffcf3c7f788a294cc54e6785544ac">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_173de22c8a72b517700bdbca82271bfa9c49b21f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/4a92a04ca66483f330141f4738b3e374ec72330a/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/837a746bece4debe5935e7dcb5ad669a28e68832/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="1eb02c1033c29e736e558db646bbf0d522fecb53">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_e027481449b156ad8eded42b603239bad5574034.jar" />
+        sha1="42c9659c973e311ffdb645ed057e5053e0ab5c78">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_1423f0ee6885c793fbed14265061694133558853.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/b981231c5fe2f85123b3ef22f888bdeb07af2e8d/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/fbfe7e0025655a5353620738db7503a51d4cd022/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_ad09d6542cbae9c53c1c1774dd9785b7b49fcc81.jar" />
+        sha1="e6aeff19a2ce1eb896557be73cb9ceb56f8d1cf3">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_f685118138fbde3585b9e573af0cf34f934ed135.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/16da3fe4a4c58521f5d9b3f3a0569db9c378130b/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/7c76d8f52cb2dc7729a3220a6c18a3ecacfdc588/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="fd6ae8c61bd548b134265ef3c37807d4efcc854c">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_fcd2adb2e4a44507b9e9d01657f904f4631a9826.jar" />
+        sha1="122de0d704f76d2bb5cb9db66e00fe90a0a41e78">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_e5ebb968e8b00d377a4fd951bdd266763d29690b.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/eeee08a99885de8cf012641e70529ff2b744395e/output/jars/classes.jar"
+        jar="/home/conorbh/.android/build-cache/d0012cad554883eef7990f6845a34adfeb16d29f/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_a58c083b81bc7ec4b72fe2ed575f6af36c508977.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/7fa1c40aa88ee1f877bf3f96ad046810aea54c48/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_d8e51bcf055056d94313f2e8c3937165bfa70318.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/0fb49c95e3ebcf2ecc40f12e41e5feeec1c9b329/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_40ce1ab9f0b8cb6a0edcad44a744900600aa86de.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/2df5639be30aff363014754db29afe1b3ecbb688/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="508f50705b4fde51a16259f29c854201a3044516">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_fd77d82dd387224882ca8805b1b41858c4e2169c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/5ee298000f16f7fb12305e5d127bff027c4f64dd/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_a3194a5c4b02a05f6b4d829f94d7231f7afa85c8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/64168a30b5c612bf9ec726eb97ab2f9c3071b5b5/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="4d7b1a23cecd2855bdfbd8266650d140e9e6977c">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_500260ec11aac9790a903a536ff4415e4d092e6d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/c2d0cae2339e1fb2ad3ba20fda025c08d8b8cce7/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_68cc78fe9b5a4c10b94f42d9151b2c1e8b1da9b3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/common-1.0.0_c1e221ce8a88cffdf083e2af5db075c7ad9ab43e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/9c6fc5ef734f56d3ee4542ebfd0f55920b1b292b/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_eceb832eac81631f5e99ba9e5bff17cb83e08e42.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/c5ebc7b95960b5553bd80e0cfb34154ccb351e33/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_96c3cf5bee4a347811efa3e3738ab33ae220e952.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.android/build-cache/1f5a146bb839063a910f31c3b17984445db4db8f/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b09006b74a6b6ad5d696af2d85db540f7723521e">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_7e3edafabe30e8acc99c8b56078c3b7a451d856f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/conorbh/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
-        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/support-annotations-26.1.0_6817f53877fe8cfbdbd94abc8fb35ceeab52200a.jar" />
+        sha1="0a23c4daa97697118d96f2b09d1dbaf9ea943d8d">
+        <dex dex="/home/conorbh/College/Year3/2018-CA326-chanlon-efficiclean/code/app/build/intermediates/pre-dexed/debug/classes_0a55728cbc7c34b75409ab856e2db97e062ca8fc.jar" />
     </item>
 
 </items>

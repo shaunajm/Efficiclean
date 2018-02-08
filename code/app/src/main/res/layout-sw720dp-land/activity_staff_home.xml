@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.app.efficiclean.GuestHome">
+
+    <Button
+            android:text="View Map"
+            android:textSize="26sp"
+            android:textColor="@color/myGold"
+            android:background="@drawable/roundbutton"
+            android:layout_width="280dp"
+            android:layout_height="140dp"
+            android:id="@+id/btViewMap"
+            android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.958" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp"/>
+
+    <Button
+            android:text="Request Break"
+            android:textSize="26sp"
+            android:textColor="@color/myGold"
+            android:background="@drawable/roundbutton"
+            android:layout_width="280dp"
+            android:layout_height="140dp"
+            android:id="@+id/btRequestBreak"
+            android:layout_marginRight="40dp" app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="59dp" app:layout_constraintTop_toBottomOf="@+id/btViewMap"
+            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintHorizontal_bias="0.99"/>
+
+    <Button
+            android:text="Current Room"
+            android:textSize="26sp"
+            android:textColor="@color/myGold"
+            android:background="@drawable/roundbutton"
+            android:layout_width="280dp"
+            android:layout_height="140dp"
+            android:id="@+id/btCurrentRoom"
+            android:layout_marginTop="60dp"
+            app:layout_constraintTop_toBottomOf="@+id/btRequestBreak" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintHorizontal_bias="0.958"/>
+
+
+    <TableLayout
+            android:layout_width="380dp"
+            android:layout_height="560dp"
+            android:stretchColumns="1"
+            android:visibility="visible" android:id="@+id/tbTeams" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp" app:layout_constraintHorizontal_bias="0.059">
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="23dp" android:text="Today's Teams" android:layout_span="3"
+                    android:padding="34dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 1" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 2" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 3" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 4" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 5" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 6" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+    </TableLayout>
+    <TableLayout
+            android:layout_width="380dp"
+            android:layout_height="560dp"
+            android:stretchColumns="1"
+            android:visibility="visible" android:id="@+id/tbQueue" android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="42dp" app:layout_constraintHorizontal_bias="0.548">
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="23dp" android:text="Queue" android:layout_span="3"
+                    android:padding="34dip" android:id="@+id/textView3"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 1" android:layout_span="3"
+                    android:padding="26dip" android:id="@+id/textView2"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 2" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 3" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 4" android:layout_span="3"
+                    android:padding="26dip" android:id="@+id/textView"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 5" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+
+            <TextView
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textSize="21dp" android:text="Team 6" android:layout_span="3"
+                    android:padding="26dip"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</android.support.constraint.ConstraintLayout>

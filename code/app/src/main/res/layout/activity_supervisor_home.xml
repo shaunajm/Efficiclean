@@ -8,55 +8,80 @@
         tools:context="com.app.efficiclean.StaffHome">
 
     <Button
-            android:text="Today's Teams"
-            android:textSize="23sp"
+            android:text="Cleans approval"
+            android:textSize="21sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="150dp"
-            android:layout_height="75dp"
-            android:id="@+id/btTodaysTeams"
+            android:layout_height="60dp"
+            android:id="@+id/btCleansApproval"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintHorizontal_bias="0.963" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="39dp"/>
+            android:layout_marginTop="25dp"/>
 
     <Button
-            android:text="View Map"
-            android:textSize="23sp"
+            android:text="Hazards approval"
+            android:textSize="21sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="155dp"
-            android:layout_height="75dp"
+            android:layout_height="60dp"
+            android:id="@+id/btHazardApproval"
+            android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="21dp"
+            app:layout_constraintTop_toBottomOf="@+id/btCleansApproval"/>
+
+    <Button
+            android:text="Severe Mess approval"
+            android:textSize="21sp"
+            android:textColor="@color/myGold"
+            android:background="@drawable/roundbutton"
+            android:layout_width="155dp"
+            android:layout_height="60dp"
+            android:id="@+id/btSevereMessApproval"
+            android:layout_marginRight="16dp" app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/btHazardApproval"/>
+
+    <Button
+            android:text="View map"
+            android:textSize="21sp"
+            android:textColor="@color/myGold"
+            android:background="@drawable/roundbutton"
+            android:layout_width="155dp"
+            android:layout_height="60dp"
             android:id="@+id/btViewMap" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintHorizontal_bias="0.962"
-            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/btTodaysTeams"/>
-
+            android:layout_marginTop="21dp" app:layout_constraintTop_toBottomOf="@+id/btSevereMessApproval"/>
     <Button
-            android:text="Request Break"
-            android:textSize="23sp"
+            android:text="Approve break"
+            android:textSize="21sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="155dp"
-            android:layout_height="75dp"
-            android:id="@+id/btRequestBreak"
+            android:layout_height="60dp"
+            android:id="@+id/btApproveBreak"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="37dp"
+            app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="23dp"
             app:layout_constraintTop_toBottomOf="@+id/btViewMap"/>
 
     <Button
-            android:text="Current Room"
-            android:textSize="23sp"
+            android:text="Report absence"
+            android:textSize="21sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="155dp"
-            android:layout_height="75dp"
-            android:id="@+id/btCurrentRoom"
+            android:layout_height="60dp"
+            android:id="@+id/btReportAbsence"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="39dp"
-            app:layout_constraintTop_toBottomOf="@+id/btRequestBreak"/>
+            app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/btApproveBreak"/>
 
     <TableLayout
             android:layout_width="185dp"
@@ -65,7 +90,7 @@
             android:visibility="visible" android:id="@+id/tbQueue" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="39dp" app:layout_constraintHorizontal_bias="0.043"
+            android:layout_marginTop="47dp" app:layout_constraintHorizontal_bias="0.043"
     >
 
         <TableRow
@@ -76,8 +101,8 @@
 
             <TextView
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="18dp" android:text="Queue" android:layout_span="3"
-                    android:padding="25dip"/>
+                    android:textSize="18dp" android:text="Team's Progress" android:layout_span="3"
+                    android:padding="24dip"/>
         </TableRow>
 
         <TableRow
@@ -151,5 +176,4 @@
         </TableRow>
 
     </TableLayout>
-
 </android.support.constraint.ConstraintLayout>
