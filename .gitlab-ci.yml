@@ -1,38 +1,72 @@
 image: openjdk:8-jdk
 
-variables:
-  ANDROID_COMPILE_SDK: "26"
-  ANDROID_BUILD_TOOLS: "26.0.1"
-  ANDROID_SDK_TOOLS: "26.0.2"
-
-before_script:
-  - apt-get --quiet update --yes
-  - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
-  - wget --quiet --output-document=/tmp/sdk-tools-linux.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
-  - unzip /tmp/sdk-tools-linux.zip -d .android
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter android-${ANDROID_COMPILE_SDK}
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter platform-tools
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter build-tools-${ANDROID_BUILD_TOOLS}
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
-  - echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
-  - export ANDROID_HOME=$PWD/android-sdk-linux
-  - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - chmod +x code/app/gradlew
-
 stages:
   - build
   - test
+  - package
 
-build:
+
+####################################################################################################
+# BUILD
+#
+.build_template: &build_template_def
   stage: build
-  script:
-    - code/gradlew assembleDebug
   artifacts:
+    expire_in: 4 hours
     paths:
     - code/app/build/outputs/
+    - .android/
 
-unitTests:
+  before_script:
+    # Extract the SDK version that we're building against
+    - export ANDROID_COMPILE_SDK=`egrep '^[[:blank:]]+compileSdkVersion'  code/app/build.gradle | awk '{print $2}'`
+
+    # Explict output for logging purpose only
+    - echo $ANDROID_SDK_TOOLS
+    - echo $ANDROID_COMPILE_SDK
+
+    # Fetch the specified SDK tools version to build with
+    - wget --quiet --output-document=/tmp/sdk-tools-linux.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
+    - unzip /tmp/sdk-tools-linux.zip -d .android
+
+    # Set up environment variables
+    - export ANDROID_HOME=$PWD/.android
+    - export PATH=$PATH:$PWD/.android/platform-tools/
+
+    # Install platform tools and Android SDK for the compile target
+    - echo y | .android/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}"
+
+    - chmod +x code/gradlew
+
+build_debug:
+  <<: *build_template_def
+  only:
+    - develop
+
+  script:
+    - code/gradlew assembleDebug
+
+build_release:
+  <<: *build_template_def
+  only:
+    - master
+  script:
+    - code/gradlew assembleRelease
+
+####################################################################################################
+# UNIT TESTING
+#
+
+unit_test:
   stage: test
+  only:
+    - master
+    - develop
+
+  before_script:
+    - export ANDROID_HOME=$PWD/.android
+    - export PATH=$PATH:$PWD/.android/platform-tools/
+
   script:
     - code/gradlew test
+
