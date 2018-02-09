@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEnterDetails" />
 
     <EditText
-        android:id="@+id/etRoomID"
+        android:id="@+id/etRoomNumber"
         android:layout_width="479dp"
         android:layout_height="70dp"
         android:layout_marginEnd="8dp"
@@ -96,7 +96,7 @@
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRoomID" />
+        app:layout_constraintTop_toBottomOf="@+id/etRoomNumber" />
 
     <EditText
         android:id="@+id/etSurname"
@@ -126,7 +126,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/roundbutton"
-        android:onClick="loginButtonClick"
         android:text="Login"
         android:textColor="@color/myGold"
         android:textSize="30sp"

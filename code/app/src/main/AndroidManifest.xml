@@ -22,8 +22,9 @@
             android:theme="@style/AppTheme">
         <activity android:name=".GuestLogin">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".GuestHome">
@@ -33,6 +34,12 @@
         <activity android:name=".SupervisorHome">
         </activity>
         <activity android:name=".StaffLogin">
+        </activity>
+        <activity android:name=".GuestPleaseService">
+        </activity>
+        <activity android:name=".GuestDoNotDisturb">
+        </activity>
+        <activity android:name=".GuestCheckingOut">
         </activity>
     </application>
 
