@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="24dp"/>
 
     <TextView
-            android:text="Please enter your name."
+            android:text="Please enter your details."
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"

@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="25dp"/>
 
     <TextView
-            android:text="Please enter your password."
+            android:text="Please enter your details."
             android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
