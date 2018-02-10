@@ -11,13 +11,49 @@ public class SupervisorHome extends AppCompatActivity {
     private Button hazardApproval;
     private Button cleansApproval;
     private Button breakApproval;
-    private Button reportSevereMess;
+    private Button approveSevereMess;
     private Button reportAbsences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_home);
+
+        hazardApproval = (Button) findViewById(R.id.btHazardApproval);
+        hazardApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SupervisorHome.this, HazardApproval.class);
+                startActivity(i);
+            }
+        });
+
+        cleansApproval = (Button) findViewById(R.id.btCleansApproval);
+        cleansApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SupervisorHome.this, CleanApproval.class);
+                startActivity(i);
+            }
+        });
+
+        breakApproval = (Button) findViewById(R.id.btApproveBreak);
+        breakApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SupervisorHome.this, BreakApproval.class);
+                startActivity(i);
+            }
+        });
+
+        approveSevereMess = (Button) findViewById(R.id.btSevereMessApproval);
+        approveSevereMess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SupervisorHome.this, ApproveSevereMess.class);
+                startActivity(i);
+            }
+        });
 
         reportAbsences = (Button) findViewById(R.id.btReportAbsence);
         reportAbsences.setOnClickListener(new View.OnClickListener() {
