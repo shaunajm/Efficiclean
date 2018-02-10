@@ -75,7 +75,7 @@
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Disapprove"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"

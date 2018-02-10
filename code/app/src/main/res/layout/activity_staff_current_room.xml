@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Your current room is: 101"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:ems="10"
             android:id="@+id/tvCurrentRoom" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
