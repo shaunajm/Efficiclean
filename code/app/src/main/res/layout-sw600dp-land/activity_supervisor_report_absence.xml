@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.efficiclean.GuestLogin"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/tvTeam"
+        android:layout_width="384dp"
+        android:layout_height="69dp"
+        android:text="Report absence of :"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorPrimary"
+        android:textSize="42sp"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+    <ScrollView
+        android:id="@+id/scrollview_choices"
+        android:layout_width="246dp"
+        android:layout_height="291dp"
+        android:above="@+id/actonchoice_button"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="414dp"
+        tools:layout_editor_absoluteY="31dp">
+
+        <RadioGroup
+            android:id="@+id/RGstaff"
+            android:layout_width="248dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteX="414dp"
+            tools:layout_editor_absoluteY="31dp">
+
+            <RadioButton
+                android:id="@+id/RBstaff1"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Conor Hanlon"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff8"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Laura Quinn"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff9"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Holly Moran"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff7"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Rebecca Egan"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/RBstaff2"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Shauna Moran"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff3"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="David Weir"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff4"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Shane Daly"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff5"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Dean Lynch"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff6"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Riain Condon"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff10"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Noah Johan"
+                android:textSize="20dp" />
+
+        </RadioGroup>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btSubmit"
+        android:layout_width="245dp"
+        android:layout_height="49dp"
+        android:background="@drawable/roundbutton"
+        android:text="Submit"
+        android:textColor="@color/myGold"
+        android:textSize="26sp"
+        tools:layout_editor_absoluteX="414dp"
+        tools:layout_editor_absoluteY="358dp">
+
+
+
+</android.support.constraint.ConstraintLayout>
