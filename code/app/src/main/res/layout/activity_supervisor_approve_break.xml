@@ -10,117 +10,206 @@
     tools:layout_editor_absoluteX="0dp">
 
     <TextView
-        android:id="@+id/tvTeam"
-        android:layout_width="284dp"
+        android:id="@+id/tvBreakApproval"
+        android:layout_width="302dp"
         android:layout_height="41dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Team: Mary and John"
-        android:textAlignment="textStart"
+        android:layout_marginTop="44dp"
+        android:text="Breaks to be approved:"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="284dp"
-        android:layout_height="46dp"
+    <ScrollView
+        android:id="@+id/svBreaksApproval"
+        android:layout_width="290dp"
+        android:layout_height="308dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Time: 12:00"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTeam" />
-
-    <TextView
-        android:id="@+id/tvLength"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Length: 30 minutes"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBreakApproval">
 
-    <CheckBox
-        android:id="@+id/cbApprove"
-        android:layout_width="257dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Approve"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLength" />
+        <TableLayout
+            android:id="@+id/tbTeams"
+            android:layout_width="286dp"
+            android:layout_height="289dp"
+            android:background="@drawable/table_layout"
+            android:padding="5dp"
+            android:stretchColumns="1"
+            android:visibility="visible"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-    <CheckBox
-        android:id="@+id/cbDisapprove"
-        android:layout_width="277dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Disapprove"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbApprove" />
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etReason"
-        android:layout_width="267dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/textview_border"
-        android:ems="15"
-        android:hint="Reason"
-        android:inputType="textPersonName"
-        android:padding="20sp"
-        android:text=""
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbDisapprove" />
+                <TextView
+                    android:id="@+id/tvTeam"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="Team"
+                    android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/btSubmit"
-        android:layout_width="178dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/roundbutton"
-        android:text="Submit"
-        android:textColor="@color/myGold"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etReason" />
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="Time"
+                    android:textSize="20dp" />
+            </TableRow>
 
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName1"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime1"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName2"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime2"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName3"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime3"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName4"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime4"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName5"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime5"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="TeamName"
+                    android:id="@+id/tvTeamName6"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/table_layout"
+                    android:gravity="center"
+                    android:padding="15dip"
+                    android:text="12:00"
+                    android:id="@+id/tvTime6"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

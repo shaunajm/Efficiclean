@@ -99,8 +99,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Today's Progress" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvTitle"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Today's Progress"
+                android:layout_span="3"
                 android:padding="25dip"/>
     </TableRow>
 
@@ -111,8 +115,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 1" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow1"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Team 1"
+                android:layout_span="3"
                 android:padding="18dip" />
     </TableRow>
 
@@ -123,8 +131,11 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 2" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow2"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Team 2" android:layout_span="3"
                 android:padding="18dip"/>
     </TableRow>
 
@@ -135,8 +146,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 3" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow3"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Team 3"
+                android:layout_span="3"
                 android:padding="18dip"/>
     </TableRow>
 
@@ -147,8 +162,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 4" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow4"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Team 4"
+                android:layout_span="3"
                 android:padding="18dip"/>
     </TableRow>
     <TableRow
@@ -158,8 +177,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 5" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow5"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Team 5"
+                android:layout_span="3"
                 android:padding="18dip"/>
     </TableRow>
     <TableRow
@@ -169,8 +192,12 @@ tools:context="com.app.efficiclean.GuestHome">
 
 
         <TextView
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="18dp" android:text="Team 6" android:layout_span="3"
+                android:layout_width="match_parent"
+                android:id="@+id/tvRow6"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Team 6"
+                android:layout_span="3"
                 android:padding="18dip"/>
     </TableRow>
 

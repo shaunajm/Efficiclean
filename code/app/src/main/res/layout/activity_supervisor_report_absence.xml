@@ -11,17 +11,16 @@
 
     <TextView
         android:id="@+id/tvTeam"
-        android:layout_width="384dp"
-        android:layout_height="69dp"
+        android:layout_width="244dp"
+        android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:text="Report absence of :"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimary"
-        android:textSize="42sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,11 +30,10 @@
         android:layout_height="291dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.686"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvTeam">
 
         <RadioGroup
             android:id="@+id/RGstaff"
@@ -49,6 +47,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Conor Hanlon"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff8"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Laura Quinn"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff9"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Holly Moran"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/staff7"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:text="Rebecca Egan"
                 android:textSize="20dp" />
 
             <RadioButton
@@ -87,29 +106,6 @@
                 android:textSize="20dp" />
 
             <RadioButton
-                android:id="@+id/staff7"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:text="Rebecca Egan"
-                android:textSize="20dp" />
-
-            <RadioButton
-                android:id="@+id/staff8"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:text="Laura Quinn"
-                android:textSize="20dp" />
-
-            <RadioButton
-                android:id="@+id/staff9"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:text="Holly Moran"
-                android:textSize="20dp" />
-
-
-
-            <RadioButton
                 android:id="@+id/staff10"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
@@ -124,13 +120,13 @@
         android:id="@+id/btSubmit"
         android:layout_width="245dp"
         android:layout_height="49dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/roundbutton"
         android:text="Submit"
         android:textColor="@color/myGold"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollview_choices" />
 
