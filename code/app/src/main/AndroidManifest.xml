@@ -43,6 +43,14 @@
         </activity>
         <activity android:name=".ReportAbsences">
         </activity>
+        <activity android:name=".ApproveSevereMess">
+        </activity>
+        <activity android:name=".BreakApproval">
+        </activity>
+        <activity android:name=".CleanApproval">
+        </activity>
+        <activity android:name=".HazardApproval">
+        </activity>
     </application>
 
 </manifest>
