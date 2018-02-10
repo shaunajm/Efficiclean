@@ -16,6 +16,7 @@ public class GuestLoginTest {
 
     @Test
     public void loginButtonClick() throws Exception {
+
     }
 
     @Test

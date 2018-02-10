@@ -1,13 +1,12 @@
 package com.app.efficiclean;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -54,18 +53,41 @@ public class GuestHome extends AppCompatActivity {
     }
 
     public void pleaseServiceButtonClick(View view) {
-        mRootRef.child(hotelID).child("jobs").push().setValue(guest);
-        Toast.makeText(GuestHome.this, "Thank you! Your room has been added to the queue and will be serviced shortly.",
-                Toast.LENGTH_LONG).show();
+        Job newJob = new Job(guest);
+        mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
+        changePage("service");
     }
 
     public void doNotDisturbButtonClick(View view) {
-        Toast.makeText(GuestHome.this, "Your room has been marked 'Do not disturb'. If you would like your room to be cleaned, click 'Please service my room'.",
-                Toast.LENGTH_LONG).show();
+        changePage("notDisturb");
     }
 
     public void checkingOutButtonClick(View view) {
-        Toast.makeText(GuestHome.this, "Thank you for using EfficiClean! We hope you enjoyed your stay.",
-                Toast.LENGTH_LONG).show();
+        changePage("checkingOut");
+    }
+
+    public void changePage(String choice) {
+        Bundle bundle = new Bundle();
+        bundle.putString("hotelID", hotelID);
+        bundle.putSerializable("thisGuest", guest);
+
+        Intent guestChoicePage = null;
+
+        if (choice.equals("service")) {
+            guestChoicePage = new Intent(GuestHome.this, GuestPleaseService.class);
+        } else if (choice.equals("notDisturb")) {
+            guestChoicePage = new Intent(GuestHome.this, GuestDoNotDisturb.class);
+        } else if (choice.equals("checkingOut")) {
+            guestChoicePage = new Intent(GuestHome.this, GuestCheckingOut.class);
+        }
+
+        if (guestChoicePage != null) {
+            guestChoicePage.putExtras(bundle);
+            startActivity(guestChoicePage);
+            finish();
+        } else {
+            Toast.makeText(GuestHome.this, "An error has occurred. Please try again.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
