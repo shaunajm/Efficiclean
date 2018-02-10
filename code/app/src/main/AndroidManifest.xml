@@ -41,6 +41,8 @@
         </activity>
         <activity android:name=".GuestCheckingOut">
         </activity>
+        <activity android:name=".ReportAbsences">
+        </activity>
     </application>
 
 </manifest>
