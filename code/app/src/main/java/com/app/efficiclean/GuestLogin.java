@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +27,7 @@ public class GuestLogin extends AppCompatActivity {
     public EditText forename;
     public EditText surname;
     private Button loginBtn;
+    private ProgressBar spinner;
     private Guest guest;
 
     @Override
@@ -39,11 +41,18 @@ public class GuestLogin extends AppCompatActivity {
         forename = (EditText) findViewById(R.id.etForename);
         surname = (EditText) findViewById(R.id.etSurname);
 
+        //Set progress spinner
+        spinner = (ProgressBar) findViewById(R.id.guestLoginProgress);
+        spinner.setVisibility(View.GONE);
+
         //Map to xml button and set listener
         loginBtn = (Button) findViewById(R.id.btLogin);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                spinner.bringToFront();
+                spinner.invalidate();
+                spinner.setVisibility(View.VISIBLE);
                 loginButtonClick();
             }
         });
@@ -71,6 +80,7 @@ public class GuestLogin extends AppCompatActivity {
                     bundle.putString("hotelID", hotelID.getText().toString().trim());
                     bundle.putSerializable("thisGuest", guest);
 
+                    spinner.setVisibility(View.GONE);
                     Intent guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
                     guestHomePage.putExtras(bundle);
                     startActivity(guestHomePage);
@@ -95,12 +105,16 @@ public class GuestLogin extends AppCompatActivity {
         String fString = forename.getText().toString().trim();
         String sString = surname.getText().toString().trim();
 
-        if (!fString.equals("") && fString.equals("staff1")) {                                                      //Condition to pass to staff login page
+        if (!fString.equals("") && fString.equals("staff1")) {
+            //Condition to pass to staff login page
+            spinner.setVisibility(View.GONE);
             Intent staffPage = new Intent(getApplicationContext(), StaffLogin.class);
             startActivity(staffPage);
         } else if (!hNumber.equals("") && !rNumber.equals("") && !fString.equals("") && !sString.equals("")) {      //Check for no null values before we search database
             setValidationValues(hNumber, rNumber, fString, sString);
-        } else {                                                                                                    //Display error message if incorrect user input
+        } else {
+            //Display error message if incorrect user input
+            spinner.setVisibility(View.GONE);
             Toast.makeText(GuestLogin.this, "Please complete all fields and try again.",
                     Toast.LENGTH_LONG).show();
         }
@@ -138,6 +152,7 @@ public class GuestLogin extends AppCompatActivity {
                         }
                     });
                 } else {
+                    spinner.setVisibility(View.GONE);
                     Toast.makeText(GuestLogin.this, "Your details seem to be incorrect. Please try again.",
                             Toast.LENGTH_LONG).show();
                 }
@@ -162,12 +177,14 @@ public class GuestLogin extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
+                                spinner.setVisibility(View.GONE);
                                 Toast.makeText(GuestLogin.this, "Authentication failed.",
                                         Toast.LENGTH_LONG).show();
                             }
                         }
                     });
         } else {
+            spinner.setVisibility(View.GONE);
             Toast.makeText(GuestLogin.this, "Your details seem to be incorrect. Please try again.",
                     Toast.LENGTH_LONG).show();
         }

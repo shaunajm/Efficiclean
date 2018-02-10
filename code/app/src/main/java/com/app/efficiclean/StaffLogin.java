@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +25,7 @@ public class StaffLogin extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button loginBtn;
+    private ProgressBar spinner;
     private Staff employee;
 
     @Override
@@ -36,12 +38,18 @@ public class StaffLogin extends AppCompatActivity {
         username = (EditText) findViewById(R.id.etUsername);
         password = (EditText) findViewById(R.id.etPassword);
 
+        //Set progress spinner
+        spinner = (ProgressBar) findViewById(R.id.staffLoginProgress);
+        spinner.setVisibility(View.GONE);
+
         //Map to xml button and set listener
         loginBtn = (Button) findViewById(R.id.btStaffLogin);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                spinner.bringToFront();
+                spinner.invalidate();
+                spinner.setVisibility(View.VISIBLE);
                 staffLoginButtonClick();
             }
         });
@@ -61,6 +69,7 @@ public class StaffLogin extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
                 FirebaseUser user = fbAuth.getCurrentUser();
                 if (user != null) {
+                    spinner.setVisibility(View.GONE);
                     if (employee.getJobTitle().equals("supervisor")) {          //Choose which page to display
                         Intent staffPage = new Intent(StaffLogin.this, SupervisorHome.class);
                         startActivity(staffPage);
@@ -68,6 +77,7 @@ public class StaffLogin extends AppCompatActivity {
                         Intent staffPage = new Intent(StaffLogin.this, StaffHome.class);
                         startActivity(staffPage);
                     }
+                    finish();
                 }
             }
         };
@@ -90,6 +100,7 @@ public class StaffLogin extends AppCompatActivity {
         if (!hNumber.equals("") && !uString.equals("") && !pString.equals("")) {      //Check for no null values before we search database
             setValidationValues(hNumber, uString, pString);
         } else {                                                                      //Display error message if incorrect user input
+            spinner.setVisibility(View.GONE);
             Toast.makeText(StaffLogin.this, "Please complete all fields and try again.",
                     Toast.LENGTH_LONG).show();
         }
@@ -121,6 +132,7 @@ public class StaffLogin extends AppCompatActivity {
                     }
                 }
                 if (!correctDetails) {
+                    spinner.setVisibility(View.GONE);
                     Toast.makeText(StaffLogin.this, "Your details seem to be incorrect. Please try again.",
                             Toast.LENGTH_LONG).show();
                 }
@@ -146,12 +158,14 @@ public class StaffLogin extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
+                                spinner.setVisibility(View.GONE);
                                 Toast.makeText(StaffLogin.this, "Authentication failed.",
                                         Toast.LENGTH_LONG).show();
                             }
                         }
             });
         } else {
+            spinner.setVisibility(View.GONE);
             Toast.makeText(StaffLogin.this, "Error authenticating with the server. Please try again.",
                     Toast.LENGTH_LONG).show();
         }

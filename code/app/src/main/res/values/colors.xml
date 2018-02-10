@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#8B0000</color>
     <color name="colorAccent">#FF4081</color>
     <color name="myGold">#FFD700</color>
+    <color name="loading">#00F5FF</color>
 </resources>

@@ -53,7 +53,7 @@ public class GuestHome extends AppCompatActivity {
     }
 
     public void pleaseServiceButtonClick(View view) {
-        Job newJob = new Job(guest);
+        Job newJob = new Job(mAuth.getUid(), guest.getRoomNumber(), 0);
         mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
         changePage("service");
     }
