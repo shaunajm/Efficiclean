@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          package="com.app.efficiclean"
-          android:orientation="vertical">
+    package="com.app.efficiclean"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.READ_PROFILE"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity android:name=".GuestLogin">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GuestHome">
-        </activity>
-        <activity android:name=".StaffHome">
-        </activity>
-        <activity android:name=".SupervisorHome">
-        </activity>
-        <activity android:name=".StaffLogin">
-        </activity>
-        <activity android:name=".GuestPleaseService">
-        </activity>
-        <activity android:name=".GuestDoNotDisturb">
-        </activity>
-        <activity android:name=".GuestCheckingOut">
-        </activity>
-        <activity android:name=".ReportAbsences">
-        </activity>
-        <activity android:name=".ApproveSevereMess">
-        </activity>
-        <activity android:name=".BreakApproval">
-        </activity>
-        <activity android:name=".CleanApproval">
-        </activity>
-        <activity android:name=".HazardApproval">
-        </activity>
+        <activity android:name=".GuestHome" />
+        <activity android:name=".StaffHome" />
+        <activity android:name=".SupervisorHome" />
+        <activity android:name=".StaffLogin" />
+        <activity android:name=".GuestPleaseService" />
+        <activity android:name=".GuestDoNotDisturb" />
+        <activity android:name=".GuestCheckingOut" />
+        <activity android:name=".ReportAbsences" />
+        <activity android:name=".ApproveSevereMess" />
+        <activity android:name=".BreakApproval" />
+        <activity android:name=".CleanApproval" />
+        <activity android:name=".HazardApproval" />
+        <activity android:name=".StaffRequestBreak" />
+        <activity android:name=".StaffCurrentRoom" />
+        <activity android:name=".ReportHazard" />
+        <activity android:name=".ReportSevereMess" />
+        <activity android:name=".TodaysTeams" />
+        <activity android:name=".SupervisorApprovals" />
+        <activity android:name=".TeamBreakApproval" />
     </application>
 
 </manifest>
