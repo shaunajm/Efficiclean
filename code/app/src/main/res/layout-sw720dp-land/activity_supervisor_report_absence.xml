@@ -121,7 +121,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btSubmit"
+        android:id="@+id/btReportAbsenceSubmit"
         android:layout_width="273dp"
         android:layout_height="62dp"
         android:layout_marginTop="56dp"

@@ -47,188 +47,289 @@
             app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintHorizontal_bias="0.958"/>
 
 
-    <TableLayout
+    <ScrollView
+        android:id="@+id/svTodaysTeams"
+        android:layout_width="387dp"
+        android:layout_height="511dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tbTeams"
             android:layout_width="380dp"
             android:layout_height="560dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:stretchColumns="1"
-            android:visibility="visible" android:id="@+id/tbTeams" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="42dp" app:layout_constraintHorizontal_bias="0.059">
+            android:visibility="visible"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="23dp" android:text="Today's Teams" android:layout_span="3"
-                    android:padding="34dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvTeamsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="34dip"
+                    android:text="Today's Teams"
+                    android:textSize="23sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 1" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvTeamsRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 1"
+                    android:textSize="21sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 2" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvTeamRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 2"
+                    android:textSize="21sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 3" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvTeamRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 3"
+                    android:textSize="21sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 4" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvTeamRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 4"
+                    android:textSize="21sp" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 5" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvTeamRow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 5"
+                    android:textSize="21sp" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 6" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvTeamRow6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 6"
+                    android:textSize="21sp" />
+            </TableRow>
 
-    </TableLayout>
-    <TableLayout
+        </TableLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/svQueue"
+        android:layout_width="387dp"
+        android:layout_height="511dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tbQueue"
             android:layout_width="380dp"
             android:layout_height="560dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:stretchColumns="1"
-            android:visibility="visible" android:id="@+id/tbQueue" android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="42dp" app:layout_constraintHorizontal_bias="0.548">
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:gravity="center_horizontal">
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="23dp" android:text="Queue" android:layout_span="3"
-                    android:padding="34dip" android:id="@+id/textView3"/>
-        </TableRow>
+            android:visibility="visible"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
+                <TextView
+                    android:id="@+id/tvQueueTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="34dip"
+                    android:text="Queue"
+                    android:textSize="23sp" />
+            </TableRow>
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 1" android:layout_span="3"
-                    android:padding="26dip" android:id="@+id/textView2"/>
-        </TableRow>
-
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 2" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvQueueRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 1"
+                    android:textSize="21sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 3" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvQueueRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 2"
+                    android:textSize="21sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 4" android:layout_span="3"
-                    android:padding="26dip" android:id="@+id/textView"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvQueueRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 3"
+                    android:textSize="21sp" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 5" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvQueueRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 4"
+                    android:textSize="21sp" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="21dp" android:text="Team 6" android:layout_span="3"
-                    android:padding="26dip"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvQueueRow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 5"
+                    android:textSize="21sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
 
 
-    </TableLayout>
+                <TextView
+                    android:id="@+id/tvQueueRow6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:padding="26dip"
+                    android:text="Team 6"
+                    android:textSize="21sp" />
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

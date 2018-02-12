@@ -10,7 +10,7 @@
     tools:layout_editor_absoluteX="0dp">
 
     <TextView
-        android:id="@+id/tvTeam"
+        android:id="@+id/tvReportAbsence"
         android:layout_width="384dp"
         android:layout_height="69dp"
         android:layout_marginEnd="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollview_choices"
+        android:id="@+id/svStaffList"
         android:layout_width="246dp"
         android:layout_height="291dp"
         android:layout_marginEnd="8dp"
@@ -38,90 +38,90 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioGroup
-            android:id="@+id/RGstaff"
+            android:id="@+id/rgStaffList"
             android:layout_width="248dp"
             android:layout_height="40dp"
             tools:layout_editor_absoluteX="414dp"
             tools:layout_editor_absoluteY="31dp">
 
             <RadioButton
-                android:id="@+id/RBstaff1"
+                android:id="@+id/rbstaff1"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Conor Hanlon"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/RBstaff2"
+                android:id="@+id/rbstaff2"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Shauna Moran"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff3"
+                android:id="@+id/rbstaff3"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="David Weir"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff4"
+                android:id="@+id/rbstaff4"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Shane Daly"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff5"
+                android:id="@+id/rbstaff5"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Dean Lynch"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff6"
+                android:id="@+id/rbstaff6"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Riain Condon"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff7"
+                android:id="@+id/rbstaff7"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Rebecca Egan"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff8"
+                android:id="@+id/rbstaff8"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Laura Quinn"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/staff9"
+                android:id="@+id/rbstaff9"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Holly Moran"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
 
 
             <RadioButton
-                android:id="@+id/staff10"
+                android:id="@+id/rbstaff10"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:text="Noah Johan"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
         </RadioGroup>
 
     </ScrollView>
 
     <Button
-        android:id="@+id/btSubmit"
+        android:id="@+id/btReportAbsenceSubmit"
         android:layout_width="245dp"
         android:layout_height="49dp"
         android:layout_marginTop="36dp"
@@ -132,6 +132,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.682"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollview_choices" />
+        app:layout_constraintTop_toBottomOf="@+id/svStaffList" />
 
 </android.support.constraint.ConstraintLayout>

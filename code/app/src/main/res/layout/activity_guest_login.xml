@@ -64,7 +64,6 @@
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:text=""
             android:textColor="@color/myGold"
             android:textColorHint="#FFF"

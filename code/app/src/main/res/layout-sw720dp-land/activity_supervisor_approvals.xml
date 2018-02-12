@@ -1,95 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.app.efficiclean.StaffHome">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.efficiclean.StaffHome">
 
-    <TableLayout
+    <ScrollView
+        android:id="@+id/svRoomsToBeApproved"
+        android:layout_width="496dp"
+        android:layout_height="482dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tbToBeApproved"
             android:layout_width="478dp"
             android:layout_height="537dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:stretchColumns="1"
             android:visibility="visible"
-            android:id="@+id/tbToBeApproved"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="47dp">
+            app:layout_constraintHorizontal_bias="0.925"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
-                android:layout_height="wrap_content"
+            <TableRow
                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="38dp" android:text="Rooms to be approved:" android:layout_span="3"
-                    android:padding="30dip" android:gravity="center"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tvToBeApproved"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="30dip"
+                    android:text="Rooms to be approved:"
+                    android:textSize="38sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
-
-
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="35dp" android:text="301" android:layout_span="3"
-                    android:padding="22dip" android:id="@+id/textView5" android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="35dp" android:text="408" android:layout_span="3"
-                    android:padding="22dip" android:id="@+id/textView6" android:gravity="center"/>
-        </TableRow>
+                <TextView
+                    android:id="@+id/tbRow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="22dip"
+                    android:text="301"
+                    android:textSize="35sp" />
+            </TableRow>
 
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
-
-
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="35dp" android:text="126" android:layout_span="3"
-                    android:padding="22dip" android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="35dp" android:text="311" android:layout_span="3"
-                    android:padding="22dip" android:gravity="center"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+                <TextView
+                    android:id="@+id/tbRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="22dip"
+                    android:text="408"
+                    android:textSize="35sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:textSize="35dp" android:text="410" android:layout_span="3"
-                    android:padding="22dip" android:id="@+id/textView4" android:gravity="center"/>
-        </TableRow>
-        <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+                <TextView
+                    android:id="@+id/tbRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="22dip"
+                    android:text="126"
+                    android:textSize="35sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/tbRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="22dip"
+                    android:text="311"
+                    android:textSize="35sp" />
+            </TableRow>
 
-    </TableLayout>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tbRow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="3"
+                    android:gravity="center"
+                    android:padding="22dip"
+                    android:text="410"
+                    android:textSize="35sp" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

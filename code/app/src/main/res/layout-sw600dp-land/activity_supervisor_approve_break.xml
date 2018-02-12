@@ -84,6 +84,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName1"
                     android:text="TeamName" />
 
                 <TextView
@@ -92,6 +93,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime1"
                     android:text="12:00" />
             </TableRow>
 
@@ -105,6 +107,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName2"
                     android:text="TeamName" />
 
                 <TextView
@@ -113,6 +116,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime2"
                     android:text="12:00" />
             </TableRow>
 
@@ -126,6 +130,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName3"
                     android:text="TeamName" />
 
                 <TextView
@@ -134,6 +139,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime3"
                     android:text="12:00" />
             </TableRow>
 
@@ -147,6 +153,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName4"
                     android:text="TeamName" />
 
                 <TextView
@@ -155,6 +162,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime4"
                     android:text="12:00" />
             </TableRow>
 
@@ -168,6 +176,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName5"
                     android:text="TeamName" />
 
                 <TextView
@@ -176,6 +185,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime5"
                     android:text="12:00" />
             </TableRow>
 
@@ -189,6 +199,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName6"
                     android:text="TeamName" />
 
                 <TextView
@@ -197,6 +208,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime6"
                     android:text="12:00" />
             </TableRow>
             <TableRow
@@ -209,6 +221,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName7"
                     android:text="TeamName" />
 
                 <TextView
@@ -217,6 +230,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime7"
                     android:text="12:00" />
             </TableRow>
             <TableRow
@@ -229,6 +243,7 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTeamName8"
                     android:text="TeamName" />
 
                 <TextView
@@ -237,7 +252,9 @@
                     android:background="@drawable/table_layout"
                     android:gravity="center"
                     android:padding="15dip"
+                    android:id="@+id/tvTime8"
                     android:text="12:00" />
+
             </TableRow>
         </TableLayout>
     </ScrollView>
