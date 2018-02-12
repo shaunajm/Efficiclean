@@ -29,6 +29,7 @@ public class GuestLogin extends AppCompatActivity {
     private Button loginBtn;
     private ProgressBar spinner;
     private Guest guest;
+    private QueueHandler qHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +105,8 @@ public class GuestLogin extends AppCompatActivity {
         String rNumber = roomNumber.getText().toString().trim();
         String fString = forename.getText().toString().trim();
         String sString = surname.getText().toString().trim();
+
+        qHandler = QueueHandlerCreater.createHandler(hNumber);
 
         if (!fString.equals("") && fString.equals("staff1")) {
             //Condition to pass to staff login page

@@ -3,8 +3,9 @@ package com.app.efficiclean;
 import com.google.firebase.database.*;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class JobQueue {
+public class JobQueue extends Observable {
 
     private ArrayList<Job> jQueue = new ArrayList<Job>();
     private String hotelID;
@@ -24,6 +25,8 @@ public class JobQueue {
                     newJob.key = job.getKey();
                     jQueue.add(newJob);
                 }
+                setChanged();
+                notifyObservers();
             }
 
             @Override
@@ -37,6 +40,10 @@ public class JobQueue {
         Job nextJob = jQueue.remove(jQueue.size() - 1);
         mJobRef.child(nextJob.key).removeValue();
         return nextJob;
+    }
+
+    public Boolean isEmpty() {
+        return jQueue.size() == 0;
     }
 
 }

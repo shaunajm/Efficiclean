@@ -12,16 +12,21 @@ public class Job {
     private Housekeeper assignedTo;
     public String key;
 
-    public Job(String guestID, String rNumber, int pCounter) {
-        createdBy = guestID;
-        roomNumber = rNumber;
+    public Job() {
         timestamp = (int) new Timestamp(System.currentTimeMillis()).getTime();
-        priorityCounter = pCounter;
         isCompleted = false;
     }
 
     public String getCreatedBy() {
         return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     public String getRoomNumber() {
