@@ -106,7 +106,7 @@ public class StaffLogin extends AppCompatActivity {
         }
     }
 
-    private void setValidationValues(String hNumber, final String uString, final String pString) {
+    private void setValidationValues(final String hNumber, final String uString, final String pString) {
         //Create DatabaseReference to staff
         DatabaseReference mStaffRef = mRootRef.child(hNumber).child("staff");
 
@@ -122,13 +122,38 @@ public class StaffLogin extends AppCompatActivity {
                     if (ds.child("username").getValue(String.class).equals(uString)                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
                         correctDetails = true;                                                          //Change value of correctDetails
-                        if (ds.child("jobTitle").getValue(String.class).equals("housekeeper")) {        //Check if matching staff member is a housekeeper
-                            Housekeeper housekeeper = ds.getValue(Housekeeper.class);                   //Create Housekeeper from Firebase Data
-                            validateValues(housekeeper);
-                        } else if (ds.child("jobTitle").getValue(String.class).equals("supervisor")) {  //Check if matching staff member is a supervisor
-                            Supervisor supervisor = ds.getValue(Supervisor.class);                      //Create Supervisor from Firebase data
-                            validateValues(supervisor);
-                        }
+                        Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
+                        validateValues(housekeeper);
+                    }
+                }
+                if (!correctDetails) {
+                    setSupervisorValues(hNumber, uString, pString);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void setSupervisorValues(String hNumber, final String uString, final String pString) {
+        DatabaseReference mSupervisorRef = mRootRef.child(hNumber).child("supervisor");
+
+        mSupervisorRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Create boolean to check if the correct details were found in the database
+                Boolean correctDetails = false;
+
+                //Iterate through the staff members
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.child("username").getValue(String.class).equals(uString)                     //Check if user input matches staff member details
+                            && ds.child("password").getValue(String.class).equals(pString)) {
+                        correctDetails = true;                                                          //Change value of correctDetails
+                        Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
+                        validateValues(housekeeper);
                     }
                 }
                 if (!correctDetails) {

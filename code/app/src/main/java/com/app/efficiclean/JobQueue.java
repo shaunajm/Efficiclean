@@ -20,7 +20,9 @@ public class JobQueue {
                     jQueue = new ArrayList<Job>();
                 }
                 for (DataSnapshot job : dataSnapshot.getChildren()) {
-                    jQueue.add(job.getValue(Job.class));
+                    Job newJob = job.getValue(Job.class);
+                    newJob.key = job.getKey();
+                    jQueue.add(newJob);
                 }
             }
 
@@ -29,6 +31,12 @@ public class JobQueue {
 
             }
         });
+    }
+
+    public Job dequeue() {
+        Job nextJob = jQueue.remove(jQueue.size() - 1);
+        mJobRef.child(nextJob.key).removeValue();
+        return nextJob;
     }
 
 }

@@ -5,6 +5,7 @@ public class Staff {
     protected String jobTitle;
     protected String password;
     protected String username;
+    protected String key;
 
     public Staff() {
 

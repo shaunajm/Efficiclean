@@ -10,6 +10,7 @@ public class Job {
     private int priorityCounter;
     private boolean isCompleted;
     private Housekeeper assignedTo;
+    public String key;
 
     public Job(String guestID, String rNumber, int pCounter) {
         createdBy = guestID;
@@ -54,4 +55,6 @@ public class Job {
     public void markCompleted(boolean completed) {
         isCompleted = completed;
     }
+
+
 }
