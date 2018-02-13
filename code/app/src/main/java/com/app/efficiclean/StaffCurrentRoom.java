@@ -43,7 +43,14 @@ public class StaffCurrentRoom extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 hKeeper = dataSnapshot.getValue(Housekeeper.class);
                 TextView tvRoom = (TextView) findViewById(R.id.tvCurrentRoom);
-                String roomText = "Your current room is: " + hKeeper.getCurrentJob().getRoomNumber();
+                String roomText;
+
+                if (hKeeper.getCurrentJob() == null) {
+                    roomText = "You have no current room.";
+                } else {
+                    roomText = "Your current room is: " + hKeeper.getCurrentJob().getRoomNumber();
+                }
+
                 tvRoom.setText(roomText);
             }
 
@@ -124,6 +131,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
         approval.setCreatedBy(mAuth.getUid());
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
         mStaffRef.child("status").setValue("Waiting");
+        mStaffRef.child("currentJob").removeValue();
         Toast.makeText(StaffCurrentRoom.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
     }
