@@ -94,6 +94,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(StaffCurrentRoom.this, ReportHazard.class);
                 i.putExtras(extras);
+                i.putExtra("supervisorKey", supervisorKey);
                 startActivity(i);
             }
         });
@@ -104,6 +105,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(StaffCurrentRoom.this, ReportSevereMess.class);
                 i.putExtras(extras);
+                i.putExtra("supervisorKey", supervisorKey);
                 startActivity(i);
             }
         });
