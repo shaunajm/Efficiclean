@@ -34,6 +34,7 @@
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/trToBeApproved"
                 android:gravity="center">
 
 
@@ -42,7 +43,6 @@
                     android:layout_height="wrap_content"
                     android:layout_span="3"
                     android:gravity="center"
-                    android:id="@+id/tvToBeApproved"
                     android:padding="25dip"
                     android:text="Rooms to be approved:"
                     android:textSize="29sp" />

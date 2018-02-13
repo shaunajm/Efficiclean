@@ -3,14 +3,25 @@ package com.app.efficiclean;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SupervisorApprovals extends AppCompatActivity {
 
     private String supervisorKey;
     private String hotelID;
     private Bundle extras;
+    private Supervisor supervisor;
+    private DatabaseReference mSuperRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -24,6 +35,21 @@ public class SupervisorApprovals extends AppCompatActivity {
             hotelID = extras.getString("hotelID");
             supervisorKey = extras.getString("staffKey");
         }
+
+        mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
+        mSuperRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                supervisor = dataSnapshot.getValue(Supervisor.class);
+                setRoomApprovals();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
@@ -44,6 +70,23 @@ public class SupervisorApprovals extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    public void setRoomApprovals(){
+        TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
+        TableRow row = (TableRow) findViewById(R.id.trToBeApproved);
+        table.removeAllViews();
+        table.addView(row);
+        for(Approval approval : supervisor.approvals) {
+            TableRow tr = new TableRow(this);
+            tr.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            TextView roomNumber = new TextView(this);
+            roomNumber.setText(approval.getJob().getRoomNumber());
+
+            tr.addView(roomNumber);
+            table.addView(tr);
+
+        }
     }
 }
 
