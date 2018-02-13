@@ -13,7 +13,6 @@ public class StaffHome extends AppCompatActivity {
 
     private Button btRequestBreak;
     private Button btCurrentRoom;
-    private Button btTodaysTeams;
     private Housekeeper hKeeper;
     private String staffKey;
     private String hotelID;
@@ -53,16 +52,6 @@ public class StaffHome extends AppCompatActivity {
             }
         });
 
-        btTodaysTeams = (Button) findViewById(R.id.btTodaysTeams);
-        btTodaysTeams.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(StaffHome.this, TodaysTeams.class);
-                i.putExtras(extras);
-                startActivity(i);
-            }
-        });
-
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -95,5 +84,11 @@ public class StaffHome extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    public void todaysTeamsButtonClick(View v) {
+        Intent i = new Intent(StaffHome.this, TodaysTeams.class);
+        i.putExtras(extras);
+        startActivity(i);
     }
 }
