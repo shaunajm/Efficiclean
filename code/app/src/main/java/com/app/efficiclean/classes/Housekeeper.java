@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.classes;
 
 public class Housekeeper extends Staff {
 

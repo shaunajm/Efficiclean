@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.app.efficiclean.classes.Approval;
+import com.app.efficiclean.classes.Housekeeper;
+import com.app.efficiclean.classes.Job;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 

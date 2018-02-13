@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.classes;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

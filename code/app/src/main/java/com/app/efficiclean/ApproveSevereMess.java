@@ -17,8 +17,6 @@ public class ApproveSevereMess extends AppCompatActivity {
         setContentView(R.layout.activity_supervisor_severe_mess_approval);
 
 
-
-
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {

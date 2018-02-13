@@ -38,7 +38,7 @@
         <activity android:name=".ApproveSevereMess" />
         <activity android:name=".BreakApproval" />
         <activity android:name=".CleanApproval" />
-        <activity android:name=".HazardApproval" />
+        <activity android:name=".HazardApprovalPage" />
         <activity android:name=".StaffRequestBreak" />
         <activity android:name=".StaffCurrentRoom" />
         <activity android:name=".ReportHazard" />

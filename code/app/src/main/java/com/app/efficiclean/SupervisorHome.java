@@ -38,7 +38,7 @@ public class SupervisorHome extends AppCompatActivity {
         hazardApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SupervisorHome.this, HazardApproval.class);
+                Intent i = new Intent(SupervisorHome.this, HazardApprovalPage.class);
                 i.putExtras(extras);
                 startActivity(i);
             }
