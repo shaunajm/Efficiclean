@@ -16,6 +16,9 @@ public class SupervisorHome extends AppCompatActivity {
     private Button breakApproval;
     private Button approveSevereMess;
     private Button reportAbsences;
+    private String staffKey;
+    private String hotelID;
+    private Bundle extras;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -25,11 +28,18 @@ public class SupervisorHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_home);
 
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            hotelID = extras.getString("hotelID");
+            staffKey = extras.getString("staffKey");
+        }
+
         hazardApproval = (Button) findViewById(R.id.btHazardApproval);
         hazardApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, HazardApproval.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
@@ -39,6 +49,7 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, CleanApproval.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
@@ -48,6 +59,7 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, BreakApproval.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
@@ -57,6 +69,7 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, ApproveSevereMess.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
@@ -66,9 +79,15 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, ReportAbsences.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

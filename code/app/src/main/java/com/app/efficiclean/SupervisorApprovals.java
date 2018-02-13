@@ -8,6 +8,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SupervisorApprovals extends AppCompatActivity {
 
+    private String supervisorKey;
+    private String hotelID;
+    private Bundle extras;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -15,6 +18,17 @@ public class SupervisorApprovals extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_approvals);
+
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            hotelID = extras.getString("hotelID");
+            supervisorKey = extras.getString("staffKey");
+        }
+
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
