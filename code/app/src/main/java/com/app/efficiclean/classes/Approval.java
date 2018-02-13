@@ -2,12 +2,14 @@ package com.app.efficiclean.classes;
 
 public class Approval {
 
-    private Job job;
-    private String createdBy;
-    private Boolean isApproved;
+    protected Job job;
+    protected String createdBy;
+    protected Boolean isApproved;
+    protected int priorityCounter;
 
     public Approval() {
         isApproved = false;
+        priorityCounter = 0;
     }
 
     public Job getJob() {
@@ -32,5 +34,13 @@ public class Approval {
 
     public void setApproved(Boolean approved) {
         isApproved = approved;
+    }
+
+    public int getPriorityCounter() {
+        return priorityCounter;
+    }
+
+    public void incrementPriorityCounter() {
+        this.priorityCounter++;
     }
 }

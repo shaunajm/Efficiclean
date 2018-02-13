@@ -93,6 +93,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(StaffCurrentRoom.this, ReportHazard.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
@@ -102,6 +103,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(StaffCurrentRoom.this, ReportSevereMess.class);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });
