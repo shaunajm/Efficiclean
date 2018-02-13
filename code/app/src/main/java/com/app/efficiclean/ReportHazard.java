@@ -55,7 +55,6 @@ public class ReportHazard extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 hKeeper = dataSnapshot.getValue(Housekeeper.class);
-
             }
 
             @Override
@@ -92,6 +91,7 @@ public class ReportHazard extends AppCompatActivity {
         HazardApproval approval = new HazardApproval();
         approval.setJob(job);
         approval.setCreatedBy(mAuth.getUid());
+        approval.setDescription(description.getText().toString());
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
         mStaffRef.child("status").setValue("Waiting");
         mStaffRef.child("currentJob").removeValue();
