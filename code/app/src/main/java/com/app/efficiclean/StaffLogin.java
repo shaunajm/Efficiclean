@@ -70,13 +70,18 @@ public class StaffLogin extends AppCompatActivity {
                 FirebaseUser user = fbAuth.getCurrentUser();
                 if (user != null) {
                     spinner.setVisibility(View.GONE);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("hotelID", hotelID.getText().toString().trim());
+                    bundle.putString("staffKey", mAuth.getUid());
+                    Intent staffPage = new Intent();
+
                     if (employee.getJobTitle().equals("supervisor")) {          //Choose which page to display
-                        Intent staffPage = new Intent(StaffLogin.this, SupervisorHome.class);
-                        startActivity(staffPage);
+                        staffPage = new Intent(StaffLogin.this, SupervisorHome.class);
                     } else if (employee.getJobTitle().equals("housekeeper")) {
-                        Intent staffPage = new Intent(StaffLogin.this, StaffHome.class);
-                        startActivity(staffPage);
+                        staffPage = new Intent(StaffLogin.this, StaffHome.class);
                     }
+                    staffPage.putExtras(bundle);
+                    startActivity(staffPage);
                     finish();
                 }
             }
