@@ -55,7 +55,7 @@
 
 
                 <TextView
-                    android:id="@+id/tbRow1"
+                    android:id="@+id/tvRow1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
@@ -71,7 +71,7 @@
 
 
                 <TextView
-                    android:id="@+id/tbRow2"
+                    android:id="@+id/tvRow2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
@@ -87,7 +87,7 @@
 
 
                 <TextView
-                    android:id="@+id/tbRow3"
+                    android:id="@+id/tvRow3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
@@ -103,7 +103,7 @@
 
 
                 <TextView
-                    android:id="@+id/tbRow4"
+                    android:id="@+id/tvRow4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
@@ -119,7 +119,7 @@
 
 
                 <TextView
-                    android:id="@+id/tbRow5"
+                    android:id="@+id/tvRow5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"

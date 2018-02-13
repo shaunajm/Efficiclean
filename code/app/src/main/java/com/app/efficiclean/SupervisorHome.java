@@ -48,7 +48,7 @@ public class SupervisorHome extends AppCompatActivity {
         cleansApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SupervisorHome.this, CleanApproval.class);
+                Intent i = new Intent(SupervisorHome.this, SupervisorApprovals.class);
                 i.putExtras(extras);
                 startActivity(i);
             }

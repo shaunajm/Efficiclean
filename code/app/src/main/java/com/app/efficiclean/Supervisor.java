@@ -1,15 +1,15 @@
 package com.app.efficiclean;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Supervisor extends Staff {
 
     private boolean onDuty;
-    public ArrayList<Approval> approvals;
+    public HashMap<String, Approval> approvals;
 
     public Supervisor() {
         super();
-        approvals = new ArrayList<Approval>();
+        approvals = new HashMap<String, Approval>();
     }
 
     public boolean isOnDuty() {

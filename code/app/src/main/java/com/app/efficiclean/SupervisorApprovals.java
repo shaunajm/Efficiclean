@@ -40,7 +40,6 @@ public class SupervisorApprovals extends AppCompatActivity {
         mSuperRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 supervisor = dataSnapshot.getValue(Supervisor.class);
                 setRoomApprovals();
             }
@@ -74,19 +73,32 @@ public class SupervisorApprovals extends AppCompatActivity {
 
     public void setRoomApprovals(){
         TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
-        TableRow row = (TableRow) findViewById(R.id.trToBeApproved);
-        table.removeAllViews();
-        table.addView(row);
-        for(Approval approval : supervisor.approvals) {
+        TextView template = (TextView) findViewById(R.id.tvRow1);
+
+        table.removeViews(1, table.getChildCount() - 1);
+        for(Approval approval : supervisor.approvals.values()) {
             TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            tr.setLayoutParams(new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+
             TextView roomNumber = new TextView(this);
             roomNumber.setText(approval.getJob().getRoomNumber());
+            roomNumber.setTextSize(template.getTextSize() / 2);
+            roomNumber.setWidth(template.getWidth());
+            roomNumber.setHeight(template.getHeight());
+            roomNumber.setPadding(
+                    template.getPaddingLeft(),
+                    template.getPaddingTop() - 5,
+                    template.getPaddingRight(),
+                    template.getPaddingBottom());
+            roomNumber.setGravity(template.getGravity());
 
             tr.addView(roomNumber);
             table.addView(tr);
 
         }
     }
+
 }
 
