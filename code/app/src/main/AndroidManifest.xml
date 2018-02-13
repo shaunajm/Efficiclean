@@ -46,6 +46,8 @@
         <activity android:name=".TodaysTeams" />
         <activity android:name=".SupervisorApprovals" />
         <activity android:name=".TeamBreakApproval" />
+        <activity android:name=".HazardApprovalsList" />
+        <activity android:name=".SevereMessApprovalsList"></activity>
     </application>
 
 </manifest>
