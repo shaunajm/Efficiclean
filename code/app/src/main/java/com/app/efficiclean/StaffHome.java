@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
 import com.app.efficiclean.classes.Housekeeper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -21,6 +22,8 @@ public class StaffHome extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mStaffRef;
+    private TableLayout tb1;
+    private TableLayout tb2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class StaffHome extends AppCompatActivity {
             hotelID = extras.getString("hotelID");
             staffKey = extras.getString("staffKey");
         }
+
+        tb1 = (TableLayout) findViewById(R.id.tbTeams);
+        tb2 = (TableLayout) findViewById(R.id.tbQueue);
 
         btRequestBreak = (Button) findViewById(R.id.btRequestBreak);
         btRequestBreak.setOnClickListener(new View.OnClickListener() {

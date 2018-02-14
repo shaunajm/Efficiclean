@@ -74,7 +74,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
 
 
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
+        TableLayout table = (TableLayout) findViewById(R.id.tbSevereMessToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);

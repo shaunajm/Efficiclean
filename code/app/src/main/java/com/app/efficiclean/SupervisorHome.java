@@ -51,7 +51,7 @@ public class SupervisorHome extends AppCompatActivity {
         hazardApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SupervisorHome.this, HazardApprovalPage.class);
+                Intent i = new Intent(SupervisorHome.this, HazardApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
             }
@@ -81,7 +81,7 @@ public class SupervisorHome extends AppCompatActivity {
         approveSevereMess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SupervisorHome.this, ApproveSevereMess.class);
+                Intent i = new Intent(SupervisorHome.this, SevereMessApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
             }
@@ -134,7 +134,7 @@ public class SupervisorHome extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
+        TableLayout table = (TableLayout) findViewById(R.id.tbTeamProgress);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
