@@ -22,17 +22,17 @@ import com.google.firebase.database.*;
 public class GuestLogin extends AppCompatActivity {
     
     private static final String TAG = "Efficiclean";
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mRootRef;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+    public DatabaseReference mRootRef;
     public EditText hotelID;
     public EditText roomNumber;
     public EditText forename;
     public EditText surname;
-    private Button loginBtn;
-    private ProgressBar spinner;
-    private Guest guest;
-    private QueueHandler qHandler;
+    public Button loginBtn;
+    public ProgressBar spinner;
+    public Guest guest;
+    public QueueHandler qHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
