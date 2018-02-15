@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import com.app.efficiclean.classes.Housekeeper;
+import com.app.efficiclean.classes.Job;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -22,6 +26,9 @@ public class StaffHome extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mStaffRef;
+    private DatabaseReference mJobRef;
+    private DataSnapshot jobs;
+    private DataSnapshot staff;
     private TableLayout tb1;
     private TableLayout tb2;
 
@@ -71,11 +78,29 @@ public class StaffHome extends AppCompatActivity {
             }
         };
 
-        mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff").child(staffKey);
+        mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
         mStaffRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                hKeeper = dataSnapshot.getValue(Housekeeper.class);
+                staff = dataSnapshot;
+                hKeeper = dataSnapshot.child(staffKey).getValue(Housekeeper.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mJobRef = FirebaseDatabase.getInstance().getReference(hotelID).child("jobs");
+        mJobRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                jobs = dataSnapshot;
+                setQueue();
+                if (tb1 != null) {
+                    setTeams();
+                }
             }
 
             @Override
@@ -97,5 +122,62 @@ public class StaffHome extends AppCompatActivity {
         Intent i = new Intent(StaffHome.this, TodaysTeams.class);
         i.putExtras(extras);
         startActivity(i);
+    }
+
+    public void setTeams() {
+        TextView template = (TextView) findViewById(R.id.tvTeamsRow1);
+
+        tb1.removeViews(1, tb1.getChildCount() - 1);
+        for(DataSnapshot ds : jobs.getChildren()) {
+            Job job = ds.getValue(Job.class);
+            TableRow tr = new TableRow(this);
+            tr.setLayoutParams(new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            TextView roomNumber = new TextView(this);
+            roomNumber.setText(job.getRoomNumber());
+            roomNumber.setTextSize(template.getTextSize() / 2);
+            roomNumber.setWidth(template.getWidth());
+            roomNumber.setHeight(template.getHeight());
+            roomNumber.setPadding(
+                    template.getPaddingLeft(),
+                    template.getPaddingTop() - 5,
+                    template.getPaddingRight(),
+                    template.getPaddingBottom());
+            roomNumber.setGravity(template.getGravity());
+
+            tr.addView(roomNumber);
+            tb1.addView(tr);
+
+        }
+    }
+
+    public void setQueue() {
+        TextView template = (TextView) findViewById(R.id.tvQueueRow1);
+
+        tb2.removeViews(1, tb2.getChildCount() - 1);
+        for(DataSnapshot ds : staff.getChildren()) {
+            Housekeeper hs = ds.getValue(Housekeeper.class);
+            TableRow tr = new TableRow(this);
+            tr.setLayoutParams(new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            TextView roomNumber = new TextView(this);
+            roomNumber.setText(hs.getUsername());
+            roomNumber.setTextSize(template.getTextSize() / 2);
+            roomNumber.setWidth(template.getWidth());
+            roomNumber.setHeight(template.getHeight());
+            roomNumber.setPadding(
+                    template.getPaddingLeft(),
+                    template.getPaddingTop() - 5,
+                    template.getPaddingRight(),
+                    template.getPaddingBottom());
+            roomNumber.setGravity(template.getGravity());
+
+            tr.addView(roomNumber);
+            tb2.addView(tr);
+        }
     }
 }
