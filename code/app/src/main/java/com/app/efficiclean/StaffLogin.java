@@ -34,6 +34,8 @@ public class StaffLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_login);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(R.id.etStaffHotelID);
@@ -84,7 +86,6 @@ public class StaffLogin extends AppCompatActivity {
                     }
                     staffPage.putExtras(bundle);
                     startActivity(staffPage);
-                    finish();
                 }
             }
         };
@@ -96,6 +97,19 @@ public class StaffLogin extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent i = new Intent(StaffLogin.this, GuestLogin.class);
+        startActivity(i);
     }
 
     private void staffLoginButtonClick() {

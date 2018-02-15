@@ -19,6 +19,8 @@ public class GuestDoNotDisturb extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_do_not_disturb);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         btHome = (Button) findViewById(R.id.btHome);
         btHome.setOnClickListener(new View.OnClickListener() {
@@ -46,5 +48,11 @@ public class GuestDoNotDisturb extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

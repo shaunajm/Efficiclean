@@ -32,6 +32,8 @@ public class ReportSevereMess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_report_severe_mess);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         extras = getIntent().getExtras();
         if (extras != null) {
@@ -85,6 +87,12 @@ public class ReportSevereMess extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public void assignToSupervisor() {

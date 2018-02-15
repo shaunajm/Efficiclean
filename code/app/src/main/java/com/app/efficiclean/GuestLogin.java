@@ -88,7 +88,6 @@ public class GuestLogin extends AppCompatActivity {
                     Intent guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
                     guestHomePage.putExtras(bundle);
                     startActivity(guestHomePage);
-                    finish();
                 }
             }
         };

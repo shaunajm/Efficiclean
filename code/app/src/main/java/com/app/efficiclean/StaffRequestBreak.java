@@ -15,23 +15,31 @@ public class StaffRequestBreak extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_request_break);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
-            mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-            mAuthListener = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
 
-                }
-            };
-        }
+            }
+        };
+    }
 
-        @Override
-        protected void onStart() {
-            super.onStart();
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-            //Add authentication listener
-            mAuth.addAuthStateListener(mAuthListener);
-        }
+        //Add authentication listener
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }
 

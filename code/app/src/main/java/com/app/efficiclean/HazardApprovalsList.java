@@ -31,6 +31,8 @@ public class HazardApprovalsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_list_hazards);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         extras = getIntent().getExtras();
         if (extras != null) {
@@ -98,6 +100,12 @@ public class HazardApprovalsList extends AppCompatActivity {
             table.addView(tr);
 
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }
