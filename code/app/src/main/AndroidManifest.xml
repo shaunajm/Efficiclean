@@ -47,7 +47,8 @@
         <activity android:name=".SupervisorApprovals" />
         <activity android:name=".TeamBreakApproval" />
         <activity android:name=".HazardApprovalsList" />
-        <activity android:name=".SevereMessApprovalsList"/>
+        <activity android:name=".SevereMessApprovalsList" />
+        <activity android:name=".MapView"></activity>
     </application>
 
 </manifest>

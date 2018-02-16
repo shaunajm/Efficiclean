@@ -25,6 +25,7 @@ public class SupervisorHome extends AppCompatActivity {
     private String supervisorKey;
     private Supervisor supervisor;
     private DatabaseReference mSuperRef;
+    private Button btViewMap;
     private Button hazardApproval;
     private Button cleansApproval;
     private Button breakApproval;
@@ -48,6 +49,16 @@ public class SupervisorHome extends AppCompatActivity {
             hotelID = extras.getString("hotelID");
             supervisorKey = extras.getString("staffKey");
         }
+
+        btViewMap = (Button) findViewById(R.id.btViewMap);
+        btViewMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SupervisorHome.this, MapView.class);
+                i.putExtras(extras);
+                startActivity(i);
+            }
+        });
 
         hazardApproval = (Button) findViewById(R.id.btHazardApproval);
         hazardApproval.setOnClickListener(new View.OnClickListener() {

@@ -19,6 +19,7 @@ public class StaffHome extends AppCompatActivity {
 
     private Button btRequestBreak;
     private Button btCurrentRoom;
+    private Button btViewMap;
     private Housekeeper hKeeper;
     private String staffKey;
     private String hotelID;
@@ -47,6 +48,16 @@ public class StaffHome extends AppCompatActivity {
 
         tb1 = (TableLayout) findViewById(R.id.tbTeams);
         tb2 = (TableLayout) findViewById(R.id.tbQueue);
+
+        btViewMap = (Button) findViewById(R.id.btViewMap);
+        btViewMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StaffHome.this, MapView.class);
+                i.putExtras(extras);
+                startActivity(i);
+            }
+        });
 
         btRequestBreak = (Button) findViewById(R.id.btRequestBreak);
         btRequestBreak.setOnClickListener(new View.OnClickListener() {
