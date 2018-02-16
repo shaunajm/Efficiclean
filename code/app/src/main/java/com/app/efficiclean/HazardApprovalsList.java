@@ -1,21 +1,18 @@
 package com.app.efficiclean;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.app.efficiclean.classes.Approval;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class HazardApprovalsList extends AppCompatActivity {
 
@@ -78,7 +75,7 @@ public class HazardApprovalsList extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(Approval approval : supervisor.approvals.values()) {
+        for(final Approval approval : supervisor.approvals.values()) {
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -95,6 +92,16 @@ public class HazardApprovalsList extends AppCompatActivity {
                     template.getPaddingRight(),
                     template.getPaddingBottom());
             roomNumber.setGravity(template.getGravity());
+
+            tr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(HazardApprovalsList.this, HazardApprovalPage.class);
+                    extras.putString("roomNumber", approval.getJob().getRoomNumber());
+                    i.putExtras(extras);
+                    startActivity(i);
+                }
+            });
 
             tr.addView(roomNumber);
             table.addView(tr);

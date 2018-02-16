@@ -4,10 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CleanApproval extends AppCompatActivity {
 
+    private String supervisorKey;
+    private String hotelID;
+    private String roomNumber;
+    private Bundle extras;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -17,6 +22,17 @@ public class CleanApproval extends AppCompatActivity {
         setContentView(R.layout.activity_supervisor_cleans_approval);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            hotelID = extras.getString("hotelID");
+            supervisorKey = extras.getString("staffKey");
+            roomNumber = extras.getString("roomNumber");
+        }
+
+        TextView header = (TextView) findViewById(R.id.tvRoomNumber);
+
+        header.setText("Room: " + roomNumber);
 
         mAuth = FirebaseAuth.getInstance();
 

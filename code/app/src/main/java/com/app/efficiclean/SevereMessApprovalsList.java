@@ -1,8 +1,10 @@
 package com.app.efficiclean;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -85,7 +87,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(Approval approval : supervisor.approvals.values()) {
+        for(final Approval approval : supervisor.approvals.values()) {
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -102,6 +104,16 @@ public class SevereMessApprovalsList extends AppCompatActivity {
                     template.getPaddingRight(),
                     template.getPaddingBottom());
             roomNumber.setGravity(template.getGravity());
+
+            tr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(SevereMessApprovalsList.this, ApproveSevereMess.class);
+                    extras.putString("roomNumber", approval.getJob().getRoomNumber());
+                    i.putExtras(extras);
+                    startActivity(i);
+                }
+            });
 
             tr.addView(roomNumber);
             table.addView(tr);
