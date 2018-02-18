@@ -101,7 +101,7 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        
+
     }
 
     public void disapprovedSubmit() {
