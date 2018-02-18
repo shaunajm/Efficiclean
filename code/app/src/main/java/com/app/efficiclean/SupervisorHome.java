@@ -105,7 +105,7 @@ public class SupervisorHome extends AppCompatActivity {
         });
 
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 staff = dataSnapshot;

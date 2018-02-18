@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
+import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -19,12 +20,14 @@ public class CleanApproval extends AppCompatActivity {
     private Supervisor supervisor;
     private DatabaseReference mSuperRef;
     private DatabaseReference mRootRef;
+    private DatabaseReference mAppRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private CheckBox approve;
     private CheckBox disapprove;
     private EditText comments;
     private Button btApprove;
+    private Job job;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,19 @@ public class CleanApproval extends AppCompatActivity {
             }
         });
 
+        mAppRef = mSuperRef.child("approvals").child(approvalKey);
+        mAppRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                job = dataSnapshot.child("job").getValue(Job.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -109,6 +125,11 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
-
+        String hKeeper = job.getAssignedTo();
+        job.setDescription(comments.getText().toString());
+        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
+        mAppRef.removeValue();
+        finish();
     }
 }

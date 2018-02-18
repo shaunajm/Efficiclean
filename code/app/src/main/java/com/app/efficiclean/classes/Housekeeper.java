@@ -4,6 +4,7 @@ public class Housekeeper extends Staff {
 
     private int priorityCounter;
     private Job currentJob;
+    private Job returnedJob;
     private String status;
 
     public Housekeeper() {
@@ -24,6 +25,14 @@ public class Housekeeper extends Staff {
 
     public void setCurrentJob(Job currentJob) {
         this.currentJob = currentJob;
+    }
+
+    public Job getReturnedJob() {
+        return returnedJob;
+    }
+
+    public void setReturnedJob(Job returnedJob) {
+        this.returnedJob = returnedJob;
     }
 
     public String getStatus() {

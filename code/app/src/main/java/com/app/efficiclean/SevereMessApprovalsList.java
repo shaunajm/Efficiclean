@@ -1,23 +1,18 @@
 package com.app.efficiclean;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.app.efficiclean.classes.Approval;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class SevereMessApprovalsList extends AppCompatActivity {
 
@@ -87,37 +82,42 @@ public class SevereMessApprovalsList extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(final Approval approval : supervisor.approvals.values()) {
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        for(final String key : supervisor.approvals.keySet()) {
+            final Approval approval = supervisor.approvals.get(key);
 
-            TextView roomNumber = new TextView(this);
-            roomNumber.setText(approval.getJob().getRoomNumber());
-            roomNumber.setTextSize(template.getTextSize() / 2);
-            roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
-            roomNumber.setPadding(
-                    template.getPaddingLeft(),
-                    template.getPaddingTop() - 5,
-                    template.getPaddingRight(),
-                    template.getPaddingBottom());
-            roomNumber.setGravity(template.getGravity());
+            if (approval.getPriorityCounter() == 1) {
+                TableRow tr = new TableRow(this);
+                tr.setLayoutParams(new TableLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            tr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(SevereMessApprovalsList.this, ApproveSevereMess.class);
-                    extras.putString("roomNumber", approval.getJob().getRoomNumber());
-                    i.putExtras(extras);
-                    startActivity(i);
-                }
-            });
+                TextView roomNumber = new TextView(this);
+                roomNumber.setText(approval.getJob().getRoomNumber());
+                roomNumber.setTextSize(template.getTextSize() / 2);
+                roomNumber.setWidth(template.getWidth());
+                roomNumber.setHeight(template.getHeight());
+                roomNumber.setPadding(
+                        template.getPaddingLeft(),
+                        template.getPaddingTop() - 5,
+                        template.getPaddingRight(),
+                        template.getPaddingBottom());
+                roomNumber.setGravity(template.getGravity());
 
-            tr.addView(roomNumber);
-            table.addView(tr);
+                tr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(SevereMessApprovalsList.this, ApproveSevereMess.class);
+                        extras.putString("roomNumber", approval.getJob().getRoomNumber());
+                        extras.putString("approvalKey", key);
+                        i.putExtras(extras);
+                        startActivity(i);
+                        finish();
+                    }
+                });
 
+                tr.addView(roomNumber);
+                table.addView(tr);
+            }
         }
     }
 

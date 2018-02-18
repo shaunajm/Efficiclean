@@ -9,7 +9,8 @@ public class Job {
     private int timestamp;
     private int priorityCounter;
     private boolean isCompleted;
-    private Housekeeper assignedTo;
+    private String assignedTo;
+    private String description;
     public String key;
 
     public Job() {
@@ -45,11 +46,11 @@ public class Job {
         priorityCounter = pCounter;
     }
 
-    public Housekeeper getAssignedTo() {
+    public String getAssignedTo() {
         return assignedTo;
     }
 
-    public void assignTo(Housekeeper hk) {
+    public void assignTo(String hk) {
         assignedTo = hk;
     }
 
@@ -61,5 +62,11 @@ public class Job {
         isCompleted = completed;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

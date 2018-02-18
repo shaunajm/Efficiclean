@@ -75,37 +75,42 @@ public class HazardApprovalsList extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(final Approval approval : supervisor.approvals.values()) {
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        for(final String key : supervisor.approvals.keySet()) {
+            final Approval approval = supervisor.approvals.get(key);
 
-            TextView roomNumber = new TextView(this);
-            roomNumber.setText(approval.getJob().getRoomNumber());
-            roomNumber.setTextSize(template.getTextSize() / 2);
-            roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
-            roomNumber.setPadding(
-                    template.getPaddingLeft(),
-                    template.getPaddingTop() - 5,
-                    template.getPaddingRight(),
-                    template.getPaddingBottom());
-            roomNumber.setGravity(template.getGravity());
+            if (approval.getPriorityCounter() == 2) {
+                TableRow tr = new TableRow(this);
+                tr.setLayoutParams(new TableLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            tr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(HazardApprovalsList.this, HazardApprovalPage.class);
-                    extras.putString("roomNumber", approval.getJob().getRoomNumber());
-                    i.putExtras(extras);
-                    startActivity(i);
-                }
-            });
+                TextView roomNumber = new TextView(this);
+                roomNumber.setText(approval.getJob().getRoomNumber());
+                roomNumber.setTextSize(template.getTextSize() / 2);
+                roomNumber.setWidth(template.getWidth());
+                roomNumber.setHeight(template.getHeight());
+                roomNumber.setPadding(
+                        template.getPaddingLeft(),
+                        template.getPaddingTop() - 5,
+                        template.getPaddingRight(),
+                        template.getPaddingBottom());
+                roomNumber.setGravity(template.getGravity());
 
-            tr.addView(roomNumber);
-            table.addView(tr);
+                tr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(HazardApprovalsList.this, HazardApprovalPage.class);
+                        extras.putString("roomNumber", approval.getJob().getRoomNumber());
+                        extras.putString("approvalKey", key);
+                        i.putExtras(extras);
+                        startActivity(i);
+                        finish();
+                    }
+                });
 
+                tr.addView(roomNumber);
+                table.addView(tr);
+            }
         }
     }
 

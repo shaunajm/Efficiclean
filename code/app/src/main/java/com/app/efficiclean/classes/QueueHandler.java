@@ -22,6 +22,7 @@ public class QueueHandler implements Observer {
         if (!jQueue.isEmpty() && !sQueue.isEmpty()) {
             Job job = jQueue.dequeue();
             Housekeeper hk = sQueue.dequeue();
+            job.assignTo(hk.key);
             hk.setCurrentJob(job);
             DatabaseReference mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
             DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
