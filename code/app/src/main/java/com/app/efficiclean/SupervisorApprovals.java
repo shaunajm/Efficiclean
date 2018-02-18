@@ -43,7 +43,7 @@ public class SupervisorApprovals extends AppCompatActivity {
         }
 
         mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
-        mSuperRef.addValueEventListener(new ValueEventListener() {
+        mSuperRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 supervisor = dataSnapshot.getValue(Supervisor.class);
@@ -88,7 +88,9 @@ public class SupervisorApprovals extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(final Approval approval : supervisor.approvals.values()) {
+        for(final String key : supervisor.approvals.keySet()) {
+            final Approval approval = supervisor.approvals.get(key);
+
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -111,8 +113,10 @@ public class SupervisorApprovals extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent i = new Intent(SupervisorApprovals.this, CleanApproval.class);
                     extras.putString("roomNumber", approval.getJob().getRoomNumber());
+                    extras.putString("approvalKey", key);
                     i.putExtras(extras);
                     startActivity(i);
+                    finish();
                 }
             });
 

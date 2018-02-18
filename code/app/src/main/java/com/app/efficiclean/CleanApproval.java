@@ -14,6 +14,7 @@ public class CleanApproval extends AppCompatActivity {
     private String supervisorKey;
     private String hotelID;
     private String roomNumber;
+    private String approvalKey;
     private Bundle extras;
     private Supervisor supervisor;
     private DatabaseReference mSuperRef;
@@ -37,6 +38,7 @@ public class CleanApproval extends AppCompatActivity {
             hotelID = extras.getString("hotelID");
             supervisorKey = extras.getString("staffKey");
             roomNumber = extras.getString("roomNumber");
+            approvalKey = extras.getString("approvalKey");
         }
 
         TextView header = (TextView) findViewById(R.id.tvRoomNumber);
@@ -101,7 +103,9 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
+        mSuperRef.child("approvals").child(approvalKey).removeValue();
+        finish();
     }
 
     public void disapprovedSubmit() {
