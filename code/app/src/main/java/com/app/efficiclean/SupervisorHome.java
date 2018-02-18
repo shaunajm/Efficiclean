@@ -10,21 +10,15 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.app.efficiclean.classes.Approval;
-import com.app.efficiclean.classes.Supervisor;
+import com.app.efficiclean.classes.Housekeeper;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class SupervisorHome extends AppCompatActivity {
 
     private String supervisorKey;
-    private Supervisor supervisor;
-    private DatabaseReference mSuperRef;
+    private DataSnapshot staff;
+    private DatabaseReference mStaffRef;
     private Button btViewMap;
     private Button hazardApproval;
     private Button cleansApproval;
@@ -110,11 +104,11 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
-        mSuperRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
+        mStaffRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                supervisor = dataSnapshot.getValue(Supervisor.class);
+                staff = dataSnapshot;
                 setRoomApprovals();
             }
 
@@ -123,7 +117,6 @@ public class SupervisorHome extends AppCompatActivity {
 
             }
         });
-
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
@@ -165,14 +158,14 @@ public class SupervisorHome extends AppCompatActivity {
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(Approval approval : supervisor.approvals.values()) {
+        for(DataSnapshot ds : staff.getChildren()) {
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
             TextView roomNumber = new TextView(this);
-            roomNumber.setText(approval.getJob().getRoomNumber());
+            roomNumber.setText(ds.getValue(Housekeeper.class).getUsername());
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
             roomNumber.setHeight(template.getHeight());
@@ -185,7 +178,6 @@ public class SupervisorHome extends AppCompatActivity {
 
             tr.addView(roomNumber);
             table.addView(tr);
-
         }
     }
 
