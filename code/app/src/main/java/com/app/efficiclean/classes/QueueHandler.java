@@ -24,6 +24,8 @@ public class QueueHandler implements Observer {
             Housekeeper hk = sQueue.dequeue();
             hk.setCurrentJob(job);
             DatabaseReference mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
+            DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
+            mRoomRef.child(job.getRoomNumber()).child("status").setValue("In Process");
             mStaffRef.child(hk.key).setValue(hk);
         }
     }

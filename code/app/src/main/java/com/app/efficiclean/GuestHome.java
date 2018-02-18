@@ -69,10 +69,12 @@ public class GuestHome extends AppCompatActivity {
         newJob.setRoomNumber(guest.getRoomNumber());
         newJob.setPriority(0);
         mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
+        mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("To Be Cleaned");
         changePage("service");
     }
 
     public void doNotDisturbButtonClick(View view) {
+        mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("Do Not Disturb");
         changePage("notDisturb");
     }
 

@@ -100,6 +100,8 @@ public class ReportHazard extends AppCompatActivity {
         approval.setJob(job);
         approval.setCreatedBy(mAuth.getUid());
         approval.setDescription(description.getText().toString());
+        DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
+        mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
         mStaffRef.child("status").setValue("Waiting");
         mStaffRef.child("currentJob").removeValue();
