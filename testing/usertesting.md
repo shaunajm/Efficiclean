@@ -9,19 +9,19 @@ We will ask users to complete a survey and following on from this complete a sho
 &nbsp;
 &nbsp;
 
-![](media/questionnaire1.jpg)
+![](media/questionnaire1.png)
 
 &nbsp;
 &nbsp;
 &nbsp;
 
-![](media/questionnaire2.jpg)
+![](media/questionnaire2.png)
 
 &nbsp;
 &nbsp;
 &nbsp;
 
-![](media/interview.jpg)
+![](media/interview.png)
 
 &nbsp;
 &nbsp;
