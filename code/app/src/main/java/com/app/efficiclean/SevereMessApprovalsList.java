@@ -39,7 +39,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
         }
 
         mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
-        mSuperRef.addValueEventListener(new ValueEventListener() {
+        mSuperRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 supervisor = dataSnapshot.getValue(Supervisor.class);

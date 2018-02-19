@@ -94,7 +94,7 @@ public class StaffHome extends AppCompatActivity {
         };
 
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 staff = dataSnapshot;
@@ -108,7 +108,7 @@ public class StaffHome extends AppCompatActivity {
         });
 
         mJobRef = FirebaseDatabase.getInstance().getReference(hotelID).child("jobs");
-        mJobRef.addValueEventListener(new ValueEventListener() {
+        mJobRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 jobs = dataSnapshot;

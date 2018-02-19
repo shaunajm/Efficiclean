@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.*;
+import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -21,11 +22,13 @@ public class ApproveSevereMess extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mSuperRef;
     private DatabaseReference mRootRef;
+    private DatabaseReference mAppRef;
     private Supervisor supervisor;
     private CheckBox approve;
     private CheckBox disapprove;
     private EditText comments;
     private Button btApprove;
+    private Job job;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class ApproveSevereMess extends AppCompatActivity {
 
         approve = (CheckBox) findViewById(R.id.cbApprove);
         disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
-        comments = (EditText) findViewById(R.id.etComments);
+        comments = (EditText) findViewById(R.id.etReason);
 
         btApprove = (Button) findViewById(R.id.btSevereMessApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,19 @@ public class ApproveSevereMess extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 supervisor = dataSnapshot.getValue(Supervisor.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mAppRef = mSuperRef.child("approvals").child(approvalKey);
+        mAppRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                job = dataSnapshot.child("job").getValue(Job.class);
             }
 
             @Override
@@ -104,12 +120,20 @@ public class ApproveSevereMess extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
-        mSuperRef.child("approvals").child(approvalKey).removeValue();
+        String hKeeper = job.getAssignedTo();
+        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
+        mRootRef.child("staff").child(hKeeper).child("priorityCounter").setValue(1);
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
+        mAppRef.removeValue();
         finish();
     }
 
     public void disapprovedSubmit() {
-
+        String hKeeper = job.getAssignedTo();
+        job.setDescription(comments.getText().toString());
+        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
+        mAppRef.removeValue();
+        finish();
     }
 }
