@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.QueueHandler;
+import com.app.efficiclean.classes.QueueHandlerCreater;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -80,6 +81,8 @@ public class StaffHome extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        qHandler = QueueHandlerCreater.createHandler(hotelID);
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
