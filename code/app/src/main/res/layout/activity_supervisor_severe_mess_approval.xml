@@ -49,12 +49,9 @@
     <TextView
             android:layout_width="193dp"
             android:layout_height="66dp"
-            android:inputType="text"
             android:text=""
             android:textColor="#000"
-            android:textColorHint="#000"
             android:padding="20sp"
-            android:hint="XXXX"
             android:textSize="20sp"
             android:background="@drawable/textview_border"
             android:ems="15"
