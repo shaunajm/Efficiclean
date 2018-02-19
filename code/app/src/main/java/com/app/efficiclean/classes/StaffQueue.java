@@ -24,7 +24,7 @@ public class StaffQueue extends Observable {
                     if (hk.child("status").getValue().equals("Waiting")) {
                         Housekeeper newHousekeeper = hk.getValue(Housekeeper.class);
                         newHousekeeper.key = hk.getKey();
-                        sQueue.add(newHousekeeper);
+                        checkReturned(newHousekeeper);
                     }
                 }
                 setChanged();
@@ -47,5 +47,15 @@ public class StaffQueue extends Observable {
 
     public Boolean isEmpty() {
         return sQueue.size() == 0;
+    }
+
+    public void checkReturned(Housekeeper newHousekeeper) {
+        if (newHousekeeper.getCurrentJob() == null && newHousekeeper.getReturnedJob() != null) {
+            mStaffRef.child(newHousekeeper.key).child("currentJob").setValue(newHousekeeper.getReturnedJob());
+            mStaffRef.child(newHousekeeper.key).child("status").setValue("In Progress");
+            mStaffRef.child(newHousekeeper.key).child("returnedJob").removeValue();
+        } else {
+            sQueue.add(newHousekeeper);
+        }
     }
 }
