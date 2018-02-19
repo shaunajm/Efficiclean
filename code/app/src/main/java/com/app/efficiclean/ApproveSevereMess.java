@@ -26,6 +26,7 @@ public class ApproveSevereMess extends AppCompatActivity {
     private Supervisor supervisor;
     private CheckBox approve;
     private CheckBox disapprove;
+    private TextView description;
     private EditText comments;
     private Button btApprove;
     private Job job;
@@ -46,11 +47,12 @@ public class ApproveSevereMess extends AppCompatActivity {
         }
 
         TextView header = (TextView) findViewById(R.id.tvRoomNumber);
-        header.setText("Room: " + roomNumber);
+        header.setText("Room " + roomNumber + " description:\n");
 
         approve = (CheckBox) findViewById(R.id.cbApprove);
         disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
         comments = (EditText) findViewById(R.id.etReason);
+        description = (TextView) findViewById(R.id.tvDescriptionBox);
 
         btApprove = (Button) findViewById(R.id.btSevereMessApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,8 @@ public class ApproveSevereMess extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 job = dataSnapshot.child("job").getValue(Job.class);
+                String info = dataSnapshot.child("description").getValue(String.class);
+                description.setText(info);
             }
 
             @Override

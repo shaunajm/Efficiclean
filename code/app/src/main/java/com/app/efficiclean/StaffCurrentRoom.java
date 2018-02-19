@@ -52,8 +52,10 @@ public class StaffCurrentRoom extends AppCompatActivity {
 
                 if (hKeeper.getCurrentJob() == null) {
                     roomText = "You have no current room.";
-                } else {
+                } else if (hKeeper.getCurrentJob().getDescription() == null){
                     roomText = "Your current room is: " + hKeeper.getCurrentJob().getRoomNumber();
+                } else {
+                    roomText = "Room " + hKeeper.getCurrentJob().getRoomNumber() + " feedback: " + hKeeper.getCurrentJob().getDescription();
                 }
 
                 tvRoom.setText(roomText);
