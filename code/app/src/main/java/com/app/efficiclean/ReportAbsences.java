@@ -3,6 +3,9 @@ package com.app.efficiclean;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class ReportAbsences extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -24,6 +29,8 @@ public class ReportAbsences extends AppCompatActivity {
     private DatabaseReference mStaffRef;
     private DataSnapshot staff;
     private RadioGroup names;
+    private HashMap<String, String> keys;
+    private Button markAbsent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +47,21 @@ public class ReportAbsences extends AppCompatActivity {
 
         names = (RadioGroup) findViewById(R.id.rgStaffList);
 
+        markAbsent = (Button) findViewById(R.id.btReportAbsenceSubmit);
+        markAbsent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reportAbsence();
+            }
+        });
+
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 staff = dataSnapshot;
                 populateGroup();
+                keys = populateHashMap();
             }
 
             @Override
@@ -86,9 +102,28 @@ public class ReportAbsences extends AppCompatActivity {
 
             RadioButton r1 = new RadioButton(this);
             r1.setText(username);
+            r1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
             r1.setLayoutParams(names.getLayoutParams());
             names.addView(r1);
         }
+    }
+
+    public HashMap<String, String> populateHashMap(){
+        HashMap<String, String> map = new HashMap<String, String>();
+
+        for(DataSnapshot ds : staff.getChildren()){
+            String key = ds.getKey();
+            String username = ds.child("username").getValue(String.class);
+            map.put(username, key);
+        }
+        return map;
+    }
+
+    public void reportAbsence() {
+        RadioButton rb = (RadioButton) findViewById(names.getCheckedRadioButtonId());
+        String uname = rb.getText().toString();
+        String key = keys.get(uname);
+        mStaffRef.child(key).child("status").setValue("Absent");
     }
 }
 
