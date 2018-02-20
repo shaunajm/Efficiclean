@@ -27,7 +27,7 @@
     <ScrollView
         android:id="@+id/svStaffList"
         android:layout_width="246dp"
-        android:layout_height="291dp"
+        android:layout_height="288dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -37,7 +37,7 @@
 
         <RadioGroup
             android:id="@+id/rgStaffList"
-            android:layout_width="248dp"
+            android:layout_width="240dp"
             android:layout_height="40dp"
             tools:layout_editor_absoluteX="414dp"
             tools:layout_editor_absoluteY="31dp">
@@ -46,6 +46,7 @@
                 android:id="@+id/rbstaff1"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Conor Hanlon"
                 android:textSize="20sp" />
 
@@ -53,6 +54,7 @@
                 android:id="@+id/rbstaff2"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Shauna Moran"
                 android:textSize="20sp" />
 
@@ -60,6 +62,7 @@
                 android:id="@+id/rbstaff3"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="David Weir"
                 android:textSize="20sp" />
 
@@ -67,6 +70,7 @@
                 android:id="@+id/rbstaff4"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Shane Daly"
                 android:textSize="20sp" />
 
@@ -74,6 +78,7 @@
                 android:id="@+id/rbstaff5"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Dean Lynch"
                 android:textSize="20sp" />
 
@@ -81,6 +86,7 @@
                 android:id="@+id/rbstaff6"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Riain Condon"
                 android:textSize="20sp" />
 
@@ -88,6 +94,7 @@
                 android:id="@+id/rbstaff7"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Rebecca Egan"
                 android:textSize="20sp" />
 
@@ -95,6 +102,7 @@
                 android:id="@+id/rbstaff8"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Laura Quinn"
                 android:textSize="20sp" />
 
@@ -102,6 +110,7 @@
                 android:id="@+id/rbstaff9"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Holly Moran"
                 android:textSize="20sp" />
 
@@ -110,6 +119,7 @@
                 android:id="@+id/rbstaff10"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
+                android:background="@drawable/cell_border"
                 android:text="Noah Johan"
                 android:textSize="20sp" />
 

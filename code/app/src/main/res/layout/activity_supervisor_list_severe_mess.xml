@@ -9,7 +9,7 @@
     <ScrollView
         android:id="@+id/svSevereMessToBeApproved"
         android:layout_width="293dp"
-        android:layout_height="398dp"
+        android:layout_height="393dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
@@ -38,12 +38,13 @@
 
 
                 <TextView
+                    android:id="@+id/tvSevereMessToBeApproved"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="25dip"
-                    android:id="@+id/tvSevereMessToBeApproved"
                     android:text="Severe Mess to be approved:"
                     android:textSize="29sp" />
             </TableRow>
@@ -58,9 +59,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="301"
+                    android:text="300"
                     android:textSize="23sp" />
             </TableRow>
 
@@ -74,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
                     android:text="408"
@@ -90,6 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
                     android:text="126"
@@ -106,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
                     android:text="311"
@@ -122,6 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
                     android:text="410"

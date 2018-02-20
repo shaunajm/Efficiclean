@@ -9,7 +9,7 @@
     <ScrollView
         android:id="@+id/svHazardsToBeApproved"
         android:layout_width="293dp"
-        android:layout_height="398dp"
+        android:layout_height="393dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
@@ -38,12 +38,13 @@
 
 
                 <TextView
+                    android:id="@+id/tvHazardsToBeApproved"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="25dip"
-                    android:id="@+id/tvHazardsToBeApproved"
                     android:text="Hazards to be approved:"
                     android:textSize="29sp" />
             </TableRow>
@@ -58,9 +59,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="301"
+                    android:text="301sp"
                     android:textSize="23sp" />
             </TableRow>
 
@@ -74,9 +76,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="408"
+                    android:text="408sp"
                     android:textSize="23sp" />
             </TableRow>
 
@@ -90,9 +93,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="126"
+                    android:text="126sp"
                     android:textSize="23sp" />
             </TableRow>
 
@@ -106,9 +110,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="311"
+                    android:text="311sp"
                     android:textSize="23sp" />
             </TableRow>
 
@@ -122,9 +127,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:gravity="center"
                     android:padding="18dip"
-                    android:text="410"
+                    android:text="410sp"
                     android:textSize="23sp" />
             </TableRow>
 
