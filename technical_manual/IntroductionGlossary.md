@@ -6,7 +6,7 @@ Our idea in centred around the way housekeeping staff currently operate in hotel
 
 We intend to build an application that would modernise this area of work. Instead of guests using a piece of paper on the door to notify staff when rooms are available to be cleaned they will use this application to mark the status of their room and be notified when their room is cleaned. Cleaning staff will be able to see on a web interface when rooms are ready to be cleaned, be assigned rooms and mark them as completed. This will result in this process being more efficient, safer, more accessible and better kept track of. 
 
-Each room in the hotel will have a QR code in the room. When guests scan this QR code the application will be downloaded and the guest will be presented with the login screen. All the guest will have to do here is enter their name. The application will then check the database to see if this guest is in the room. The user will then be logged into the application and be presented with home screen. Alternatively, if a guest is using a laptop of device without a QR scanner, under the QR code will be a URL that will be independent to that room. Like the app, the guest will enter their name and will be logged into the application.
+Rooms will have a QR code for users to download the application. They will enter their hotel ID and Room Number which will be within their room. Alongside this information, users enter their forename and surname. The application will then check the database to see if this guest is in the room. The user will then be logged into the application and be presented with home screen. Guests will also use this method of logging in on the web application.
 
 The main features of our project are:
 
