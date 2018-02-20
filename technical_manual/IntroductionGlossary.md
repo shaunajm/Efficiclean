@@ -16,10 +16,6 @@ The main features of our project are:
 
 -	Remote notification for guests when their room is marked clean on the system
 
--	Guest login via QR code in hotel room alongside verification of guest by database query 
-
--	Option to add feedback and rate a room's clean
-
 -	Database interaction to automatically log out guests when their stay is over
 
 -	Staff work statistics generated for supervisor and manager
