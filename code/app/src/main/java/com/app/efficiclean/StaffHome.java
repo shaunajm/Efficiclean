@@ -1,8 +1,10 @@
 package com.app.efficiclean;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,16 +140,27 @@ public class StaffHome extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed();
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setMessage("Are you sure you want to sign out?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mAuth.signOut();
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        mAuth.signOut();
-        finish();
-        Intent i = new Intent(StaffHome.this, StaffLogin.class);
-        startActivity(i);
+        onSupportNavigateUp();
     }
 
     public void todaysTeamsButtonClick(View v) {
