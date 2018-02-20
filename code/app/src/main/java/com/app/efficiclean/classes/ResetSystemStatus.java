@@ -31,7 +31,7 @@ public class ResetSystemStatus extends JobService {
         mJobRef = mRootRef.child("jobs");
         mRoomRef = mRootRef.child("rooms");
         mStaffRef = mRootRef.child("staff");
-        mRootRef.child("supervisor");
+        mSuperRef = mRootRef.child("supervisor");
 
         mJobRef.removeValue();
 
@@ -79,7 +79,7 @@ public class ResetSystemStatus extends JobService {
 
     @Override
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
-        return true;
+        return false;
     }
 
     public void editRooms() {

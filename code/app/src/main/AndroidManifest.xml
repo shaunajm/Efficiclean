@@ -49,10 +49,12 @@
         <activity android:name=".TeamBreakApproval" />
         <activity android:name=".HazardApprovalsList" />
         <activity android:name=".SevereMessApprovalsList" />
-        <activity android:name=".MapView"></activity>
-        <service android:name=".classes.ResetSystemStatus">
+        <activity android:name=".MapView"/>
+        <service
+            android:exported="false"
+            android:name=".classes.ResetSystemStatus">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"></action>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
             </intent-filter>
         </service>
     </application>
