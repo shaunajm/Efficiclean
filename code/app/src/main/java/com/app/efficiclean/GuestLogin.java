@@ -12,6 +12,14 @@ import android.widget.Toast;
 import com.app.efficiclean.classes.Guest;
 import com.app.efficiclean.classes.QueueHandler;
 import com.app.efficiclean.classes.QueueHandlerCreater;
+import com.app.efficiclean.classes.ResetSystemStatus;
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,9 +28,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.onesignal.OneSignal;
 
+import java.util.Calendar;
+
 public class GuestLogin extends AppCompatActivity {
     
-    private static final String TAG = "Efficiclean";
+    private static final String TAG = "Reset system data for next day";
+    public static String hid = "";
     public FirebaseAuth mAuth;
     public FirebaseAuth.AuthStateListener mAuthListener;
     public DatabaseReference mRootRef;
@@ -115,7 +126,10 @@ public class GuestLogin extends AppCompatActivity {
         String fString = forename.getText().toString().trim();
         String sString = surname.getText().toString().trim();
 
+        hid = hNumber;
+
         qHandler = QueueHandlerCreater.createHandler(hNumber);
+        scheduleReset();
 
         if (!fString.equals("") && fString.equals("staff1")) {
             //Condition to pass to staff login page
@@ -202,5 +216,32 @@ public class GuestLogin extends AppCompatActivity {
             Toast.makeText(GuestLogin.this, "Your details seem to be incorrect. Please try again.",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void scheduleReset() {
+        Calendar currentTime = Calendar.getInstance();
+        Calendar midnight = Calendar.getInstance();
+        midnight.set(Calendar.HOUR_OF_DAY, 23);
+        midnight.set(Calendar.MINUTE, 59);
+
+        long difference = midnight.getTimeInMillis() - currentTime.getTimeInMillis();
+
+        int startSeconds = (int) (difference / 1000);
+        int endSeconds = startSeconds + 86400;
+
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(ResetSystemStatus.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(TAG)
+                .setTrigger(Trigger.executionWindow(startSeconds, endSeconds))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(true)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
     }
 }

@@ -50,6 +50,11 @@
         <activity android:name=".HazardApprovalsList" />
         <activity android:name=".SevereMessApprovalsList" />
         <activity android:name=".MapView"></activity>
+        <service android:name=".classes.ResetSystemStatus">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
