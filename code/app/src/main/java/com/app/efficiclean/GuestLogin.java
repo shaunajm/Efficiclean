@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
+import com.onesignal.OneSignal;
 
 public class GuestLogin extends AppCompatActivity {
     
@@ -38,6 +39,10 @@ public class GuestLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_login);
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(R.id.etHotelID);
@@ -79,6 +84,8 @@ public class GuestLogin extends AppCompatActivity {
 
                 //Login user if not null
                 if (user != null) {
+                    OneSignal.sendTag("uid", user.getUid());
+
                     //Create Bundle to pass information to next activity
                     Bundle bundle = new Bundle();
                     bundle.putString("hotelID", hotelID.getText().toString().trim());
@@ -174,7 +181,7 @@ public class GuestLogin extends AppCompatActivity {
         if (guest != null && guest.getForename().equals(fString) && guest.getSurname().equals(sString)){        //Validates that input data matches values from database
             //Create user email and password for authentication
             String pString = fString.toLowerCase() + sString.toLowerCase() + rNumber;
-            String eString = pString + "@efficiclean.com";
+            final String eString = pString + "@efficiclean.com";
 
             //Authorise user with Firebase
             mAuth.signInWithEmailAndPassword(eString, pString)
@@ -185,6 +192,8 @@ public class GuestLogin extends AppCompatActivity {
                                 spinner.setVisibility(View.GONE);
                                 Toast.makeText(GuestLogin.this, "Authentication failed.",
                                         Toast.LENGTH_LONG).show();
+                            } else {
+                                OneSignal.syncHashedEmail(eString);
                             }
                         }
                     });
