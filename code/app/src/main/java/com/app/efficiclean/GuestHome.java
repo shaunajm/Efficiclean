@@ -20,6 +20,7 @@ public class GuestHome extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private Guest guest;
     private String hotelID;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class GuestHome extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Bundle extras = getIntent().getExtras();
+        extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             guest = (Guest) extras.getSerializable("thisGuest");
@@ -39,6 +40,9 @@ public class GuestHome extends AppCompatActivity {
 
         //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -83,10 +87,6 @@ public class GuestHome extends AppCompatActivity {
     }
 
     public void changePage(String choice) {
-        Bundle bundle = new Bundle();
-        bundle.putString("hotelID", hotelID);
-        bundle.putSerializable("thisGuest", guest);
-
         Intent guestChoicePage = null;
 
         if (choice.equals("service")) {
@@ -98,7 +98,7 @@ public class GuestHome extends AppCompatActivity {
         }
 
         if (guestChoicePage != null) {
-            guestChoicePage.putExtras(bundle);
+            guestChoicePage.putExtras(extras);
             startActivity(guestChoicePage);
             finish();
         } else {
