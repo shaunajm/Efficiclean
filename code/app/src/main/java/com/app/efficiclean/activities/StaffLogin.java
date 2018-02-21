@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Staff;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,17 +34,17 @@ public class StaffLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staff_login);
+        setContentView(com.app.efficiclean.R.layout.activity_staff_login);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Map EditTexts to their xml elements
-        hotelID = (EditText) findViewById(R.id.etStaffHotelID);
-        username = (EditText) findViewById(R.id.etUsername);
-        password = (EditText) findViewById(R.id.etPassword);
+        hotelID = (EditText) findViewById(com.app.efficiclean.R.id.etStaffHotelID);
+        username = (EditText) findViewById(com.app.efficiclean.R.id.etUsername);
+        password = (EditText) findViewById(com.app.efficiclean.R.id.etPassword);
 
         //Set progress spinner
-        spinner = (ProgressBar) findViewById(R.id.staffLoginProgress);
+        spinner = (ProgressBar) findViewById(com.app.efficiclean.R.id.staffLoginProgress);
         spinner.setVisibility(View.GONE);
 
         //Map to xml button and set listener

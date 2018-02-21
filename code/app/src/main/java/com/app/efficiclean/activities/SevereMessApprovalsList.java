@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Approval;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_list_severe_mess);
+        setContentView(com.app.efficiclean.R.layout.activity_supervisor_list_severe_mess);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -85,7 +86,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbSevereMessToBeApproved);
+        TableLayout table = (TableLayout) findViewById(com.app.efficiclean.R.id.tbSevereMessToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);

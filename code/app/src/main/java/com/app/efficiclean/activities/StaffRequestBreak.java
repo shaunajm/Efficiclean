@@ -1,35 +1,25 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.app.efficiclean.classes.Guest;
+import com.app.efficiclean.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class GuestCheckingOut extends AppCompatActivity {
+public class StaffRequestBreak extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private Guest guest;
-    private String hotelID;
-    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guest_checking_out);
-
-        extras = getIntent().getExtras();
-        if (extras != null) {
-            hotelID = extras.getString("hotelID");
-            guest = (Guest) extras.getSerializable("thisGuest");
-        }
+        setContentView(R.layout.activity_staff_request_break);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
-            mAuth.signOut();
-        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -53,4 +43,11 @@ public class GuestCheckingOut extends AppCompatActivity {
 
         mAuth.removeAuthStateListener(mAuthListener);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }
+

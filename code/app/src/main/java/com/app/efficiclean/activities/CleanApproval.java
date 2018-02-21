@@ -1,31 +1,36 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
+import com.onesignal.OneSignal;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class HazardApprovalPage extends AppCompatActivity {
+public class CleanApproval extends AppCompatActivity {
 
     private String supervisorKey;
     private String hotelID;
     private String roomNumber;
     private String approvalKey;
+    private String oneSignalKey;
     private Bundle extras;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private Supervisor supervisor;
     private DatabaseReference mSuperRef;
     private DatabaseReference mRootRef;
     private DatabaseReference mAppRef;
-    private Supervisor supervisor;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private CheckBox approve;
     private CheckBox disapprove;
-    private TextView description;
     private EditText comments;
     private Button btApprove;
     private Job job;
@@ -33,7 +38,7 @@ public class HazardApprovalPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_hazard_approval);
+        setContentView(com.app.efficiclean.R.layout.activity_supervisor_cleans_approval);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -45,15 +50,14 @@ public class HazardApprovalPage extends AppCompatActivity {
             approvalKey = extras.getString("approvalKey");
         }
 
-        TextView header = (TextView) findViewById(R.id.tvRoomNumber);
-        header.setText("Room " + roomNumber + " description:\n");
+        TextView header = (TextView) findViewById(com.app.efficiclean.R.id.tvRoomNumber);
+        header.setText("Room: " + roomNumber);
 
-        approve = (CheckBox) findViewById(R.id.cbApprove);
-        disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
-        comments = (EditText) findViewById(R.id.etReason);
-        description = (TextView) findViewById(R.id.tvDescriptionBox);
+        approve = (CheckBox) findViewById(com.app.efficiclean.R.id.cbApprove);
+        disapprove = (CheckBox) findViewById(com.app.efficiclean.R.id.cbDisapprove);
+        comments = (EditText) findViewById(com.app.efficiclean.R.id.etComments);
 
-        btApprove = (Button) findViewById(R.id.btHazardApprovalSubmit);
+        btApprove = (Button) findViewById(R.id.btCleansApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +66,7 @@ public class HazardApprovalPage extends AppCompatActivity {
                 } else if (disapprove.isChecked()) {
                     disapprovedSubmit();
                 } else {
-                    Toast.makeText(HazardApprovalPage.this, "You haven't selected an option. Please check one of the boxes and try again.",
+                    Toast.makeText(CleanApproval.this, "You haven't selected an option. Please check one of the boxes and try again.",
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -88,8 +92,6 @@ public class HazardApprovalPage extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 job = dataSnapshot.child("job").getValue(Job.class);
-                String info = dataSnapshot.child("description").getValue(String.class);
-                description.setText(info);
             }
 
             @Override
@@ -130,11 +132,10 @@ public class HazardApprovalPage extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        String hKeeper = job.getAssignedTo();
-        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
-        mRootRef.child("staff").child(hKeeper).child("priorityCounter").setValue(2);
-        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
-        mAppRef.removeValue();
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
+        String uid = supervisor.approvals.get(approvalKey).getJob().getCreatedBy();
+        mSuperRef.child("approvals").child(approvalKey).removeValue();
+        sendNotification(uid);
         finish();
     }
 
@@ -145,5 +146,30 @@ public class HazardApprovalPage extends AppCompatActivity {
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();
+    }
+
+    public void sendNotification(final String uid) {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                    DatabaseReference mGuestRef = mRootRef.child("guest").child(uid);
+                    mGuestRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            oneSignalKey = dataSnapshot.child("oneSignalKey").getValue(String.class);
+                            try {
+                                OneSignal.postNotification(new JSONObject("{'contents': {'en':'Your room has been serviced. Thank you for using Efficiclean!'}, 'include_player_ids': ['" + oneSignalKey + "']}"), null);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+            }
+        });
     }
 }

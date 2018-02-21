@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.SevereMessApproval;
@@ -31,7 +32,7 @@ public class ReportSevereMess extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staff_report_severe_mess);
+        setContentView(com.app.efficiclean.R.layout.activity_staff_report_severe_mess);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -43,7 +44,7 @@ public class ReportSevereMess extends AppCompatActivity {
 
         supervisorKey = getIntent().getStringExtra("supervisorKey");
 
-        description = (EditText) findViewById(R.id.etDescription);
+        description = (EditText) findViewById(com.app.efficiclean.R.id.etDescription);
 
         reportHazard = (Button) findViewById(R.id.btSevereMessSubmit);
         reportHazard.setOnClickListener(new View.OnClickListener() {

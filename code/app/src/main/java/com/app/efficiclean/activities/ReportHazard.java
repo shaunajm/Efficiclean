@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.HazardApproval;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Job;
@@ -30,7 +31,7 @@ public class ReportHazard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staff_report_hazard);
+        setContentView(com.app.efficiclean.R.layout.activity_staff_report_hazard);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -42,7 +43,7 @@ public class ReportHazard extends AppCompatActivity {
 
         supervisorKey = getIntent().getStringExtra("supervisorKey");
 
-        description = (EditText) findViewById(R.id.etDescription);
+        description = (EditText) findViewById(com.app.efficiclean.R.id.etDescription);
 
         reportHazard = (Button) findViewById(R.id.btHazardSubmit);
         reportHazard.setOnClickListener(new View.OnClickListener() {

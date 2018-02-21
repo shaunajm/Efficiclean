@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.QueueHandler;
 import com.app.efficiclean.classes.QueueHandlerCreater;
@@ -39,7 +40,7 @@ public class SupervisorHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_home);
+        setContentView(com.app.efficiclean.R.layout.activity_supervisor_home);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -49,7 +50,7 @@ public class SupervisorHome extends AppCompatActivity {
             supervisorKey = extras.getString("staffKey");
         }
 
-        btViewMap = (Button) findViewById(R.id.btViewMap);
+        btViewMap = (Button) findViewById(com.app.efficiclean.R.id.btViewMap);
         btViewMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +60,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        hazardApproval = (Button) findViewById(R.id.btHazardApproval);
+        hazardApproval = (Button) findViewById(com.app.efficiclean.R.id.btHazardApproval);
         hazardApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +70,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        cleansApproval = (Button) findViewById(R.id.btCleansApproval);
+        cleansApproval = (Button) findViewById(com.app.efficiclean.R.id.btCleansApproval);
         cleansApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +80,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        breakApproval = (Button) findViewById(R.id.btApproveBreak);
+        breakApproval = (Button) findViewById(com.app.efficiclean.R.id.btApproveBreak);
         breakApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +90,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        approveSevereMess = (Button) findViewById(R.id.btSevereMessApproval);
+        approveSevereMess = (Button) findViewById(com.app.efficiclean.R.id.btSevereMessApproval);
         approveSevereMess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +100,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        reportAbsences = (Button) findViewById(R.id.btReportAbsence);
+        reportAbsences = (Button) findViewById(com.app.efficiclean.R.id.btReportAbsence);
         reportAbsences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,7 +180,7 @@ public class SupervisorHome extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbTeamProgress);
+        TableLayout table = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeamProgress);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);

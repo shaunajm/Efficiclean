@@ -1,9 +1,10 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import com.app.efficiclean.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.sdsmdg.harjot.vectormaster.VectorMasterView;
@@ -24,7 +25,7 @@ public class MapView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_view);
+        setContentView(com.app.efficiclean.R.layout.activity_map_view);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 

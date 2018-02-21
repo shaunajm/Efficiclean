@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.*;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,7 @@ public class ApproveSevereMess extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_severe_mess_approval);
+        setContentView(com.app.efficiclean.R.layout.activity_supervisor_severe_mess_approval);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -46,13 +47,13 @@ public class ApproveSevereMess extends AppCompatActivity {
             approvalKey = extras.getString("approvalKey");
         }
 
-        TextView header = (TextView) findViewById(R.id.tvRoomNumber);
+        TextView header = (TextView) findViewById(com.app.efficiclean.R.id.tvRoomNumber);
         header.setText("Room " + roomNumber + " description:\n");
 
-        approve = (CheckBox) findViewById(R.id.cbApprove);
-        disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
-        comments = (EditText) findViewById(R.id.etReason);
-        description = (TextView) findViewById(R.id.tvDescriptionBox);
+        approve = (CheckBox) findViewById(com.app.efficiclean.R.id.cbApprove);
+        disapprove = (CheckBox) findViewById(com.app.efficiclean.R.id.cbDisapprove);
+        comments = (EditText) findViewById(com.app.efficiclean.R.id.etReason);
+        description = (TextView) findViewById(com.app.efficiclean.R.id.tvDescriptionBox);
 
         btApprove = (Button) findViewById(R.id.btSevereMessApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {

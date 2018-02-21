@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Approval;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,7 @@ public class BreakApproval extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_approve_break);
+        setContentView(com.app.efficiclean.R.layout.activity_supervisor_approve_break);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -76,7 +77,7 @@ public class BreakApproval extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbTeams);
+        TableLayout table = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeams);
         TextView template = (TextView) findViewById(R.id.tvTeamsTitle);
 
         table.removeViews(1, table.getChildCount() - 1);

@@ -21,38 +21,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GuestLogin">
+        <activity android:name=".activities.GuestLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StaffLogin" />
-        <activity android:name=".GuestHome" />
-        <activity android:name=".StaffHome" />
-        <activity android:name=".SupervisorHome" />
-        <activity android:name=".GuestPleaseService" />
-        <activity android:name=".GuestDoNotDisturb" />
-        <activity android:name=".GuestCheckingOut" />
-        <activity android:name=".ReportAbsences" />
-        <activity android:name=".ApproveSevereMess" />
-        <activity android:name=".BreakApproval" />
-        <activity android:name=".CleanApproval" />
-        <activity android:name=".HazardApprovalPage" />
-        <activity android:name=".StaffRequestBreak" />
-        <activity android:name=".StaffCurrentRoom" />
-        <activity android:name=".ReportHazard" />
-        <activity android:name=".ReportSevereMess" />
-        <activity android:name=".TodaysTeams" />
-        <activity android:name=".SupervisorApprovals" />
-        <activity android:name=".TeamBreakApproval" />
-        <activity android:name=".HazardApprovalsList" />
-        <activity android:name=".SevereMessApprovalsList" />
-        <activity android:name=".MapView"/>
+        <activity android:name=".activities.StaffLogin" />
+        <activity android:name=".activities.GuestHome" />
+        <activity android:name=".activities.StaffHome" />
+        <activity android:name=".activities.SupervisorHome" />
+        <activity android:name=".activities.GuestPleaseService" />
+        <activity android:name=".activities.GuestDoNotDisturb" />
+        <activity android:name=".activities.GuestCheckingOut" />
+        <activity android:name=".activities.ReportAbsences" />
+        <activity android:name=".activities.ApproveSevereMess" />
+        <activity android:name=".activities.BreakApproval" />
+        <activity android:name=".activities.CleanApproval" />
+        <activity android:name=".activities.HazardApprovalPage" />
+        <activity android:name=".activities.StaffRequestBreak" />
+        <activity android:name=".activities.StaffCurrentRoom" />
+        <activity android:name=".activities.ReportHazard" />
+        <activity android:name=".activities.ReportSevereMess" />
+        <activity android:name=".activities.TodaysTeams" />
+        <activity android:name=".activities.SupervisorApprovals" />
+        <activity android:name=".activities.TeamBreakApproval" />
+        <activity android:name=".activities.HazardApprovalsList" />
+        <activity android:name=".activities.SevereMessApprovalsList" />
+        <activity android:name=".activities.MapView"/>
         <service
             android:exported="false"
-            android:name=".classes.ResetSystemStatus">
+            android:name=".services.ResetSystemStatus">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+        <service
+                android:exported="false"
+                android:name=".services.TeamAllocator">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
             </intent-filter>

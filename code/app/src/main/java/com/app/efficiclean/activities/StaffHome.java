@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.QueueHandler;
@@ -41,7 +42,7 @@ public class StaffHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staff_home);
+        setContentView(com.app.efficiclean.R.layout.activity_staff_home);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -51,10 +52,10 @@ public class StaffHome extends AppCompatActivity {
             staffKey = extras.getString("staffKey");
         }
 
-        tb1 = (TableLayout) findViewById(R.id.tbTeams);
-        tb2 = (TableLayout) findViewById(R.id.tbQueue);
+        tb1 = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeams);
+        tb2 = (TableLayout) findViewById(com.app.efficiclean.R.id.tbQueue);
 
-        btViewMap = (Button) findViewById(R.id.btViewMap);
+        btViewMap = (Button) findViewById(com.app.efficiclean.R.id.btViewMap);
         btViewMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,7 @@ public class StaffHome extends AppCompatActivity {
             }
         });
 
-        btRequestBreak = (Button) findViewById(R.id.btRequestBreak);
+        btRequestBreak = (Button) findViewById(com.app.efficiclean.R.id.btRequestBreak);
         btRequestBreak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +77,7 @@ public class StaffHome extends AppCompatActivity {
             }
         });
 
-        btCurrentRoom = (Button) findViewById(R.id.btCurrentRoom);
+        btCurrentRoom = (Button) findViewById(com.app.efficiclean.R.id.btCurrentRoom);
         btCurrentRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,7 +182,7 @@ public class StaffHome extends AppCompatActivity {
     }
 
     public void setTeams() {
-        TextView template = (TextView) findViewById(R.id.tvTeamsRow1);
+        TextView template = (TextView) findViewById(com.app.efficiclean.R.id.tvTeamsRow1);
 
         tb1.removeViews(1, tb1.getChildCount() - 1);
         for(DataSnapshot ds : jobs.getChildren()) {

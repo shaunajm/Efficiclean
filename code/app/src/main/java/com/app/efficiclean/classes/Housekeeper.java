@@ -6,6 +6,7 @@ public class Housekeeper extends Staff {
     private Job currentJob;
     private Job returnedJob;
     private String status;
+    private String teamID;
 
     public Housekeeper() {
         super();
@@ -41,5 +42,13 @@ public class Housekeeper extends Staff {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
     }
 }

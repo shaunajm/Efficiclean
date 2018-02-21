@@ -1,6 +1,7 @@
 package com.app.efficiclean;
 
 import android.support.test.rule.ActivityTestRule;
+import com.app.efficiclean.activities.GuestLogin;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Guest;
 import com.app.efficiclean.classes.Job;
 import com.google.firebase.auth.FirebaseAuth;

@@ -1,6 +1,7 @@
-package com.app.efficiclean.classes;
+package com.app.efficiclean.services;
 
 import android.os.Bundle;
+import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.google.firebase.database.*;
 
@@ -22,7 +23,7 @@ public class ResetSystemStatus extends JobService {
     private Bundle extras;
 
     @Override
-    public boolean onStartJob (com.firebase.jobdispatcher.JobParameters job) {
+    public boolean onStartJob (JobParameters job) {
         extras = job.getExtras();
         hid = extras.getString("hid");
 
@@ -77,7 +78,7 @@ public class ResetSystemStatus extends JobService {
     }
 
     @Override
-    public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
+    public boolean onStopJob(JobParameters job) {
         return false;
     }
 

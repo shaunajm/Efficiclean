@@ -1,20 +1,26 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Approval;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class HazardApprovalsList extends AppCompatActivity {
+public class SupervisorApprovals extends AppCompatActivity {
 
     private String supervisorKey;
     private String hotelID;
@@ -27,7 +33,7 @@ public class HazardApprovalsList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_supervisor_list_hazards);
+        setContentView(R.layout.activity_supervisor_approvals);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -51,8 +57,10 @@ public class HazardApprovalsList extends AppCompatActivity {
             }
         });
 
-
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -77,15 +85,21 @@ public class HazardApprovalsList extends AppCompatActivity {
         mAuth.removeAuthStateListener(mAuthListener);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbHazardsToBeApproved);
+        TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
         for(final String key : supervisor.approvals.keySet()) {
             final Approval approval = supervisor.approvals.get(key);
 
-            if (approval.getPriorityCounter() == 2) {
+            if (approval.getPriorityCounter() == 0) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
@@ -107,7 +121,7 @@ public class HazardApprovalsList extends AppCompatActivity {
                 tr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(HazardApprovalsList.this, HazardApprovalPage.class);
+                        Intent i = new Intent(SupervisorApprovals.this, CleanApproval.class);
                         extras.putString("roomNumber", approval.getJob().getRoomNumber());
                         extras.putString("approvalKey", key);
                         i.putExtras(extras);
@@ -118,14 +132,9 @@ public class HazardApprovalsList extends AppCompatActivity {
 
                 tr.addView(roomNumber);
                 table.addView(tr);
+
             }
         }
     }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
 }
+

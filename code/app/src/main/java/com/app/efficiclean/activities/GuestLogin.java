@@ -1,4 +1,4 @@
-package com.app.efficiclean;
+package com.app.efficiclean.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.app.efficiclean.classes.Guest;
-import com.app.efficiclean.classes.QueueHandler;
-import com.app.efficiclean.classes.QueueHandlerCreater;
-import com.app.efficiclean.classes.ResetSystemStatus;
+import com.app.efficiclean.R;
+import com.app.efficiclean.classes.*;
+import com.app.efficiclean.services.ResetSystemStatus;
+import com.app.efficiclean.services.TeamAllocator;
 import com.firebase.jobdispatcher.*;
+import com.firebase.jobdispatcher.Job;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -95,6 +96,8 @@ public class GuestLogin extends AppCompatActivity {
 
                 //Login user if not null
                 if (user != null) {
+                    scheduleReset();
+                    allocateTeams();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -137,7 +140,6 @@ public class GuestLogin extends AppCompatActivity {
         hid = hNumber;
 
         qHandler = QueueHandlerCreater.createHandler(hNumber);
-        scheduleReset();
 
         if (!fString.equals("") && fString.equals("staff1")) {
             //Condition to pass to staff login page
@@ -227,16 +229,23 @@ public class GuestLogin extends AppCompatActivity {
         }
     }
 
-    public void scheduleReset() {
+    public int[] getTimes(int hour, int minute) {
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
-        midnight.set(Calendar.HOUR_OF_DAY, 23);
-        midnight.set(Calendar.MINUTE, 59);
+        midnight.set(Calendar.HOUR_OF_DAY, hour);
+        midnight.set(Calendar.MINUTE, minute);
 
         long difference = midnight.getTimeInMillis() - currentTime.getTimeInMillis();
 
         int startSeconds = (int) (difference / 1000);
         int endSeconds = startSeconds + 86400;
+
+        int[] times = {startSeconds, endSeconds};
+        return times;
+    }
+
+    public void scheduleReset() {
+        int[] times = getTimes(23, 59);
 
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
@@ -248,7 +257,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
                 .setTag(hid + " SERVICE")
-                .setTrigger(Trigger.executionWindow(startSeconds, endSeconds))
+                .setTrigger(Trigger.executionWindow(times[0], times[1]))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(true)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
@@ -257,5 +266,29 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " SERVICE", "Reset system data for next day");
+    }
+
+    public void allocateTeams() {
+        int[] times = getTimes(23, 55);
+
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(TeamAllocator.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " SERVICE")
+                .setTrigger(Trigger.executionWindow(times[0], times[1]))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(true)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " SERVICE", "Allocate housekeeper teams for next day");
     }
 }
