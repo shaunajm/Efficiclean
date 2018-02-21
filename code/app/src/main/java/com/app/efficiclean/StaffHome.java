@@ -61,6 +61,7 @@ public class StaffHome extends AppCompatActivity {
                 Intent i = new Intent(StaffHome.this, MapView.class);
                 i.putExtras(extras);
                 startActivity(i);
+                onStop();
             }
         });
 
@@ -71,6 +72,7 @@ public class StaffHome extends AppCompatActivity {
                 Intent i = new Intent(StaffHome.this, StaffRequestBreak.class);
                 i.putExtras(extras);
                 startActivity(i);
+                onStop();
             }
         });
 
@@ -81,6 +83,7 @@ public class StaffHome extends AppCompatActivity {
                 Intent i = new Intent(StaffHome.this, StaffCurrentRoom.class);
                 i.putExtras(extras);
                 startActivity(i);
+                onStop();
             }
         });
 
@@ -139,6 +142,13 @@ public class StaffHome extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -167,6 +177,7 @@ public class StaffHome extends AppCompatActivity {
         Intent i = new Intent(StaffHome.this, TodaysTeams.class);
         i.putExtras(extras);
         startActivity(i);
+        onStop();
     }
 
     public void setTeams() {

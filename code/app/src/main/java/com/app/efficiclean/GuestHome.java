@@ -63,6 +63,13 @@ public class GuestHome extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -120,7 +127,7 @@ public class GuestHome extends AppCompatActivity {
         if (guestChoicePage != null) {
             guestChoicePage.putExtras(extras);
             startActivity(guestChoicePage);
-            finish();
+            onStop();
         } else {
             Toast.makeText(GuestHome.this, "An error has occurred. Please try again.",
                     Toast.LENGTH_LONG).show();

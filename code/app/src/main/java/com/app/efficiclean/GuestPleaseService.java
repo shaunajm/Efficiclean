@@ -46,5 +46,12 @@ public class GuestPleaseService extends AppCompatActivity {
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
 }
 

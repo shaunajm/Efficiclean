@@ -147,6 +147,13 @@ public class SupervisorHome extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)

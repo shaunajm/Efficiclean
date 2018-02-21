@@ -46,4 +46,11 @@ public class GuestCheckingOut extends AppCompatActivity {
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
 }

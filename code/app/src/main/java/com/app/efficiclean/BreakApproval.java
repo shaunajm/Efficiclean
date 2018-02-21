@@ -68,6 +68,13 @@ public class BreakApproval extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
     public void setRoomApprovals(){
         TableLayout table = (TableLayout) findViewById(R.id.tbTeams);
         TextView template = (TextView) findViewById(R.id.tvTeamsTitle);

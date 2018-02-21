@@ -86,6 +86,7 @@ public class StaffLogin extends AppCompatActivity {
                     }
                     staffPage.putExtras(bundle);
                     startActivity(staffPage);
+                    onStop();
                 }
             }
         };
@@ -97,6 +98,13 @@ public class StaffLogin extends AppCompatActivity {
 
         //Add authentication listener
         mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
     @Override

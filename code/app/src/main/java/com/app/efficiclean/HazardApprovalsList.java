@@ -70,6 +70,13 @@ public class HazardApprovalsList extends AppCompatActivity {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
     public void setRoomApprovals(){
         TableLayout table = (TableLayout) findViewById(R.id.tbHazardsToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);

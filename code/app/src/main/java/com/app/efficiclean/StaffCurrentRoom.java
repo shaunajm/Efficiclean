@@ -100,6 +100,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
                 i.putExtras(extras);
                 i.putExtra("supervisorKey", supervisorKey);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -111,6 +112,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
                 i.putExtras(extras);
                 i.putExtra("supervisorKey", supervisorKey);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -136,6 +138,13 @@ public class StaffCurrentRoom extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+
+        mAuth.removeAuthStateListener(mAuthListener);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -153,5 +162,6 @@ public class StaffCurrentRoom extends AppCompatActivity {
         mStaffRef.child("currentJob").removeValue();
         Toast.makeText(StaffCurrentRoom.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
+        finish();
     }
 }
