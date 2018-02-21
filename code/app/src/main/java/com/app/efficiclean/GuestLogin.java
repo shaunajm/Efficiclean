@@ -144,7 +144,7 @@ public class GuestLogin extends AppCompatActivity {
             spinner.setVisibility(View.GONE);
             Intent staffPage = new Intent(getApplicationContext(), StaffLogin.class);
             startActivity(staffPage);
-            onStop();
+
         } else if (!hNumber.equals("") && !rNumber.equals("") && !fString.equals("") && !sString.equals("")) {      //Check for no null values before we search database
             setValidationValues(hNumber, rNumber, fString, sString);
         } else {

@@ -110,6 +110,7 @@ public class ReportAbsences extends AppCompatActivity {
             RadioButton r1 = new RadioButton(this);
             r1.setText(username);
             r1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+            r1.setBackgroundResource(R.drawable.cell_border);
             r1.setLayoutParams(names.getLayoutParams());
             names.addView(r1);
         }

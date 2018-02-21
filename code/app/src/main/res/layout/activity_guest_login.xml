@@ -48,7 +48,7 @@
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:text=""
             android:textColor="@color/myGold"
             android:textColorHint="#FFF"
@@ -64,7 +64,7 @@
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:text=""
             android:textColor="@color/myGold"
             android:textColorHint="#FFF"

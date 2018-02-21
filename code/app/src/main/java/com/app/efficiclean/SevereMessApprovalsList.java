@@ -108,6 +108,7 @@ public class SevereMessApprovalsList extends AppCompatActivity {
                         template.getPaddingTop() - 5,
                         template.getPaddingRight(),
                         template.getPaddingBottom());
+                roomNumber.setBackground(template.getBackground());
                 roomNumber.setGravity(template.getGravity());
 
                 tr.setOnClickListener(new View.OnClickListener() {

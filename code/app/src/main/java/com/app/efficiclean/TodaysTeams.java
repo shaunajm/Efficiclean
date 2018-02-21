@@ -45,7 +45,7 @@ public class TodaysTeams extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 supervisor = dataSnapshot.getValue(Supervisor.class);
-                setRoomApprovals();
+                //setRoomApprovals();
             }
 
             @Override
@@ -109,6 +109,7 @@ public class TodaysTeams extends AppCompatActivity {
                     template.getPaddingTop() - 5,
                     template.getPaddingRight(),
                     template.getPaddingBottom());
+            roomNumber.setBackground(template.getBackground());
             roomNumber.setGravity(template.getGravity());
 
             tr.addView(roomNumber);

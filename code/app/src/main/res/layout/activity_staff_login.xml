@@ -55,7 +55,7 @@
         android:background="@color/colorPrimary"
         android:ems="10"
         android:hint="Hotel ID"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:padding="10sp"
         android:text=""
         android:textColor="@color/myGold"
