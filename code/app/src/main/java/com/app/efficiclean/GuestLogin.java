@@ -13,19 +13,14 @@ import com.app.efficiclean.classes.Guest;
 import com.app.efficiclean.classes.QueueHandler;
 import com.app.efficiclean.classes.QueueHandlerCreater;
 import com.app.efficiclean.classes.ResetSystemStatus;
-import com.firebase.jobdispatcher.Constraint;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Lifetime;
-import com.firebase.jobdispatcher.RetryStrategy;
-import com.firebase.jobdispatcher.Trigger;
+import com.firebase.jobdispatcher.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
+import com.onesignal.OSPermissionSubscriptionState;
 import com.onesignal.OneSignal;
 
 import java.util.Calendar;
@@ -45,6 +40,8 @@ public class GuestLogin extends AppCompatActivity {
     public ProgressBar spinner;
     public Guest guest;
     public QueueHandler qHandler;
+    private OSPermissionSubscriptionState status;
+    private String oneSignalKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +51,9 @@ public class GuestLogin extends AppCompatActivity {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
+
+        status = OneSignal.getPermissionSubscriptionState();
+        oneSignalKey = status.getSubscriptionStatus().getUserId();
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(R.id.etHotelID);
@@ -144,7 +144,6 @@ public class GuestLogin extends AppCompatActivity {
             spinner.setVisibility(View.GONE);
             Intent staffPage = new Intent(getApplicationContext(), StaffLogin.class);
             startActivity(staffPage);
-
         } else if (!hNumber.equals("") && !rNumber.equals("") && !fString.equals("") && !sString.equals("")) {      //Check for no null values before we search database
             setValidationValues(hNumber, rNumber, fString, sString);
         } else {
@@ -169,6 +168,7 @@ public class GuestLogin extends AppCompatActivity {
                 if (guestKey != null) {
                     //Create DatabaseReference to specified guest
                     DatabaseReference mGuestRef = mRootRef.child(hNumber).child("guest").child(guestKey);
+                    mGuestRef.child("oneSignalKey").setValue(oneSignalKey);
 
                     //Create ValueEventListener to read data from reference
                     mGuestRef.addValueEventListener(new ValueEventListener() {

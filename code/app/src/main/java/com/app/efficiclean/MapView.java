@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.sdsmdg.harjot.vectormaster.VectorMasterView;
@@ -92,8 +91,6 @@ public class MapView extends AppCompatActivity {
         for (String roomNumber : rooms.keySet()) {
             String status = rooms.get(roomNumber);
             String pathName = "pRoom" + roomNumber;
-            Log.v("EFIC-RoomID", pathName);
-            Log.v("EFIC-Status", status);
             PathModel room = map.getPathModelByName(pathName);
             if (status.equals("Waiting")) {
                 room.setFillColor(Color.parseColor("#ffff00"));

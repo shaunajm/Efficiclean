@@ -2,7 +2,6 @@ package com.app.efficiclean;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,11 +10,9 @@ import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Supervisor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+import com.onesignal.OneSignal;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CleanApproval extends AppCompatActivity {
 
@@ -23,6 +20,7 @@ public class CleanApproval extends AppCompatActivity {
     private String hotelID;
     private String roomNumber;
     private String approvalKey;
+    private String oneSignalKey;
     private Bundle extras;
     private Supervisor supervisor;
     private DatabaseReference mSuperRef;
@@ -153,63 +151,23 @@ public class CleanApproval extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                if (SDK_INT > 8) {
-                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                            .permitAll().build();
-                    StrictMode.setThreadPolicy(policy);
-
-                    //This is a Simple Logic to Send Notification different Device Programmatically...
-
-                    try {
-                        String jsonResponse;
-
-                        URL url = new URL("https://onesignal.com/api/v1/notifications");
-                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                        con.setUseCaches(false);
-                        con.setDoOutput(true);
-                        con.setDoInput(true);
-
-                        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                        con.setRequestProperty("Authorization", "Basic ZWU2MTZiZWYtYmQyZi00M2E2LWFhZGYtMWM3MmQwMmUwZGY1");
-                        con.setRequestMethod("POST");
-
-                        String strJsonBody = "{"
-                                + "\"app_id\": \"ad9055f5-5f63-418d-84bd-ef4e95021177\","
-
-                                + "\"filters\": [{\"field\": \"tag\", \"key\": \"uid\", \"relation\": \"=\", \"value\": \"" + uid + "\"}],"
-
-                                + "\"contents\": {\"en\": \"Your room has been serviced. Thank you for using Efficiclean!\"}"
-                                + "}";
-
-
-                        System.out.println("strJsonBody:\n" + strJsonBody);
-
-                        byte[] sendBytes = strJsonBody.getBytes("UTF-8");
-                        con.setFixedLengthStreamingMode(sendBytes.length);
-
-                        OutputStream outputStream = con.getOutputStream();
-                        outputStream.write(sendBytes);
-
-                        int httpResponse = con.getResponseCode();
-                        System.out.println("httpResponse: " + httpResponse);
-
-                        if (httpResponse >= HttpURLConnection.HTTP_OK
-                                && httpResponse < HttpURLConnection.HTTP_BAD_REQUEST) {
-                            Scanner scanner = new Scanner(con.getInputStream(), "UTF-8");
-                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                            scanner.close();
-                        } else {
-                            Scanner scanner = new Scanner(con.getErrorStream(), "UTF-8");
-                            jsonResponse = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
-                            scanner.close();
+                    DatabaseReference mGuestRef = mRootRef.child("guest").child(uid);
+                    mGuestRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            oneSignalKey = dataSnapshot.child("oneSignalKey").getValue(String.class);
+                            try {
+                                OneSignal.postNotification(new JSONObject("{'contents': {'en':'Your room has been serviced. Thank you for using Efficiclean!'}, 'include_player_ids': ['" + oneSignalKey + "']}"), null);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        System.out.println("jsonResponse:\n" + jsonResponse);
 
-                    } catch (Throwable t) {
-                        t.printStackTrace();
-                    }
-                }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
             }
         });
     }

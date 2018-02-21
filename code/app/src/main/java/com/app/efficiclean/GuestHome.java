@@ -21,6 +21,7 @@ public class GuestHome extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mRootRef;
     private Guest guest;
+    private String guestKey;
     private String hotelID;
     private Bundle extras;
 
@@ -42,6 +43,7 @@ public class GuestHome extends AppCompatActivity {
 
         //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
+        guestKey = mAuth.getUid();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
         }
@@ -96,7 +98,7 @@ public class GuestHome extends AppCompatActivity {
 
     public void pleaseServiceButtonClick(View view) {
         Job newJob = new Job();
-        newJob.setCreatedBy(mAuth.getUid());
+        newJob.setCreatedBy(guestKey);
         newJob.setRoomNumber(guest.getRoomNumber());
         newJob.setPriority(0);
         mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
