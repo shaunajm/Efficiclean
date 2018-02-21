@@ -73,8 +73,8 @@
 
     <ScrollView
         android:id="@+id/svQueue"
-        android:layout_width="175dp"
-        android:layout_height="381dp"
+        android:layout_width="190dp"
+        android:layout_height="378dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -84,11 +84,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.394">
+        app:layout_constraintVertical_bias="0.421">
 
         <TableLayout
             android:id="@+id/tbQueue"
-            android:layout_width="160dp"
+            android:layout_width="173dp"
             android:layout_height="439dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
