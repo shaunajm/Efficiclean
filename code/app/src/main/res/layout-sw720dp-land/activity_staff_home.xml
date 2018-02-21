@@ -50,7 +50,7 @@
     <ScrollView
         android:id="@+id/svTodaysTeams"
         android:layout_width="387dp"
-        android:layout_height="511dp"
+        android:layout_height="506dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -63,7 +63,7 @@
 
         <TableLayout
             android:id="@+id/tbTeams"
-            android:layout_width="380dp"
+            android:layout_width="368dp"
             android:layout_height="560dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -85,6 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="34dip"
                     android:text="Today's Teams"
                     android:textSize="23sp" />
@@ -101,6 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 1"
                     android:textSize="21sp" />
@@ -117,6 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 2"
                     android:textSize="21sp" />
@@ -133,6 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 3"
                     android:textSize="21sp" />
@@ -149,6 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 4"
                     android:textSize="21sp" />
@@ -165,6 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 5"
                     android:textSize="21sp" />
@@ -181,6 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 6"
                     android:textSize="21sp" />
@@ -192,7 +199,7 @@
     <ScrollView
         android:id="@+id/svQueue"
         android:layout_width="387dp"
-        android:layout_height="511dp"
+        android:layout_height="506dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -205,7 +212,7 @@
 
         <TableLayout
             android:id="@+id/tbQueue"
-            android:layout_width="380dp"
+            android:layout_width="368dp"
             android:layout_height="560dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -226,6 +233,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="34dip"
                     android:text="Queue"
                     android:textSize="23sp" />
@@ -242,6 +250,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 1"
                     android:textSize="21sp" />
@@ -258,6 +267,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 2"
                     android:textSize="21sp" />
@@ -274,6 +284,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 3"
                     android:textSize="21sp" />
@@ -290,6 +301,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 4"
                     android:textSize="21sp" />
@@ -306,6 +318,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 5"
                     android:textSize="21sp" />
@@ -322,6 +335,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
+                    android:background="@drawable/cell_border"
                     android:padding="26dip"
                     android:text="Team 6"
                     android:textSize="21sp" />
