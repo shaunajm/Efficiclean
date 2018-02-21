@@ -1,4 +1,4 @@
-#Gitlab Continuous Integration Pipeline
+# Gitlab Continuous Integration Pipeline
 
 We are using the gitlab continuous integration pipeline to run our unit tests every time we push to git. This allows us to test our application numerous times a day to ensure that it was still functioning as expected. To set up the pipeline, we have a gitlab-ci.yml file which sets up the Android environment we are using.
 
