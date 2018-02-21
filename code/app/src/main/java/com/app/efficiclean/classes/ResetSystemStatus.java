@@ -1,12 +1,8 @@
 package com.app.efficiclean.classes;
 
-import com.app.efficiclean.GuestLogin;
+import android.os.Bundle;
 import com.firebase.jobdispatcher.JobService;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 /**
  * Created by shaum on 20/02/18.
@@ -23,10 +19,13 @@ public class ResetSystemStatus extends JobService {
     private DataSnapshot rooms;
     private DataSnapshot staff;
     private DataSnapshot supervisor;
+    private Bundle extras;
 
     @Override
     public boolean onStartJob (com.firebase.jobdispatcher.JobParameters job) {
-        hid = GuestLogin.hid;
+        extras = job.getExtras();
+        hid = extras.getString("hid");
+
         mRootRef = FirebaseDatabase.getInstance().getReference(hid);
         mJobRef = mRootRef.child("jobs");
         mRoomRef = mRootRef.child("rooms");

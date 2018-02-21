@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,7 @@ import java.util.Calendar;
 
 public class GuestLogin extends AppCompatActivity {
     
-    private static final String TAG = "Reset system data for next day";
-    public static String hid = "";
+    public String hid = "";
     public FirebaseAuth mAuth;
     public FirebaseAuth.AuthStateListener mAuthListener;
     public DatabaseReference mRootRef;
@@ -230,13 +230,16 @@ public class GuestLogin extends AppCompatActivity {
     public void scheduleReset() {
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
-        midnight.set(Calendar.HOUR_OF_DAY, 23);
-        midnight.set(Calendar.MINUTE, 59);
+        midnight.set(Calendar.HOUR_OF_DAY, 17);
+        midnight.set(Calendar.MINUTE, 38);
 
         long difference = midnight.getTimeInMillis() - currentTime.getTimeInMillis();
 
         int startSeconds = (int) (difference / 1000);
         int endSeconds = startSeconds + 86400;
+
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
 
         FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
 
@@ -244,13 +247,15 @@ public class GuestLogin extends AppCompatActivity {
                 .setService(ResetSystemStatus.class)
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
-                .setTag(TAG)
+                .setTag(hid + " SERVICE")
                 .setTrigger(Trigger.executionWindow(startSeconds, endSeconds))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(true)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
                 .build();
 
         jobDispatcher.mustSchedule(job);
+        Log.v(hid + " SERVICE", "Reset system data for next day");
     }
 }
