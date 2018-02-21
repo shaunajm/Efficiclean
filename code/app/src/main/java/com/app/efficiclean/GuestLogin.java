@@ -230,8 +230,8 @@ public class GuestLogin extends AppCompatActivity {
     public void scheduleReset() {
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
-        midnight.set(Calendar.HOUR_OF_DAY, 17);
-        midnight.set(Calendar.MINUTE, 38);
+        midnight.set(Calendar.HOUR_OF_DAY, 23);
+        midnight.set(Calendar.MINUTE, 59);
 
         long difference = midnight.getTimeInMillis() - currentTime.getTimeInMillis();
 
