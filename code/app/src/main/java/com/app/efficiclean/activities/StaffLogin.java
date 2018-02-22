@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
+import com.onesignal.OneSignal;
 
 public class StaffLogin extends AppCompatActivity {
 
@@ -74,6 +75,8 @@ public class StaffLogin extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
                 FirebaseUser user = fbAuth.getCurrentUser();
                 if (user != null) {
+                    OneSignal.sendTag("uid", user.getUid());
+
                     spinner.setVisibility(View.GONE);
                     Bundle bundle = new Bundle();
                     bundle.putString("hotelID", hotelID.getText().toString().trim());
