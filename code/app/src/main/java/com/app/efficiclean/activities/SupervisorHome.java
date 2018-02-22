@@ -13,9 +13,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.QueueHandler;
 import com.app.efficiclean.classes.QueueHandlerCreater;
+import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -23,7 +23,9 @@ public class SupervisorHome extends AppCompatActivity {
 
     private String supervisorKey;
     private DataSnapshot staff;
+    private DataSnapshot teams;
     private DatabaseReference mStaffRef;
+    private DatabaseReference mTeamRef;
     private Button btViewMap;
     private Button hazardApproval;
     private Button cleansApproval;
@@ -117,7 +119,7 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 staff = dataSnapshot;
-                setRoomApprovals();
+                getTeams();
             }
 
             @Override
@@ -179,19 +181,48 @@ public class SupervisorHome extends AppCompatActivity {
         onSupportNavigateUp();
     }
 
+    public void getTeams() {
+        mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                teams = dataSnapshot;
+                setRoomApprovals();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void setRoomApprovals(){
         TableLayout table = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeamProgress);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(DataSnapshot ds : staff.getChildren()) {
+        for(DataSnapshot ds : teams.getChildren()) {
+            Team team = ds.getValue(Team.class);
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
+            String text = "";
+
+            for (String staffKey : team.getMembers()) {
+                if (text.equals("")) {
+                    text += staff.child(staffKey).child("username").getValue(String.class);
+                } else {
+                    text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                }
+            }
+
+            text = text + " : " + Integer.toString(team.getCleanCounter());
+
             TextView roomNumber = new TextView(this);
-            roomNumber.setText(ds.getValue(Housekeeper.class).getUsername());
+            roomNumber.setText(text);
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
             roomNumber.setHeight(template.getHeight());

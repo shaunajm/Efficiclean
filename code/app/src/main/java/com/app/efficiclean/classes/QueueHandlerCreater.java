@@ -1,18 +1,15 @@
 package com.app.efficiclean.classes;
 
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-
 public class QueueHandlerCreater {
 
     public static QueueHandler createHandler(String hid) {
         JobQueue jQueue = new JobQueue(hid);
-        StaffQueue sQueue = new StaffQueue(hid);
+        TeamQueue tQueue = new TeamQueue(hid);
 
-        QueueHandler qh = new QueueHandler(hid, jQueue, sQueue);
+        QueueHandler qh = new QueueHandler(hid, jQueue, tQueue);
 
         jQueue.addObserver(qh);
-        sQueue.addObserver(qh);
+        tQueue.addObserver(qh);
 
         return qh;
     }

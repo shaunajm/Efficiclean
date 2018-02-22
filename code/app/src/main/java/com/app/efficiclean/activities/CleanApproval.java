@@ -27,12 +27,14 @@ public class CleanApproval extends AppCompatActivity {
     private DatabaseReference mSuperRef;
     private DatabaseReference mRootRef;
     private DatabaseReference mAppRef;
+    private DatabaseReference mTeamRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private CheckBox approve;
     private CheckBox disapprove;
     private EditText comments;
     private Button btApprove;
+    private int cleans;
     private Job job;
 
     @Override
@@ -132,6 +134,25 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
+        String team = job.getAssignedTo();
+        mTeamRef = mRootRef.child("teams").child(team);
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                cleans = dataSnapshot.child("cleanCounter").getValue(int.class);
+                cleans++;
+                updateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void updateData() {
+        mTeamRef.child("cleanCounter").setValue(cleans);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
         String uid = supervisor.approvals.get(approvalKey).getJob().getCreatedBy();
         mSuperRef.child("approvals").child(approvalKey).removeValue();
@@ -140,9 +161,9 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
-        String hKeeper = job.getAssignedTo();
+        String team = job.getAssignedTo();
         job.setDescription(comments.getText().toString());
-        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
+        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();

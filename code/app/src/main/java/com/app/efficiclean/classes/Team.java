@@ -4,10 +4,56 @@ import java.util.ArrayList;
 
 public class Team {
 
+    private String status;
+    private Job currentJob;
+    private Job returnedJob;
+    private int cleanCounter;
+    private int priorityCounter;
     private ArrayList<String> members;
+    protected String key;
 
     public Team() {
         members = new ArrayList<String>();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getCleanCounter() {
+        return cleanCounter;
+    }
+
+    public void setCleanCounter(int cleanCounter) {
+        this.cleanCounter = cleanCounter;
+    }
+
+    public int getPriorityCounter() {
+        return priorityCounter;
+    }
+
+    public void setPriorityCounter(int priorityCounter) {
+        this.priorityCounter = priorityCounter;
+    }
+
+    public Job getCurrentJob() {
+        return currentJob;
+    }
+
+    public void setCurrentJob(Job currentJob) {
+        this.currentJob = currentJob;
+    }
+
+    public Job getReturnedJob() {
+        return returnedJob;
+    }
+
+    public void setReturnedJob(Job returnedJob) {
+        this.returnedJob = returnedJob;
     }
 
     public ArrayList<String> getMembers() {
@@ -32,5 +78,9 @@ public class Team {
             thisMember = members.get(i);
         }
         return thisMember;
+    }
+
+    public String getKey() {
+        return key;
     }
 }

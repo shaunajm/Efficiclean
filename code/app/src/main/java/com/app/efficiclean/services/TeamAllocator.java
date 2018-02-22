@@ -64,6 +64,9 @@ public class TeamAllocator extends JobService {
         int i;
         for (i = 0; i < staffKeys.size() - 1; i += 2) {
             Team newTeam = new Team();
+            newTeam.setStatus("Waiting");
+            newTeam.setCleanCounter(0);
+            newTeam.setPriorityCounter(0);
             newTeam.addMember(staffKeys.get(i));
             newTeam.addMember(staffKeys.get(i + 1));
             teams.add(newTeam);
@@ -71,6 +74,9 @@ public class TeamAllocator extends JobService {
 
         if (i < staffKeys.size()) {
             Team newTeam = new Team();
+            newTeam.setStatus("Waiting");
+            newTeam.setCleanCounter(0);
+            newTeam.setPriorityCounter(0);
             newTeam.addMember(staffKeys.get(i));
             teams.add(newTeam);
         }

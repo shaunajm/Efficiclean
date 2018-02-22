@@ -1,17 +1,16 @@
 package com.app.efficiclean.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.SevereMessApproval;
+import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -19,11 +18,12 @@ public class ReportSevereMess extends AppCompatActivity {
 
     private EditText description;
     private Button reportHazard;
-    private DatabaseReference mStaffRef;
+    private DatabaseReference mTeamRef;
     private DatabaseReference mSupervisorRef;
-    private Housekeeper hKeeper;
+    private Team team;
     private String staffKey;
     private String hotelID;
+    private String teamKey;
     private String supervisorKey;
     private Bundle extras;
     private FirebaseAuth mAuth;
@@ -40,6 +40,8 @@ public class ReportSevereMess extends AppCompatActivity {
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             staffKey = extras.getString("staffKey");
+            teamKey = extras.getString("teamKey");
+            supervisorKey = extras.getString("supervisorKey");
         }
 
         supervisorKey = getIntent().getStringExtra("supervisorKey");
@@ -54,11 +56,11 @@ public class ReportSevereMess extends AppCompatActivity {
             }
         });
 
-        mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff").child(staffKey);
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamKey);
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                hKeeper = dataSnapshot.getValue(Housekeeper.class);
+                team = dataSnapshot.getValue(Team.class);
             }
 
             @Override
@@ -104,17 +106,18 @@ public class ReportSevereMess extends AppCompatActivity {
     }
 
     public void assignToSupervisor() {
-        Job job = hKeeper.getCurrentJob();
+        Job job = team.getCurrentJob();
         SevereMessApproval approval = new SevereMessApproval();
         approval.setJob(job);
-        approval.setCreatedBy(mAuth.getUid());
+        approval.setCreatedBy(teamKey);
         approval.setDescription(description.getText().toString());
         DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
         mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
-        mStaffRef.child("status").setValue("Waiting");
-        mStaffRef.child("currentJob").removeValue();
+        mTeamRef.child("status").setValue("Waiting");
+        mTeamRef.child("currentJob").removeValue();
         Toast.makeText(ReportSevereMess.this, "This room has been marked 'Severe Mess' and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
+        finish();
     }
 }

@@ -15,10 +15,10 @@ public class ResetSystemStatus extends JobService {
     private DatabaseReference mRootRef;
     private DatabaseReference mJobRef;
     private DatabaseReference mRoomRef;
-    private DatabaseReference mStaffRef;
+    private DatabaseReference mTeamRef;
     private DatabaseReference mSuperRef;
     private DataSnapshot rooms;
-    private DataSnapshot staff;
+    private DataSnapshot teams;
     private DataSnapshot supervisor;
     private Bundle extras;
 
@@ -30,29 +30,17 @@ public class ResetSystemStatus extends JobService {
         mRootRef = FirebaseDatabase.getInstance().getReference(hid);
         mJobRef = mRootRef.child("jobs");
         mRoomRef = mRootRef.child("rooms");
-        mStaffRef = mRootRef.child("staff");
+        mTeamRef = mRootRef.child("teams");
         mSuperRef = mRootRef.child("supervisor");
 
         mJobRef.removeValue();
+        mTeamRef.removeValue();
 
         mRoomRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 rooms = dataSnapshot;
                 editRooms();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                staff = dataSnapshot;
-                editStaff();
             }
 
             @Override
@@ -86,16 +74,6 @@ public class ResetSystemStatus extends JobService {
         for (DataSnapshot room : rooms.getChildren()) {
             String key = room.getKey();
             mRoomRef.child(key).child("status").setValue("Idle");
-        }
-    }
-
-    public void editStaff() {
-        for (DataSnapshot housekeeper : staff.getChildren()) {
-            String key = housekeeper.getKey();
-            mStaffRef.child(key).child("currentJob").removeValue();
-            mStaffRef.child(key).child("returnedJob").removeValue();
-            mStaffRef.child(key).child("status").setValue("Waiting");
-            mStaffRef.child(key).child("priorityCounter").setValue(0);
         }
     }
 

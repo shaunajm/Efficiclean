@@ -10,24 +10,24 @@ public class QueueHandler implements Observer {
 
     private String hotelID;
     private JobQueue jQueue;
-    private StaffQueue sQueue;
+    private TeamQueue tQueue;
 
-    public QueueHandler(String hid, JobQueue jq, StaffQueue sq) {
+    public QueueHandler(String hid, JobQueue jq, TeamQueue tq) {
         hotelID = hid;
         jQueue = jq;
-        sQueue = sq;
+        tQueue = tq;
     }
 
     public void update(Observable obj, Object queue) {
-        if (!jQueue.isEmpty() && !sQueue.isEmpty()) {
+        if (!jQueue.isEmpty() && !tQueue.isEmpty()) {
             Job job = jQueue.dequeue();
-            Housekeeper hk = sQueue.dequeue();
-            job.assignTo(hk.key);
-            hk.setCurrentJob(job);
-            DatabaseReference mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
+            Team team = tQueue.dequeue();
+            job.assignTo(team.key);
+            team.setCurrentJob(job);
+            DatabaseReference mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
             DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
             mRoomRef.child(job.getRoomNumber()).child("status").setValue("In Process");
-            mStaffRef.child(hk.key).setValue(hk);
+            mTeamRef.child(team.key).setValue(team);
         }
     }
 }

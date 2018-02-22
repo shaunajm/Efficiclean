@@ -132,18 +132,18 @@ public class ApproveSevereMess extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        String hKeeper = job.getAssignedTo();
-        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
-        mRootRef.child("staff").child(hKeeper).child("priorityCounter").setValue(1);
+        String team = job.getAssignedTo();
+        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
+        mRootRef.child("teams").child(team).child("priorityCounter").setValue(1);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();
     }
 
     public void disapprovedSubmit() {
-        String hKeeper = job.getAssignedTo();
+        String team = job.getAssignedTo();
         job.setDescription(comments.getText().toString());
-        mRootRef.child("staff").child(hKeeper).child("returnedJob").setValue(job);
+        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();
