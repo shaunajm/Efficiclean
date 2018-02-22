@@ -98,7 +98,8 @@ public class GuestLogin extends AppCompatActivity {
                 if (user != null) {
                     scheduleReset();
                     allocateTeams();
-                    updatejobPriorities();
+                    updateJobPriorities();
+                    updateStaffPriorities();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -292,7 +293,7 @@ public class GuestLogin extends AppCompatActivity {
         Log.v(hid + " TEAM SERVICE", "Allocate housekeeper teams for next day");
     }
 
-    public void updatejobPriorities() {
+    public void updateJobPriorities() {
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
@@ -312,5 +313,27 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " JOB SERVICE", "Update priority of jobs on the queue");
+    }
+
+    public void updateStaffPriorities() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(UpdateJobPriorities.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " TEAM SERVICE")
+                .setTrigger(Trigger.executionWindow(600, 600))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " TEAM SERVICE", "Update priority of jobs on the queue");
     }
 }
