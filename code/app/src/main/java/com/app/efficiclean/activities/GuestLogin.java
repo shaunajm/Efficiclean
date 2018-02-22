@@ -14,6 +14,7 @@ import com.app.efficiclean.R;
 import com.app.efficiclean.classes.*;
 import com.app.efficiclean.services.ResetSystemStatus;
 import com.app.efficiclean.services.TeamAllocator;
+import com.app.efficiclean.services.UpdateJobPriorities;
 import com.firebase.jobdispatcher.*;
 import com.firebase.jobdispatcher.Job;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,7 +55,6 @@ public class GuestLogin extends AppCompatActivity {
                 .init();
 
         status = OneSignal.getPermissionSubscriptionState();
-        oneSignalKey = status.getSubscriptionStatus().getUserId();
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(R.id.etHotelID);
@@ -98,6 +98,8 @@ public class GuestLogin extends AppCompatActivity {
                 if (user != null) {
                     scheduleReset();
                     allocateTeams();
+                    updateJobPriorities();
+                    updateStaffPriorities();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -170,7 +172,6 @@ public class GuestLogin extends AppCompatActivity {
                 if (guestKey != null) {
                     //Create DatabaseReference to specified guest
                     DatabaseReference mGuestRef = mRootRef.child(hNumber).child("guest").child(guestKey);
-                    mGuestRef.child("oneSignalKey").setValue(oneSignalKey);
 
                     //Create ValueEventListener to read data from reference
                     mGuestRef.addValueEventListener(new ValueEventListener() {
@@ -256,7 +257,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setService(ResetSystemStatus.class)
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
-                .setTag(hid + " SERVICE")
+                .setTag(hid + " RESET SERVICE")
                 .setTrigger(Trigger.executionWindow(times[0], times[1]))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(true)
@@ -265,7 +266,7 @@ public class GuestLogin extends AppCompatActivity {
                 .build();
 
         jobDispatcher.mustSchedule(job);
-        Log.v(hid + " SERVICE", "Reset system data for next day");
+        Log.v(hid + " TEAM SERVICE", "Reset system data for next day");
     }
 
     public void allocateTeams() {
@@ -280,7 +281,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setService(TeamAllocator.class)
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
-                .setTag(hid + " SERVICE")
+                .setTag(hid + " TEAM SERVICE")
                 .setTrigger(Trigger.executionWindow(times[0], times[1]))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(true)
@@ -289,6 +290,50 @@ public class GuestLogin extends AppCompatActivity {
                 .build();
 
         jobDispatcher.mustSchedule(job);
-        Log.v(hid + " SERVICE", "Allocate housekeeper teams for next day");
+        Log.v(hid + " TEAM SERVICE", "Allocate housekeeper teams for next day");
+    }
+
+    public void updateJobPriorities() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(UpdateJobPriorities.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " JOB SERVICE")
+                .setTrigger(Trigger.executionWindow(300, 300))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " JOB SERVICE", "Update priority of jobs on the queue");
+    }
+
+    public void updateStaffPriorities() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(UpdateJobPriorities.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " TEAM SERVICE")
+                .setTrigger(Trigger.executionWindow(600, 600))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " TEAM SERVICE", "Update priority of jobs on the queue");
     }
 }
