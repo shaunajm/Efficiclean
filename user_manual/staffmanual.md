@@ -1,4 +1,4 @@
-# Guest User Manual
+# Staff User Manual
 
 ## Installation
 
@@ -11,23 +11,23 @@
 ## Login
 
 - When you open Efficiclean you will be presented with the login page.
-- This is the guest page 
+- This is the guest page
 - In the forename field enter “staff1” as seen below
 
 &nbsp;
 
-*Mobile Interface*              | *Tablet interface*                 
+*Mobile Interface*              | *Tablet interface*
 :------------------------------:|:----------------------------------:
-![](media/staff1loginmobile.png) | ![](media/staff1logintablet.png)   
+![](media/staff1loginmobile.png) | ![](media/staff1logintablet.png)
 
 &nbsp;
 - Click the Login button
 - You will be presented with the following page
 &nbsp;
 
-*Mobile Interface*              | *Tablet interface*                 
+*Mobile Interface*              | *Tablet interface*
 :------------------------------:|:----------------------------------:
-![](media/staffloginmobile.png) | ![](media/stafflogintablet.png)   
+![](media/staffloginmobile.png) | ![](media/stafflogintablet.png)
 
 &nbsp;
 
@@ -46,8 +46,8 @@
     - View Map button (highlighted in red)
     - Request Break button (highlighted in blue)
     - Current Room button (highlighted in green)
-    
-- The Today’s Team section will list the teams of the day. 
+
+- The Today’s Team section will list the teams of the day.
 - The queue will show the ordering of these teams to be assigned to a room
     - The team at the top of the queue is the team next to be assigned a room
 - The View Map button (highlighted in red) shows a map view of the status of each room in the hotel
@@ -59,16 +59,16 @@
 &nbsp;
 ![](media/staffhomeexplainedmobile.png)
 &nbsp;
-- There is one small difference between the staff home page on tablet and mobile. 
+- There is one small difference between the staff home page on tablet and mobile.
     - On the mobile interface the list of Today’s Teams can be accessed by clicking the Today’s Teams button (highlighted above) on the home screen.
 &nbsp;
 
 ## View Map
 
 &nbsp;
-*Mobile Interface*              | *Tablet interface*                 
+*Mobile Interface*              | *Tablet interface*
 :------------------------------:|:----------------------------------:
-![](media/mapviewmobile.png)    | ![](media/mapviewtablet.png)   
+<img src="mapviewmobile.png" width="200" height="200" />    | ![](media/mapviewtablet.png)
 &nbsp;
 
 - Once you have clicked the View Map button you will be presented with the View Map screen.
@@ -79,20 +79,20 @@
     - Do not disturb, rooms of guest that do not wish for their rooms to be cleaned, are marked black
     - In Progress, rooms which are currently being cleaned, are marked orange
     - To be cleaned, rooms which are waiting to be cleaned, are marked red
-    
+
 &nbsp;
 
 ## Request Break
 
 &nbsp;
-*Mobile Interface*                     | *Tablet interface*                 
+*Mobile Interface*                     | *Tablet interface*
 :-------------------------------------:|:--------------------------------------:
-![](media/staffrequestbreakmobile.png) | ![](media/staffrequestbreaktablet.png)   
+![](media/staffrequestbreakmobile.png) | ![](media/staffrequestbreaktablet.png)
 &nbsp;
 
 - After you select the Request Break button you will be presented with the above screen
 - To select the time which you would like to take the break,enter the time in the time box in the format HH:MM.
-- Following this select an option for the length of the break you would like to take by tapping the box beside your prefered option. 
+- Following this select an option for the length of the break you would like to take by tapping the box beside your prefered option.
 - Click the submit button
 - This break has now been sent to your supervisor for approval
 - You will receive a notification to inform you if this break has been approved or disapproved.
@@ -101,12 +101,12 @@
 ## Current Room
 
 &nbsp;
-*Mobile Interface*                    | *Tablet interface*                 
+*Mobile Interface*                    | *Tablet interface*
 :------------------------------------:|:--------------------------------------:
-![](media/staffcurrentroommobile.png) | ![](media/staffcurrentroomtablet.png)   
+![](media/staffcurrentroommobile.png) | ![](media/staffcurrentroomtablet.png)
 &nbsp;
 
-- When a room has been assigned to your team you will receive a push notification to alert you that you have been assigned a room. 
+- When a room has been assigned to your team you will receive a push notification to alert you that you have been assigned a room.
 - The room number will then be present on this screen.
 - You will have three options to mark the room as:
     - Mark Clean, if you have completed cleaning the room
@@ -116,10 +116,3 @@
     - If your supervisor deems that the room was not sufficiently cleaned, it will be returned to you with a message on what needs to be fixed
 - If you mark a room as either hazardous or severe mess you will be requested to provide a description of the hazard or severe mess.
 - Once you have entered this description, click submit and it will be sent to your supervisor for approval.
-
-
-
-
-
-
-
