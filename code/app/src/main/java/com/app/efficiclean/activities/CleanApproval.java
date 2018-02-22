@@ -180,7 +180,6 @@ public class CleanApproval extends AppCompatActivity {
                     mGuestRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            oneSignalKey = dataSnapshot.child("oneSignalKey").getValue(String.class);
                             int SDK_INT = android.os.Build.VERSION.SDK_INT;
                             if (SDK_INT > 8) {
                                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()

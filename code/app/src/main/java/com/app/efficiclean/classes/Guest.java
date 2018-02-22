@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class Guest implements Serializable {
 
     private String forename;
-    private String oneSignalKey;
     private String roomNumber;
     private String surname;
 
@@ -18,14 +17,6 @@ public class Guest implements Serializable {
 
     public void setForename(String forename) {
         this.forename = forename;
-    }
-
-    public String getOneSignalKey() {
-        return oneSignalKey;
-    }
-
-    public void setOneSignalKey(String oneSignalKey) {
-        this.oneSignalKey = oneSignalKey;
     }
 
     public String getSurname() {
