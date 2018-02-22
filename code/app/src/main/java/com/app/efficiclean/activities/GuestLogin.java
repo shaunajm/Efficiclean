@@ -327,7 +327,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
                 .setTag(hid + " TEAM SERVICE")
-                .setTrigger(Trigger.executionWindow(120, 600))
+                .setTrigger(Trigger.executionWindow(600, 600))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
