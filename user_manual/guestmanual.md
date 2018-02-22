@@ -37,7 +37,7 @@
 - Do not disturb means that you not wish for your room to be serviced
 - Checking out means that you are checking out of the hotel. 
 
-&nbsp
+&nbsp;
 
 *Mobile Interface*              | *Tablet interface*                  
 :------------------------------:|:----------------------------------:
