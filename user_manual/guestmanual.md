@@ -1,5 +1,5 @@
 # Guest User Manual
-&nbsp;
+
 ## Installation
 
 - To install the Efficiclean application go to the Google Play Store and search for “Efficiclean”
@@ -19,13 +19,13 @@
     - Surname (name which room is booked under)
 - Please see an example of this interface below
 
-&nbsp
+&nbsp;
 
 *Mobile Interface*              | *Tablet interface*                 
 :------------------------------:|:----------------------------------:
 ![](media/guestloginmobile.png) | ![](media/guestlogintablet.png)   
 
-&nbsp
+&nbsp;
 
 ## Mark Room Status
 
@@ -43,34 +43,34 @@
 :------------------------------:|:----------------------------------:
 ![](media/guesthomemobile.png)  | ![](media/guesthometablet.png)  
 
-&nbsp
+&nbsp;
 
 - After you have marked the status of your room you will be presented with a screen inform you of your choice
 - If you mark your room as “Please service my room” you will be presented with the following screen
 
-&nbsp
+&nbsp;
 
 *Mobile Interface*                     | *Tablet interface*                  
 :-------------------------------------:|:--------------------------------------:
 ![](media/guestpleaseservicemobile.png) | ![](media/guestpleaseservicetablet.png)  
 
-&nbsp
+&nbsp;
 
 - The highlighted area of this interface shows the region where your estimated clean time will be present.
     - This is the estimated time by which your room will be cleaned.
 - When your room is cleaned you will receive a notification on your device to inform you that it has been cleaned.
 
-&nbsp
+&nbsp;
 
 - If you mark your room as “Do not disturb” you will be presented with the following screen
 
-&nbsp
+&nbsp;
 
 *Mobile Interface*                     | *Tablet interface*                  
 :-------------------------------------:|:--------------------------------------:
 ![](media/guestdonotdisturbmobile.png) | ![](media/guestdonotdisturbtablet.png)  
 
-&nbsp
+&nbsp;
 
 - This page will give you a time you will be allowed to change this by if you wish to do so.
     - If you wish to change the status of your room to “Please Service my room” or “Checking out” press the return home button on this screen
@@ -84,13 +84,13 @@
 - To log out of Efficiclean click on the back button on the top left corner of the home screen.
 - You will be be presented with the following pop up
 
-&nbsp
+&nbsp;
 
 *Mobile Interface*                     | *Tablet interface*                  
 :-------------------------------------:|:--------------------------------------:
-![](media/guestlogoutpopmobile.png)    | ![](media/guestlogoutpoptablet.png)  
+![](media/guestlogoutpoptablet.png)    | ![](media/guestlogoutpopmobile.png)  
 
-&nbsp
+&nbsp;
 
 - Click Yes
 - You have successfully signed out of the application
