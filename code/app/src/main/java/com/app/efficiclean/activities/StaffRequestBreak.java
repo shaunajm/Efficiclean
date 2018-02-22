@@ -4,11 +4,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.widget.EditText;
 import com.app.efficiclean.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class StaffRequestBreak extends AppCompatActivity {
 
+    private String staffKey;
+    private String hotelID;
+    private Bundle extras;
+    private EditText breakTime;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -19,7 +24,16 @@ public class StaffRequestBreak extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            hotelID = extras.getString("hotelID");
+            staffKey = extras.getString("staffKey");
+        }
+
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
