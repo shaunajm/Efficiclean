@@ -1,30 +1,26 @@
 package com.app.efficiclean.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.Approval;
-import com.app.efficiclean.classes.Supervisor;
+import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 public class TodaysTeams extends AppCompatActivity {
 
     private String supervisorKey;
     private String hotelID;
     private Bundle extras;
-    private Supervisor supervisor;
-    private DatabaseReference mSuperRef;
+    private DataSnapshot staff;
+    private DataSnapshot teams;
+    private DatabaseReference mTeamRef;
+    private DatabaseReference mStaffRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -41,12 +37,12 @@ public class TodaysTeams extends AppCompatActivity {
             supervisorKey = extras.getString("staffKey");
         }
 
-        mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
-        mSuperRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                supervisor = dataSnapshot.getValue(Supervisor.class);
-                //setRoomApprovals();
+                staff = dataSnapshot;
+                getTeams();
             }
 
             @Override
@@ -89,19 +85,46 @@ public class TodaysTeams extends AppCompatActivity {
         return true;
     }
 
-    public void setRoomApprovals(){
-        TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
-        TextView template = (TextView) findViewById(R.id.tvRow1);
+    public void getTeams() {
+        mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                teams = dataSnapshot;
+                setTeams();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void setTeams() {
+        TableLayout table = (TableLayout) findViewById(R.id.tbTodaysTeams);
+        TextView template = (TextView) findViewById(R.id.tvTeamRow);
 
         table.removeViews(1, table.getChildCount() - 1);
-        for(Approval approval : supervisor.approvals.values()) {
+        for(DataSnapshot ds : teams.getChildren()) {
+            Team team = ds.getValue(Team.class);
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
+            String text = "";
+
+            for (String staffKey : team.getMembers()) {
+                if (text.equals("")) {
+                    text += staff.child(staffKey).child("username").getValue(String.class);
+                } else {
+                    text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                }
+            }
+
             TextView roomNumber = new TextView(this);
-            roomNumber.setText(approval.getJob().getRoomNumber());
+            roomNumber.setText(text);
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
             roomNumber.setHeight(template.getHeight());
@@ -115,7 +138,6 @@ public class TodaysTeams extends AppCompatActivity {
 
             tr.addView(roomNumber);
             table.addView(tr);
-
         }
     }
 

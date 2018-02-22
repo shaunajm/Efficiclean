@@ -15,6 +15,7 @@ import com.app.efficiclean.classes.*;
 import com.app.efficiclean.services.ResetSystemStatus;
 import com.app.efficiclean.services.TeamAllocator;
 import com.app.efficiclean.services.UpdateJobPriorities;
+import com.app.efficiclean.services.UpdateTeamPriorities;
 import com.firebase.jobdispatcher.*;
 import com.firebase.jobdispatcher.Job;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -99,7 +100,7 @@ public class GuestLogin extends AppCompatActivity {
                     scheduleReset();
                     allocateTeams();
                     updateJobPriorities();
-                    updateStaffPriorities();
+                    updateTeamPriorities();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -315,14 +316,14 @@ public class GuestLogin extends AppCompatActivity {
         Log.v(hid + " JOB SERVICE", "Update priority of jobs on the queue");
     }
 
-    public void updateStaffPriorities() {
+    public void updateTeamPriorities() {
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
         FirebaseJobDispatcher jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
 
         Job job = jobDispatcher.newJobBuilder()
-                .setService(UpdateJobPriorities.class)
+                .setService(UpdateTeamPriorities.class)
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
                 .setTag(hid + " TEAM SERVICE")
@@ -334,6 +335,6 @@ public class GuestLogin extends AppCompatActivity {
                 .build();
 
         jobDispatcher.mustSchedule(job);
-        Log.v(hid + " TEAM SERVICE", "Update priority of jobs on the queue");
+        Log.v(hid + " TEAM SERVICE", "Update priority of teams on the queue");
     }
 }
