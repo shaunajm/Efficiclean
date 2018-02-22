@@ -66,9 +66,11 @@
 ## View Map
 
 &nbsp;
+
 *Mobile Interface*              | *Tablet interface*
 :------------------------------:|:----------------------------------:
-<img src="mapviewmobile.png" width="200" height="200" />    | ![](media/mapviewtablet.png)
+![](media/mapviewmobile.png) | ![](media/mapviewtablet.png)
+
 &nbsp;
 
 - Once you have clicked the View Map button you will be presented with the View Map screen.
@@ -85,9 +87,11 @@
 ## Request Break
 
 &nbsp;
+
 *Mobile Interface*                     | *Tablet interface*
 :-------------------------------------:|:--------------------------------------:
 ![](media/staffrequestbreakmobile.png) | ![](media/staffrequestbreaktablet.png)
+
 &nbsp;
 
 - After you select the Request Break button you will be presented with the above screen
@@ -101,9 +105,11 @@
 ## Current Room
 
 &nbsp;
-*Mobile Interface*                    | *Tablet interface*
-:------------------------------------:|:--------------------------------------:
-![](media/staffcurrentroommobile.png) | ![](media/staffcurrentroomtablet.png)
+
+*Mobile Interface*                 | *Tablet interface*
+:---------------------------------:|:--------------------------------------:
+![](media/staffcurrentmobile.png) | ![](media/staffcurrenttablet.png)
+
 &nbsp;
 
 - When a room has been assigned to your team you will receive a push notification to alert you that you have been assigned a room.
