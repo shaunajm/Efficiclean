@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,10 @@ public class MapView extends AppCompatActivity {
         setContentView(com.app.efficiclean.R.layout.activity_map_view);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if(getResources().getBoolean(R.bool.landscape_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         extras = getIntent().getExtras();
         if (extras != null) {

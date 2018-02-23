@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,10 @@ public class StaffRequestBreak extends AppCompatActivity {
         setContentView(R.layout.activity_staff_request_break);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if(getResources().getBoolean(R.bool.landscape_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         extras = getIntent().getExtras();
         if (extras != null) {

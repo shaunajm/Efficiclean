@@ -1,6 +1,7 @@
 package com.app.efficiclean.activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,10 @@ public class SevereMessApprovalsList extends AppCompatActivity {
         setContentView(com.app.efficiclean.R.layout.activity_supervisor_list_severe_mess);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if(getResources().getBoolean(R.bool.landscape_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         extras = getIntent().getExtras();
         if (extras != null) {
