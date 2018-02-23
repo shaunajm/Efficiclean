@@ -15,7 +15,7 @@ import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
-public class StaffCurrentRoom extends AppCompatActivity {
+public class StaffCurrentJob extends AppCompatActivity {
 
     private Button btMarkClean;
     private Button btReportHazard;
@@ -88,7 +88,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
         btReportHazard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StaffCurrentRoom.this, ReportHazard.class);
+                Intent i = new Intent(StaffCurrentJob.this, ReportHazard.class);
                 i.putExtras(extras);
                 i.putExtra("teamKey", teamKey);
                 i.putExtra("supervisorKey", supervisorKey);
@@ -101,7 +101,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
         btReportSevereMess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StaffCurrentRoom.this, ReportSevereMess.class);
+                Intent i = new Intent(StaffCurrentJob.this, ReportSevereMess.class);
                 i.putExtras(extras);
                 i.putExtra("teamKey", teamKey);
                 i.putExtra("supervisorKey", supervisorKey);
@@ -185,7 +185,7 @@ public class StaffCurrentRoom extends AppCompatActivity {
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
         mTeamRef.child("status").setValue("Waiting");
         mTeamRef.child("currentJob").removeValue();
-        Toast.makeText(StaffCurrentRoom.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
+        Toast.makeText(StaffCurrentJob.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
         finish();
     }

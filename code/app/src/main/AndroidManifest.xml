@@ -41,7 +41,7 @@
         <activity android:name=".activities.CleanApproval" />
         <activity android:name=".activities.HazardApprovalPage" />
         <activity android:name=".activities.StaffRequestBreak" />
-        <activity android:name=".activities.StaffCurrentRoom" />
+        <activity android:name=".activities.StaffCurrentJob" />
         <activity android:name=".activities.ReportHazard" />
         <activity android:name=".activities.ReportSevereMess" />
         <activity android:name=".activities.TodaysTeams" />

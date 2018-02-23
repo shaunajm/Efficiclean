@@ -45,14 +45,14 @@
     - Queue
     - View Map button (highlighted in red)
     - Request Break button (highlighted in blue)
-    - Current Room button (highlighted in green)
+    - Current Job button (highlighted in green)
 
 - The Today’s Team section will list the teams of the day.
 - The queue will show the ordering of these teams to be assigned to a room
     - The team at the top of the queue is the team next to be assigned a room
 - The View Map button (highlighted in red) shows a map view of the status of each room in the hotel
 - The Request Break button (highlighted in blue) is where you and your team member can request your break. If you do not request a break one will be assigned to you.
-- The Current Room button is for you and your team member to see what room you are currently assigned to and mark it’s status.
+- The Current Job button is for you and your team member to see what room you are currently assigned to and mark it’s status.
 &nbsp;
 
 ## The Home Screen (Mobile)
@@ -102,8 +102,7 @@
 - You will receive a notification to inform you if this break has been approved or disapproved.
 &nbsp;
 
-## Current Room
-
+## Current Job
 &nbsp;
 
 *Mobile Interface*                 | *Tablet interface*

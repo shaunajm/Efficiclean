@@ -23,7 +23,7 @@ import com.google.firebase.database.*;
 public class StaffHome extends AppCompatActivity {
 
     private Button btRequestBreak;
-    private Button btCurrentRoom;
+    private Button btCurrentJob;
     private Button btViewMap;
     private String staffKey;
     private String hotelID;
@@ -78,11 +78,11 @@ public class StaffHome extends AppCompatActivity {
             }
         });
 
-        btCurrentRoom = (Button) findViewById(com.app.efficiclean.R.id.btCurrentRoom);
-        btCurrentRoom.setOnClickListener(new View.OnClickListener() {
+        btCurrentJob = (Button) findViewById(com.app.efficiclean.R.id.btCurrentJob);
+        btCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StaffHome.this, StaffCurrentRoom.class);
+                Intent i = new Intent(StaffHome.this, StaffCurrentJob.class);
                 i.putExtras(extras);
                 startActivity(i);
                 onStop();
