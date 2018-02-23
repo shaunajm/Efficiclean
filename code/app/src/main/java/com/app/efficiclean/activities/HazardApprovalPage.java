@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.*;
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Job;
+import com.app.efficiclean.classes.NotificationHandler;
 import com.app.efficiclean.classes.Supervisor;
+import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -23,6 +25,7 @@ public class HazardApprovalPage extends AppCompatActivity {
     private DatabaseReference mSuperRef;
     private DatabaseReference mRootRef;
     private DatabaseReference mAppRef;
+    private DatabaseReference mTeamRef;
     private Supervisor supervisor;
     private CheckBox approve;
     private CheckBox disapprove;
@@ -58,14 +61,26 @@ public class HazardApprovalPage extends AppCompatActivity {
         btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (approve.isChecked()) {
-                    approvedSubmit();
-                } else if (disapprove.isChecked()) {
-                    disapprovedSubmit();
-                } else {
-                    Toast.makeText(HazardApprovalPage.this, "You haven't selected an option. Please check one of the boxes and try again.",
-                            Toast.LENGTH_LONG).show();
-                }
+                String team = job.getAssignedTo();
+                mTeamRef = mRootRef.child("teams").child(team);
+                mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (approve.isChecked()) {
+                            approvedSubmit();
+                        } else if (disapprove.isChecked()) {
+                            disapprovedSubmit();
+                        } else {
+                            Toast.makeText(HazardApprovalPage.this, "You haven't selected an option. Please check one of the boxes and try again.",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
@@ -131,18 +146,50 @@ public class HazardApprovalPage extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        String team = job.getAssignedTo();
-        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
-        mRootRef.child("staff").child(team).child("priorityCounter").setValue(2);
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Team team = dataSnapshot.getValue(Team.class);
+                for (String staffKey : team.getMembers()) {
+                    NotificationHandler.sendNotification(hotelID, staffKey,
+                            "Hazard approval for room number "
+                                    + job.getRoomNumber() +
+                                    " has been accepted. The job will be returned when it is marked safe and your priority has been updated on the queue.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mTeamRef.child("returnedJob").setValue(job);
+        mTeamRef.child("priorityCounter").setValue(2);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();
     }
 
     public void disapprovedSubmit() {
-        String team = job.getAssignedTo();
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Team team = dataSnapshot.getValue(Team.class);
+                for (String staffKey : team.getMembers()) {
+                    NotificationHandler.sendNotification(hotelID, staffKey,
+                            "Hazard approval for room number "
+                            + job.getRoomNumber() +
+                            " has been denied and returned with a description.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         job.setDescription(comments.getText().toString());
-        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
+        mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();

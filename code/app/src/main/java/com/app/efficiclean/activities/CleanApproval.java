@@ -158,7 +158,6 @@ public class CleanApproval extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
-        String team = job.getAssignedTo();
         job.setDescription(comments.getText().toString());
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -174,7 +173,7 @@ public class CleanApproval extends AppCompatActivity {
 
             }
         });
-        mRootRef.child("teams").child(team).child("returnedJob").setValue(job);
+        mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
         finish();

@@ -156,6 +156,9 @@ public class StaffCurrentRoom extends AppCompatActivity {
 
                 if (team.getCurrentJob() == null) {
                     roomText = "You have no current room.";
+                    btMarkClean.setVisibility(View.GONE);
+                    btReportHazard.setVisibility(View.GONE);
+                    btReportSevereMess.setVisibility(View.GONE);
                 } else if (team.getCurrentJob().getDescription() == null){
                     roomText = "Your current room is: " + team.getCurrentJob().getRoomNumber();
                 } else {
