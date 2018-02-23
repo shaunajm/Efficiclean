@@ -218,30 +218,34 @@ public class SupervisorHome extends AppCompatActivity {
             String text = "";
 
             for (String staffKey : team.getMembers()) {
-                if (text.equals("")) {
-                    text += staff.child(staffKey).child("username").getValue(String.class);
-                } else {
-                    text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                if (staffKey != null) {
+                    if (text.equals("")) {
+                        text += staff.child(staffKey).child("username").getValue(String.class);
+                    } else {
+                        text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                    }
                 }
             }
 
             text = text + " : " + Integer.toString(team.getCleanCounter());
 
-            TextView roomNumber = new TextView(this);
-            roomNumber.setText(text);
-            roomNumber.setTextSize(template.getTextSize() / 2);
-            roomNumber.setWidth(template.getWidth());
-            roomNumber.setMinHeight(template.getHeight());
-            roomNumber.setPadding(
-                    template.getPaddingLeft(),
-                    template.getPaddingTop() - 5,
-                    template.getPaddingRight(),
-                    template.getPaddingBottom());
-            roomNumber.setBackground(template.getBackground());
-            roomNumber.setGravity(template.getGravity());
+            if (template != null) {
+                TextView roomNumber = new TextView(this);
+                roomNumber.setText(text);
+                roomNumber.setTextSize(template.getTextSize() / 2);
+                roomNumber.setWidth(template.getWidth());
+                roomNumber.setMinHeight(template.getHeight());
+                roomNumber.setPadding(
+                        template.getPaddingLeft(),
+                        template.getPaddingTop() - 5,
+                        template.getPaddingRight(),
+                        template.getPaddingBottom());
+                roomNumber.setBackground(template.getBackground());
+                roomNumber.setGravity(template.getGravity());
 
-            tr.addView(roomNumber);
-            table.addView(tr);
+                tr.addView(roomNumber);
+                table.addView(tr);
+            }
         }
     }
 

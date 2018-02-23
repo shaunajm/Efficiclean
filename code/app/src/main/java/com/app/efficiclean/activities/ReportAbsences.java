@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -151,6 +152,9 @@ public class ReportAbsences extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds.getValue(String.class).equals(key)) {
                         mTeamRef.child(ds.getKey()).removeValue();
+                        Intent i = new Intent(ReportAbsences.this, SupervisorHome.class);
+                        i.putExtras(extras);
+                        startActivity(i);
                         finish();
                     }
                 }
