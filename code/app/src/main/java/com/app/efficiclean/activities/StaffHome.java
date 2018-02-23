@@ -85,7 +85,7 @@ public class StaffHome extends AppCompatActivity {
                 Intent i = new Intent(StaffHome.this, StaffCurrentJob.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
@@ -208,22 +208,23 @@ public class StaffHome extends AppCompatActivity {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            TextView roomNumber = new TextView(this);
-            roomNumber.setText(job.getRoomNumber());
-            roomNumber.setTextSize(template.getTextSize() / 2);
-            roomNumber.setWidth(template.getWidth());
-            roomNumber.setMinHeight(template.getHeight());
-            roomNumber.setPadding(
-                    template.getPaddingLeft(),
-                    template.getPaddingTop() - 5,
-                    template.getPaddingRight(),
-                    template.getPaddingBottom());
-            roomNumber.setBackground(template.getBackground());
-            roomNumber.setGravity(template.getGravity());
+            if (template != null) {
+                TextView roomNumber = new TextView(this);
+                roomNumber.setText(job.getRoomNumber());
+                roomNumber.setTextSize(template.getTextSize() / 2);
+                roomNumber.setWidth(template.getWidth());
+                roomNumber.setMinHeight(template.getHeight());
+                roomNumber.setPadding(
+                        template.getPaddingLeft(),
+                        template.getPaddingTop() - 5,
+                        template.getPaddingRight(),
+                        template.getPaddingBottom());
+                roomNumber.setBackground(template.getBackground());
+                roomNumber.setGravity(template.getGravity());
 
-            tr.addView(roomNumber);
-            tb1.addView(tr);
-
+                tr.addView(roomNumber);
+                tb1.addView(tr);
+            }
         }
     }
 
@@ -242,28 +243,32 @@ public class StaffHome extends AppCompatActivity {
                 String text = "";
 
                 for (String staffKey : team.getMembers()) {
-                    if (text.equals("")) {
-                        text += staff.child(staffKey).child("username").getValue(String.class);
-                    } else {
-                        text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                    if (staffKey != null) {
+                        if (text.equals("")) {
+                            text += staff.child(staffKey).child("username").getValue(String.class);
+                        } else {
+                            text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                        }
                     }
                 }
 
-                TextView roomNumber = new TextView(this);
-                roomNumber.setText(text);
-                roomNumber.setTextSize(template.getTextSize() / 2);
-                roomNumber.setWidth(template.getWidth());
-                roomNumber.setMinHeight(template.getHeight());
-                roomNumber.setPadding(
-                        template.getPaddingLeft(),
-                        template.getPaddingTop() - 5,
-                        template.getPaddingRight(),
-                        template.getPaddingBottom());
-                roomNumber.setBackground(template.getBackground());
-                roomNumber.setGravity(template.getGravity());
+                if (template != null) {
+                    TextView roomNumber = new TextView(this);
+                    roomNumber.setText(text);
+                    roomNumber.setTextSize(template.getTextSize() / 2);
+                    roomNumber.setWidth(template.getWidth());
+                    roomNumber.setMinHeight(template.getHeight());
+                    roomNumber.setPadding(
+                            template.getPaddingLeft(),
+                            template.getPaddingTop() - 5,
+                            template.getPaddingRight(),
+                            template.getPaddingBottom());
+                    roomNumber.setBackground(template.getBackground());
+                    roomNumber.setGravity(template.getGravity());
 
-                tr.addView(roomNumber);
-                tb2.addView(tr);
+                    tr.addView(roomNumber);
+                    tb2.addView(tr);
+                }
             }
         }
     }

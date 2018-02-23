@@ -143,6 +143,14 @@ public class StaffCurrentJob extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(StaffCurrentJob.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
     
     public void getTeam() {
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamKey);
@@ -187,6 +195,9 @@ public class StaffCurrentJob extends AppCompatActivity {
         mTeamRef.child("currentJob").removeValue();
         Toast.makeText(StaffCurrentJob.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
+        Intent i = new Intent(StaffCurrentJob.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 }

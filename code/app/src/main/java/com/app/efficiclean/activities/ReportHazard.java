@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -116,6 +117,9 @@ public class ReportHazard extends AppCompatActivity {
         mTeamRef.child("currentJob").removeValue();
         Toast.makeText(ReportHazard.this, "This room has been marked hazardous and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
+        Intent i = new Intent(ReportHazard.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 }
