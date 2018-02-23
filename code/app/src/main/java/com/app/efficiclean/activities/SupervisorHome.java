@@ -59,6 +59,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, MapView.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -69,6 +70,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, HazardApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -79,6 +81,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, SupervisorApprovals.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -89,6 +92,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, BreakApproval.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -99,6 +103,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, SevereMessApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -109,6 +114,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, ReportAbsences.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -225,7 +231,7 @@ public class SupervisorHome extends AppCompatActivity {
             roomNumber.setText(text);
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
+            roomNumber.setMinHeight(template.getHeight());
             roomNumber.setPadding(
                     template.getPaddingLeft(),
                     template.getPaddingTop() - 5,

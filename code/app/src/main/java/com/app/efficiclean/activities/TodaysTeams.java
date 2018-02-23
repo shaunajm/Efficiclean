@@ -127,7 +127,7 @@ public class TodaysTeams extends AppCompatActivity {
             roomNumber.setText(text);
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
+            roomNumber.setMinHeight(template.getHeight());
             roomNumber.setPadding(
                     template.getPaddingLeft(),
                     template.getPaddingTop() - 5,

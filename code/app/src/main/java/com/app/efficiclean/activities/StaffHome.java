@@ -212,7 +212,7 @@ public class StaffHome extends AppCompatActivity {
             roomNumber.setText(job.getRoomNumber());
             roomNumber.setTextSize(template.getTextSize() / 2);
             roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
+            roomNumber.setMinHeight(template.getHeight());
             roomNumber.setPadding(
                     template.getPaddingLeft(),
                     template.getPaddingTop() - 5,
@@ -233,36 +233,38 @@ public class StaffHome extends AppCompatActivity {
         tb2.removeViews(1, tb2.getChildCount() - 1);
         for(DataSnapshot ds : teams.getChildren()) {
             Team team = ds.getValue(Team.class);
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            if (team.getStatus().equals("Waiting")) {
+                TableRow tr = new TableRow(this);
+                tr.setLayoutParams(new TableLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            String text = "";
+                String text = "";
 
-            for (String staffKey : team.getMembers()) {
-                if (text.equals("")) {
-                    text += staff.child(staffKey).child("username").getValue(String.class);
-                } else {
-                    text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                for (String staffKey : team.getMembers()) {
+                    if (text.equals("")) {
+                        text += staff.child(staffKey).child("username").getValue(String.class);
+                    } else {
+                        text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                    }
                 }
+
+                TextView roomNumber = new TextView(this);
+                roomNumber.setText(text);
+                roomNumber.setTextSize(template.getTextSize() / 2);
+                roomNumber.setWidth(template.getWidth());
+                roomNumber.setMinHeight(template.getHeight());
+                roomNumber.setPadding(
+                        template.getPaddingLeft(),
+                        template.getPaddingTop() - 5,
+                        template.getPaddingRight(),
+                        template.getPaddingBottom());
+                roomNumber.setBackground(template.getBackground());
+                roomNumber.setGravity(template.getGravity());
+
+                tr.addView(roomNumber);
+                tb2.addView(tr);
             }
-
-            TextView roomNumber = new TextView(this);
-            roomNumber.setText(text);
-            roomNumber.setTextSize(template.getTextSize() / 2);
-            roomNumber.setWidth(template.getWidth());
-            roomNumber.setHeight(template.getHeight());
-            roomNumber.setPadding(
-                    template.getPaddingLeft(),
-                    template.getPaddingTop() - 5,
-                    template.getPaddingRight(),
-                    template.getPaddingBottom());
-            roomNumber.setBackground(template.getBackground());
-            roomNumber.setGravity(template.getGravity());
-
-            tr.addView(roomNumber);
-            tb2.addView(tr);
         }
     }
 }

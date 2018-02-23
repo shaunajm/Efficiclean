@@ -1,22 +1,17 @@
 package com.app.efficiclean.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.*;
 
 import java.util.HashMap;
 
@@ -32,6 +27,7 @@ public class ReportAbsences extends AppCompatActivity {
     private RadioGroup names;
     private HashMap<String, String> keys;
     private Button markAbsent;
+    private String teamID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +127,40 @@ public class ReportAbsences extends AppCompatActivity {
     public void reportAbsence() {
         RadioButton rb = (RadioButton) findViewById(names.getCheckedRadioButtonId());
         String uname = rb.getText().toString();
-        String key = keys.get(uname);
-        mStaffRef.child(key).child("status").setValue("Absent");
+        final String key = keys.get(uname);
+        mStaffRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                teamID = dataSnapshot.child("teamID").getValue(String.class);
+                mStaffRef.child(key).child("teamID").setValue("Absent");
+                removeFromTeam(key);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void removeFromTeam(final String key) {
+        final DatabaseReference mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).child("members");
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.getValue(String.class).equals(key)) {
+                        mTeamRef.child(ds.getKey()).removeValue();
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
 
