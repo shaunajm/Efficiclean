@@ -41,6 +41,9 @@ public class ReportHazard extends AppCompatActivity {
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         extras = getIntent().getExtras();
         if (extras != null) {

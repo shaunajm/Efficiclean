@@ -43,6 +43,9 @@ public class StaffLogin extends AppCompatActivity {
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(com.app.efficiclean.R.id.etStaffHotelID);
