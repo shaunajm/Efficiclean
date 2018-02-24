@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+
 
 public class GuestHome extends AppCompatActivity {
 
@@ -30,7 +32,19 @@ public class GuestHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guest_home);
+
+        Calendar currentTime = Calendar.getInstance();
+        Calendar midnight = Calendar.getInstance();
+        midnight.set(Calendar.HOUR_OF_DAY, 15);
+        midnight.set(Calendar.MINUTE, 00);
+
+        if(midnight.getTimeInMillis() - currentTime.getTimeInMillis() <= 0){
+            setContentView(R.layout.activity_guest_cannot_mark);
+        } else {
+            setContentView(R.layout.activity_guest_home);
+        }
+
+
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 

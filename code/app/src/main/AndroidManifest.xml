@@ -49,35 +49,38 @@
         <activity android:name=".activities.TeamBreakApproval" />
         <activity android:name=".activities.HazardApprovalsList" />
         <activity android:name=".activities.SevereMessApprovalsList" />
-        <activity android:name=".activities.MapView"/>
+        <activity android:name=".activities.MapView" />
+
         <service
-            android:exported="false"
-            android:name=".services.ResetSystemStatus">
+            android:name=".services.ResetSystemStatus"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
         <service
-                android:exported="false"
-                android:name=".services.TeamAllocator">
+            android:name=".services.TeamAllocator"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
         <service
-                android:exported="false"
-                android:name=".services.UpdateJobPriorities">
+            android:name=".services.UpdateJobPriorities"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
         <service
-                android:exported="false"
-                android:name=".services.UpdateTeamPriorities">
+            android:name=".services.UpdateTeamPriorities"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <activity android:name=".activities.StaffMarkRoom" />
     </application>
 
 </manifest>
