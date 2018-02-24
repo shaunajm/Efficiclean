@@ -47,13 +47,13 @@
             android:layout_marginTop="58dp" app:layout_constraintTop_toBottomOf="@+id/btApproveBreak"/>
 
     <Button
-            android:text="Cleans approval"
+            android:text="Service approval"
             android:textSize="26sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="280dp"
             android:layout_height="140dp"
-            android:id="@+id/btCleansApproval" android:layout_marginRight="8dp"
+            android:id="@+id/btServiceApproval" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="37dp"/>
@@ -68,7 +68,7 @@
             android:id="@+id/btHazardApproval"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="53dp" app:layout_constraintTop_toBottomOf="@+id/btCleansApproval"/>
+            android:layout_marginTop="53dp" app:layout_constraintTop_toBottomOf="@+id/btServiceApproval"/>
 
     <Button
             android:text="Severe Mess approval"

@@ -29,7 +29,7 @@ public class SupervisorHome extends AppCompatActivity {
     private DatabaseReference mTeamRef;
     private Button btViewMap;
     private Button hazardApproval;
-    private Button cleansApproval;
+    private Button serviceApproval;
     private Button breakApproval;
     private Button approveSevereMess;
     private Button reportAbsences;
@@ -79,8 +79,8 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
-        cleansApproval = (Button) findViewById(com.app.efficiclean.R.id.btCleansApproval);
-        cleansApproval.setOnClickListener(new View.OnClickListener() {
+        serviceApproval = (Button) findViewById(com.app.efficiclean.R.id.btServiceApproval);
+        serviceApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, SupervisorApprovals.class);

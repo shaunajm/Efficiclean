@@ -126,7 +126,7 @@ public class SupervisorApprovals extends AppCompatActivity {
                 tr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(SupervisorApprovals.this, CleanApproval.class);
+                        Intent i = new Intent(SupervisorApprovals.this, ServiceApproval.class);
                         extras.putString("roomNumber", approval.getJob().getRoomNumber());
                         extras.putString("approvalKey", key);
                         i.putExtras(extras);

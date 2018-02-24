@@ -8,13 +8,13 @@
         tools:context="com.app.efficiclean.activities.StaffHome">
 
     <Button
-            android:text="Cleans approval"
+            android:text="Service approval"
             android:textSize="21sp"
             android:textColor="@color/myGold"
             android:background="@drawable/roundbutton"
             android:layout_width="150dp"
             android:layout_height="60dp"
-            android:id="@+id/btCleansApproval"
+            android:id="@+id/btServiceApproval"
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintHorizontal_bias="0.963" app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
             android:layout_marginRight="8dp" app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp" app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintHorizontal_bias="0.962" android:layout_marginTop="21dp"
-            app:layout_constraintTop_toBottomOf="@+id/btCleansApproval"/>
+            app:layout_constraintTop_toBottomOf="@+id/btServiceApproval"/>
 
     <Button
             android:text="Severe Mess approval"

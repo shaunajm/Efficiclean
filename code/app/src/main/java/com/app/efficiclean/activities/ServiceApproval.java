@@ -14,7 +14,7 @@ import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
-public class CleanApproval extends AppCompatActivity {
+public class ServiceApproval extends AppCompatActivity {
 
     private String supervisorKey;
     private String hotelID;
@@ -78,7 +78,7 @@ public class CleanApproval extends AppCompatActivity {
                         } else if (disapprove.isChecked()) {
                             disapprovedSubmit();
                         } else {
-                            Toast.makeText(CleanApproval.this, "You haven't selected an option. Please check one of the boxes and try again.",
+                            Toast.makeText(ServiceApproval.this, "You haven't selected an option. Please check one of the boxes and try again.",
                                     Toast.LENGTH_LONG).show();
                         }
                     }

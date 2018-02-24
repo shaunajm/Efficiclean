@@ -38,7 +38,7 @@
         <activity android:name=".activities.ReportAbsences" />
         <activity android:name=".activities.ApproveSevereMess" />
         <activity android:name=".activities.BreakApproval" />
-        <activity android:name=".activities.CleanApproval" />
+        <activity android:name=".activities.ServiceApproval" />
         <activity android:name=".activities.HazardApprovalPage" />
         <activity android:name=".activities.StaffRequestBreak" />
         <activity android:name=".activities.StaffCurrentJob" />

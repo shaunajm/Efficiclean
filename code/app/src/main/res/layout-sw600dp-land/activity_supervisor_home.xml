@@ -55,14 +55,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btApproveBreak" />
 
     <Button
-        android:id="@+id/btCleansApproval"
+        android:id="@+id/btServiceApproval"
         android:layout_width="239dp"
         android:layout_height="94dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="37dp"
         android:background="@drawable/roundbutton"
-        android:text="Cleans approval"
+        android:text="Service approval"
         android:textColor="@color/myGold"
         android:textSize="23sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -82,7 +82,7 @@
         android:textSize="23sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btCleansApproval" />
+        app:layout_constraintTop_toBottomOf="@+id/btServiceApproval" />
 
     <Button
         android:id="@+id/btSevereMessApproval"
