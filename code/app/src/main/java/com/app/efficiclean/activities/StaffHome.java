@@ -82,7 +82,7 @@ public class StaffHome extends AppCompatActivity {
                 Intent i = new Intent(StaffHome.this, StaffRequestBreak.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 

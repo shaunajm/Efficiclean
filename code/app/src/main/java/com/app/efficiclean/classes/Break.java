@@ -5,12 +5,21 @@ import java.util.Date;
 
 public class Break {
 
-    private String teamID;
-    private Date breakTime;
+    private boolean accepted;
     private int breakLength;
+    private Date breakTime;
+    private String teamID;
 
     public Break() {
+        accepted = false;
+    }
 
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
 
     public String getTeamID() {

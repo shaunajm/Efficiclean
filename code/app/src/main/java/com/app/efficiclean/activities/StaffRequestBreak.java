@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -160,6 +161,11 @@ public class StaffRequestBreak extends AppCompatActivity {
         } catch (Exception e) {
             e.getCause().printStackTrace();
         }
+
+        Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
     }
 }
 

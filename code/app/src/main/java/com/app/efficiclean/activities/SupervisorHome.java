@@ -100,7 +100,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, BreakApproval.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 

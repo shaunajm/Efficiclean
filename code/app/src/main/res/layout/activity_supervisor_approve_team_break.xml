@@ -54,36 +54,35 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
     <CheckBox
-        android:id="@+id/cbApprove"
-        android:layout_width="257dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Approve"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLength" />
+            android:id="@+id/cbApprove"
+            android:layout_width="257dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="38dp"
+            android:text="Approve"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLength" tools:layout_editor_absoluteX="50dp"/>
 
     <CheckBox
-        android:id="@+id/cbDisapprove"
-        android:layout_width="277dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Disapprove"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbApprove" />
+            android:id="@+id/cbDisapprove"
+            android:layout_width="255dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:text="Disapprove"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbApprove"
+            tools:layout_editor_absoluteX="60dp" tools:layout_editor_absoluteY="251dp"/>
 
     <EditText
         android:id="@+id/etReason"
