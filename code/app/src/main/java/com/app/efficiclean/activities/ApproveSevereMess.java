@@ -174,7 +174,7 @@ public class ApproveSevereMess extends AppCompatActivity {
         });
         mTeamRef.child("returnedJob").setValue(job);
         mTeamRef.child("priorityCounter").setValue(1);
-        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
         finish();
     }
@@ -199,7 +199,7 @@ public class ApproveSevereMess extends AppCompatActivity {
         });
         job.setDescription(comments.getText().toString());
         mTeamRef.child("returnedJob").setValue(job);
-        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
+        mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
         finish();
     }

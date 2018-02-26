@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,7 +58,12 @@ public class ReportAbsences extends AppCompatActivity {
         markAbsent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                reportAbsence();
+                if (names.getCheckedRadioButtonId() != 0) {
+                    reportAbsence();
+                } else {
+                    Toast.makeText(ReportAbsences.this, "Please select a staff member to mark absent.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 

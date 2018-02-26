@@ -36,7 +36,7 @@ public class GuestHome extends AppCompatActivity {
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
         midnight.set(Calendar.HOUR_OF_DAY, 15);
-        midnight.set(Calendar.MINUTE, 00);
+        midnight.set(Calendar.MINUTE, 0);
 
         if(midnight.getTimeInMillis() - currentTime.getTimeInMillis() <= 0){
             setContentView(R.layout.activity_guest_cannot_mark);
@@ -152,7 +152,7 @@ public class GuestHome extends AppCompatActivity {
         if (guestChoicePage != null) {
             guestChoicePage.putExtras(extras);
             startActivity(guestChoicePage);
-            onStop();
+            finish();
         } else {
             Toast.makeText(GuestHome.this, "An error has occurred. Please try again.",
                     Toast.LENGTH_LONG).show();

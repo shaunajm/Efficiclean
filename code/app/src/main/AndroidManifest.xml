@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.StaffLogin" />
-        <activity android:name=".activities.GuestHome" />
+        <activity android:name=".activities.GuestHome"/>
         <activity android:name=".activities.StaffHome" />
         <activity android:name=".activities.SupervisorHome" />
         <activity android:name=".activities.GuestPleaseService" />

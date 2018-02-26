@@ -45,7 +45,6 @@ public class GuestLogin extends AppCompatActivity {
     public Guest guest;
     public QueueHandler qHandler;
     private OSPermissionSubscriptionState status;
-    private String oneSignalKey;
     private FirebaseJobDispatcher jobDispatcher;
 
     @Override
@@ -259,7 +258,7 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void scheduleReset() {
-        int[] times = getTimes(23, 50);
+        int[] times = getTimes(23, 45);
 
         Bundle extras = new Bundle();
         extras.putString("hid", hid);

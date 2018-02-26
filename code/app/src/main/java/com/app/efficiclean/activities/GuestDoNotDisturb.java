@@ -48,6 +48,7 @@ public class GuestDoNotDisturb extends AppCompatActivity {
                 Intent i = new Intent(GuestDoNotDisturb.this, GuestHome.class);
                 i.putExtras(extras);
                 startActivity(i);
+                finish();
             }
         });
 
