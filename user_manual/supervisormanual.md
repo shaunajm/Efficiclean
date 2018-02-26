@@ -38,7 +38,7 @@
 
 - As you can see from the above image above the staff homepage has seven main elements
   - Today’s Progress
-  - Cleans Approval
+  - Service Approval
   - Hazards Approval
   - Severe Mess Approval
   - View Map
@@ -46,14 +46,14 @@
   - Report Absence
 
 
-- The today’s teams progress on the left hand side of the screen is a list (ranging from highest to lowest) of the number of cleans each team has completed today.
-- The cleans approval, hazards approval and severe mess approval buttons is where you can approve cleans that teams.
+- The Today’s Teams progress on the left hand side of the screen is a list (ranging from highest to lowest) of the number of service each team has completed today.
+- The Service Approval, hazards approval and severe mess approval buttons is where you can approve service that teams.
 - The View Map button shows a map view of the status of each room in the hotel.
 - Approve Break is used to approve breaks which staff members have requested
 - Report Absence is used to report if a staff member is not present to remove them from the queue.
 &nbsp;
 
-### Cleans approval
+### Service approval
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
@@ -67,7 +67,7 @@
 ![](media/supervisorcleansapprovalmobile.png) | ![](media/supervisorcleansapprovaltablet.png)
 
 - When you select a room you will be presented with this page.
-- The purpose of the cleans approval page is for you to approve a staffs room clean once it has been checked.
+- The purpose of the service approval page is for you to approve a staffs room clean once it has been checked.
 - If you wish to approve a clean:
   - Click the approve clean button
   - If you have any comments enter them in the comments box
