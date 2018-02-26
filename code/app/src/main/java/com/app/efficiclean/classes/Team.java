@@ -7,6 +7,7 @@ public class Team {
     private String status;
     private Job currentJob;
     private Job returnedJob;
+    private int breakRemaining;
     private int cleanCounter;
     private int priorityCounter;
     private ArrayList<String> members;
@@ -14,6 +15,7 @@ public class Team {
 
     public Team() {
         members = new ArrayList<String>();
+        breakRemaining = 60;
     }
 
     public String getStatus() {

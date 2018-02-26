@@ -149,6 +149,10 @@ public class TeamBreakApproval extends AppCompatActivity {
                                         timeText +
                                         "has been accepted.");
         }
+        int breakRemaining = teams.child(teamID).child("breakRemaining").getValue(int.class);
+        int newBreakRemaining = breakRemaining - breakLength;
+        mRootRef.child("teams").child(teamID).child("breakRemaining").setValue(newBreakRemaining);
+
         Intent i = new Intent(TeamBreakApproval.this, SupervisorHome.class);
         i.putExtras(extras);
         startActivity(i);

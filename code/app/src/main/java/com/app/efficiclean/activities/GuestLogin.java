@@ -13,10 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.*;
-import com.app.efficiclean.services.ResetSystemStatus;
-import com.app.efficiclean.services.TeamAllocator;
-import com.app.efficiclean.services.UpdateJobPriorities;
-import com.app.efficiclean.services.UpdateTeamPriorities;
+import com.app.efficiclean.services.*;
 import com.firebase.jobdispatcher.*;
 import com.firebase.jobdispatcher.Job;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -112,6 +109,7 @@ public class GuestLogin extends AppCompatActivity {
                     allocateTeams();
                     updateJobPriorities();
                     updateTeamPriorities();
+                    updateBreakStatus();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -339,5 +337,25 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " TEAM PRIORITY SERVICE", "Update priority of teams on the queue");
+    }
+
+    public void updateBreakStatus() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(UpdateBreakStatus.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " BREAK SERVICE")
+                .setTrigger(Trigger.executionWindow(60, 60))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " BREAK SERVICE", "Remove teams on break from the queue");
     }
 }

@@ -5,7 +5,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import com.app.efficiclean.R;
@@ -30,6 +29,7 @@ public class StaffRequestBreak extends AppCompatActivity {
     private DataSnapshot staff;
     private String teamID;
     private String requestedTime;
+    private int breakRemaining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +131,7 @@ public class StaffRequestBreak extends AppCompatActivity {
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                breakRemaining = dataSnapshot.child("breakRemaining").getValue(int.class);
                 String text = "Team: ";
                 for (DataSnapshot ds : dataSnapshot.child("members").getChildren()) {
                     String hk = ds.getValue(String.class);
@@ -157,23 +158,24 @@ public class StaffRequestBreak extends AppCompatActivity {
             requestedTime = "0" + requestedTime;
         }
 
-        Log.v("Time", requestedTime);
         Break breakRequest = new Break();
         breakRequest.setBreakLength(Integer.parseInt(selectedTime.getText().toString().substring(0, 2)));
         breakRequest.setBreakTime(requestedTime);
         breakRequest.setTeamID(teamID);
 
-        try {
+        if (breakRequest.getBreakLength() <= breakRemaining) {
             DatabaseReference mBreakRef = mRootRef.child("breakRequests");
             mBreakRef.push().setValue(breakRequest);
-        } catch (Exception e) {
-            e.getCause().printStackTrace();
-        }
 
-        Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
-        i.putExtras(extras);
-        startActivity(i);
-        finish();
+            Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
+            i.putExtras(extras);
+            startActivity(i);
+            finish();
+        } else {
+            Toast.makeText(StaffRequestBreak.this, "The break requested exceeds your remaining amount for the day. You have " +
+                            breakRequest.getBreakLength() + " minutes remaining.",
+                            Toast.LENGTH_LONG).show();
+        }
     }
 }
 
