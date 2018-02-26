@@ -217,4 +217,12 @@ public class BreakApproval extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(BreakApproval.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
 }

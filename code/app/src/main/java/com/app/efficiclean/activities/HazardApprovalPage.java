@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -153,6 +154,14 @@ public class HazardApprovalPage extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(HazardApprovalPage.this, HazardApprovalsList.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void approvedSubmit() {
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -175,6 +184,10 @@ public class HazardApprovalPage extends AppCompatActivity {
         mTeamRef.child("priorityCounter").setValue(2);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
+
+        Intent i = new Intent(HazardApprovalPage.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 
@@ -200,6 +213,10 @@ public class HazardApprovalPage extends AppCompatActivity {
         mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
+
+        Intent i = new Intent(HazardApprovalPage.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 }

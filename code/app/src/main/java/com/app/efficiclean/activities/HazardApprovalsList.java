@@ -137,4 +137,11 @@ public class HazardApprovalsList extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(HazardApprovalsList.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
 }

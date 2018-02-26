@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MapView extends AppCompatActivity {
     private HashMap<String, String> rooms;
     private DatabaseReference mRoomRef;
     private String hotelID;
+    private String jobTitle;
     private Bundle extras;
     private VectorMasterView map;
     private FirebaseAuth mAuth;
@@ -40,6 +42,7 @@ public class MapView extends AppCompatActivity {
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
+            jobTitle = extras.getString("jobTitle");
         }
 
         map = (VectorMasterView) findViewById(R.id.vmMap);
@@ -66,6 +69,9 @@ public class MapView extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -94,6 +100,21 @@ public class MapView extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (jobTitle.equals("housekeeper")) {
+            Intent i = new Intent(MapView.this, StaffHome.class);
+            i.putExtras(extras);
+            startActivity(i);
+            finish();
+        } else if (jobTitle.equals("supervisor")) {
+            Intent i = new Intent(MapView.this, SupervisorHome.class);
+            i.putExtras(extras);
+            startActivity(i);
+            finish();
+        }
     }
 
     public void changeRoomColours() {

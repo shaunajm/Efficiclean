@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -91,6 +92,14 @@ public class TodaysTeams extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(TodaysTeams.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
     }
 
     public void getTeams() {

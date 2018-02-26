@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -124,6 +125,9 @@ public class ApproveSevereMess extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -154,6 +158,14 @@ public class ApproveSevereMess extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ApproveSevereMess.this, SevereMessApprovalsList.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void approvedSubmit() {
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -176,6 +188,10 @@ public class ApproveSevereMess extends AppCompatActivity {
         mTeamRef.child("priorityCounter").setValue(1);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
+
+        Intent i = new Intent(ApproveSevereMess.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 
@@ -201,6 +217,10 @@ public class ApproveSevereMess extends AppCompatActivity {
         mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
+
+        Intent i = new Intent(ApproveSevereMess.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 }

@@ -114,6 +114,14 @@ public class ReportSevereMess extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ReportSevereMess.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void assignToSupervisor() {
         Job job = team.getCurrentJob();
         SevereMessApproval approval = new SevereMessApproval();

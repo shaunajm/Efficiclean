@@ -69,9 +69,10 @@ public class StaffHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(StaffHome.this, MapView.class);
+                extras.putString("jobTitle", "housekeeper");
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
@@ -183,7 +184,7 @@ public class StaffHome extends AppCompatActivity {
         Intent i = new Intent(StaffHome.this, TodaysTeams.class);
         i.putExtras(extras);
         startActivity(i);
-        onStop();
+        finish();
     }
 
     public void getTeams() {

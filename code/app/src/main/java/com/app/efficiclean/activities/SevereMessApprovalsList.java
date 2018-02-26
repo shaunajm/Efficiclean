@@ -63,6 +63,9 @@ public class SevereMessApprovalsList extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -91,6 +94,14 @@ public class SevereMessApprovalsList extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(SevereMessApprovalsList.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
     }
 
     public void setRoomApprovals(){
@@ -137,6 +148,5 @@ public class SevereMessApprovalsList extends AppCompatActivity {
             }
         }
     }
-
 }
 

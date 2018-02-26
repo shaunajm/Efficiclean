@@ -112,6 +112,14 @@ public class ReportHazard extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ReportHazard.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void assignToSupervisor() {
         Job job = team.getCurrentJob();
         HazardApproval approval = new HazardApproval();

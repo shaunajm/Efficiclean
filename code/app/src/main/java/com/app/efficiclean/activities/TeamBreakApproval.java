@@ -131,6 +131,14 @@ public class TeamBreakApproval extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(TeamBreakApproval.this, BreakApproval.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void approvedSubmit() {
         mRootRef.child("breakRequests").child(breakKey).child("accepted").setValue(true);
         for (DataSnapshot member : teams.child(teamID).child("members").getChildren()) {
@@ -158,6 +166,9 @@ public class TeamBreakApproval extends AppCompatActivity {
                             "has been denied. Reason: " +
                             reason.getText().toString());
         }
+        Intent i = new Intent(TeamBreakApproval.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
         finish();
     }
 }

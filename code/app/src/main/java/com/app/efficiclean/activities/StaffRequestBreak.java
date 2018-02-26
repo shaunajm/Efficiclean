@@ -118,6 +118,14 @@ public class StaffRequestBreak extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void getTeam() {
         mTeamRef = mRootRef.child("teams").child(teamID);
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {

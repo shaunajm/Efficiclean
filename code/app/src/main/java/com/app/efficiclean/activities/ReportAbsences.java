@@ -113,6 +113,14 @@ public class ReportAbsences extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ReportAbsences.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void populateGroup(){
         names.removeAllViews();
         for (DataSnapshot ds : staff.getChildren()) {

@@ -1,5 +1,6 @@
 package com.app.efficiclean.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -156,13 +157,25 @@ public class ServiceApproval extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ServiceApproval.this, SupervisorApprovals.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void approvedSubmit() {
         mTeamRef.child("cleanCounter").setValue(cleans);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
         String uid = supervisor.approvals.get(approvalKey).getJob().getCreatedBy();
         mSuperRef.child("approvals").child(approvalKey).removeValue();
         NotificationHandler.sendNotification(hotelID, uid, "Your room has been serviced. Thank you for using Efficiclean!");
-        finish();
+
+        Intent i = new Intent(ServiceApproval.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();;
     }
 
     public void disapprovedSubmit() {
@@ -184,6 +197,10 @@ public class ServiceApproval extends AppCompatActivity {
         mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();
-        finish();
+
+        Intent i = new Intent(ServiceApproval.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();;
     }
 }

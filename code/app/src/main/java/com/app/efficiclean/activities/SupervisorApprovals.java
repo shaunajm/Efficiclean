@@ -99,6 +99,14 @@ public class SupervisorApprovals extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(SupervisorApprovals.this, SupervisorHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void setRoomApprovals(){
         TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);

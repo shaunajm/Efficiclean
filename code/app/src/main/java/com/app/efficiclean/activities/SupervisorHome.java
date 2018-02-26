@@ -65,9 +65,10 @@ public class SupervisorHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SupervisorHome.this, MapView.class);
+                extras.putString("jobTitle", "supervisor");
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
@@ -78,7 +79,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, HazardApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
@@ -89,7 +90,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, SupervisorApprovals.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
@@ -111,7 +112,7 @@ public class SupervisorHome extends AppCompatActivity {
                 Intent i = new Intent(SupervisorHome.this, SevereMessApprovalsList.class);
                 i.putExtras(extras);
                 startActivity(i);
-                onStop();
+                finish();
             }
         });
 
