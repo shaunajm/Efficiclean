@@ -136,9 +136,8 @@ State machines show the changing state of a single object and the transitions be
 
 Sequence diagrams show object interactions arranged in time sequence. Here we can see the Login, Please service my room and request break objects. We can also see the messages exchanged between objects needed to carry out these scenarios. For example in the Login sequence diagram we can see the sequence of events involved in logging in a user. We also have an alt box to represent a success or failure condition present in the sequence.
 
-# 4.0 Problems and Resolutions
+# 4. Problems and Resolutions
 
-## Problems
 
 - QR codes
 
@@ -158,7 +157,9 @@ Sequence diagrams show object interactions arranged in time sequence. Here we ca
 
 - Guest Sign Out not working correctly
 
+
 ### QR Codes
+
 #### Problem
 
 Initially, we had planned for users to download the application using a QR code which would be present in their room. This QR code would then bring them to the login screen for their specific room. Upon further investigation we discovered that this action would not be possible using a single QR code.
