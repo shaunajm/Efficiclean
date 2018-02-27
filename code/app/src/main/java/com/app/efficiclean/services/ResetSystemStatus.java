@@ -76,6 +76,7 @@ public class ResetSystemStatus extends JobService {
         for (DataSnapshot room : rooms.getChildren()) {
             String key = room.getKey();
             mRoomRef.child(key).child("status").setValue("Idle");
+            mRoomRef.child(key).child("cleanTime").removeValue();
         }
     }
 
