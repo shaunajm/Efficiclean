@@ -140,17 +140,25 @@ Sequence diagrams show object interactions arranged in time sequence. Here we ca
 
 ## Problems
 
-- [**1. QR codes**](#41-QR-codes)
-- [**2. Asynchronous issue preventing login**](#42-asynchronous-issue)
-- [**3. Push Notification being sent to all Users**](#43-push-notification)
-- [**4. JobQueue not interacting automatically with StaffQueue**](#44-jobqueue-not-interacting)
-- [**5. Application crashing when updating database values which are being displayed**](#45-application-crashing)
-- [**6. Black Boxes being displayed on SVG Map Overview**](#46-black-boxes)
-- [**7. Bottoms of names in tables being cut off**](#47-bottoms-of-names)
-- [**8. Issue referencing specific path in vector drawable**](#48-issue-referencing)
-- [**9. Guest Sign Out not working correctly**](#49-guest-sign-out)
+- QR codes
 
-### 4.1 QR Codes
+- Asynchronous issue preventing login
+
+- Push Notification being sent to all Users
+
+- JobQueue not interacting automatically with StaffQueue
+
+- Application crashing when updating database values which are being displayed
+
+- Black Boxes being displayed on SVG Map Overview
+
+- Bottoms of names in tables being cut off
+
+- Issue referencing specific path in vector drawable
+
+- Guest Sign Out not working correctly
+
+### QR Codes
 #### Problem
 
 Initially, we had planned for users to download the application using a QR code which would be present in their room. This QR code would then bring them to the login screen for their specific room. Upon further investigation we discovered that this action would not be possible using a single QR code.
@@ -162,7 +170,7 @@ To combat the issue we decided to use two QR codes, one for login and one to bri
 We, after much thought, decided to allow users to download the application using a QR code but login will now not involved QR codes. As users will have to sign into a specific room in a specific hotel, we added two fields on our login page, hotel number and room number.
 
 
-### 4.2 Asynchronous Issue Preventing Login
+### Asynchronous Issue Preventing Login
 
 #### Problem
 
@@ -172,7 +180,7 @@ While attempting to log users into the application we were calling a function to
 
 To resolve the issue we approached the issue in a way that was more suited to the asynchronous nature of Firebase. Instead of our authentication branching from the code, we created a function to continue on the process. We then called this function after the authentication process had completed ensuring we have our result. Once this fix was implemented, users could log into the application successfully.
 
-### 4.3 Push Notifications being sent to all Users
+### Push Notifications being sent to all Users
 
 #### Problem
 
@@ -182,7 +190,7 @@ All push notifications, for example service approvals or break approvals,  were 
 
 To rectify this issue, we sent a unique tag for each user to the OneSignal console. This allowed us to individually identify users. Therefore each user only received notifications specific to them.
 
-### 4.4 JobQueue not interacting automatically with StaffQueue
+### JobQueue not interacting automatically with StaffQueue
 
 #### Problem
 
@@ -192,7 +200,7 @@ When the JobQueue and StaffQueue were declared, the two classes were not interac
 
 This issue was fixed by creating a queue handler which would listen to any changes on the job queue and team queue. The queue handler implemented the observer interface. Both queues then inherited from the observable class. The observer method *update* allows the observer object to perform actions based on changes from the objects being observed. We also set up a queue handler creator which initialises the queue handler with the relevant hotel ID.
 
-### 4.5 Application Crashing when updating database values which are being displayed
+### Application Crashing when updating database values which are being displayed
 
 #### Problem
 
@@ -202,7 +210,7 @@ When we were displaying our table layouts containing information regarding the s
 
 When displaying this information we used listeners for *SingleValueEvents* instead of *ValueEventListeners*. This way, the data was only loaded when the activity was created rather than constantly listening throughout its lifecycle.
 
-### 4.6 Black Boxes being displayed on SVG Map Overview
+### Black Boxes being displayed on SVG Map Overview
 
 #### Problem
 
@@ -212,7 +220,7 @@ Unfortunately, there is a known issue when converting SVG Maps to Vector Drawabl
 
 To remove these black boxes from the background of our vector drawable. We implemented a large filled shape in the diagram to prevent the black squares from affecting our map view.
 
-### 4.7 Bottoms of names in tables being cut off
+### Bottoms of names in tables being cut off
 
 #### Problem
 
@@ -222,7 +230,7 @@ When displaying data in table layout format, we used templates created in our xm
 
 We resolved this issue by setting a minimum height rather than a specific height for our new table rows. This meant that our table row would adjust to fit information from our text view.
 
-### 4.8 Issue referencing specific path in vector drawable
+### Issue referencing specific path in vector drawable
 
 #### Problem
 
@@ -236,7 +244,7 @@ To reference individual paths in a vector drawable we utilised an MIT licensed p
 
 We very quickly received a response from the repository owner. He debugged the method in question and found the issue. He updated the version of the project and functionality to reference individual paths was now working.
 
-### 4.9 Guest Sign Out not working correctly
+### Guest Sign Out not working correctly
 
 #### Problem
 
