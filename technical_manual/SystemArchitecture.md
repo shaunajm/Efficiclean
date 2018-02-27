@@ -8,15 +8,13 @@ The Efficiclean application was developed in Intelliji Ultimate version 2017.3.4
 
 ![](media/System Architecture.jpg)
 
-<<<<<<< HEAD
 - Efficiclean's systems architecture has two major elements, the application and the Firebase database.
 
 - The application itself has Has three layers, the User Interface, the Client Tier and the Android Studio Mobile SDK.
-=======
+
 - Efficiclean's systems architecture has two major elements, the application and the Firebase database. 
 
 - The application itself has Has three layers, the User Interface, the Client Tier and the Android Studio Mobile SDK. 
->>>>>>> 46d53ccc1b1f70d768ffc61f93fac061318afb81
 
 - Efficiclean was developed using the Android Studio software development kit.
 
@@ -30,8 +28,5 @@ The Efficiclean application was developed in Intelliji Ultimate version 2017.3.4
 
 - The applications data is in the Data Tier. This includes a vast amount of information from guest names and room numbers to staff names, approval requests and room status'. The data is stored as JSON data and is contained in a NoSQL database. We use our Google Services JSON file to create the link our application to the firebase console.
 
-<<<<<<< HEAD
 - The Application and Data Tier combined are the Firebase database which was utilised to create Efficiclean. 
-=======
-- The Application and Data Tier combined are the Firebase database which was utilised to create Efficiclean. 
->>>>>>> 46d53ccc1b1f70d768ffc61f93fac061318afb81
+
