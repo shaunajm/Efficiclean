@@ -114,6 +114,20 @@ public class StaffMarkRoom extends AppCompatActivity {
         mAuth.removeAuthStateListener(mAuthListener);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(StaffMarkRoom.this, StaffHome.class);
+        i.putExtras(extras);
+        startActivity(i);
+        finish();
+    }
+
     public void addJob() {
         RadioButton rb = (RadioButton) findViewById(status.getCheckedRadioButtonId());
         String roomStatus = rb.getText().toString();

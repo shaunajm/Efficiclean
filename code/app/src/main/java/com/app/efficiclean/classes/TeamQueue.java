@@ -50,7 +50,7 @@ public class TeamQueue extends Observable {
     }
 
     public void checkReturned(Team newTeam) {
-        if (newTeam.getCurrentJob() == null && newTeam.getReturnedJob() != null) {
+        if (!newTeam.getStatus().equals("Checking Rooms") && newTeam.getCurrentJob() == null && newTeam.getReturnedJob() != null) {
             mTeamRef.child(newTeam.key).child("currentJob").setValue(newTeam.getReturnedJob());
             mTeamRef.child(newTeam.key).child("status").setValue("In Progress");
             mTeamRef.child(newTeam.key).child("returnedJob").removeValue();

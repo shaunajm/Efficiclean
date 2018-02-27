@@ -131,7 +131,9 @@ public class ReportSevereMess extends AppCompatActivity {
         DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
         mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
-        mTeamRef.child("status").setValue("Waiting");
+        if (team.getStatus().equals("Checking Rooms") == false) {
+            mTeamRef.child("status").setValue("Waiting");
+        }
         mTeamRef.child("currentJob").removeValue();
         Toast.makeText(ReportSevereMess.this, "This room has been marked 'Severe Mess' and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();

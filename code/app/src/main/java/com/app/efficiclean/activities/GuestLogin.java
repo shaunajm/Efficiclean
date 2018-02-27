@@ -106,6 +106,7 @@ public class GuestLogin extends AppCompatActivity {
                     updateBreakStatus();
                     allocateBreaks();
                     initiateQueue();
+                    allocateMarkingTask();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -395,5 +396,25 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " QUEUE SERVICE", "Initiate queue service for job allocation");
+    }
+
+    public void allocateMarkingTask() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(CheckRooms.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " MARKING SERVICE")
+                .setTrigger(Trigger.executionWindow(60, 1500))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " MARKING SERVICE", "Allocate job to a team to mark the status of rooms");
     }
 }

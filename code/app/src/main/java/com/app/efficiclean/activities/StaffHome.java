@@ -92,7 +92,7 @@ public class StaffHome extends AppCompatActivity {
                 String teamStatus = teams.child(teamKey).child("status").getValue(String.class);
 
                 Intent i;
-                if (teamStatus.equals("Checking Rooms")) {
+                if (teamStatus.equals("Checking Rooms") && staff.child(staffKey).hasChild("currentJob") == false) {
                     i = new Intent(StaffHome.this, StaffMarkRoom.class);
                 } else {
                     i = new Intent(StaffHome.this, StaffCurrentJob.class);
