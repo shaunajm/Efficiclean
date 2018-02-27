@@ -254,7 +254,7 @@
 - Once you have entered this description, click submit and it will be sent to your supervisor for approval.
 
 
-## 3. Supervisor Manual
+## 3. Supervisor User Manual
 
 ### 3.1 Installation
 
