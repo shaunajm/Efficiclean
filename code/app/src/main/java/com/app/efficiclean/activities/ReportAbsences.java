@@ -83,6 +83,9 @@ public class ReportAbsences extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

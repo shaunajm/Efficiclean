@@ -14,10 +14,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.Team;
 import com.app.efficiclean.classes.Job;
-import com.app.efficiclean.classes.QueueHandler;
-import com.app.efficiclean.classes.QueueHandlerCreater;
+import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 
@@ -39,7 +37,6 @@ public class StaffHome extends AppCompatActivity {
     private DataSnapshot teams;
     private TableLayout tb1;
     private TableLayout tb2;
-    private QueueHandler qHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +94,6 @@ public class StaffHome extends AppCompatActivity {
                 finish();
             }
         });
-
-        qHandler = QueueHandlerCreater.createHandler(hotelID);
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {

@@ -14,8 +14,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.QueueHandler;
-import com.app.efficiclean.classes.QueueHandlerCreater;
 import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -37,8 +35,6 @@ public class SupervisorHome extends AppCompatActivity {
     private Bundle extras;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private QueueHandler qHandler;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,8 +122,6 @@ public class SupervisorHome extends AppCompatActivity {
                 finish();
             }
         });
-
-        qHandler = QueueHandlerCreater.createHandler(hotelID);
 
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {

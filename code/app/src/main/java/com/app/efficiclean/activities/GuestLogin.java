@@ -12,17 +12,15 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.*;
+import com.app.efficiclean.classes.Guest;
 import com.app.efficiclean.services.*;
 import com.firebase.jobdispatcher.*;
-import com.firebase.jobdispatcher.Job;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
-import com.onesignal.OSPermissionSubscriptionState;
 import com.onesignal.OneSignal;
 
 import java.util.Calendar;
@@ -40,8 +38,6 @@ public class GuestLogin extends AppCompatActivity {
     public Button loginBtn;
     public ProgressBar spinner;
     public Guest guest;
-    public QueueHandler qHandler;
-    private OSPermissionSubscriptionState status;
     private FirebaseJobDispatcher jobDispatcher;
 
     @Override
@@ -60,8 +56,6 @@ public class GuestLogin extends AppCompatActivity {
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
-
-        status = OneSignal.getPermissionSubscriptionState();
 
         //Map EditTexts to their xml elements
         hotelID = (EditText) findViewById(R.id.etHotelID);
@@ -111,6 +105,7 @@ public class GuestLogin extends AppCompatActivity {
                     updateTeamPriorities();
                     updateBreakStatus();
                     allocateBreaks();
+                    initiateQueue();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -151,8 +146,6 @@ public class GuestLogin extends AppCompatActivity {
         String sString = surname.getText().toString().trim();
 
         hid = hNumber;
-
-        qHandler = QueueHandlerCreater.createHandler(hNumber);
 
         if (!fString.equals("") && fString.equals("staff1")) {
             //Condition to pass to staff login page
@@ -380,5 +373,25 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " BREAK SERVICE", "Allocate team breaks with remaining break time");
+    }
+
+    public void initiateQueue() {
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(QueueHandlerService.class)
+                .setLifetime(Lifetime.FOREVER)
+                .setRecurring(true)
+                .setTag(hid + " QUEUE SERVICE")
+                .setTrigger(Trigger.executionWindow(60, 60))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " QUEUE SERVICE", "Initiate queue service for job allocation");
     }
 }

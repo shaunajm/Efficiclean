@@ -1,27 +1,19 @@
 package com.app.efficiclean.activities;
 
 import android.content.pm.ActivityInfo;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TableLayout;
-
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Job;
-import com.app.efficiclean.classes.QueueHandler;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class StaffMarkRoom extends AppCompatActivity {
 
