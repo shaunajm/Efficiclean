@@ -88,7 +88,16 @@ public class StaffHome extends AppCompatActivity {
         btCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StaffHome.this, StaffCurrentJob.class);
+                String teamKey = staff.child(staffKey).child("teamID").getValue(String.class);
+                String teamStatus = teams.child(teamKey).child("status").getValue(String.class);
+
+                Intent i;
+                if (teamStatus.equals("Checking Rooms")) {
+                    i = new Intent(StaffHome.this, StaffMarkRoom.class);
+                } else {
+                    i = new Intent(StaffHome.this, StaffCurrentJob.class);
+                }
+
                 i.putExtras(extras);
                 startActivity(i);
                 finish();
