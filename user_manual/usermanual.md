@@ -18,7 +18,7 @@
   + [2.5 View Map](#25-map-view)
   + [2.6 Request Break](#26-request-break)
   + [2.7 Current Job](#27-current-job)
-- [**3. Supervisor User Manual**](#3-high-level-design)
+- [**3. Supervisor User Manual**](#3-supervisor-user-manual)
   +	[3.1 Installation](#31-installation)
   + [3.2 Login](#32-login)
   + [3.3 The Home Screen](#33-the-home-screen)
