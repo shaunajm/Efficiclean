@@ -359,20 +359,22 @@ public class GuestLogin extends AppCompatActivity {
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
-        Job job = jobDispatcher.newJobBuilder()
-                .setService(BreakAllocator.class)
-                .setLifetime(Lifetime.FOREVER)
-                .setRecurring(true)
-                .setTag(hid + " BREAK ALLOCATION SERVICE")
-                .setTrigger(Trigger.executionWindow(times[0], times[1]))
-                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(true)
-                .setConstraints(Constraint.ON_ANY_NETWORK)
-                .setExtras(extras)
-                .build();
+        if (times[0] >= 0 && times[1] >= 0) {
+            Job job = jobDispatcher.newJobBuilder()
+                    .setService(BreakAllocator.class)
+                    .setLifetime(Lifetime.FOREVER)
+                    .setRecurring(true)
+                    .setTag(hid + " BREAK ALLOCATION SERVICE")
+                    .setTrigger(Trigger.executionWindow(times[0], times[1]))
+                    .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                    .setReplaceCurrent(false)
+                    .setConstraints(Constraint.ON_ANY_NETWORK)
+                    .setExtras(extras)
+                    .build();
 
-        jobDispatcher.mustSchedule(job);
-        Log.v(hid + " BREAK SERVICE", "Allocate team breaks with remaining break time");
+            jobDispatcher.mustSchedule(job);
+            Log.v(hid + " BREAK SERVICE", "Allocate team breaks with remaining break time");
+        }
     }
 
     public void initiateQueue() {
