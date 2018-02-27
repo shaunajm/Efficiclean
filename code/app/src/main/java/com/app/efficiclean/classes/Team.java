@@ -26,6 +26,14 @@ public class Team {
         this.status = status;
     }
 
+    public int getBreakRemaining() {
+        return breakRemaining;
+    }
+
+    public void setBreakRemaining(int breakRemaining) {
+        this.breakRemaining = breakRemaining;
+    }
+
     public int getCleanCounter() {
         return cleanCounter;
     }

@@ -1,6 +1,7 @@
 package com.app.efficiclean.services;
 
 import android.os.Bundle;
+import com.app.efficiclean.classes.Job;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 import com.google.firebase.database.*;
@@ -59,6 +60,11 @@ public class UpdateBreakStatus extends JobService {
 
                 if (now.getTimeInMillis() >= breakTime.getTime() && now.getTimeInMillis() <= endBreak.getTime()) {
                     mRootRef.child("teams").child(teamKey).child("status").setValue("On Break");
+                    if (teams.child(teamKey).hasChild("currentJob")) {
+                        Job job = teams.child(teamKey).child("currentJob").getValue(Job.class);
+                        mRootRef.child("jobs").push().setValue(job);
+                        mRootRef.child("teams").child(teamKey).child("currentJob").removeValue();
+                    }
                 } else if (now.getTimeInMillis() > endBreak.getTime()) {
                     mRootRef.child("teams").child(teamKey).child("status").setValue("Waiting");
                     mRootRef.child("teams").child(teamKey).child("priorityCounter").setValue(0);

@@ -110,6 +110,7 @@ public class GuestLogin extends AppCompatActivity {
                     updateJobPriorities();
                     updateTeamPriorities();
                     updateBreakStatus();
+                    allocateBreaks();
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
@@ -268,7 +269,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setTag(hid + " RESET SERVICE")
                 .setTrigger(Trigger.executionWindow(times[0], times[1]))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(false)
+                .setReplaceCurrent(true)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
                 .setExtras(extras)
                 .build();
@@ -357,5 +358,27 @@ public class GuestLogin extends AppCompatActivity {
 
         jobDispatcher.mustSchedule(job);
         Log.v(hid + " BREAK SERVICE", "Remove teams on break from the queue");
+    }
+
+    public void allocateBreaks() {
+        int[] times = getTimes(12, 0);
+
+        Bundle extras = new Bundle();
+        extras.putString("hid", hid);
+
+        Job job = jobDispatcher.newJobBuilder()
+                .setService(BreakAllocator.class)
+                .setLifetime(Lifetime.FOREVER)
+                //.setRecurring(true)
+                .setTag(hid + " BREAK ALLOCATION SERVICE")
+                .setTrigger(Trigger.NOW)
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(true)
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .setExtras(extras)
+                .build();
+
+        jobDispatcher.mustSchedule(job);
+        Log.v(hid + " BREAK SERVICE", "Allocate team breaks with remaining break time");
     }
 }
