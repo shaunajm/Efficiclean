@@ -30,6 +30,10 @@ public class Break {
         this.teamID = teamID;
     }
 
+    public void setBreakTimeDate(Date time) {
+        breakTime = time;
+    }
+
     public Date getBreakTime() {
         return breakTime;
     }

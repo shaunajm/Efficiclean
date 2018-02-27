@@ -17,8 +17,8 @@ public class ResetSystemStatus extends JobService {
     private DatabaseReference mRoomRef;
     private DatabaseReference mTeamRef;
     private DatabaseReference mSuperRef;
+    private DatabaseReference mBreakRef;
     private DataSnapshot rooms;
-    private DataSnapshot teams;
     private DataSnapshot supervisor;
     private Bundle extras;
 
@@ -32,9 +32,11 @@ public class ResetSystemStatus extends JobService {
         mRoomRef = mRootRef.child("rooms");
         mTeamRef = mRootRef.child("teams");
         mSuperRef = mRootRef.child("supervisor");
+        mBreakRef = mRootRef.child("breakRequests");
 
         mJobRef.removeValue();
         mTeamRef.removeValue();
+        mBreakRef.removeValue();
 
         mRoomRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
