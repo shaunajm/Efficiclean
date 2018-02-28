@@ -29,9 +29,9 @@
 
 Our idea in centred around the way housekeeping staff currently operate in hotels. At the moment, staff must walk up and down the halls in hotels to check what rooms have signs on them saying “Do not disturb” or “Please service my room”. Staff members are assigned a floor and if there are no rooms on their floor to be cleaned they must wait somewhere until they check the hall again. This system is extremely inefficient.
 
-We intend to build an application that would modernise this area of work. Instead of guests using a piece of paper on the door to notify staff when rooms are available to be cleaned they will use this application to mark the status of their room and be notified when their room is cleaned. Cleaning staff will be able to see on a web interface when rooms are ready to be cleaned, be assigned rooms and mark them as completed. This will result in this process being more efficient, safer, more accessible and better kept track of. 
+We intend to build an application that would modernise this area of work. Instead of guests using a piece of paper on the door to notify staff when rooms are available to be cleaned they will use this application to mark the status of their room and be notified when their room is cleaned. Cleaning staff will be able to see on a web interface when rooms are ready to be cleaned, be assigned rooms and mark them as completed. This will result in this process being more efficient, safer, more accessible and better kept track of.
 
-Each room in the hotel will have a QR code in the room. When guests scan this QR code the application will be downloaded and the guest will be presented with the login screen. All the guest will have to do here is enter their name. The application will then check the database to see if this guest is in the room. The user will then be logged into the application and be presented with home screen. Alternatively, if a guest is using a laptop of device without a QR scanner, under the QR code will be a URL that will be independent to that room. Like the app, the guest will enter their name and will be logged into the application.
+Each hotel room will have a sign with a QR code for downloading the application, their room number and hotel ID. When users open the Efficiclean application they will simply have to enter their room number, hotel ID, forename and surname. The application will then check the database to see if this guest is in the room. The user will then be logged into the application and be presented with home screen.
 
 The main features of our project are:
 
@@ -41,15 +41,13 @@ The main features of our project are:
 
 -	Remote notification for guests when their room is marked clean on the system
 
--	Guest login via QR code in hotel room alongside verification of guest by database query 
-
--	Option to add feedback and rate a room's clean
-
--	Database interaction to automatically log out guests when their stay is over
-
--	Staff work statistics generated for supervisor and manager
+-	Staff work statistics generated for supervisor
 
 -	Randomly allocated cleaning pairs daily to increase security
+
+- The functionality for supervisors to mark staff members as absent
+
+- Staff can request breaks which their supervisor may approve or disapprove.
 
 &nbsp;
 
@@ -62,13 +60,13 @@ This application will be attractive to hotels as it will not only improve the sp
 
 Guests will benefit from EfficiClean as they will be able to mark their room’s status quickly and be placed onto a queue to be cleaned. If guests mark their room as “Please service my room”, they will be given a rough estimate of when a cleaning team will get to their room. Currently, guests have to guess how long they should leave their room for, which results in people wondering “Should I go back now?”, “Is it too early?” and even after waiting still sometimes returning to an uncleaned room. Efficiclean would completely eradicate this ambiguity that we all hate about getting our rooms serviced.  Once a guests room is completed and has been approved by a supervisor, they will receive a push notification to let them know that their room has been cleaned. This will make this experience more pleasant for guests as it will be efficient and provide a vast amount of information so that they are not left in the dark.
 
-Supervisors will also be given their own interface on Efficiclean. Here they will be shown a progress chart showing how each team is getting on. They will also be presented with the options of “Clean approval”, “Hazards approval”, “Severe mess approval”, “Map view”, “Break approval” and “Report Absence”. By using Efficiclean, staff members will no longer have to search the hotel to find their supervisor to clean their room. Instead, they will simply request a room be approved and their supervisor will receive this request, wherever they are in the hotel.
+Supervisors will also be given their own interface on Efficiclean. Here they will be shown a progress chart showing how each team is getting on. They will also be presented with the options of “Service approval”, “Hazards approval”, “Severe mess approval”, “Map view”, “Break approval” and “Report Absence”. By using Efficiclean, staff members will no longer have to search the hotel to find their supervisor to clean their room. Instead, they will simply request a room be approved and their supervisor will receive this request, wherever they are in the hotel.
 
 The map view will allow the supervisor to monitor how their staff members are doing. Similar to the staffs map view this will provide a colour coded map showing which rooms need to be cleaned, which have been completed, which do not want to be cleaned and which are empty. Supervisors currently cannot see this information and must mark it all on paper room by room. The map will allow supervisors to see what rooms they must approve and know where their staff members are during the day.
 
 Break approval and report absence are also available to the supervisor. Break approval means that a pair can simply type in when they want a break and how long of a break they would like. The supervisor can then accept or reject these and can also now easily monitor that too many pairs are not taking breaks at the same time. Reporting an absence is present on the application to inform the queue if a pair will not be working together. It will then we up to the supervisor to either leave this person by themselves or assign them to a three. This will ensure that absences and breaks are kept track of electronically for the supervisor to monitor.
 
-Reception will also benefit from EfficiClean. Rather than reception having to call the housekeeping supervisor to check if rooms are available if guests arrive early, they will have their own interface on the system. This interface will only contain a simplified version of the map view. Reception will have the ability to see when a room, which guests have checked out of, is in progress or has been completed. They can then instantly know if they can allow a guest to guest to check in early without any inconvenience. 
+Reception will also benefit from EfficiClean. Rather than reception having to call the housekeeping supervisor to check if rooms are available if guests arrive early, they will have their own interface on the system. This interface will only contain a simplified version of the map view. Reception will have the ability to see when a room, which guests have checked out of, is in progress or has been completed. They can then instantly know if they can allow a guest to guest to check in early without any inconvenience.
 
 Reception will also have an input in the system when guests check out. If a guest has not clicked “Checking out” this can be done by receptionists on their user interface. Once a guest has checked out, the receptionist, instead of calling the housekeeping manager to let them know, can click on the room on their user interface and mark the room as “Checking out”. This room will then be added to the queue like the other rooms to be cleaned.
 
@@ -93,7 +91,7 @@ Easy to approach, reach, enter, speak with, or use.
 
 **Decrement**
  The act or process of decreasing; gradual reduction.
- 
+
  **Hazardous substance**
  A 'hazardous substance' is any substance that has one or more of the following intrinsic 'hazardous properties': Explosiveness. Flammability. Ability to oxidise (accelerate a fire) Human toxicity (acute or chronic)
 
@@ -107,11 +105,11 @@ Easy to approach, reach, enter, speak with, or use.
 
 ##### Login
 
-Guests will be instructed to scan a QR code in their room to download EfficiClean. This will bring them to the login page for their room. All the guest will have to do is enter their first name and surname. This will be checked against the database to ensure that this guest is in this room. If the guest is in this room, the guest will be logged in and will be presented with the home screen.
+Each hotel room will have a sign with a QR code for downloading the application, their room number and hotel ID. When users open the Efficiclean application they will simply have to enter their room number, hotel ID, forename and surname. The application will then check the database to see if this guest is in the room. The user will then be logged into the application and be presented with home screen.
 
 ##### Status
 
-On the home screen, guests will be presented with three buttons. “Please service my room”, “Do not disturb” and “Checking out”. The guest simply clicks which button applies to them. If the guest clicks “Please service my room” they will be given a rough estimate of when a cleaning team will get to their room. Once their room has been completed  they will receive a push notification to let them know that they can return to their room. If a guest clicks “Do not disturb” they will be given the option to change their rooms status until a specified time. Once a guest’s room has been cleaned they will be provided with an optional feedback form which will be forwarded on to management.
+On the home screen, guests will be presented with three buttons. “Please service my room”, “Do not disturb” and “Checking out”. The guest simply clicks which button applies to them. If the guest clicks “Please service my room” they will be given a rough estimate of when a cleaning team will get to their room. Once their room has been completed  they will receive a push notification to let them know that they can return to their room. If a guest clicks “Do not disturb” they will be given the option to change their rooms status until a specified time.
 
 ##### Notification
 
@@ -130,11 +128,11 @@ Currently, for security reasons, rooms are cleaned by pairs of housekeeping staf
 
 ##### Queue
 
-Rooms will be added to a queue once a guest marks them as “Please service my room” or “Checking out”. Rooms will not only be added in the order that they are placed on the queue but also in the order that is most efficient for cleaning staff to clean them as they progress through a hallway. The queue will operate on a priority system as to incentivise guests to use the application. Cleaning staff will also be placed on a queue to assign them to rooms.
+Rooms will be added to a queue once a guest marks them as “Please service my room” or “Checking out”. The queue will operate on a priority system as to incentivise guests to use the application. Cleaning staff will also be placed on a queue to assign them to rooms.
 
 ##### Map
 
-This function will make it easy for staff members to see exactly what status each room is in and what progress the staff of the day are making as a whole.  This will provide a colour coded map showing which rooms need to be cleaned, which have been completed, which do not want to be cleaned and which are empty. 
+This function will make it easy for staff members to see exactly what status each room is in and what progress the staff of the day are making as a whole.  This will provide a colour coded map showing which rooms need to be cleaned, which have been completed, which do not want to be cleaned and which are empty.
 
 ##### Supervisor Approval
 
@@ -142,21 +140,21 @@ To remove the inefficiency of staff members having to locate their supervisor to
 
 ##### Staff Break
 
-Instead of having to go find their supervisor to ask if they can go on a break, staff members can request breaks on the application. They select what time they are going at and how long of a break they will be taking. The supervisor can then approve or reject breaks while keeping in mind how many people are already on break at this time. 
+Instead of having to go find their supervisor to ask if they can go on a break, staff members can request breaks on the application. They select what time they are going at and how long of a break they will be taking. The supervisor can then approve or reject breaks while keeping in mind how many people are already on break at this time.
 
 #### __Supervisor Functionality__
 
 ##### Progress Chart
 
-On the supervisor interface, they will be given an option to view the progress of cleaning staff. This page will display all the teams alongside the amount of rooms they have cleaned that they, helping supervisors monitor the work rate of staff.
+On the supervisor interface, they will be provided with a chart containing the progress of cleaning staff. This chart will display all the teams alongside the amount of rooms they have cleaned that they, helping supervisors monitor the work rate of staff.
 
 ##### Map
 
-Supervisors will be presented with the same map as regular staff members except instead of seeing rooms assigned to them, they will see what rooms they have to approve. Similar to the staff map, this will provide a colour coded map showing which rooms need to be cleaned, which rooms need to be approved, which have been completed, which do not want to be cleaned and which are empty. 
+Supervisors will be presented with the same map as housekeeping staff. This will provide a colour coded map showing which rooms need to be cleaned, which rooms need to be approved, which have been completed, which do not want to be cleaned and which are empty.
 
 ##### Approvals
 
-The supervisor will be able to approve a large number of different requests on their user interface. This includes cleans approval, hazard approval,severe mess approval and break approval. The first of these three include the supervisor going to the specified room and checking it. The latter is for allowing staff members to go on a break at a specific time. Adding this functionality to the application means that in any of these instances, staff members will not have to go find the supervisor but can do this electronically.
+The supervisor will be able to approve a large number of different requests on their user interface. This includes service approval, hazard approval,severe mess approval and break approval. The first of these three include the supervisor going to the specified room and checking it. The latter is for allowing staff members to go on a break at a specific time. Adding this functionality to the application means that in any of these instances, staff members will not have to go find the supervisor but can do this electronically.
 
 ##### Absence
 
@@ -166,14 +164,14 @@ Supervisors will also be able to report staff absences on to the system. They wi
 
 ##### Map
 
-Reception will be provided with a simpler map than both the staff and the supervisor. To eliminate the need to call housekeeping staff with information every time a guest checks in or checks out they will have their own interface on the system. Reception will have the ability to see when a room, which guests have checked out of, is in progress or has been completed. They can then instantly know if they can allow a guest to guest to check in early without any inconvenience.They will also be able to mark a room on the system as “Checking out” if a guest checks out without marking this on the system themselves.
+Reception will be provided with a map view just like that of both the staff and the supervisor. To eliminate the need to call housekeeping staff with information every time a guest checks in or checks out they will have their own interface on the system. Reception will have the ability to see when a room, which guests have checked out of, is in progress or has been completed. They can then instantly know if they can allow a guest to guest to check in early without any inconvenience.They will also be able to mark a room on the system as “Checking out” if a guest checks out without marking this on the system themselves.
 
 &nbsp;
 
 ## 2.2 User Characteristics and Objectives
-EfficiClean is aimed primarily at hotel management, supervisors, staff and guests. As the app is aimed at a wide variety of people it will be used by people of all ages and technical abilities. This will mean that our application must have an easy to use interface which can be used by anyone. Our user interface must be accessible as it may be used by people with accessibility requirements such as screen readers. We would also hope that EfficiClean would be available in multiple languages as it is an application that can be used anywhere in the world.
+EfficiClean is aimed primarily at hotel management, supervisors, staff and guests. As the app is aimed at a wide variety of people it will be used by people of all ages and technical abilities. This will mean that our application must have an easy to use interface which can be used by anyone. Our user interface must be accessible as it may be used by people with accessibility requirements such as screen readers.
 
-As EfficiClean already has a very simple home screen which consists of four buttons, we must ensure that the colour contrast, sizing and accessibility of these are all designed well. 
+As EfficiClean already has a very simple home screen which consists of four buttons, we must ensure that the colour contrast, sizing and accessibility of these are all designed well.
 
 
 &nbsp;
@@ -183,10 +181,10 @@ As EfficiClean already has a very simple home screen which consists of four butt
 #### __Scenario One: Login__
 
 ##### Current System State:
-User scans the QR code in their room which will download the application and open the login page for their room.
+User scans the QR code in their room which will download the application. Once they open the application they will be presented with the login screen.
 
 ##### Informal Scenario:
-The user must then enter their forename and surname into the text boxes on screen to verify that they are staying in this room.
+The user must then enter their hotel ID (present in their room), room number, forename and surname into the text boxes on screen to verify that they are staying in this room.
 
 ##### Next Scenario:
 The user will then be successfully logged into the application and will be presented with the home screen.
@@ -201,7 +199,7 @@ The user will select the “Please service my room” on the homepage of the use
 When the room reaches the top of the queue it will assigned a team of housekeepers to service the room. This team will clean the room and then mark the room as “Supervisor Action”. The supervisor will then see the room on their “To be approved” list and must ensure that the clean is up to a high enough standard. If they find that the food is properly cleaned they will mark the room as “Cleaned”.
 
 ##### Next Scenario:
-The user will then receive a push notification to let them know that the room has been cleaned. If they open the application after the room has been cleaned they will be given the option to give feedback on the service their room has received. This feedback will be sent directly to management.
+The user will then receive a push notification to let them know that the room has been cleaned.
 
 
 #### __Scenario Three: Room marked as "Please service my room" and hazardous__
@@ -254,7 +252,7 @@ Once this room is marked as “Cleaned” it will appear as green on the Recepti
 #### __Scenario Seven: Requesting a break__
 
 ##### Current System State:
-Two staff members working together decide they want a break at 12:00 for 30 minutes. 
+Two staff members working together decide they want a break at 12:00 for 30 minutes.
 
 ##### Informal Scenario:
 They use EfficiClean to get this break approved by their supervisor. They select the time and length of the break they wish to take. This request it submitted to the supervisor. The supervisor can see how many staff members are taking break at this time and if it is okay for the team to take their break.
@@ -262,14 +260,14 @@ They use EfficiClean to get this break approved by their supervisor. They select
 ##### Next Scenario:
 The supervisor approves this break and the team receive a notification to alert them that their break has been approved.
 
-&nbsp; 
+&nbsp;
 
 ## 2.4 Constraints
 
 #### Integration Requirements
 The primary constraint that we will face is integrating this system with the current system used in hotels. We must ensure that our system would allow for an easy transition and attract users.
 
-#### Time Constraints 
+#### Time Constraints
 As this project is due on the 9th of March, time is a constraint which we will have to take into consideration when deciding what we would like to add to EfficiClean.
 
 #### User Requirements
@@ -285,10 +283,10 @@ As we will be using a database of hotel guests and their room numbers we must be
 ## 3.1 External Requirements
 
 #### Hardware
-For a hotel to adopt this system, they would need to provide access to their database to interact with the guest verification system, as well as a strong wifi connection for guests to use. EfficiClean generates two QR codes per hotel room which would need to be put up just inside the room door. Staff would need a tablet to allow them to interact with the system. Guests who want to avail of the application will need either a smartphone, laptop or tablet.
+For a hotel to adopt this system, they would need to provide access to their database to interact with the guest verification system, as well as a strong wifi connection for guests to use. Staff would need a tablet to allow them to interact with the system. Guests who want to avail of the application will need either a smartphone or tablet.
 
 #### Software
-The system should run smoothly on all different operating systems. Handheld devices should be running Android (minimum API 18, Android 4.3 Jelly Bean) as well as an application or in-built camera feature for scanning QR codes. 
+The system should run smoothly on all different operating systems. Handheld devices should be running Android (minimum API 21, Android 4.3 Lollipop).
 
 #### Environment
 In order for guests and staff to be able to use the application, the hotel will have to provide a wifi connection that stretches across all floors of the hotel. Guests must also stay logged in for the duration of their stay in order to receive push notifications when their room has been serviced.
@@ -298,21 +296,21 @@ In order for guests and staff to be able to use the application, the hotel will 
 ### 3.2.1 Functionality of the QR code
 
 #### Description
-There are 2 QR codes per room: one for if the guest has the app already and one which downloads it. Both then send the guest to their relevant login screen.
+There are a QR codes per room: to bring the guest to the download page of the Efficiclean application.
 
 #### Criticality
-While it is not essential for downloading the app as it will be available on the play store, it is necessary to send the user to the correct login page for their room, making it easier for guests to login successfully. 
+While it is not essential for downloading the app as it will be available on the play store, it will make it easier for guests to download the application.
 
 #### Technical Issues
-The main issue would be making sure each generated QR code brings you to the specified room page.
+The main issue would be if guests do not have a QR code scanner on their device. This will be combatted by giving the name of the application for guests to download through the play store.
 
 #### Dependencies with other requirements
-Without the QR codes, guests will be unable to login to the app, breaking the whole system. 
+Without the QR codes, guests will have to navigate through the play store independently.
 
 ### 3.2.2 Login
 
 #### Description
-When the guests scan their QR code, they are presented with the login screen of EfficiClean. Guests input their forename and surname which is then validated with the information in the database to ensure they are staying in the room. Staff will input their username and password to log in.
+When the guests scan their QR code, they are presented with the login screen of EfficiClean. Guests input their hotel ID, room number, forename and surname which is then validated with the information in the database to ensure they are staying in the room. Staff will input their username and password to log in.
 
 #### Criticality
 The guest validation at the login stage is crucial to the app’s functionality. Without proper verification, anybody could mark the statuses of hotel rooms and sabotage the system.
@@ -343,13 +341,13 @@ How a guest interacts the app fully influences the actions of housekeeping staff
 The housekeeping staff login to the app with their own personal username and password. When on duty, their team is active on the staff queue system. When they reach the top of the queue they are assigned a cleaning job from the room queue. They service that room then mark it ready for supervisor approval.
 
 #### Criticality
-Staff must use the system correctly for the application to run as efficiently as possible. If they are slow in their marking of room status or forget completely, then the room will be left with the status of “Cleaning in progress” and the housekeeping team won’t be added to the queue to receive another task. 
+Staff must use the system correctly for the application to run as efficiently as possible. If they are slow in their marking of room status or forget completely, then the room will be left with the status of “Cleaning in progress” and the housekeeping team won’t be added to the queue to receive another task.
 
 #### Technical Issues
 The main technical issue which could be faced is the implementation of the map view for housekeeping staff. An SVG map will display the status of rooms by colour code, which requires efficient and precise interaction with the database to acquire the correct room status as it appears in real time.
 
 #### Dependencies with other requirements
-The actions of guests play a large part in the functionality of housekeeping staff. Staff are also involved in nearly all the roles of the supervisor, from room approval to break requests. Staff also need to use the login system to access their own profile. 
+The actions of guests play a large part in the functionality of housekeeping staff. Staff are also involved in nearly all the roles of the supervisor, from room approval to break requests. Staff also need to use the login system to access their own profile.
 
 ### 3.2.5 Functionality of a supervisor
 
@@ -357,7 +355,7 @@ The actions of guests play a large part in the functionality of housekeeping sta
 The supervisor monitors and manages the housekeeping staff. They receive all staff approval requests, break requests and report staff absences. They can also allocate break times and monitor a team’s progress.
 
 #### Criticality
-While the supervisor has an important role in the system, it is not as crucial as the staff of guests. Its main function is to give the final approval on rooms, which in reality could be done by staff. However the supervisor approval adds an extra level of security, and is also how most hotels operate. 
+While the supervisor has an important role in the system, it is not as crucial as the staff of guests. Its main function is to give the final approval on rooms, which in reality could be done by staff. However the supervisor approval adds an extra level of security, and is also how most hotels operate.
 
 #### Technical Issues
 The supervisor also has a map view, so the same issues of the housekeeping staff apply in this case. When breaks are allocated to a team, the queue must be able to remove that specific team at the allocated time and also give the staff a fair position on their return.
@@ -543,4 +541,3 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 -   SVG Map Maker: http://mapsvg.com/mapsvg/
 
 -   ZXing: https://zxing.org/w/decode.jspx
-   
