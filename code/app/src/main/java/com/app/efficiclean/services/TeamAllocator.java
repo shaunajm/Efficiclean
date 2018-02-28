@@ -59,7 +59,6 @@ public class TeamAllocator extends JobService {
 
     public void createTeams() {
         mTeamRef = mRootRef.child("teams");
-        mTeamRef.removeValue();
 
         int i;
         for (i = 0; i < staffKeys.size() - 1; i += 2) {
