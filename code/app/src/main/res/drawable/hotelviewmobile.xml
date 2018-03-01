@@ -474,13 +474,13 @@
     <path android:fillAlpha="1" android:fillColor="#000106" android:name=""
         android:pathData="M8.99,269.57h15.89v21.43h-15.89z"
         android:strokeAlpha="1" android:strokeColor="#06060a" android:strokeWidth="0.60000008"/>
-    <path android:fillAlpha="1" android:fillColor="#ffff00" android:name=""
+    <path android:fillAlpha="1" android:fillColor="#1589FF" android:name=""
         android:pathData="M85.54,241.21h15.89v19.81h-15.89z"
         android:strokeAlpha="1" android:strokeColor="#06060a" android:strokeWidth="0.60000008"/>
     <path android:fillAlpha="1" android:fillColor="#ff6600" android:name=""
         android:pathData="M86.2,269.18h15.88v20.08h-15.88z"
         android:strokeAlpha="1" android:strokeColor="#06060a" android:strokeWidth="0.60000008"/>
-    <path android:fillAlpha="1" android:fillColor="#ff0000" android:name=""
+    <path android:fillAlpha="1" android:fillColor="#800000" android:name=""
         android:pathData="M155.93,258.27h15.89v21.16h-15.89z"
         android:strokeAlpha="1" android:strokeColor="#06060a" android:strokeWidth="0.60000008"/>
     <path android:fillAlpha="1" android:fillColor="#008000" android:name=""
