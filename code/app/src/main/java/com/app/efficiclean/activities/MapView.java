@@ -123,11 +123,11 @@ public class MapView extends AppCompatActivity {
             String pathName = "pRoom" + roomNumber;
             PathModel room = map.getPathModelByName(pathName);
             if (status.equals("Waiting")) {
-                room.setFillColor(Color.parseColor("#ffff00"));
+                room.setFillColor(Color.parseColor("#1589FF"));
             } else if (status.equals("Do Not Disturb")) {
                 room.setFillColor(Color.parseColor("#000000"));
             } else if (status.equals("To Be Cleaned")) {
-                room.setFillColor(Color.parseColor("#ff0000"));
+                room.setFillColor(Color.parseColor("#800000"));
             } else if (status.equals("Completed")) {
                 room.setFillColor(Color.parseColor("#008000"));
             } else if (status.equals("In Process")) {
