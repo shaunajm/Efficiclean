@@ -28,6 +28,7 @@
   + [3.7 View Map](#37-map-view)
   + [3.8 Approve Break](#38-approve-break)
   + [3.9 Report Absence](#39-report-absence)
+- [**4. Reception User Manual**](#3-reception-user-manual)
 
 
 &nbsp;
@@ -208,10 +209,10 @@
 - This screen presents you with the status of each room in the hotel.
 - There is a legend at the bottom of the map for reference
     - Completed, rooms that have been cleaned, are marked green
-    - Waiting, rooms that are awaiting approval by a supervisor, are marked yellow
+    - Waiting, rooms that are awaiting approval by a supervisor, are marked blue
     - Do not disturb, rooms of guest that do not wish for their rooms to be cleaned, are marked black
     - In Progress, rooms which are currently being cleaned, are marked orange
-    - To be cleaned, rooms which are waiting to be cleaned, are marked red
+    - To be cleaned, rooms which are waiting to be cleaned, are marked dark red
 
 &nbsp;
 
@@ -401,10 +402,10 @@
 - This screen presents you with the status of each room in the hotel.
 - There is a legend at the bottom of the map for reference
   - Completed, rooms that have been cleaned, are marked green
-  - Waiting, rooms that are awaiting approval by a supervisor, are marked yellow
+  - Waiting, rooms that are awaiting approval by a supervisor, are marked blue
   - Do not disturb, rooms of guest that do not wish for their rooms to be cleaned, are marked black
   - In Progress, rooms which are currently being cleaned, are marked orange
-  - To be cleaned, rooms which are waiting to be cleaned, are marked red
+  - To be cleaned, rooms which are waiting to be cleaned, are marked dark red
 
 ### 3.8 Approve Break
 
@@ -439,3 +440,56 @@
 - If a staff member is absent, you must mark them as absent on the application so that they are not assigned to rooms.
 - To do this click on the staff member who is absent and click submit.
 - This staff member is now successfully marked as absent.
+
+## 4. Reception User Manual
+
+### 4.1 Login
+
+- When you open Efficiclean you will be presented with the login page.
+- This is the guest page
+- In the forename field enter “staff1” as seen below
+
+
+![](media/ReceptionLogin1staff1.png)
+
+
+
+- Click the Login button
+- You will be presented with the following page
+
+![](media/ReceptionLogin2.png)
+
+
+- Enter your Hotel
+- Enter your unique username and password
+- Click the Login button
+
+
+### 4.2 Map view
+
+- On the right hand side of the page you will see the Map view (circled)
+- This view presents you with the status of each room in the hotel.
+- There is a legend at the bottom of the map for reference
+  - Completed, rooms that have been cleaned, are marked green
+  - Waiting, rooms that are awaiting approval by a supervisor, are marked blue
+  - Do not disturb, rooms of guest that do not wish for their rooms to be cleaned, are marked black
+  - In Progress, rooms which are currently being cleaned, are marked orange
+  - To be cleaned, rooms which are waiting to be cleaned, are marked dark red
+- If a room is marked green, guests can be checked into these rooms.
+
+![](media/ReceptionHomeMap.png)
+
+### 4.3 Check Out Guest
+
+- If a guest has not checked out of their room on the Efficiclean application you can do this on the left hand side of the page. (circled)
+- Type in the room number in the field provided
+- Click "Check Guest Out"
+- This guest has now been successfully checked out
+
+![](media/ReceptionHomeCheckOut.png)
+
+### 4.4 Sign out
+
+- Click the "Log Out" button (circled)
+
+![](media/ReceptionHomeLogOut.png)

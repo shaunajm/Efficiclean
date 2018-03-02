@@ -367,7 +367,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 # **4. System Architecture**
 
-![](media/System Architecture.jpg)
+![](media/SystemArchitecture.jpg)
 
 &nbsp;
 
@@ -376,7 +376,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ## Context Diagram
 
-![](media/Context Diagram (1).jpg)
+![](media/ContextDiagram.jpg)
 
 &nbsp;
 
@@ -515,7 +515,7 @@ The supervisor deals mainly with staff. The supervisor decides their break time 
 
 ### Gantt Chart
 
-![](media/Gant Chart.jpg)
+![](media/GantChart.jpg)
 
 ### Critical Tasks
 
