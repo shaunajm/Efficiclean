@@ -27,7 +27,7 @@
             android:textColor="#000"
             android:textColorHint="#000"
             android:padding="20sp"
-            android:hint="etDescription"
+            android:hint="Description"
             android:textSize="20sp"
             android:background="@drawable/textview_border"
             android:ems="15"
