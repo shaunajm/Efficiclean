@@ -235,7 +235,10 @@
 &nbsp;
 
 ### 2.7 Current Job
-&nbsp;
+
+- Your current job will either be a room clean or adding rooms to the queue.
+
+##### Room Clean
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
@@ -254,6 +257,21 @@
 - If you mark a room as either hazardous or severe mess you will be requested to provide a description of the hazard or severe mess.
 - Once you have entered this description, click submit and it will be sent to your supervisor for approval.
 
+##### Add Rooms to queue
+
+*Mobile Interface*                 | *Tablet interface*
+:---------------------------------:|:--------------------------------------:
+![](media/currentjobmarkmobile.png) | ![](media/currentjobmarktablet.png)
+
+&nbsp;
+
+- At a given time interval, specified by your hotel, one team will be assigned the job of walking through the hotel to add rooms to the system which are utilising tags on their door.
+- To add a room to the system
+  - Type in the room number in the field given.
+  - Tap the status which applies to this room.
+  - Click the "Mark Room" button.
+- Once you have completed adding rooms.
+  - Click the "Finish Check" button.
 
 ## 3. Supervisor User Manual
 

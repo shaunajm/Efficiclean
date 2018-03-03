@@ -97,6 +97,8 @@ The Efficiclean application was developed in Intelliji Ultimate version 2017.3.4
 
 - The Application and Data Tier combined are the Firebase database which was utilised to create Efficiclean.
 
+&nbsp;
+
 # 3. High Level Design
 
 ## 3.1 Component Model
