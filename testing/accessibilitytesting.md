@@ -1,7 +1,12 @@
 ## Accessibility Testing
 
 #### Sight Difficulties
-For users with sight difficulties, the Efficiclean mobile application, although as usable as possible, may not be very easy to use. For this reason, we developed a web interface which was been vigorously accessibility tested. Guests who suffer from sight difficulties can use this interface to mark there room status and receive a notification to inform them when their room has been cleaned.
+For users with sight difficulties, the Efficiclean mobile application, although as usable as possible, may not be very easy to use. For this reason, we developed a web interface which was been vigorously accessibility tested. Guests who suffer from sight difficulties can use this interface to mark there room status and receive a notification to inform them when their room has been cleaned. The web interface can be controlled through the use of a keyboard and does not require a mouse.
+
+ *Web Login*                   | *Web Homepage*
+:------------------------------:|:-----------------------:
+ ![](media/ReceptionLogin2.png)| ![](media/ReceptionHome.png)
+
 
 #### Colour Blindness
 To ensure Efficiclean was usable for users who suffer from colour blindness, we were careful to make sure that contrasting colours were not used together. Similarly, we had to ensure colours on the Map View did not contrast.
