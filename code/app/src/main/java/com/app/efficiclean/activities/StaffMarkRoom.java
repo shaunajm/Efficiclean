@@ -5,11 +5,9 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.*;
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Job;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +24,7 @@ public class StaffMarkRoom extends AppCompatActivity {
     private DatabaseReference mRootRef;
     private DatabaseReference mRoomRef;
     private DatabaseReference mJobRef;
+    private DataSnapshot rooms;
     private RadioGroup status;
     private EditText roomNumber;
     private Button markRoom;
@@ -58,7 +57,12 @@ public class StaffMarkRoom extends AppCompatActivity {
         markRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addJob();
+                RadioButton rb = (RadioButton) findViewById(status.getCheckedRadioButtonId());
+                String rNumber = roomNumber.getText().toString();
+                if (!rNumber.equals("") && rb != null) {
+                    addJob();
+                } Toast.makeText(StaffMarkRoom.this, "Please fill in a valid room number and select a status.",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -84,6 +88,18 @@ public class StaffMarkRoom extends AppCompatActivity {
         });
 
         mRoomRef = mRootRef.child("rooms");
+        mRoomRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                rooms = dataSnapshot;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         mJobRef = mRootRef.child("jobs");
 
         mAuth = FirebaseAuth.getInstance();
@@ -132,20 +148,32 @@ public class StaffMarkRoom extends AppCompatActivity {
         RadioButton rb = (RadioButton) findViewById(status.getCheckedRadioButtonId());
         String roomStatus = rb.getText().toString();
         String rNumber = roomNumber.getText().toString();
-        if (roomStatus.equals("Do not Disturb")) {
-            mRoomRef.child(rNumber).child("status").setValue("Do Not Disturb");
+        if (rooms.hasChild(rNumber)) {
+            Log.v("Status", rooms.child(rNumber).child("status").getValue(String.class));
+            if (rooms.child(rNumber).child("status").getValue(String.class).equals("Idle")) {
+                if (roomStatus.equals("Do not Disturb")) {
+                    mRoomRef.child(rNumber).child("status").setValue("Do Not Disturb");
+                } else {
+                    Job job = new Job();
+                    job.setRoomNumber(rNumber);
+                    job.setPriority(0);
+                    mRoomRef.child(rNumber).child("status").setValue("To Be Cleaned");
+                    mJobRef.push().setValue(job);
+                }
+
+                Intent i = new Intent(StaffMarkRoom.this, StaffHome.class);
+                i.putExtras(extras);
+                startActivity(i);
+                finish();
+            } else {
+                Toast.makeText(StaffMarkRoom.this, "The selected room already has a service job assigned to it today.",
+                        Toast.LENGTH_LONG).show();
+            }
         } else {
-            Job job = new Job();
-            job.setRoomNumber(rNumber);
-            job.setPriority(0);
-            mRoomRef.child(rNumber).child("status").setValue("To Be Cleaned");
-            mJobRef.push().setValue(job);
+            Toast.makeText(StaffMarkRoom.this, "This room number does not exist. Please try again.",
+                    Toast.LENGTH_LONG).show();
         }
 
-        Intent i = new Intent(StaffMarkRoom.this, StaffHome.class);
-        i.putExtras(extras);
-        startActivity(i);
-        finish();
     }
 
     public void finishCheck() {

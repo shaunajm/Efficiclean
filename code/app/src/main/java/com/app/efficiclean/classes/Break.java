@@ -39,9 +39,8 @@ public class Break {
     }
 
     public void setBreakTime(String timeString) {
-        String[] parts = timeString.split(":");
-        int hour = Integer.parseInt(parts[0]);
-        int minute = Integer.parseInt(parts[1]);
+        int hour = Integer.parseInt(timeString.substring(0, 2));
+        int minute = Integer.parseInt(timeString.substring(2, 4));
 
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);

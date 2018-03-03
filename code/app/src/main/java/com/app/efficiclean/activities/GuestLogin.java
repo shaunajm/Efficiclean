@@ -285,7 +285,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setTag(hid + " TEAM SERVICE")
                 .setTrigger(Trigger.executionWindow(times[0], times[1]))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(true)
+                .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
                 .setExtras(extras)
                 .build();
