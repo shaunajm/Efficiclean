@@ -72,10 +72,16 @@ public class GuestLogin extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Get input values from EditText boxes
+                String hNumber = hotelID.getText().toString().trim();
+                String rNumber = roomNumber.getText().toString().trim();
+                String fString = forename.getText().toString().trim();
+                String sString = surname.getText().toString().trim();
+
                 spinner.bringToFront();
                 spinner.invalidate();
                 spinner.setVisibility(View.VISIBLE);
-                loginButtonClick();
+                loginButtonClick(hNumber, rNumber, fString, sString);
             }
         });
 
@@ -139,13 +145,7 @@ public class GuestLogin extends AppCompatActivity {
         mAuth.removeAuthStateListener(mAuthListener);
     }
 
-    public void loginButtonClick() {
-        //Get input values from EditText boxes
-        String hNumber = hotelID.getText().toString().trim();
-        String rNumber = roomNumber.getText().toString().trim();
-        String fString = forename.getText().toString().trim();
-        String sString = surname.getText().toString().trim();
-
+    public void loginButtonClick(String hNumber, String rNumber, String fString, String sString) {
         hid = hNumber;
 
         if (!fString.equals("") && fString.equals("staff1")) {

@@ -6,7 +6,7 @@ public class Job {
 
     private String createdBy;
     private String roomNumber;
-    private int timestamp;
+    private long timestamp;
     private int priorityCounter;
     private boolean isCompleted;
     private String assignedTo;
@@ -14,7 +14,7 @@ public class Job {
     public String key;
 
     public Job() {
-        timestamp = (int) new Timestamp(System.currentTimeMillis()).getTime();
+        timestamp = new Timestamp(System.currentTimeMillis()).getTime();
         isCompleted = false;
     }
 
@@ -34,7 +34,7 @@ public class Job {
         return roomNumber;
     }
 
-    public int getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
@@ -58,8 +58,8 @@ public class Job {
         return isCompleted;
     }
 
-    public void markCompleted(boolean completed) {
-        isCompleted = completed;
+    public void markCompleted() {
+        isCompleted = true;
     }
 
     public String getDescription() {
