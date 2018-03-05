@@ -1,0 +1,144 @@
+body {
+	text-align: center;
+	font-family: Arial;
+	color: #A52A2A;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+#header {
+	background-color: #A52A2A;
+	color: #FFD700;
+	-moz-border-radius: 0px 0px 150px 150px;
+	-webkit-border-radius: 0px 0px 150px 150px;
+	border-radius: 0px 0px 150px 150px;
+}
+
+#header p {
+	font-size: 100px;
+	font-family: Merienda;
+	padding: 20px;
+}
+
+#content h1 {
+	padding: 40px 20px 15px 20px 
+}
+
+#content h2 {
+	padding: 15px 20px 50px 20px 
+}
+
+.form-group {
+	padding: 8px;
+}
+
+.form-control {
+	margin: auto;
+	font-size: 26px;
+	width: 450px;
+	background-color: #A52A2A;
+	color: #FFD700;
+}
+
+.form-control::-webkit-input-placeholder { color: white; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: white; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: white; }  /* Mozilla Firefox 19+ */
+
+#login {
+	padding: 10px 20px 10px 20px;
+}
+
+#login button {
+	font-size: 35px;
+	background-color: #A52A2A;
+	color: #FFD700;
+}
+
+#mark-room {
+	padding: 60px 15px 15px 15px
+}
+
+#mark-room button {
+	padding: 15px;
+	font-size: 28px;
+	background-color: #A52A2A;
+	color: #FFD700;
+}
+
+#guest-btn {
+	padding: 30px;
+}
+
+#guest-btn button {
+	width: 550px;
+	padding: 15px;
+	font-size: 30px;
+	background-color: #A52A2A;
+	color: #FFD700;
+}
+ 
+#logout {
+	position: absolute;
+	float: left;
+	padding: 60px 0px 0px 90px;
+}
+
+#logout button {
+	padding: 15px;
+	font-size: 24px;
+	background-color: #FFD700;
+	color: #A52A2A;
+}
+
+.overlay-bg {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height:100%;
+	width: 100%;
+	cursor: pointer;
+	z-index: 1000; /* high z-index */
+	background: #000; /* fallback */
+	background: rgba(0,0,0,0.75);
+}
+
+.overlay-content {
+	display: none;
+	background: #fff;
+	padding: 1%;
+	width: 40%;
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	margin: 0 0 0 -20%; /* add negative left margin for half the width to center the div */
+	cursor: default;
+	z-index: 10001;
+	border-radius: 4px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.9);
+}
+
+.close-btn {
+	cursor: pointer;
+	border: 1px solid #333;
+	padding: 2% 5%;
+	background: #A52A2A; /* fallback */
+	color: #FFD700;
+	border-radius: 4px;
+	box-shadow: 0 0 4px #A52A2A;
+}
+
+#actions {
+	margin-top: 100px;
+	display: inline-block;
+	width: 50%;
+	float: left;
+	padding: 30px;
+}
+
+#map-container {
+	display: inline-block;
+	width: 40%;
+	float: right;
+	padding: 30px;
+}

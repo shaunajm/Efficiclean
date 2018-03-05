@@ -1,0 +1,40 @@
+<html lang="en">
+	<head>
+		<title>Welcome to Efficiclean!</title>
+		<meta charset="utf-8">
+	 	<meta name="viewport" content="width=1024">
+	 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	 	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	 	<link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+	</head>
+	<body>
+		<div class=".page-header" id="header">
+			<p>Efficiclean</p>
+		</div>
+		<div class="container-fluid" id="content">
+			<h1>Staff Login</h1>
+			<h2>Please enter your details below.</h2>
+			<div class="form-group" id="input-hid">
+				<input type="number" class="form-control" name="hotel-id" placeholder="Hotel ID" id="hid">
+			</div>
+			<div class="form-group" id="input-rnum">
+				<input type="text" class="form-control" name="username" placeholder="Username" id="uname">
+			</div>
+			<div class="form-group" id="input-fname">
+				<input type="password" class="form-control" name="password" placeholder="Password" id="pword">
+			</div>
+			<div id="login">
+				<button type="button" class="btn btn-primary btn-lg" id="login-btn">Log In</button>
+			</div>
+			<div class="overlay-bg">
+				<div class="overlay-content popup">
+				    <p>We can not find a staff member with this username and password. Please try again.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+			</div>
+		</div>
+		<script src="js/firebase.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/stafflogin.js"></script>
+	</body>
+</html>

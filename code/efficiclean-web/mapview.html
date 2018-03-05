@@ -1,0 +1,48 @@
+<html lang="en">
+	<head>
+		<title>Welcome to Efficiclean!</title>
+		<meta charset="utf-8">
+	 	<meta name="viewport" content="width=1024">
+	 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	 	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	 	<link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+	</head>
+	<body>
+		<div class=".page-header" id="header">
+			<div id="logout">
+				<button type="button" class="btn btn-primary btn-lg" id="logout-btn"><b>Logout</b></button>
+			</div>
+			<p>Efficiclean</p>
+		</div>
+		<div class="container-fluid" id="content">
+			<div class="container-fluid" id="actions">
+				<h2>Please enter the room number which is now checked out.</h2>
+				<div class="form-group" id="input-rnum">
+					<input type="number" class="form-control" name="room-number" placeholder="Room Number" id="rnum">
+				</div>
+				<div id="mark-room">
+					<button type="button" class="btn btn-primary btn-lg" id="mark-room-btn">Check Guest Out</button>
+				</div>
+			</div>
+			<div class="container-fluid" id="map-container">
+				<object id="map" type="image/svg+xml" data="map.svg" width="1400px" height="1400px">
+				  	Your browser does not support SVG
+				</object>
+			</div>
+			<div class="overlay-bg">
+				<div class="overlay-content popup1">
+				    <p>The selected room's status has been marked and will be serviced shortly.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+				<div class="overlay-content popup2">
+				    <p>The inputted room does not exist. Please try again.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+			</div>
+		</div>
+		<script src="js/firebase.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript" src="js/loader.js"></script>
+	</body>
+</html>
