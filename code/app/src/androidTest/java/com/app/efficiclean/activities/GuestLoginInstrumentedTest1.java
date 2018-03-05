@@ -18,7 +18,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(AndroidJUnit4.class)
-public class GuestLoginInstrumentedTest {
+public class GuestLoginInstrumentedTest1 {
 
     @Rule
     public ActivityTestRule<GuestLogin> mActivity = new ActivityTestRule<GuestLogin>(GuestLogin.class);
@@ -56,7 +56,7 @@ public class GuestLoginInstrumentedTest {
 
         onView(withId(R.id.btLogin)).perform(click());
     }
-
+    /*
     @Test
     public void login_2() {
         onView(withId(R.id.etForename)).perform(typeText("staff1"));
@@ -64,9 +64,9 @@ public class GuestLoginInstrumentedTest {
 
         onView(withId(R.id.btLogin)).perform(click());
     }
-
+    */
     @Test
-    public void login_3() {
+    public void login_2() {
         onView(withId(R.id.btLogin)).perform(click());
     }
 

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.app.efficiclean.R;
 import com.app.efficiclean.classes.Housekeeper;
 import com.app.efficiclean.classes.Staff;
+import com.app.efficiclean.classes.Supervisor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,15 +24,15 @@ import com.onesignal.OneSignal;
 
 public class StaffLogin extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mRootRef;
-    private EditText hotelID;
-    private EditText username;
-    private EditText password;
-    private Button loginBtn;
-    private ProgressBar spinner;
-    private Staff employee;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+    public DatabaseReference mRootRef;
+    public EditText hotelID;
+    public EditText username;
+    public EditText password;
+    public Button loginBtn;
+    public ProgressBar spinner;
+    public Staff employee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,8 +194,8 @@ public class StaffLogin extends AppCompatActivity {
                     if (ds.child("username").getValue(String.class).equals(uString)                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
                         correctDetails = true;                                                          //Change value of correctDetails
-                        Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
-                        validateValues(housekeeper);
+                        Supervisor supervisor = ds.getValue(Supervisor.class);                       //Create Housekeeper from Firebase Data
+                        validateValues(supervisor);
                     }
                 }
                 if (!correctDetails) {
