@@ -39,6 +39,7 @@ public class GuestLogin extends AppCompatActivity {
     public ProgressBar spinner;
     public Guest guest;
     private FirebaseJobDispatcher jobDispatcher;
+    private Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,15 +117,33 @@ public class GuestLogin extends AppCompatActivity {
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
-                    Bundle bundle = new Bundle();
                     bundle.putString("hotelID", hotelID.getText().toString().trim());
                     bundle.putSerializable("thisGuest", guest);
 
-                    spinner.setVisibility(View.GONE);
-                    Intent guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
-                    guestHomePage.putExtras(bundle);
-                    startActivity(guestHomePage);
-                    onStop();
+                    Log.v("Room", guest.getRoomNumber());
+                    mRootRef.child(hotelID.getText().toString()).child("rooms").child(guest.getRoomNumber()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String status = dataSnapshot.child("status").getValue(String.class);
+                            Intent guestHomePage;
+                            if (status.equals("Completed")) {
+                                guestHomePage = new Intent(GuestLogin.this, GuestCompleted.class);
+                            } else if (status.equals("Idle") == false && status.equals("Do Not Disturb") == false) {
+                                guestHomePage = new Intent(GuestLogin.this, GuestPleaseService.class);
+                            } else {
+                                guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
+                            }
+                            spinner.setVisibility(View.GONE);
+                            guestHomePage.putExtras(bundle);
+                            startActivity(guestHomePage);
+                            onStop();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
         };

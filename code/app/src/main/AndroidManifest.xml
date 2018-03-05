@@ -51,6 +51,7 @@
         <activity android:name=".activities.SevereMessApprovalsList" />
         <activity android:name=".activities.MapView" />
         <activity android:name=".activities.StaffMarkRoom" />
+        <activity android:name=".activities.GuestCompleted" />
         <service
             android:name=".services.ResetSystemStatus"
             android:exported="false">
