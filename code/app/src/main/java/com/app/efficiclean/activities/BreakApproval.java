@@ -120,7 +120,7 @@ public class BreakApproval extends AppCompatActivity {
 
                 int hour = b.child("breakTime").child("hours").getValue(int.class);
                 int minute = b.child("breakTime").child("minutes").getValue(int.class);
-                String time = hour + ":" + minute;
+                String time = hour + "" + minute;
 
                 Break currentBreak = new Break();
                 currentBreak.setTeamID(teamID);
