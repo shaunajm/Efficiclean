@@ -14,12 +14,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GuestDoNotDisturb extends AppCompatActivity {
 
-    private Button btHome;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private Guest guest;
-    private String hotelID;
-    private Bundle extras;
+    public Button btHome;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+    public Guest guest;
+    public String hotelID;
+    public Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,13 +21,13 @@ import java.util.Calendar;
 
 public class GuestHome extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mRootRef;
-    private Guest guest;
-    private String guestKey;
-    private String hotelID;
-    private Bundle extras;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+    public DatabaseReference mRootRef;
+    public Guest guest;
+    public String guestKey;
+    public String hotelID;
+    public Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

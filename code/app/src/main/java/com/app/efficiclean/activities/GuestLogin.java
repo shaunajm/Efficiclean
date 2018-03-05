@@ -389,7 +389,7 @@ public class GuestLogin extends AppCompatActivity {
                 .setTag(hid + " QUEUE SERVICE")
                 .setTrigger(Trigger.executionWindow(60, 60))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(false)
+                .setReplaceCurrent(true)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
                 .setExtras(extras)
                 .build();
