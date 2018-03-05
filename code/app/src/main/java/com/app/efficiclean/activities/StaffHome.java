@@ -21,17 +21,17 @@ import com.google.firebase.database.*;
 
 public class StaffHome extends AppCompatActivity {
 
-    private Button btRequestBreak;
-    private Button btCurrentJob;
-    private Button btViewMap;
-    private String staffKey;
-    private String hotelID;
-    private Bundle extras;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference mTeamRef;
-    private DatabaseReference mJobRef;
-    private DatabaseReference mStaffRef;
+    public Button btRequestBreak;
+    public Button btCurrentJob;
+    public Button btViewMap;
+    public String staffKey;
+    public String hotelID;
+    public Bundle extras;
+    public FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+    public DatabaseReference mTeamRef;
+    public DatabaseReference mJobRef;
+    public DatabaseReference mStaffRef;
     private DataSnapshot staff;
     private DataSnapshot jobs;
     private DataSnapshot teams;
@@ -189,6 +189,10 @@ public class StaffHome extends AppCompatActivity {
         i.putExtras(extras);
         startActivity(i);
         finish();
+    }
+
+    public void currentJobClick() {
+
     }
 
     public void getTeams() {

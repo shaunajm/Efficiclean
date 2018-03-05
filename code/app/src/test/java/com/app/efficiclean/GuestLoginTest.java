@@ -39,16 +39,4 @@ public class GuestLoginTest {
         verify(mockActivity, never()).setValidationValues("0582", "101", "Conor", "Hanlon");
         verify(mockActivity, times(1)).startActivity(any(Intent.class));
     }
-    /*
-    @Test
-    public void test_setValidationValues_1() {
-        //FirebaseApp.initializeApp();
-        mockActivity.mRootRef = FirebaseDatabase.getInstance().getReference();
-
-        doCallRealMethod().when(mockActivity).setValidationValues(anyString(), anyString(), anyString(), anyString());
-        mockActivity.setValidationValues("0582", "101", "Conor", "Hanlon");
-
-        verify(mockActivity, times(1)).validateValues("101", "Conor", "Hanlon");
-    }
-    */
 }
