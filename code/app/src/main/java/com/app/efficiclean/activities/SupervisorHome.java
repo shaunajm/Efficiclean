@@ -230,24 +230,26 @@ public class SupervisorHome extends AppCompatActivity {
                 }
             }
 
-            text = text + " : " + Integer.toString(team.getCleanCounter());
+            if (text.equals("") == false) {
+                text = text + " : " + Integer.toString(team.getCleanCounter());
 
-            if (template != null) {
-                TextView roomNumber = new TextView(this);
-                roomNumber.setText(text);
-                roomNumber.setTextSize(template.getTextSize() / 2);
-                roomNumber.setWidth(template.getWidth());
-                roomNumber.setMinHeight(template.getHeight());
-                roomNumber.setPadding(
-                        template.getPaddingLeft(),
-                        template.getPaddingTop() - 5,
-                        template.getPaddingRight(),
-                        template.getPaddingBottom());
-                roomNumber.setBackground(template.getBackground());
-                roomNumber.setGravity(template.getGravity());
+                if (template != null) {
+                    TextView roomNumber = new TextView(this);
+                    roomNumber.setText(text);
+                    roomNumber.setTextSize(template.getTextSize() / 2);
+                    roomNumber.setWidth(template.getWidth());
+                    roomNumber.setMinHeight(template.getHeight());
+                    roomNumber.setPadding(
+                            template.getPaddingLeft(),
+                            template.getPaddingTop() - 5,
+                            template.getPaddingRight(),
+                            template.getPaddingBottom());
+                    roomNumber.setBackground(template.getBackground());
+                    roomNumber.setGravity(template.getGravity());
 
-                tr.addView(roomNumber);
-                table.addView(tr);
+                    tr.addView(roomNumber);
+                    table.addView(tr);
+                }
             }
         }
     }

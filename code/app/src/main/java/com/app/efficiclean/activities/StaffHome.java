@@ -14,7 +14,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.app.efficiclean.R;
-import com.app.efficiclean.classes.Job;
 import com.app.efficiclean.classes.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
@@ -191,19 +190,15 @@ public class StaffHome extends AppCompatActivity {
         finish();
     }
 
-    public void currentJobClick() {
-
-    }
-
     public void getTeams() {
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 teams = dataSnapshot;
-                setTeams();
+                setQueue();
                 if (tb1 != null) {
-                    setQueue();
+                    setTeams();
                 }
             }
 
@@ -214,44 +209,58 @@ public class StaffHome extends AppCompatActivity {
         });
     }
 
-    public void setQueue() {
+    public void setTeams() {
         TextView template = (TextView) findViewById(com.app.efficiclean.R.id.tvTeamsRow1);
 
         tb1.removeViews(1, tb1.getChildCount() - 1);
-        for(DataSnapshot ds : jobs.getChildren()) {
-            Job job = ds.getValue(Job.class);
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        for(DataSnapshot ds : teams.getChildren()) {
+            Team team = ds.getValue(Team.class);
+            if (ds.hasChild("members")) {
+                TableRow tr = new TableRow(this);
+                tr.setLayoutParams(new TableLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            if (template != null) {
-                TextView roomNumber = new TextView(this);
-                roomNumber.setText(job.getRoomNumber());
-                roomNumber.setTextSize(template.getTextSize() / 2);
-                roomNumber.setWidth(template.getWidth());
-                roomNumber.setMinHeight(template.getHeight());
-                roomNumber.setPadding(
-                        template.getPaddingLeft(),
-                        template.getPaddingTop() - 5,
-                        template.getPaddingRight(),
-                        template.getPaddingBottom());
-                roomNumber.setBackground(template.getBackground());
-                roomNumber.setGravity(template.getGravity());
+                String text = "";
 
-                tr.addView(roomNumber);
-                tb1.addView(tr);
+                for (String staffKey : team.getMembers()) {
+                    if (staffKey != null) {
+                        if (text.equals("")) {
+                            text += staff.child(staffKey).child("username").getValue(String.class);
+                        } else {
+                            text += " & " + staff.child(staffKey).child("username").getValue(String.class);
+                        }
+                    }
+                }
+
+                if (text.equals("") == false) {
+                    TextView roomNumber = new TextView(this);
+                    roomNumber.setText(text);
+                    roomNumber.setTextSize(template.getTextSize() / 2);
+                    roomNumber.setWidth(template.getWidth());
+                    roomNumber.setMinHeight(template.getHeight());
+                    roomNumber.setPadding(
+                            template.getPaddingLeft(),
+                            template.getPaddingTop() - 5,
+                            template.getPaddingRight(),
+                            template.getPaddingBottom());
+                    roomNumber.setBackground(template.getBackground());
+                    roomNumber.setGravity(template.getGravity());
+
+                    tr.addView(roomNumber);
+                    tb1.addView(tr);
+                }
             }
         }
     }
 
-    public void setTeams() {
+    public void setQueue() {
         TextView template = (TextView) findViewById(R.id.tvQueueRow1);
 
         tb2.removeViews(1, tb2.getChildCount() - 1);
         for(DataSnapshot ds : teams.getChildren()) {
             Team team = ds.getValue(Team.class);
-            if (team.getStatus().equals("Waiting")) {
+            if (team.getStatus().equals("Waiting") && ds.hasChild("members")) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
