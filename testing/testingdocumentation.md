@@ -110,17 +110,237 @@ public class GuestLoginTest {
 
 ### TeamTest.java
 
+```java
+public class TeamTest {
+
+    @Test
+    public void test() {
+        Job job1 = new Job();
+        job1.setPriority(0);
+        job1.setRoomNumber("101");
+        job1.setDescription("Clean room");
+        job1.setCreatedBy("Conor");
+
+        Job job2 = new Job();
+        job2.setPriority(1);
+        job2.setRoomNumber("205");
+        job2.setDescription("Clean room");
+        job2.setCreatedBy("Luke");
+
+        Team team = new Team();
+        team.setCleanCounter(0);
+        team.setPriorityCounter(0);
+        team.setStatus("Waiting");
+        team.setCurrentJob(job1);
+        team.setReturnedJob(job2);
+
+        assertNotNull(team.getBreakRemaining());
+        assertNotNull(team.getCleanCounter());
+        assertNotNull(team.getCurrentJob());
+        assertNotNull(team.getMembers());
+        assertNotNull(team.getPriorityCounter());
+        assertNotNull(team.getStatus());
+        assertNotNull(team.getReturnedJob());
+
+        assertEquals(team.getBreakRemaining(), 60);
+        assertEquals(team.getMembers().size(), 0);
+
+        team.addMember("James");
+        team.addMember("Derek");
+        team.addMember("Holly");
+        team.addMember("Anne");
+
+        assertEquals(team.getMembers().size(), 4);
+        assertEquals(team.removeMember(1), "Derek");
+        assertEquals(team.getMembers().size(), 3);
+        assertNotSame(team.getCurrentJob(), team.getReturnedJob());
+    }
+}
+```
+
+-     *TeamTest* aims to test the functionality of the *Team* class. It creates an instance and calls the setter methods to allocate values to the object variables.
+
+-     After the variables have been initialised, we use assertions to ensure that the object has no unexpected null classes. We also use *assertEquals* to check that the constructor performed the correct operations.
+
+-     The *Team* class uses an *ArrayList* to store the identification keys of housekeepers assigned to that team. We lastly call methods of our custom class that are used to access this list, and test the operation results using assertions.   
+
 ### BreakTest.java
+
+```java
+public class BreakTest {
+
+    @Test
+    public void test() {
+        Break break1 = new Break();
+        break1.setTeamID("Team A");
+        break1.setBreakTime("1230");
+        break1.setBreakLength(45);
+
+        Calendar t1 = Calendar.getInstance();
+        t1.set(Calendar.HOUR_OF_DAY, 12);
+        t1.set(Calendar.MINUTE, 30);
+        t1.set(Calendar.SECOND, 0);
+        Date time1 = t1.getTime();
+
+        Calendar t2 = Calendar.getInstance();
+        t2.set(Calendar.HOUR_OF_DAY, 14);
+        t2.set(Calendar.MINUTE, 20);
+        t2.set(Calendar.SECOND, 10);
+        Date time2 = t2.getTime();
+
+        assertFalse(break1.isAccepted());
+        assertNotNull(break1.getBreakLength());
+        assertNotNull(break1.getBreakTime());
+        assertNotNull(break1.getTeamID());
+
+        assertEquals(time1.getHours(), break1.getBreakTime().getHours());
+        assertEquals(time1.getMinutes(), break1.getBreakTime().getMinutes());
+        assertEquals(time1.getSeconds(), break1.getBreakTime().getSeconds());
+
+        assertNotEquals(time2.getHours(), break1.getBreakTime().getHours());
+        assertNotEquals(time2.getMinutes(), break1.getBreakTime().getMinutes());
+        assertNotEquals(time2.getSeconds(), break1.getBreakTime().getSeconds());
+
+        break1.setAccepted(true);
+
+        assertTrue(break1.isAccepted());
+        assertTrue(break1.getBreakLength() >= 0);
+    }
+}
+```
+
+-     *BreakTest* tests our custom *Break* class. It firstly creates an instance of *Break* followed by two seperate *Date* objects. *Break* creates its own instance using a formatted time string passed into the *setBreakTime* method. We test our *breakTime* variable against our test objects.
+
+-     At first, our assertions which should have found that the *Date* instances were true failed.
+
+![](media/break_error.png)
+
+-     After debugging our code, we realised that the reason our assertion was failing was because both *Date* objects had different Unix timestamps, which are precise to the millisecond. To fix our test, we compared the individual hour, minute and second values of the variables instead. Our test class ran successfully after making this change.
+
+![](media/break_pass.png)
 
 ### ApprovalTest.java
 
+```java
+public class ApprovalTest {
+
+    @Test
+    public void test() {
+        Job job1 = new Job();
+        job1.setPriority(0);
+        job1.setRoomNumber("101");
+        job1.setDescription("Clean room");
+        job1.setCreatedBy("Conor");
+
+        Job job2 = new Job();
+        job2.setPriority(1);
+        job2.setRoomNumber("205");
+        job2.setDescription("Clean room");
+        job2.setCreatedBy("Luke");
+
+        Job job3 = new Job();
+        job3.setPriority(0);
+        job3.setRoomNumber("310");
+        job3.setDescription("Clean room");
+        job3.setCreatedBy("Shauna");
+
+        Approval service = new Approval();
+        service.setCreatedBy("Dave");
+        service.setJob(job1);
+
+        HazardApproval hazard = new HazardApproval();
+        hazard.setCreatedBy("Shane");
+        hazard.setDescription("Corrosive chemicals in bath.");
+        hazard.setJob(job2);
+
+        SevereMessApproval severeMess = new SevereMessApproval();
+        severeMess.setCreatedBy("Brian");
+        severeMess.setDescription("Bathroom floor flooded.");
+        severeMess.setJob(job3);
+
+        assertFalse(service.getApproved());
+        assertFalse(hazard.getApproved());
+        assertFalse(severeMess.getApproved());
+
+        assertNotNull(service.getCreatedBy());
+        assertNotNull(service.getJob());
+        assertNotNull(service.getPriorityCounter());
+
+        assertNotNull(hazard.getDescription());
+        assertNotNull(hazard.getCreatedBy());
+        assertNotNull(hazard.getJob());
+        assertNotNull(hazard.getPriorityCounter());
+
+        assertNotNull(severeMess.getDescription());
+        assertNotNull(severeMess.getCreatedBy());
+        assertNotNull(severeMess.getJob());
+        assertNotNull(severeMess.getPriorityCounter());
+
+        assertTrue(hazard.getPriorityCounter() > severeMess.getPriorityCounter());
+        assertTrue(hazard.getPriorityCounter() > service.getPriorityCounter());
+        assertTrue(severeMess.getPriorityCounter() > service.getPriorityCounter());
+
+        service.incrementPriorityCounter();
+
+        assertTrue(hazard.getPriorityCounter() > service.getPriorityCounter());
+        assertEquals(severeMess.getPriorityCounter(), service.getPriorityCounter());
+
+        service.setApproved(true);
+
+        assertTrue(service.getApproved());
+        assertFalse(service.getJob().getStatus());
+
+        service.getJob().markCompleted();
+
+        assertTrue(service.getJob().getStatus());
+    }
+}
+```
+
+-     Multiple different custom classes are tested by *ApprovalTest*. *HazardApproval* and *SevereMessApproval* both inherit from the parent *Approval* class. The difference between the classes is their priority based on the importance of each different approval type.
+
+-     Firstly, we create different *Job* objects before our different approvals are initialised. We then call setter methods to assign values to class variables and use assertions to ensure our operations were successful. This is followed by testing that our *priorityCounter* values were set correctly by the constructors through comparing our different objects. We then increment the *Approval* priority, and define new assertions for what we expect our values to be.
+
 ### JobTest.java
 
+```java
+public class JobTest {
 
+    @Test
+    public void test() {
+        Job job1 = new Job();
+        job1.setPriority(0);
+        job1.setRoomNumber("101");
+        job1.setDescription("Clean room");
+        job1.setCreatedBy("Manager");
+
+        assertFalse(job1.getStatus());
+        assertTrue(job1.getTimestamp() > 0);
+        assertNotNull(job1.getCreatedBy());
+        assertNotNull(job1.getDescription());
+        assertNotNull(job1.getPriority());
+        assertNotNull(job1.getRoomNumber());
+
+        Job job2 = new Job();
+        job2.setPriority(0);
+        job2.setRoomNumber("304");
+        job2.setDescription("Wash sink");
+        job2.setCreatedBy("Manager");
+
+        assertEquals(job1.getPriority(), job2.getPriority());
+        assertTrue(job1.getTimestamp() <= job2.getTimestamp());
+        assertEquals(job1.getCreatedBy(), job2.getCreatedBy());
+        assertNotEquals(job1.getDescription(), job2.getDescription());
+
+        job1.markCompleted();
+        assertTrue(job1.getStatus());
+    }
+}
+```
+
+-     Lastly, we have a simple test class to check the functionality of our *Job* class. We declare two objects and use assertions to check that the methods perform the correct operations.
 
 ## 4. Instrumented Testing
-
-
 
 ## 5. User Testing
 
