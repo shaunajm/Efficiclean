@@ -228,7 +228,9 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void validateValues(String rNumber, String fString, String sString) {
-        if (guest != null && guest.getForename().equals(fString) && guest.getSurname().equals(sString)){        //Validates that input data matches values from database
+        if (guest != null
+                && guest.getForename().toLowerCase().equals(fString.toLowerCase())
+                && guest.getSurname().toLowerCase().equals(sString.toLowerCase())){        //Validates that input data matches values from database
             //Create user email and password for authentication
             String pString = fString.toLowerCase() + sString.toLowerCase() + rNumber;
             final String eString = pString + "@efficiclean.com";

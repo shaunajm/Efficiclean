@@ -140,23 +140,29 @@ public class TeamBreakApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
-        mRootRef.child("breakRequests").child(breakKey).child("accepted").setValue(true);
-        for (DataSnapshot member : teams.child(teamID).child("members").getChildren()) {
-            String staffKey = member.getValue(String.class);
-            NotificationHandler.sendNotification(hotelID,
-                                staffKey,
-                                "Your requested break starting at " +
-                                        timeText +
-                                        "has been accepted.");
-        }
         int breakRemaining = teams.child(teamID).child("breakRemaining").getValue(int.class);
-        int newBreakRemaining = breakRemaining - breakLength;
-        mRootRef.child("teams").child(teamID).child("breakRemaining").setValue(newBreakRemaining);
 
-        Intent i = new Intent(TeamBreakApproval.this, SupervisorHome.class);
-        i.putExtras(extras);
-        startActivity(i);
-        finish();
+        if (breakRemaining >= breakLength) {
+            mRootRef.child("breakRequests").child(breakKey).child("accepted").setValue(true);
+            for (DataSnapshot member : teams.child(teamID).child("members").getChildren()) {
+                String staffKey = member.getValue(String.class);
+                NotificationHandler.sendNotification(hotelID,
+                        staffKey,
+                        "Your requested break starting at " +
+                                timeText +
+                                "has been accepted.");
+            }
+            int newBreakRemaining = breakRemaining - breakLength;
+            mRootRef.child("teams").child(teamID).child("breakRemaining").setValue(newBreakRemaining);
+
+            Intent i = new Intent(TeamBreakApproval.this, SupervisorHome.class);
+            i.putExtras(extras);
+            startActivity(i);
+            finish();
+        } else {
+            Toast.makeText(TeamBreakApproval.this, "This team does not have enough minutes left for their break today.",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void disapprovedSubmit() {

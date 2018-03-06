@@ -161,7 +161,7 @@ public class StaffLogin extends AppCompatActivity {
 
                 //Iterate through the staff members
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.child("username").getValue(String.class).equals(uString)                     //Check if user input matches staff member details
+                    if (ds.child("username").getValue(String.class).toLowerCase().equals(uString.toLowerCase())                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
                         correctDetails = true;                                                          //Change value of correctDetails
                         Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
@@ -191,7 +191,7 @@ public class StaffLogin extends AppCompatActivity {
 
                 //Iterate through the staff members
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.child("username").getValue(String.class).equals(uString)                     //Check if user input matches staff member details
+                    if (ds.child("username").getValue(String.class).toLowerCase().equals(uString.toLowerCase())                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
                         correctDetails = true;                                                          //Change value of correctDetails
                         Supervisor supervisor = ds.getValue(Supervisor.class);                       //Create Housekeeper from Firebase Data

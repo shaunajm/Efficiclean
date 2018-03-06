@@ -31,6 +31,7 @@ public class ReportAbsences extends AppCompatActivity {
     private HashMap<String, String> keys;
     private Button markAbsent;
     private String teamID;
+    private DatabaseReference mTeamRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,12 +131,14 @@ public class ReportAbsences extends AppCompatActivity {
             Housekeeper hs = ds.getValue(Housekeeper.class);
             String username = hs.getUsername();
 
-            RadioButton r1 = new RadioButton(this);
-            r1.setText(username);
-            r1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-            r1.setBackgroundResource(R.drawable.cell_border);
-            r1.setLayoutParams(names.getLayoutParams());
-            names.addView(r1);
+            if (hs.getTeamID().equals("Absent") == false) {
+                RadioButton r1 = new RadioButton(this);
+                r1.setText(username);
+                r1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+                r1.setBackgroundResource(R.drawable.cell_border);
+                r1.setLayoutParams(names.getLayoutParams());
+                names.addView(r1);
+            }
         }
     }
 
@@ -152,14 +155,36 @@ public class ReportAbsences extends AppCompatActivity {
 
     public void reportAbsence() {
         RadioButton rb = (RadioButton) findViewById(names.getCheckedRadioButtonId());
-        String uname = rb.getText().toString();
-        final String key = keys.get(uname);
-        mStaffRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        if (rb != null) {
+            String uname = rb.getText().toString();
+            final String key = keys.get(uname);
+            mStaffRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    teamID = dataSnapshot.child("teamID").getValue(String.class);
+                    mStaffRef.child(key).child("teamID").setValue("Absent");
+                    removeFromTeam(key);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
+
+    public void removeFromTeam(final String key) {
+        mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).child("members");
+        mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                teamID = dataSnapshot.child("teamID").getValue(String.class);
-                mStaffRef.child(key).child("teamID").setValue("Absent");
-                removeFromTeam(key);
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (ds.getValue(String.class).equals(key)) {
+                        mTeamRef.child(ds.getKey()).removeValue();
+                        removeTeam(key);
+                    }
+                }
             }
 
             @Override
@@ -169,20 +194,18 @@ public class ReportAbsences extends AppCompatActivity {
         });
     }
 
-    public void removeFromTeam(final String key) {
-        final DatabaseReference mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).child("members");
+    public void removeTeam(final String key) {
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.getValue(String.class).equals(key)) {
-                        mTeamRef.child(ds.getKey()).removeValue();
-                        Intent i = new Intent(ReportAbsences.this, SupervisorHome.class);
-                        i.putExtras(extras);
-                        startActivity(i);
-                        finish();
-                    }
+                if (dataSnapshot.exists() == false) {
+                    FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).removeValue();
                 }
+
+                Intent i = new Intent(ReportAbsences.this, SupervisorHome.class);
+                i.putExtras(extras);
+                startActivity(i);
+                finish();
             }
 
             @Override
