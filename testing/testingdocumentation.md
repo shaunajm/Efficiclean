@@ -15,7 +15,6 @@
   + [5.3 User Testing Phase Two](#53-user-testing-phase-two)
 - [**6. Heuristic Testing**](#6-heuristic-testing)
 - [**7. Accessibility Testing**](#7-accessibility-testing)
-- [**8. Issues and Solutions**](#8-issues_and_solutions)
 
 
 ## 1. Use Case Testing
@@ -342,6 +341,32 @@ public class JobTest {
 
 ## 4. Instrumented Testing
 
+We also ran instrumented Android tests as part of our testing process. These are designed to test activities and run the application on an emulator device. This allows us to ensure tasks such as entering text into input boxes and clicking buttons are working correctly.
+
+Instrumented testing plays a big role in the validation of the application. We ran tests using different possible inputs to prompt a response from the application. The example below shows the different *Toast* popups displayed on the *GuestLogin* activity.
+
+*Guest doesn't fill in all fields*    | *Guest inputs incorrect details*                 
+:------------------------------------:|:------------------------------------:
+![](media/complete_fields.png)        | ![](media/details_incorrect.png)   
+
+This demonstrates error handling by blocking the user to perform actions without the valid input. It is also informative and gives them accurate feedback on why their operation has been unsuccessful, helping them correct their mistake.
+
+This error handling is also present in the staff interface. Due to the interactive nature of the application, it is crucial that there are constraints in place that will block any invalid operations which may be harmful to the system. One simple example is when housekeepers are requesting breaks. Instrumented testing allows us to try different edge cases and ensure that our application will react positively when stress tested. Below is the prompt displayed in the case that staff members input an invalid time format for their break.
+
+|*Invalid time inputted*                   
+|:----------------------------:
+|![](media/correct_format.png)   
+
+Finally, our Android tests check that our communication between the application and the Firebase database are accurate. Queries are made regarding different information which impacts whether or not a user can perform an operation. Below are two examples:
+
+*Invalid room inputted*         | *Requested break exceeds allowance*                 
+:------------------------------:|:------------------------------------:
+![](media/fake_room.png)        | ![](media/exceeds.png)  
+
+In the first image, a housekeeping team has been assigned the task of adding rooms in the hotel still using the old system of hanging signs on the door to the queue. Our test performs this operation with a room that does not exist, which would essentially create a fake job. Our code queries our database to verify that the inputted number exists. This instrumented test validates that our system handles human error and stops the app from crashing, while also performing informative feedback to the user.
+
+The next screenshot displays the *Toast* popup shown when a staff member requests a break of longer length than they have remaining for the day. This case reiterates what was mentioned above with the query to Firebase to retrieve the minutes of break time remaining for that team. The user's request is rejected and they are informed of how long of a break they have left to take.
+
 ## 5. User Testing
 
 ### 5.1 User Testing Plan
@@ -549,8 +574,3 @@ Users who suffer from poor motor skills benefit from elements which will be used
 :------------------------------:|:----------------------------------:
 ![](media/guesthomemobile.png)  | ![](media/guesthometablet.png)
 Large buttons to make it easier to use to users with poor motor skills.| Tablet interface also has large buttons for accessibility purposes.
-
-## 8. Issues and Solutions
-
-*Issue*                        | *Solution*                       |*Testing methodology that discovered it*
-:-----------------------------:|:--------------------------------:|:--------------------------------------:
