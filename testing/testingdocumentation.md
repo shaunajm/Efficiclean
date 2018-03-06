@@ -63,6 +63,51 @@ Whenever the git pipeline fails, we are notified of what exact error was causing
 
 ### GuestLoginTest.java
 
+```java
+@RunWith(MockitoJUnitRunner.class)
+public class GuestLoginTest {
+
+    @Mock private GuestLogin mockActivity;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        ProgressBar spinner = mock(ProgressBar.class);
+        mockActivity.spinner = spinner;
+    }
+
+    @Test
+    public void test_loginButtonClick_1() {
+        doCallRealMethod().when(mockActivity).loginButtonClick(anyString(), anyString(), anyString(), anyString());
+        mockActivity.loginButtonClick("0582", "101", "Conor", "Hanlon");
+        verify(mockActivity, times(1)).setValidationValues("0582", "101", "Conor", "Hanlon");
+    }
+
+    @Test
+    public void test_loginButtonClick_2() {
+        doCallRealMethod().when(mockActivity).loginButtonClick(anyString(), anyString(), anyString(), anyString());
+        mockActivity.loginButtonClick("", "", "staff1", "");
+
+        verify(mockActivity, never()).setValidationValues("0582", "101", "Conor", "Hanlon");
+        verify(mockActivity, times(1)).startActivity(any(Intent.class));
+    }
+}
+```
+
+-   This test class unit tests the login functionality of inital *GuestLogin* activity. It uses Mockito to mock the class, allowing us to track the operations performed as a result of our input.
+
+-   The first test runs the *loginButtonClick* method with valid input in all fields. We use the static Mockito method *verify* to check that our code acts as we intended it to.
+
+-   Next, we invoke the same method with the input that brings the user to the *StaffLogin* activity. We verify that an intent is invoked as a result of this method call.
+
+-   Below is a screenshot of our tests failing on an early version of the test class:
+
+![](media/guest_login_error.png)
+
+-   We get a *NullPointerException* because our mock did not initialise our *ProgressBar* for the activity. Once we fixed this in the *setUp* method, our tests passed as intended.
+
+![](media/guest_login_pass.png)
+
 ### TeamTest.java
 
 ### BreakTest.java
@@ -286,3 +331,6 @@ Users who suffer from poor motor skills benefit from elements which will be used
 Large buttons to make it easier to use to users with poor motor skills.| Tablet interface also has large buttons for accessibility purposes.
 
 ## 8. Issues and Solutions
+
+*Issue*                        | *Solution*                       |*Testing methodology that discovered it*
+:-----------------------------:|:--------------------------------:|:--------------------------------------:
