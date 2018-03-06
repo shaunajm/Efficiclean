@@ -15,7 +15,7 @@ before_script:
   - printf "84831b9409646a918e30573bab4c9c91346d8abd" > android-sdk-linux/licenses/android-sdk-preview-license
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - cd code
+  - cd code/Efficiclean
   - chmod +x ./gradlew
 
 stages:

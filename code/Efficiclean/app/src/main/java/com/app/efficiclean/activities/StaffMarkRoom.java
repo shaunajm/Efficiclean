@@ -61,8 +61,10 @@ public class StaffMarkRoom extends AppCompatActivity {
                 String rNumber = roomNumber.getText().toString();
                 if (!rNumber.equals("") && rb != null) {
                     addJob();
-                } Toast.makeText(StaffMarkRoom.this, "Please fill in a valid room number and select a status.",
-                        Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(StaffMarkRoom.this, "Please fill in a valid room number and select a status.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
