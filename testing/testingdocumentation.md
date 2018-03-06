@@ -8,14 +8,14 @@
 - [**1. Use Case Testing**](#1-use-case-testing)
 - [**2. Gitlab Continuous Integration Pipeline**](#2-gitlab-continuous-integration-pipeline)
 - [**3. Unit Testing**](#3-unit-testing)
-- [**4. Integration Testing**](#4-integration-testing)
-- [**5. Instrumented Testing**](#5-instrumented-testing)
-- [**6. User Testing**](#6-user-testing)
-  + [6.1 User Testing Plan](#21-user-testing-plan)
-  + [6.2 User Testing Phase One](#22-user-testing-phase-one)
-  + [6.3 User Testing Phase Two](#23-user-testing-phase-two)
-- [**7. Heuristic Testing**](#7-heuristic-testing)
-- [**8. Accessibility Testing**](#8-accessibility-testing)
+- [**4. Instrumented Testing**](#4-instrumented-testing)
+- [**5. User Testing**](#5-user-testing)
+  + [5.1 User Testing Plan](#51-user-testing-plan)
+  + [5.2 User Testing Phase One](#52-user-testing-phase-one)
+  + [5.3 User Testing Phase Two](#53-user-testing-phase-two)
+- [**6. Heuristic Testing**](#6-heuristic-testing)
+- [**7. Accessibility Testing**](#7-accessibility-testing)
+- [**8. Issues and Solutions**](#8-issues_and_solutions)
 
 
 ## 1. Use Case Testing
@@ -60,12 +60,26 @@ Whenever the git pipeline fails, we are notified of what exact error was causing
 
 
 ## 3. Unit Testing
-## 4. Integration Testing
-## 5. Instrumented Testing
 
-## 6. User Testing
+### GuestLoginTest.java
 
-### 6.1 User Testing Plan
+### TeamTest.java
+
+### BreakTest.java
+
+### ApprovalTest.java
+
+### JobTest.java
+
+
+
+## 4. Instrumented Testing
+
+
+
+## 5. User Testing
+
+### 5.1 User Testing Plan
 
 To complete user testing we will hold two separate user testing sessions. We will have two sessions so that we can take feedback onboard from the first session and see what other issues users may find in the second session.
 
@@ -93,7 +107,7 @@ We will ask users to complete a survey and following on from this complete a sho
 
 Once we have gathered this information we will take all feedback onboard to make corrections and changes that users would like to see present in Efficiclean.
 
-### 6.2 User Testing Phase One
+### 5.2 User Testing Phase One
 
 As mentioned in the user testing plan, we decided to implement our user testing in two phases. We would implement a week between these two user testing stages to allow us to make changes and improve our application before asking users what their opinions are now to ensure we implement all changes correctly.
 
@@ -131,9 +145,47 @@ Again, Map View and Marking room status were popular among users.|Users gave us 
 ![](media/survey15.png) | ![](media/survey16.png) | ![](media/survey17.png)
 The issues users faced were predominately down to bugs which we will fix. Some issues were with colour contrasts and font sizes which will be adjusted.|All users found the application enjoyable to use which we were delighted to see.|Overall, users enjoyed using our application but felt it needed some work.
 
-### 6.2 User Testing Phase two
+### 5.2 User Testing Phase two
 
-## 7. Heuristic Testing
+Our first stage of user testing taught us a vast amount about our application and what users would like to see in the application. We took all of the feedback from the first round of user testing onboard and applied it to our application. Thankfully, this paid off as we received improved feedback from our users. This can be seen throughout our survey results.
+
+*Question 1*           | *Question 2*           | *Question 3*
+:---------------------:|:----------------------:|:---------------------:
+![](media/2survey1.png) | ![](media/2survey2.png) | ![](media/2survey3.png)
+This score increased from our first phase of user testing. All respondents found the application easy to use.| This score also increased, the vast majority of users found the application pleasing to look at.|This also increased. Thankfully users would use the application.
+
+
+*Question 4*           | *Question 5*           | *Question 6*
+:---------------------:|:----------------------:|:---------------------:
+![](media/2survey4.png) | ![](media/2survey5.png) | ![](media/2survey6.png)
+Most would recommend this application to a friend.| Thankfully most users found the application not to be frustrating but unfortunately one user did. | The results of this question were widespread. Some users felt the application could be improved and later gave feedback on this.
+
+
+*Question 7*           | *Question 8*           | *Question 9*
+:---------------------:|:----------------------:|:---------------------:
+![](media/2survey7.png) | ![](media/2survey8.png) | ![](media/2survey9.png)
+Yet again all users were happy with how they learned to use the application. | Again Map View and Marking Room Status were the aspects of the application that users found most useful. Again there was a wide range of responses to this question. |Users liked that the named features were fast, easy to use and simple.
+
+*Question 10*           | *Question 11 a*             | *Question 11 b*
+:---------------------:|:--------------------------:|:---------------------:
+![](media/2survey10.png) | ![](media/2survey11a.png) | ![](media/2survey11b.png)
+There was no negative remarks in this section as before. Users were very happy with the application and found it helpful, fast and clever. |Users scored the application between 7 and 10. This score has increased for 5-10 last time. We are delighted with this increase. | This diagram shows the later end of the legend.
+
+*Question 12*           | *Question 13*           | *Question 14*
+:---------------------:|:----------------------:|:---------------------:
+![](media/2survey12.png) | ![](media/2survey13.png) | ![](media/2survey14.png)
+Again, Map View and Marking room status were popular among users.|Advice given by users was very helpful and will be taken onboard. |A very small percentage of users faced difficulties with the application. We hope to resolve this issue.
+
+
+*Question 15*           | *Question 16*           | *Question 17*
+:---------------------:|:----------------------:|:---------------------:
+![](media/2survey15.png) | ![](media/2survey16.png) | ![](media/2survey17.png)
+The user gave feedback on the issue they were facing. We will resolve this issue.|Again, all users found the application enjoyable to use which we were delighted to see.|Overall, users were happy with our application.
+
+
+User testing was very helpful in helping us discover issues that we would not have discovered without this testing. Different points of view meant exploring aspects of the application which we had not considered and brought about many issues which will be fixed. As the results show, users opinions of the application greatly increased between both phases of testing which assured us that we were heading the correct way with our changes. We gave users a voice to help us tailor Efficiclean to the user and it greatly impacted the application.
+
+## 6. Heuristic Testing
 
 ### Shneiderman's Eight Golden Rules
 
@@ -163,7 +215,7 @@ As we can see from each of the above pages, the background and font colours thro
 
 ### Enable frequent users to use shortcuts.
 
-At this current time there are no shortcuts built into Efficiclean as all actions must be carried out methodolocially. However, as future work, we would like to keep guests logged in until they leave the hotel when they will be automatically logged out. 
+At this current time there are no shortcuts built into Efficiclean as all actions must be carried out methodolocially. However, as future work, we would like to keep guests logged in until they leave the hotel when they will be automatically logged out.
 
 ### Offer informative feedback
 
@@ -203,3 +255,34 @@ Users have full control of the application. The guests get to choose to the stat
 ### Reduce short-term memory load.
 
 As our short term memory supports only 5 to 9 items at one time, we kept our user interface as simple as possible. This means that users are not overloaded with information and can enjoy using the application.
+
+
+## 7. Accessibility Testing
+
+#### Sight Difficulties
+For users with sight difficulties, the Efficiclean mobile application, although as usable as possible, may not be very easy to use. For this reason, we developed a web interface which was been vigorously accessibility tested. Guests who suffer from sight difficulties can use this interface to mark there room status and receive a notification to inform them when their room has been cleaned. The web interface can be controlled through the use of a keyboard and does not require a mouse.
+
+ *Web Login*                   | *Web Homepage*
+:------------------------------:|:-----------------------:
+ ![](media/ReceptionLogin2.png)| ![](media/ReceptionHome.png)
+
+
+#### Colour Blindness
+To ensure Efficiclean was usable for users who suffer from colour blindness, we were careful to make sure that contrasting colours were not used together. Similarly, we had to ensure colours on the Map View did not contrast.
+
+*Mobile Interface*              | *Tablet interface*
+:------------------------------:|:----------------------------------:
+![](media/mapviewmobile.png) | ![](media/mapviewtablet.png)
+
+#### Hearing Difficulties
+As Efficiclean has no audio within the application their will be no difficulties present for users with hearing difficulties. The only aspect of Efficiclean which involves audio are the push notifications. One example of these push notifications are the alerts which let users know that their room has been cleaned.
+
+#### Motor Skills
+Users who suffer from poor motor skills benefit from elements which will be used in sequence placed close together. This structure is evident throughout Efficiclean. Buttons should also be large to ensure they are easier to tap. Similarly to users experiencing sight issues, guests with motor issues may benefit from using the web interface as they can avail of the use of the keyboard.
+
+*Mobile Interface*              | *Tablet interface*
+:------------------------------:|:----------------------------------:
+![](media/guesthomemobile.png)  | ![](media/guesthometablet.png)
+Large buttons to make it easier to use to users with poor motor skills.| Tablet interface also has large buttons for accessibility purposes.
+
+## 8. Issues and Solutions
