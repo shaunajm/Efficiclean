@@ -155,22 +155,28 @@ public class StaffRequestBreak extends AppCompatActivity {
         RadioButton selectedTime = (RadioButton) findViewById(breakOptions.getCheckedRadioButtonId());
         requestedTime = breakTime.getText().toString();
         if (requestedTime.length() == 4 && selectedTime != null) {
-            Break breakRequest = new Break();
-            breakRequest.setBreakLength(Integer.parseInt(selectedTime.getText().toString().substring(0, 2)));
-            breakRequest.setBreakTime(requestedTime);
-            breakRequest.setTeamID(teamID);
+            if (Integer.parseInt(requestedTime.substring(0, 2)) <= 16
+                    && Integer.parseInt(requestedTime.substring(2, 4)) <= 59) {
+                Break breakRequest = new Break();
+                breakRequest.setBreakLength(Integer.parseInt(selectedTime.getText().toString().substring(0, 2)));
+                breakRequest.setBreakTime(requestedTime);
+                breakRequest.setTeamID(teamID);
 
-            if (breakRequest.getBreakLength() <= breakRemaining) {
-                DatabaseReference mBreakRef = mRootRef.child("breakRequests");
-                mBreakRef.push().setValue(breakRequest);
+                if (breakRequest.getBreakLength() <= breakRemaining) {
+                    DatabaseReference mBreakRef = mRootRef.child("breakRequests");
+                    mBreakRef.push().setValue(breakRequest);
 
-                Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
-                i.putExtras(extras);
-                startActivity(i);
-                finish();
+                    Intent i = new Intent(StaffRequestBreak.this, StaffHome.class);
+                    i.putExtras(extras);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Toast.makeText(StaffRequestBreak.this, "The break requested exceeds your remaining amount for the day. You have " +
+                                    breakRemaining + " minutes remaining.",
+                            Toast.LENGTH_LONG).show();
+                }
             } else {
-                Toast.makeText(StaffRequestBreak.this, "The break requested exceeds your remaining amount for the day. You have " +
-                                breakRemaining + " minutes remaining.",
+                Toast.makeText(StaffRequestBreak.this, "Please input a valid time before 17:00.",
                         Toast.LENGTH_LONG).show();
             }
         } else {
