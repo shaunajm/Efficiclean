@@ -135,6 +135,11 @@ public class GuestHome extends AppCompatActivity {
     }
 
     public void checkingOutButtonClick(View view) {
+        Job newJob = new Job();
+        newJob.setRoomNumber(guest.getRoomNumber());
+        newJob.setPriority(0);
+        mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
+        mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("To Be Cleaned");
         changePage("checkingOut");
     }
 

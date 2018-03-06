@@ -15,7 +15,7 @@
 			<p>Efficiclean</p>
 		</div>
 		<div class="container-fluid" id="content">
-			<h1>Please select your room's status.</h1>
+			<h1 id ="status">Please select your room's status.</h1>
 			<div id="guest-btn">
 				<button type="button" class="btn btn-primary btn-lg" id="service-btn">PLEASE SERVICE MY ROOM</button>
 			</div>
@@ -24,6 +24,28 @@
 			</div>
 			<div id="guest-btn">
 				<button type="button" class="btn btn-primary btn-lg" id="checking-out-btn">CHECKING OUT</button>
+			</div>
+			<div class="overlay-bg">
+				<div class="overlay-content popup1">
+				    <p>Your room has already been serviced today. Please log back in tomorrow.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+				<div class="overlay-content popup2">
+				    <p>Your room has already been added to the cleaning queue today.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+				<div class="overlay-content popup3">
+				    <p>Thank you for marking your room as "Do not Disturb". If you want your room to be serviced today, please mark it before 15:00.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+				<div class="overlay-content popup4">
+				    <p>Thank you for marking your room to be serviced. A housekeeping team will be allocated to your room and it will be cleaned shortly.</p>
+				    <button class="close-btn">Close</button>
+				</div>
+				<div class="overlay-content popup5">
+				    <p>Your room has been marked as "Checking out". We hope you enjoyed your stay. Thank you for using Efficiclean!</p>
+				    <button class="close-btn">Close</button>
+				</div>
 			</div>
 		</div>
 

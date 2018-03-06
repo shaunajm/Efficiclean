@@ -40,15 +40,9 @@ $(document).ready(function () {
 		var forename = fname.value;
 		var surname = sname.value;
 
-		console.log(hotelID);
-		console.log(roomNumber);
-		console.log(forename);
-		console.log(surname);
-
 		if (forename == "staff1") {
 			window.location.href = "stafflogin.html";
 		} else if (hotelID && roomNumber && forename && surname) {
-			console.log("validate");
 			setValidationValues(hotelID, roomNumber, forename, surname);
 		} else {
 			showPopup(1);
@@ -59,7 +53,6 @@ $(document).ready(function () {
 		const mRoomRef = firebase.database().ref(hotelID).child("rooms").child(roomNumber).child("currentGuest");
 		mRoomRef.on("value", snap => {
 			if (snap.val()) {
-				console.log("has guest");
 				const guestKey = snap.val();
 				const mGuestRef = firebase.database().ref(hotelID).child("guest").child(guestKey);
 				mGuestRef.on("value", guest => {
@@ -68,8 +61,7 @@ $(document).ready(function () {
 						guest.child("surname").val() == surname) {
 						const password = forename.toLowerCase() + surname.toLowerCase() + roomNumber;
 						const email = password + "@efficiclean.com";
-						console.log(password);
-						console.log(email);
+
 						const auth = firebase.auth();
 						var promise = auth.signInWithEmailAndPassword(email, password);
             			promise.catch(e => console.log(e.message));
@@ -88,7 +80,7 @@ $(document).ready(function () {
 	  if(firebaseUser) {
 	    //Redirects to map page
 	    console.log(firebaseUser);
-	    window.location.href = "guesthome.html?hid=" + hid.value;
+	    window.location.href = "guesthome.html?hid=" + hid.value + "?roomNumber=" + rnum.value;
 	  } else {
 	    console.log("No user currently logged in.");
 	  }
