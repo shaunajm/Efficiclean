@@ -61,7 +61,8 @@
                     android:gravity="center"
                     android:padding="15dip"
                     android:text="Team"
-                    android:textSize="25sp" />
+                    android:textStyle="bold"
+                    android:textSize="27sp" />
 
                 <TextView
                     android:id="@+id/tvTimeTitle"
@@ -71,7 +72,8 @@
                     android:gravity="center"
                     android:padding="15dip"
                     android:text="Time"
-                    android:textSize="25sp" />
+                    android:textStyle="bold"
+                    android:textSize="27sp" />
             </TableRow>
 
             <TableRow

@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/svSevereMessToBeApproved"
         android:layout_width="456dp"
-        android:layout_height="454dp"
+        android:layout_height="460dp"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -48,7 +48,8 @@
                     android:gravity="center"
                     android:padding="25dip"
                     android:text="Severe Mess to be approved:"
-                    android:textSize="34sp" />
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow

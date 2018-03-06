@@ -50,7 +50,7 @@
     <ScrollView
         android:id="@+id/svTodaysTeams"
         android:layout_width="387dp"
-        android:layout_height="506dp"
+        android:layout_height="511dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -88,7 +88,8 @@
                     android:background="@drawable/cell_border"
                     android:padding="34dip"
                     android:text="Today's Teams"
-                    android:textSize="23sp" />
+                    android:textSize="27sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -199,7 +200,7 @@
     <ScrollView
         android:id="@+id/svQueue"
         android:layout_width="387dp"
-        android:layout_height="506dp"
+        android:layout_height="511dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -236,7 +237,8 @@
                     android:background="@drawable/cell_border"
                     android:padding="34dip"
                     android:text="Queue"
-                    android:textSize="23sp" />
+                    android:textSize="27sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow

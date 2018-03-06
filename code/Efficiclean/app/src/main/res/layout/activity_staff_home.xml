@@ -74,7 +74,7 @@
     <ScrollView
         android:id="@+id/svQueue"
         android:layout_width="190dp"
-        android:layout_height="378dp"
+        android:layout_height="387dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -113,7 +113,8 @@
                     android:background="@drawable/cell_border"
                     android:padding="25dip"
                     android:text="Queue"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow

@@ -46,7 +46,8 @@
                     android:gravity="center"
                     android:padding="25dip"
                     android:text="Rooms to be approved:"
-                    android:textSize="29sp" />
+                    android:textStyle="bold"
+                    android:textSize="30sp" />
             </TableRow>
 
             <TableRow

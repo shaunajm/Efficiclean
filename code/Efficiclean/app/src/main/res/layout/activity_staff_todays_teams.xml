@@ -12,7 +12,7 @@
     <ScrollView
         android:id="@+id/svTodaysTeams"
         android:layout_width="255dp"
-        android:layout_height="378dp"
+        android:layout_height="389dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -48,7 +48,8 @@
                     android:background="@drawable/cell_border"
                     android:padding="25dip"
                     android:text="Today's Teams"
-                    android:textSize="18dp" />
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
@@ -58,12 +59,12 @@
 
 
                 <TextView
+                    android:id="@+id/tvTeamRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_span="3"
                     android:background="@drawable/cell_border"
                     android:padding="18dip"
-                    android:id="@+id/tvTeamRow"
                     android:text="Team 1"
                     android:textSize="18sp" />
             </TableRow>

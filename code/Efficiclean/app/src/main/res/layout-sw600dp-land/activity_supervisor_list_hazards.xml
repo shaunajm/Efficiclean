@@ -10,7 +10,7 @@
     <ScrollView
         android:id="@+id/svHazardsToBeApproved"
         android:layout_width="436dp"
-        android:layout_height="407dp"
+        android:layout_height="413dp"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -49,7 +49,8 @@
                     android:gravity="center"
                     android:padding="25dip"
                     android:text="Hazards to be approved:"
-                    android:textSize="30sp" />
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow

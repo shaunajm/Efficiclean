@@ -86,7 +86,7 @@
     <ScrollView
         android:id="@+id/svTeamProgress"
         android:layout_width="179dp"
-        android:layout_height="398dp"
+        android:layout_height="409dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -120,7 +120,8 @@
                     android:background="@drawable/cell_border"
                     android:padding="24dip"
                     android:text="Team's Progress"
-                    android:textSize="18sp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow
