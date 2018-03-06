@@ -8,12 +8,18 @@ $(document).ready(function () {
   }
   // function to close our popups
   function closePopup(){
-    $('.overlay-bg, .overlay-content').hide();
+    $('.overlay-bg, .overlay-content, #loader').hide();
   }
 
   $('.close-btn, .overlay-bg').click(function(){
     closePopup();
   });
+
+  function showLoader() {
+    var docHeight = $(document).height();
+    $('.overlay-bg').show();
+    $("#loader").show();
+  }
 
   //Firebase configuration
   const config = {
@@ -46,6 +52,8 @@ $(document).ready(function () {
     //Authentication status
     const auth = firebase.auth();
 
+    showLoader();
+
     if (hotelID && username && password) {
       //Reference to the staff branch in the database
       const mStaffRef = firebase.database().ref().child(hotelID).child("staff");
@@ -69,10 +77,12 @@ $(document).ready(function () {
 
         //Displays message if details are incorrect
         if (isValid == false) {
+          closePopup();
           showPopup();
         }
       });
     } else {
+      closePopup();
       showPopup();
     }
     
@@ -83,6 +93,7 @@ $(document).ready(function () {
     if(firebaseUser) {
       //Redirects to map page
       console.log(firebaseUser);
+      closePopup();
       window.location.href = "mapview.html?hid=" + hid.value;
     } else {
       console.log("No user currently logged in.");

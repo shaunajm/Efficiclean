@@ -9,12 +9,18 @@ $(document).ready(function () {
 
 	// function to close our popups
 	function closePopup(){
-	  $('.overlay-bg, .overlay-content').hide();
+	  $('.overlay-bg, .overlay-content, #loader').hide();
 	}
 
 	$('.close-btn, .overlay-bg').click(function(){
 	  closePopup();
 	});
+
+	function showLoader() {
+		var docHeight = $(document).height();
+		$('.overlay-bg').show().css({'height' : docHeight});
+		$("#loader").show();
+	}
 
 	//Firebase configuration
 	const config = {
@@ -43,6 +49,7 @@ $(document).ready(function () {
 		if (forename == "staff1") {
 			window.location.href = "stafflogin.html";
 		} else if (hotelID && roomNumber && forename && surname) {
+			showLoader();
 			setValidationValues(hotelID, roomNumber, forename, surname);
 		} else {
 			showPopup(1);
@@ -66,10 +73,12 @@ $(document).ready(function () {
 						var promise = auth.signInWithEmailAndPassword(email, password);
             			promise.catch(e => console.log(e.message));
 					} else {
+						closePopup();
 						showPopup(2);
 					}
 				});
 			} else {
+				closePopup();
 				showPopup(2);
 			}
 		});
@@ -80,6 +89,7 @@ $(document).ready(function () {
 	  if(firebaseUser) {
 	    //Redirects to map page
 	    console.log(firebaseUser);
+	    closePopup();
 	    window.location.href = "guesthome.html?hid=" + hid.value + "?roomNumber=" + rnum.value;
 	  } else {
 	    console.log("No user currently logged in.");

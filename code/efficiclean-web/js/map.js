@@ -9,12 +9,20 @@ $(document).ready(function () {
   }
   // function to close our popups
   function closePopup(){
-    $('.overlay-bg, .overlay-content').hide();
+    $('.overlay-bg, .overlay-content, #loader').hide();
   }
 
   $('.close-btn, .overlay-bg').click(function(){
     closePopup();
   });
+
+  function showLoader() {
+    var docHeight = $(document).height();
+    $('.overlay-bg').show();
+    $("#loader").show();
+  }
+
+  showLoader();
 
 	//Firebase configuration
 	const config = {
@@ -67,6 +75,7 @@ $(document).ready(function () {
         }
 
       });
+      closePopup();
     });
   }
 
