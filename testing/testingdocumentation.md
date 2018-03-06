@@ -158,11 +158,11 @@ public class TeamTest {
 }
 ```
 
--     *TeamTest* aims to test the functionality of the *Team* class. It creates an instance and calls the setter methods to allocate values to the object variables.
+-   *TeamTest* aims to test the functionality of the *Team* class. It creates an instance and calls the setter methods to allocate values to the object variables.
 
--     After the variables have been initialised, we use assertions to ensure that the object has no unexpected null classes. We also use *assertEquals* to check that the constructor performed the correct operations.
+-   After the variables have been initialised, we use assertions to ensure that the object has no unexpected null classes. We also use *assertEquals* to check that the constructor performed the correct operations.
 
--     The *Team* class uses an *ArrayList* to store the identification keys of housekeepers assigned to that team. We lastly call methods of our custom class that are used to access this list, and test the operation results using assertions.   
+-   The *Team* class uses an *ArrayList* to store the identification keys of housekeepers assigned to that team. We lastly call methods of our custom class that are used to access this list, and test the operation results using assertions.   
 
 ### BreakTest.java
 
@@ -209,13 +209,13 @@ public class BreakTest {
 }
 ```
 
--     *BreakTest* tests our custom *Break* class. It firstly creates an instance of *Break* followed by two seperate *Date* objects. *Break* creates its own instance using a formatted time string passed into the *setBreakTime* method. We test our *breakTime* variable against our test objects.
+-   *BreakTest* tests our custom *Break* class. It firstly creates an instance of *Break* followed by two seperate *Date* objects. *Break* creates its own instance using a formatted time string passed into the *setBreakTime* method. We test our *breakTime* variable against our test objects.
 
--     At first, our assertions which should have found that the *Date* instances were true failed.
+-   At first, our assertions which should have found that the *Date* instances were true failed.
 
 ![](media/break_error.png)
 
--     After debugging our code, we realised that the reason our assertion was failing was because both *Date* objects had different Unix timestamps, which are precise to the millisecond. To fix our test, we compared the individual hour, minute and second values of the variables instead. Our test class ran successfully after making this change.
+-   After debugging our code, we realised that the reason our assertion was failing was because both *Date* objects had different Unix timestamps, which are precise to the millisecond. To fix our test, we compared the individual hour, minute and second values of the variables instead. Our test class ran successfully after making this change.
 
 ![](media/break_pass.png)
 
@@ -297,9 +297,9 @@ public class ApprovalTest {
 }
 ```
 
--     Multiple different custom classes are tested by *ApprovalTest*. *HazardApproval* and *SevereMessApproval* both inherit from the parent *Approval* class. The difference between the classes is their priority based on the importance of each different approval type.
+-   Multiple different custom classes are tested by *ApprovalTest*. *HazardApproval* and *SevereMessApproval* both inherit from the parent *Approval* class. The difference between the classes is their priority based on the importance of each different approval type.
 
--     Firstly, we create different *Job* objects before our different approvals are initialised. We then call setter methods to assign values to class variables and use assertions to ensure our operations were successful. This is followed by testing that our *priorityCounter* values were set correctly by the constructors through comparing our different objects. We then increment the *Approval* priority, and define new assertions for what we expect our values to be.
+-   Firstly, we create different *Job* objects before our different approvals are initialised. We then call setter methods to assign values to class variables and use assertions to ensure our operations were successful. This is followed by testing that our *priorityCounter* values were set correctly by the constructors through comparing our different objects. We then increment the *Approval* priority, and define new assertions for what we expect our values to be.
 
 ### JobTest.java
 
@@ -338,7 +338,7 @@ public class JobTest {
 }
 ```
 
--     Lastly, we have a simple test class to check the functionality of our *Job* class. We declare two objects and use assertions to check that the methods perform the correct operations.
+-   Lastly, we have a simple test class to check the functionality of our *Job* class. We declare two objects and use assertions to check that the methods perform the correct operations.
 
 ## 4. Instrumented Testing
 
