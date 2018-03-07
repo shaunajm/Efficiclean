@@ -153,7 +153,7 @@ public class StaffLogin extends AppCompatActivity {
         DatabaseReference mStaffRef = mRootRef.child(hNumber).child("staff");
 
         //Create ValueEventListener to read data from reference
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Create boolean to check if the correct details were found in the database
@@ -163,9 +163,14 @@ public class StaffLogin extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds.child("username").getValue(String.class).toLowerCase().equals(uString.toLowerCase())                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
-                        correctDetails = true;                                                          //Change value of correctDetails
-                        Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
-                        validateValues(housekeeper);
+                        if (!ds.child("teamID").getValue(String.class).equals("Absent")) {
+                            correctDetails = true;                                                          //Change value of correctDetails
+                            Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
+                            validateValues(housekeeper);
+                        } else {
+                            Toast.makeText(StaffLogin.this, "This staff member is marked as absent for today.",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
                 if (!correctDetails) {
@@ -183,7 +188,7 @@ public class StaffLogin extends AppCompatActivity {
     private void setSupervisorValues(String hNumber, final String uString, final String pString) {
         DatabaseReference mSupervisorRef = mRootRef.child(hNumber).child("supervisor");
 
-        mSupervisorRef.addValueEventListener(new ValueEventListener() {
+        mSupervisorRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Create boolean to check if the correct details were found in the database
