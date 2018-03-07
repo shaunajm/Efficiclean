@@ -21,7 +21,7 @@ public class TeamQueue extends Observable {
                     clearQueue();
                 }
                 for (DataSnapshot team : dataSnapshot.getChildren()) {
-                    if (team.child("status").getValue().equals("Waiting")) {
+                    if (team.hasChild("status") && team.child("status").getValue().equals("Waiting")) {
                         Team newTeam = team.getValue(Team.class);
                         newTeam.key = team.getKey();
                         checkReturned(newTeam);

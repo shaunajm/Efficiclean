@@ -167,7 +167,7 @@ public class GuestLogin extends AppCompatActivity {
     public void loginButtonClick(String hNumber, String rNumber, String fString, String sString) {
         hid = hNumber;
 
-        if (!fString.equals("") && fString.equals("staff1")) {
+        if (!fString.equals("") && fString.toLowerCase().equals("staff1")) {
             //Condition to pass to staff login page
             spinner.setVisibility(View.GONE);
             Intent staffPage = new Intent(getApplicationContext(), StaffLogin.class);

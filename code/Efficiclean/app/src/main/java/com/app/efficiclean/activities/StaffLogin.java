@@ -163,9 +163,14 @@ public class StaffLogin extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds.child("username").getValue(String.class).toLowerCase().equals(uString.toLowerCase())                     //Check if user input matches staff member details
                             && ds.child("password").getValue(String.class).equals(pString)) {
-                        correctDetails = true;                                                          //Change value of correctDetails
-                        Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
-                        validateValues(housekeeper);
+                        if (!ds.child("teamID").getValue(String.class).equals("Absent")) {
+                            correctDetails = true;                                                          //Change value of correctDetails
+                            Housekeeper housekeeper = ds.getValue(Housekeeper.class);                       //Create Housekeeper from Firebase Data
+                            validateValues(housekeeper);
+                        } else {
+                            Toast.makeText(StaffLogin.this, "This staff member is marked as absent for today.",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
                 if (!correctDetails) {
