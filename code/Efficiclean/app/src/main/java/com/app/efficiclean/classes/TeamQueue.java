@@ -18,7 +18,7 @@ public class TeamQueue extends Observable {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!tQueue.isEmpty()) {
-                    tQueue = new ArrayList<Team>();
+                    clearQueue();
                 }
                 for (DataSnapshot team : dataSnapshot.getChildren()) {
                     if (team.child("status").getValue().equals("Waiting")) {
@@ -57,5 +57,9 @@ public class TeamQueue extends Observable {
         } else {
             tQueue.add(newTeam);
         }
+    }
+
+    public void clearQueue() {
+        tQueue = new ArrayList<Team>();
     }
 }
