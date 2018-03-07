@@ -4,6 +4,9 @@
 - Conor Hanlon
 - Shauna Moran
 
+&nbsp;
+&nbsp;
+
 ## Table of Contents
 - [**1. Use Case Testing**](#1-use-case-testing)
 - [**2. Gitlab Continuous Integration Pipeline**](#2-gitlab-continuous-integration-pipeline)
@@ -16,6 +19,19 @@
 - [**6. Heuristic Testing**](#6-heuristic-testing)
 - [**7. Accessibility Testing**](#7-accessibility-testing)
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## 1. Use Case Testing
 
@@ -47,6 +63,10 @@
 024 | Reception Login | Reception Logged in successfully | As intended
 025 | Reception View Map | Map displayed correctly | As intended
 026 | Reception Check Out Room | Room checked out. Map updated successfully. | As intended
+
+&nbsp;
+&nbsp;
+
 
 
 ## 2. Gitlab Continuous Integration Pipeline
@@ -339,6 +359,9 @@ public class JobTest {
 
 -   Lastly, we have a simple test class to check the functionality of our *Job* class. We declare two objects and use assertions to check that the methods perform the correct operations.
 
+&nbsp;
+&nbsp;
+
 ## 4. Instrumented Testing
 
 We also ran instrumented Android tests as part of our testing process. These are designed to test activities and run the application on an emulator device. This allows us to ensure tasks such as entering text into input boxes and clicking buttons are working correctly.
@@ -353,9 +376,9 @@ This demonstrates error handling by blocking the user to perform actions without
 
 This error handling is also present in the staff interface. Due to the interactive nature of the application, it is crucial that there are constraints in place that will block any invalid operations which may be harmful to the system. One simple example is when housekeepers are requesting breaks. Instrumented testing allows us to try different edge cases and ensure that our application will react positively when stress tested. Below is the prompt displayed in the case that staff members input an invalid time format for their break.
 
-|*Invalid time inputted*                   
-|:----------------------------:
-|![](media/correct_format.png)   
+|*Invalid time inputted*       |            
+|:----------------------------:|
+|![](media/correct_format.png)  | 
 
 Finally, our Android tests check that our communication between the application and the Firebase database are accurate. Queries are made regarding different information which impacts whether or not a user can perform an operation. Below are two examples:
 
@@ -393,7 +416,6 @@ We will ask users to complete a survey and following on from this complete a sho
 ![](media/interview.png)
 
 &nbsp;
-&nbsp;
 
 Once we have gathered this information we will take all feedback onboard to make corrections and changes that users would like to see present in Efficiclean.
 
@@ -412,6 +434,14 @@ The majority of those tested found the application easy to use.| Most found is p
 ![](media/survey4.png) | ![](media/survey5.png) | ![](media/survey6.png)
 Most would recommend this application to a friend.| The results of this question were very widespread. We do not want any users to find the application frustrating to use so have to work on bug fixes and making the application less frustrating to use.|Users felt the application could be improved so we will work on this before the next round of user testing
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 
 *Question 7*           | *Question 8*           | *Question 9*
 :---------------------:|:----------------------:|:---------------------:
@@ -424,6 +454,18 @@ Users were happy with how they learned to use the application. | Testers found a
 ![](media/survey10.png) | ![](media/survey11-1.png) | ![](media/survey11-2.png)
 Users found Efficiclean easy to use, clever and fast. Unfortunately, one user mentioned the application was buggy. We will have to make sure to resolve this issue. |Users scored the application between 5 and 10. We would like to improve this score.|Here was can see the remainer of the legend
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 *Question 12*           | *Question 13*           | *Question 14*
 :---------------------:|:----------------------:|:---------------------:
 ![](media/survey12.png) | ![](media/survey13.png) | ![](media/survey14.png)
@@ -434,6 +476,11 @@ Again, Map View and Marking room status were popular among users.|Users gave us 
 :---------------------:|:----------------------:|:---------------------:
 ![](media/survey15.png) | ![](media/survey16.png) | ![](media/survey17.png)
 The issues users faced were predominately down to bugs which we will fix. Some issues were with colour contrasts and font sizes which will be adjusted.|All users found the application enjoyable to use which we were delighted to see.|Overall, users enjoyed using our application but felt it needed some work.
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ### 5.2 User Testing Phase two
 
@@ -451,6 +498,22 @@ This score increased from our first phase of user testing. All respondents found
 Most would recommend this application to a friend.| Thankfully most users found the application not to be frustrating but unfortunately one user did. | The results of this question were widespread. Some users felt the application could be improved and later gave feedback on this.
 
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 *Question 7*           | *Question 8*           | *Question 9*
 :---------------------:|:----------------------:|:---------------------:
 ![](media/2survey7.png) | ![](media/2survey8.png) | ![](media/2survey9.png)
@@ -460,6 +523,18 @@ Yet again all users were happy with how they learned to use the application. | A
 :---------------------:|:--------------------------:|:---------------------:
 ![](media/2survey10.png) | ![](media/2survey11a.png) | ![](media/2survey11b.png)
 There was no negative remarks in this section as before. Users were very happy with the application and found it helpful, fast and clever. |Users scored the application between 7 and 10. This score has increased for 5-10 last time. We are delighted with this increase. | This diagram shows the later end of the legend.
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 *Question 12*           | *Question 13*           | *Question 14*
 :---------------------:|:----------------------:|:---------------------:
@@ -474,6 +549,16 @@ The user gave feedback on the issue they were facing. We will resolve this issue
 
 
 User testing was very helpful in helping us discover issues that we would not have discovered without this testing. Different points of view meant exploring aspects of the application which we had not considered and brought about many issues which will be fixed. As the results show, users opinions of the application greatly increased between both phases of testing which assured us that we were heading the correct way with our changes. We gave users a voice to help us tailor Efficiclean to the user and it greatly impacted the application.
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## 6. Heuristic Testing
 
@@ -536,6 +621,8 @@ Throughout Efficiclean there is a back button in the toolbar to allow users to r
 
 ![](media/back.png)
 
+&nbsp;
+
 ### Support internal locus of control
 
 Users have full control of the application. The guests get to choose to the status of the rooms, the staff and supervisor get to select what actions they perform in the application. Users initiate all actions within the application.
@@ -545,6 +632,8 @@ Users have full control of the application. The guests get to choose to the stat
 ### Reduce short-term memory load.
 
 As our short term memory supports only 5 to 9 items at one time, we kept our user interface as simple as possible. This means that users are not overloaded with information and can enjoy using the application.
+
+&nbsp;
 
 
 ## 7. Accessibility Testing
@@ -560,12 +649,15 @@ For users with sight difficulties, the Efficiclean mobile application, although 
 #### Colour Blindness
 To ensure Efficiclean was usable for users who suffer from colour blindness, we were careful to make sure that contrasting colours were not used together. Similarly, we had to ensure colours on the Map View did not contrast.
 
+
 *Mobile Interface*              | *Tablet interface*
 :------------------------------:|:----------------------------------:
 ![](media/mapviewmobile.png) | ![](media/mapviewtablet.png)
 
 #### Hearing Difficulties
 As Efficiclean has no audio within the application their will be no difficulties present for users with hearing difficulties. The only aspect of Efficiclean which involves audio are the push notifications. One example of these push notifications are the alerts which let users know that their room has been cleaned.
+
+&nbsp;
 
 #### Motor Skills
 Users who suffer from poor motor skills benefit from elements which will be used in sequence placed close together. This structure is evident throughout Efficiclean. Buttons should also be large to ensure they are easier to tap. Similarly to users experiencing sight issues, guests with motor issues may benefit from using the web interface as they can avail of the use of the keyboard.
