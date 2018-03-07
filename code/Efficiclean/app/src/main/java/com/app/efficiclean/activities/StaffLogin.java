@@ -153,7 +153,7 @@ public class StaffLogin extends AppCompatActivity {
         DatabaseReference mStaffRef = mRootRef.child(hNumber).child("staff");
 
         //Create ValueEventListener to read data from reference
-        mStaffRef.addValueEventListener(new ValueEventListener() {
+        mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Create boolean to check if the correct details were found in the database
@@ -183,7 +183,7 @@ public class StaffLogin extends AppCompatActivity {
     private void setSupervisorValues(String hNumber, final String uString, final String pString) {
         DatabaseReference mSupervisorRef = mRootRef.child(hNumber).child("supervisor");
 
-        mSupervisorRef.addValueEventListener(new ValueEventListener() {
+        mSupervisorRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Create boolean to check if the correct details were found in the database

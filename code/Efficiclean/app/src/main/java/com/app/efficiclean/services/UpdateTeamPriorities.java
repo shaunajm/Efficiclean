@@ -42,11 +42,13 @@ public class UpdateTeamPriorities extends JobService {
         if (teams.hasChildren()) {
             for (DataSnapshot team : teams.getChildren()) {
                 String key = team.getKey();
-                int priority = team.child("priorityCounter").getValue(int.class);
-                String status = team.child("status").getValue(String.class);
-                if (status.equals("Waiting")) {
-                    priority++;
-                    mTeamRef.child(key).child("priorityCounter").setValue(priority);
+                if (team.hasChild("priorityCounter") && team.hasChild("status")) {
+                    int priority = team.child("priorityCounter").getValue(int.class);
+                    String status = team.child("status").getValue(String.class);
+                    if (status.equals("Waiting")) {
+                        priority++;
+                        mTeamRef.child(key).child("priorityCounter").setValue(priority);
+                    }
                 }
             }
         }

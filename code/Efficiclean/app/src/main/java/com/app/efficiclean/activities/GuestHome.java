@@ -44,7 +44,6 @@ public class GuestHome extends AppCompatActivity {
             setContentView(R.layout.activity_guest_home);
         }
 
-
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
