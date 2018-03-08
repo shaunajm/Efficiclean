@@ -37,6 +37,8 @@ public class StaffCurrentJob extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_staff_current_room);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -48,6 +50,7 @@ public class StaffCurrentJob extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -68,6 +71,7 @@ public class StaffCurrentJob extends AppCompatActivity {
             }
         });
 
+        //Reference to supervisor values in database
         mSupervisorRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor");
         mSupervisorRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,6 +97,7 @@ public class StaffCurrentJob extends AppCompatActivity {
             }
         });
 
+        //Add listener to submit button
         btReportHazard = (Button) findViewById(com.app.efficiclean.R.id.btReportHazard);
         btReportHazard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +167,7 @@ public class StaffCurrentJob extends AppCompatActivity {
     }
     
     public void getTeam() {
+        //Make reference to team branch in Firebase
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamKey);
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -193,10 +199,15 @@ public class StaffCurrentJob extends AppCompatActivity {
     }
 
     public void assignToSupervisor() {
+        //Get job of team
         Job job = team.getCurrentJob();
+
+        //Create new Approval and set values
         Approval approval = new Approval();
         approval.setJob(job);
         approval.setCreatedBy(team.getKey());
+
+        //Send approval to the supervisor and update values in the database
         DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
         mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
@@ -204,6 +215,8 @@ public class StaffCurrentJob extends AppCompatActivity {
             mTeamRef.child("status").setValue("Waiting");
         }
         mTeamRef.child("currentJob").removeValue();
+
+        //Display popup to user
         Toast.makeText(StaffCurrentJob.this, "This room has been marked clean and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
         Intent i = new Intent(StaffCurrentJob.this, StaffHome.class);

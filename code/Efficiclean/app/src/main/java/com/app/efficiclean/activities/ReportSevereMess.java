@@ -35,6 +35,8 @@ public class ReportSevereMess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_staff_report_severe_mess);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -46,6 +48,7 @@ public class ReportSevereMess extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -58,6 +61,7 @@ public class ReportSevereMess extends AppCompatActivity {
 
         description = (EditText) findViewById(com.app.efficiclean.R.id.etDescription);
 
+        //Add listener to submit button
         reportHazard = (Button) findViewById(R.id.btSevereMessSubmit);
         reportHazard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +70,7 @@ public class ReportSevereMess extends AppCompatActivity {
             }
         });
 
+        //Make reference to team branch in Firebase
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamKey);
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,6 +84,7 @@ public class ReportSevereMess extends AppCompatActivity {
             }
         });
 
+        //Reference to supervisor values in database
         mSupervisorRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor");
 
         mAuth = FirebaseAuth.getInstance();
@@ -129,6 +135,8 @@ public class ReportSevereMess extends AppCompatActivity {
         approval.setJob(job);
         approval.setCreatedBy(teamKey);
         approval.setDescription(description.getText().toString());
+
+        //Send approval to the supervisor and update values in the database
         DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
         mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);

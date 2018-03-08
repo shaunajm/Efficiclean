@@ -41,6 +41,8 @@ public class ServiceApproval extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_supervisor_cleans_approval);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -52,6 +54,7 @@ public class ServiceApproval extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -60,12 +63,15 @@ public class ServiceApproval extends AppCompatActivity {
             approvalKey = extras.getString("approvalKey");
         }
 
+        //Display relevant room number and description
         TextView header = (TextView) findViewById(com.app.efficiclean.R.id.tvRoomNumber);
         header.setText("Room: " + roomNumber);
 
+        //Reference display file check boxes
         approve = (CheckBox) findViewById(com.app.efficiclean.R.id.cbApprove);
         disapprove = (CheckBox) findViewById(com.app.efficiclean.R.id.cbDisapprove);
 
+        //Add toggle functionality to block both check boxes being selected
         approve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -84,8 +90,10 @@ public class ServiceApproval extends AppCompatActivity {
             }
         });
 
+        //Reference other elements from activity layouts
         comments = (EditText) findViewById(com.app.efficiclean.R.id.etComments);
 
+        //Add click listener to submit button
         btApprove = (Button) findViewById(R.id.btCleansApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,8 +123,10 @@ public class ServiceApproval extends AppCompatActivity {
             }
         });
 
+        //Reference to root of current hotel
         mRootRef = FirebaseDatabase.getInstance().getReference(hotelID);
 
+        //Add listener to get current supervisor values
         mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
         mSuperRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,6 +140,7 @@ public class ServiceApproval extends AppCompatActivity {
             }
         });
 
+        //Add listener to get datasnapshot of selected approval request
         mAppRef = mSuperRef.child("approvals").child(approvalKey);
         mAppRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -143,6 +154,7 @@ public class ServiceApproval extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -186,6 +198,7 @@ public class ServiceApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
+        //Get Firebase values for team
         mTeamRef.child("cleanCounter").setValue(cleans);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("Completed");
         mSuperRef.child("approvals").child(approvalKey).removeValue();
@@ -203,6 +216,9 @@ public class ServiceApproval extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
+
+        //Get Firebase values for team
+
         job.setDescription(comments.getText().toString());
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -218,6 +234,7 @@ public class ServiceApproval extends AppCompatActivity {
 
             }
         });
+        //Update values in Database
         mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Progress");
         mAppRef.removeValue();

@@ -63,6 +63,8 @@ public class StaffLogin extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Display loading spinner
                 spinner.bringToFront();
                 spinner.invalidate();
                 spinner.setVisibility(View.VISIBLE);
