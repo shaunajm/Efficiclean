@@ -1,14 +1,13 @@
-# Guest User Manual
+## 1. Guest User Manual
 
-## Installation
+### 1.1 Installation
 
 - To install the Efficiclean application go to the Google Play Store and search for “Efficiclean”
 - Click on the Efficiclean application
 - Click the install button
 - Once the application has installed click the open button on this page
 
-&nbsp;
-## Login
+### 1.2 Login
 
 - When you open Efficiclean you will be presented with the login page
 - Your login details consist of the name which the room was booked under and the room and hotel information present on the back of your hotel room door
@@ -27,7 +26,7 @@
 
 &nbsp;
 
-## Mark Room Status
+### 1.3 Mark Room Status
 
 - As you can see in the image below you will presented with three options to mark the status of your room
     - Please service my room
@@ -35,7 +34,7 @@
     - Checking out
 - Please service my room means that you would like your room to be cleaned
 - Do not disturb means that you not wish for your room to be serviced
-- Checking out means that you are checking out of the hotel. 
+- Checking out means that you are checking out of the hotel.
 
 &nbsp;
 
@@ -50,6 +49,7 @@
 
 &nbsp;
 
+
 *Mobile Interface*                     | *Tablet interface*                  
 :-------------------------------------:|:--------------------------------------:
 ![](media/guestpleaseservicemobile.png) | ![](media/guestpleaseservicetablet.png)  
@@ -59,8 +59,6 @@
 - The highlighted area of this interface shows the region where your estimated clean time will be present.
     - This is the estimated time by which your room will be cleaned.
 - When your room is cleaned you will receive a notification on your device to inform you that it has been cleaned.
-
-&nbsp;
 
 - If you mark your room as “Do not disturb” you will be presented with the following screen
 
@@ -79,20 +77,16 @@
 
 - You have now successfully marked the status of your room
 
-## Log Out
+### 1.4 Log Out
 
 - To log out of Efficiclean click on the back button on the top left corner of the home screen.
 - You will be be presented with the following pop up
 
-&nbsp;
 
 *Mobile Interface*                     | *Tablet interface*                  
 :-------------------------------------:|:--------------------------------------:
 ![](media/guestlogoutpoptablet.png)    | ![](media/guestlogoutpopmobile.png)  
 
-&nbsp;
 
 - Click Yes
 - You have successfully signed out of the application
-
-

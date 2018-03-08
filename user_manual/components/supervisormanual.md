@@ -1,36 +1,15 @@
-## Supervisor Manual
+## 3. Supervisor User Manual
 
-### Installation
+### 3.1 Installation
 
-- To install the Efficiclean application go to the Google Play Store and search for “Efficiclean”
-- Click on the Efficiclean application
-- Click the install button
-- Once the application has installed click the open button on this page
+*See guest manual section 1.1*
 
-### Login
+### 3.2 Login
 
-- When you open Efficiclean you will be presented with the login page.
-- This is the guest login page
-- In the forename field enter “staff1” as seen below
+*See staff section 2.2*
 
-
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/staff1loginmobile.png) | ![](media/staff1logintablet.png)
-
-
-- Click the Login button
-- You will be presented with the following page
-
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/staffloginmobile.png) | ![](media/stafflogintablet.png)
-
-- Enter your Hotel ID
-- Enter your unique username and password
-- Click the Login button
-
-### The Home Screen
+### 3.3 The Home Screen
+&nbsp;
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
@@ -51,9 +30,11 @@
 - The View Map button shows a map view of the status of each room in the hotel.
 - Approve Break is used to approve breaks which staff members have requested
 - Report Absence is used to report if a staff member is not present to remove them from the queue.
+
 &nbsp;
 
-### Service approval
+
+### 3.4 Service approval
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
@@ -79,78 +60,41 @@
   - Click the submit button
   - This room will be returned to the staff member for further cleaning
 
-### Hazards Approval
+### 3.5 Hazards/Severe Mess Approval
 
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/supervisorhazlistmobile.png) | ![](media/supervisorhazlisttablet.png)
+*Hazard List Mobile Interface*     | *Hazard List Tablet interface*   |*Severe Mess List Mobile Interface*          | *Severe Mess List Tablet Interface*
+:---------------------:|:--------------------:|:--------------------------:|:---------------------:
+![](media/supervisorhazlistmobile.png) | ![](media/supervisorhazlisttablet.png)|![](media/supervisorcleanslistmobile.png) | ![](media/supervisorcleanslisttablet.png)
 
-- Once you select the approve hazard option you will be presented with the above screen.
+- Once you select the approve hazard/severe mess option you will be presented with the above screen.
 - To select a room to approve, click onto the room number you wish to approve / disapprove.
 
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/supervisorhazardsmobile.png) | ![](media/supervisorhazardstablet.png)
+*Hazard Mobile Interface*     | *Hazard Tablet interface*| *Severe Mess Mobile Interface*     | *Severe Mess Tablet Interface*
+:---------------------:|:--------------------:|:---------------------:|:--------------------:
+![](media/supervisorhazardsmobile.png) | ![](media/supervisorhazardstablet.png)|![](media/supervisorseveremessmobile.png) | ![](media/supervisorseveremesstablet.png)
 
-- This hazards approval page is for approving hazards which staff have submitted.
+- This hazards/severe mess approval page is for approving hazards/severe messes which staff have submitted.
 - At the top of page is a description which the staff member has submitted to describe the issue.
-- Once you have checked the room, you may choose to approve or disapprove the hazard.
-- If you wish to approve a hazard:
+- Once you have checked the room, you may choose to approve or disapprove the hazard/severe mess.
+- If you wish to approve a hazard/severe mess:
   - Click approve
   - If you have any comments enter them in the reason box
   - Click the submit button
-  - The hazard has been successfully approved
+  - The hazard/severe mess has been successfully approved
 
 
-- If you wish to disapprove a hazard:
+- If you wish to disapprove a hazard/severe mess:
   - Click disapprove
   - If you have any comments enter them in the reason box
   - Click the submit button
   - This room will be returned to the staff member for cleaning
 
-### Severe Mess approval
 
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/supervisorsmlistmobile.png) | ![](media/supervisorsmlisttablet.png)
+### 3.7 View Map
 
-- Once you select the approve hazard option you will be presented with the above screen.
-- To select a room to approve, click onto the room number you wish to approve / disapprove.
+*See staff section 2.5*
 
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/supervisorseveremessmobile.png) | ![](media/supervisorseveremesstablet.png)
-
-- This severe mess approval page is for approving severe mess’ which staff have submitted.
-- At the top of page is a description which the staff member has submitted to describe the issue.
-- Once you have checked the room, you may choose to approve or disapprove the severe mess.
-- If you wish to approve a severe mess:
-  - Click approve
-  - If you have any comments enter them in the reason box
-  - Click the submit button
-  - The severe mess has been successfully approved
-- If you wish to disapprove a severe mess:
-  - Click disapprove
-  - If you have any comments enter them in the reason box
-  - Click the submit button
-  - This room will be returned to the staff member for cleaning
-
-### View Map
-
-*Mobile Interface*                 | *Tablet interface*
-:---------------------------------:|:--------------------------------------:
-![](media/mapviewmobile.png) | ![](media/mapviewtablet.png)
-
-- Once you have clicked the View Map button you will be presented with the View Map screen.
-- This screen presents you with the status of each room in the hotel.
-- There is a legend at the bottom of the map for reference
-  - Completed, rooms that have been cleaned, are marked green
-  - Waiting, rooms that are awaiting approval by a supervisor, are marked yellow
-  - Do not disturb, rooms of guest that do not wish for their rooms to be cleaned, are marked black
-  - In Progress, rooms which are currently being cleaned, are marked orange
-  - To be cleaned, rooms which are waiting to be cleaned, are marked red
-
-### Approve Break
+### 3.8 Approve Break
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
@@ -174,7 +118,9 @@
   - If you have any comments enter them in the reason box
   - Click the submit button
 
-### Report Absence
+  &nbsp;
+
+### 3.9 Report Absence
 
 *Mobile Interface*                 | *Tablet interface*
 :---------------------------------:|:--------------------------------------:
