@@ -378,7 +378,7 @@ This error handling is also present in the staff interface. Due to the interacti
 
 |*Invalid time inputted*       |            
 |:----------------------------:|
-|![](media/correct_format.png)  | 
+|![](media/correct_format.png)  |
 
 Finally, our Android tests check that our communication between the application and the Firebase database are accurate. Queries are made regarding different information which impacts whether or not a user can perform an operation. Below are two examples:
 
@@ -590,7 +590,7 @@ As we can see from each of the above pages, the background and font colours thro
 
 ### Enable frequent users to use shortcuts.
 
-At this current time there are no shortcuts built into Efficiclean as all actions must be carried out methodolocially. However, as future work, we would like to keep guests logged in until they leave the hotel when they will be automatically logged out.
+At this current time there are no shortcuts built into Efficiclean as all actions must be carried out methodologicially. However, as future work, we would like to keep guests logged in until they leave the hotel when they will be automatically logged out.
 
 ### Offer informative feedback
 
