@@ -22,15 +22,18 @@ public class TeamAllocator extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
+        //Get parameters passed to service
         extras = jobParameters.getExtras();
         hid = extras.getString("hid");
 
+        //Create reference to hotel in Firebase
         mRootRef = FirebaseDatabase.getInstance().getReference(hid);
 
         mStaffRef = mRootRef.child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Iterate through staff members and add their id to the ArrayList
                 for (DataSnapshot hk : dataSnapshot.getChildren()) {
                     staffKeys.add(hk.getKey());
                 }
@@ -52,14 +55,22 @@ public class TeamAllocator extends JobService {
     }
 
     public void randomiseKeys() {
+        //Randomise the order of the staff ids
         Random rand = new Random();
         Collections.shuffle(staffKeys, rand);
         createTeams();
     }
 
     public void createTeams() {
+        /*
+            This service is designed to randomly allocate housekeeping
+            teams for the next working day.
+         */
+
+        //Reference to teams branch in Firebase
         mTeamRef = mRootRef.child("teams");
 
+        //For every 2 staff members, create a team and add the team to an ArrayList
         int i;
         for (i = 0; i < staffKeys.size() - 1; i += 2) {
             Team newTeam = new Team();
@@ -71,6 +82,7 @@ public class TeamAllocator extends JobService {
             teams.add(newTeam);
         }
 
+        //Create a team of one if there is an odd number of staff members
         if (i < staffKeys.size()) {
             Team newTeam = new Team();
             newTeam.setStatus("Waiting");
@@ -80,6 +92,7 @@ public class TeamAllocator extends JobService {
             teams.add(newTeam);
         }
 
+        //Push teams to firebase and update staff members values
         for (Team team : teams) {
             String key = mTeamRef.push().getKey();
             mTeamRef.child(key).setValue(team);

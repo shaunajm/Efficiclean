@@ -14,9 +14,11 @@ public class QueueHandlerService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
+        //Get parameters passed to service
         extras = jobParameters.getExtras();
         hid = extras.getString("hid");
 
+        //Initiate QueueHandler instance for the relevant hotel to assign jobs to housekeeping teams
         qHandler = QueueHandlerCreater.createHandler(hid);
         return false;
     }

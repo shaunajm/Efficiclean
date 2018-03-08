@@ -14,13 +14,16 @@ public class UpdateJobPriorities extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters job) {
+        //Get parameters passed to service
         extras = job.getExtras();
         hid = extras.getString("hid");
 
+        //Create reference to the hotel jobs in Firebase database
         mJobRef = FirebaseDatabase.getInstance().getReference(hid).child("jobs");
         mJobRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Store jobs as datasnapshot
                 jobs = dataSnapshot;
                 updatePriorities();
             }
@@ -39,6 +42,12 @@ public class UpdateJobPriorities extends JobService {
     }
 
     public void updatePriorities() {
+        /*
+            This service increments the priority counter of all
+            jobs on the queue. This is so jobs that are waiting the longest
+            will be assigned to housekeepers first.
+         */
+
         if (jobs.hasChildren()) {
             for (DataSnapshot job : jobs.getChildren()) {
                 String key = job.getKey();

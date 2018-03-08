@@ -14,9 +14,11 @@ public class UpdateTeamPriorities extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters job) {
+        //Get parameters passed to service
         extras = job.getExtras();
         hid = extras.getString("hid");
 
+        //Create reference to the hotel teams in Firebase database
         mTeamRef = FirebaseDatabase.getInstance().getReference(hid).child("teams");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -39,6 +41,12 @@ public class UpdateTeamPriorities extends JobService {
     }
 
     public void updatePriorities() {
+        /*
+            This service increments the priority counter of all
+            teams on the queue. This is so teams that are waiting
+            the longest will be assigned to jobs first.
+         */
+
         if (teams.hasChildren()) {
             for (DataSnapshot team : teams.getChildren()) {
                 String key = team.getKey();
