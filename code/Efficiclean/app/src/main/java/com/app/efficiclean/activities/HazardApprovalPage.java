@@ -63,6 +63,25 @@ public class HazardApprovalPage extends AppCompatActivity {
 
         approve = (CheckBox) findViewById(com.app.efficiclean.R.id.cbApprove);
         disapprove = (CheckBox) findViewById(com.app.efficiclean.R.id.cbDisapprove);
+
+        approve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (approve.isChecked()) {
+                    disapprove.setChecked(false);
+                }
+            }
+        });
+
+        disapprove.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (disapprove.isChecked()) {
+                    approve.setChecked(false);
+                }
+            }
+        });
+
         comments = (EditText) findViewById(com.app.efficiclean.R.id.etReason);
         description = (TextView) findViewById(com.app.efficiclean.R.id.tvDescriptionBox);
 

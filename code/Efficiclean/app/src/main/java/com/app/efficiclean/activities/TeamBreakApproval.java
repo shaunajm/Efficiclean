@@ -66,6 +66,25 @@ public class TeamBreakApproval extends AppCompatActivity {
 
         approve = (CheckBox) findViewById(R.id.cbApprove);
         disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
+
+        approve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (approve.isChecked()) {
+                    disapprove.setChecked(false);
+                }
+            }
+        });
+
+        disapprove.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (disapprove.isChecked()) {
+                    approve.setChecked(false);
+                }
+            }
+        });
+
         reason = (EditText) findViewById(R.id.etReason);
 
         submit = (Button) findViewById(R.id.btTeamBreakSubmit);
