@@ -25,9 +25,12 @@ public class GuestDoNotDisturb extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_do_not_disturb);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -35,12 +38,14 @@ public class GuestDoNotDisturb extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             guest = (Guest) extras.getSerializable("thisGuest");
         }
 
+        //Set listener for home button
         btHome = (Button) findViewById(R.id.btHome);
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +57,7 @@ public class GuestDoNotDisturb extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();

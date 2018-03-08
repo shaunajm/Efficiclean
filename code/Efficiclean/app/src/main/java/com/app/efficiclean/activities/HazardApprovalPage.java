@@ -40,9 +40,12 @@ public class HazardApprovalPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_supervisor_hazard_approval);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -50,6 +53,7 @@ public class HazardApprovalPage extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -58,12 +62,15 @@ public class HazardApprovalPage extends AppCompatActivity {
             approvalKey = extras.getString("approvalKey");
         }
 
+        //Display relevant room number and description
         TextView header = (TextView) findViewById(com.app.efficiclean.R.id.tvRoomNumber);
         header.setText("Room " + roomNumber + " description:\n");
 
+        //Reference display file check boxes
         approve = (CheckBox) findViewById(com.app.efficiclean.R.id.cbApprove);
         disapprove = (CheckBox) findViewById(com.app.efficiclean.R.id.cbDisapprove);
 
+        //Add toggle functionality to block both check boxes being selected
         approve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -82,18 +89,22 @@ public class HazardApprovalPage extends AppCompatActivity {
             }
         });
 
+        //Reference other elements from activity layouts
         comments = (EditText) findViewById(com.app.efficiclean.R.id.etReason);
         description = (TextView) findViewById(com.app.efficiclean.R.id.tvDescriptionBox);
 
+        //Add click listener to submit button
         btApprove = (Button) findViewById(R.id.btHazardApprovalSubmit);
         btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Add listener to Firebase branch of relevant team
                 String team = job.getAssignedTo();
                 mTeamRef = mRootRef.child("teams").child(team);
                 mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Decide which function to call based on which box is checked
                         if (approve.isChecked()) {
                             approvedSubmit();
                         } else if (disapprove.isChecked()) {
@@ -112,8 +123,10 @@ public class HazardApprovalPage extends AppCompatActivity {
             }
         });
 
+        //Reference to root of current hotel
         mRootRef = FirebaseDatabase.getInstance().getReference(hotelID);
 
+        //Add listener to get current supervisor values
         mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
         mSuperRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,10 +140,12 @@ public class HazardApprovalPage extends AppCompatActivity {
             }
         });
 
+        //Add listener to get datasnapshot of selected approval request
         mAppRef = mSuperRef.child("approvals").child(approvalKey);
         mAppRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Get job of approval and display severe mess description
                 job = dataSnapshot.child("job").getValue(Job.class);
                 String info = dataSnapshot.child("description").getValue(String.class);
                 description.setText(info);
@@ -142,7 +157,11 @@ public class HazardApprovalPage extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.signOut();
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -182,10 +201,12 @@ public class HazardApprovalPage extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
+        //Get Firebase values for team
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Team team = dataSnapshot.getValue(Team.class);
+                //Send notification using OneSignal to all team members
                 for (String staffKey : team.getMembers()) {
                     NotificationHandler.sendNotification(hotelID, staffKey,
                             "Hazard approval for room number "
@@ -199,11 +220,13 @@ public class HazardApprovalPage extends AppCompatActivity {
 
             }
         });
+        //Update values in Database
         mTeamRef.child("returnedJob").setValue(job);
         mTeamRef.child("priorityCounter").setValue(2);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
 
+        //Return to SupervisorHome
         Intent i = new Intent(HazardApprovalPage.this, SupervisorHome.class);
         i.putExtras(extras);
         startActivity(i);
@@ -211,10 +234,12 @@ public class HazardApprovalPage extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
+        //Get Firebase values for team
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Team team = dataSnapshot.getValue(Team.class);
+                //Send notification using OneSignal to all team members
                 for (String staffKey : team.getMembers()) {
                     NotificationHandler.sendNotification(hotelID, staffKey,
                             "Hazard approval for room number "
@@ -228,11 +253,13 @@ public class HazardApprovalPage extends AppCompatActivity {
 
             }
         });
+        //Update values in Database
         job.setDescription(comments.getText().toString());
         mTeamRef.child("returnedJob").setValue(job);
         mRootRef.child("rooms").child(roomNumber).child("status").setValue("In Process");
         mAppRef.removeValue();
 
+        //Return to SupervisorHome
         Intent i = new Intent(HazardApprovalPage.this, SupervisorHome.class);
         i.putExtras(extras);
         startActivity(i);

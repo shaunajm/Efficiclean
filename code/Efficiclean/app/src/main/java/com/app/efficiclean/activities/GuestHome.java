@@ -33,20 +33,24 @@ public class GuestHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Create instance for current time and for 15:00
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
         midnight.set(Calendar.HOUR_OF_DAY, 15);
         midnight.set(Calendar.MINUTE, 0);
 
+        //Block user actions if current time is too late
         if(midnight.getTimeInMillis() - currentTime.getTimeInMillis() <= 0){
             setContentView(R.layout.activity_guest_cannot_mark);
         } else {
             setContentView(R.layout.activity_guest_home);
         }
 
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -54,6 +58,7 @@ public class GuestHome extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -95,6 +100,7 @@ public class GuestHome extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        //Display confirmation popup when guest goes to sign out
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setMessage("Are you sure you want to sign out?")
@@ -119,24 +125,31 @@ public class GuestHome extends AppCompatActivity {
     }
 
     public void pleaseServiceButtonClick(View view) {
+        //Create new job and set job variables
         Job newJob = new Job();
         newJob.setCreatedBy(guestKey);
         newJob.setRoomNumber(guest.getRoomNumber());
         newJob.setPriority(0);
+
+        //Write new job to database
         mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
         mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("To Be Cleaned");
         changePage("service");
     }
 
     public void doNotDisturbButtonClick(View view) {
+        //Update value of room in database
         mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("Do Not Disturb");
         changePage("notDisturb");
     }
 
     public void checkingOutButtonClick(View view) {
+        //Create new job and set job variables
         Job newJob = new Job();
         newJob.setRoomNumber(guest.getRoomNumber());
         newJob.setPriority(0);
+
+        //Write new job to database
         mRootRef.child(hotelID).child("jobs").push().setValue(newJob);
         mRootRef.child(hotelID).child("rooms").child(guest.getRoomNumber()).child("status").setValue("To Be Cleaned");
         changePage("checkingOut");
@@ -145,6 +158,7 @@ public class GuestHome extends AppCompatActivity {
     public void changePage(String choice) {
         Intent guestChoicePage = null;
 
+        //Select correct intent based on user action
         if (choice.equals("service")) {
             guestChoicePage = new Intent(GuestHome.this, GuestPleaseService.class);
         } else if (choice.equals("notDisturb")) {
@@ -154,6 +168,7 @@ public class GuestHome extends AppCompatActivity {
         }
 
         if (guestChoicePage != null) {
+            //Start new intent
             guestChoicePage.putExtras(extras);
             startActivity(guestChoicePage);
             finish();

@@ -37,9 +37,12 @@ public class ReportAbsences extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_report_absence);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -47,18 +50,22 @@ public class ReportAbsences extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             supervisorKey = extras.getString("staffKey");
         }
 
+        //Reference radio group of staff members
         names = (RadioGroup) findViewById(R.id.rgStaffList);
 
+        //Add click listener to submit button
         markAbsent = (Button) findViewById(R.id.btReportAbsenceSubmit);
         markAbsent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check if supervisor selected a staff member
                 if (names.getCheckedRadioButtonId() != 0) {
                     reportAbsence();
                 } else {
@@ -68,10 +75,12 @@ public class ReportAbsences extends AppCompatActivity {
             }
         });
 
+        //Reference to staff branch in database
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Store datasnapshot and populate radio group
                 staff = dataSnapshot;
                 populateGroup();
                 keys = populateHashMap();
@@ -83,6 +92,7 @@ public class ReportAbsences extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -126,12 +136,18 @@ public class ReportAbsences extends AppCompatActivity {
     }
 
     public void populateGroup(){
+        //Remove placeholders
         names.removeAllViews();
+
+        //Iterate through all staff members
         for (DataSnapshot ds : staff.getChildren()) {
+            //Get relevant staff information
             Housekeeper hs = ds.getValue(Housekeeper.class);
             String username = hs.getUsername();
 
+            //Ensure that staff member is not absent
             if (hs.getTeamID().equals("Absent") == false) {
+                //Add new radio button displaying staff member's name
                 RadioButton r1 = new RadioButton(this);
                 r1.setText(username);
                 r1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
@@ -143,9 +159,18 @@ public class ReportAbsences extends AppCompatActivity {
     }
 
     public HashMap<String, String> populateHashMap(){
+        /*
+            Used to create HashMap so that there is a clear link back to the database.
+            The key in this HashMap is the username rather than the staff member's id.
+            This is so we can display the username in the radio button, and extract the unique staff id
+            by just getting the text of the radio button.
+        */
+
         HashMap<String, String> map = new HashMap<String, String>();
 
+        //Iterate through staff members
         for(DataSnapshot ds : staff.getChildren()){
+            //Add current staff member's values to HashMap
             String key = ds.getKey();
             String username = ds.child("username").getValue(String.class);
             map.put(username, key);
@@ -154,13 +179,20 @@ public class ReportAbsences extends AppCompatActivity {
     }
 
     public void reportAbsence() {
+        //Reference radio button that is checked
         RadioButton rb = (RadioButton) findViewById(names.getCheckedRadioButtonId());
+
+        //Check if a radio button is selected
         if (rb != null) {
+            //Get housekeeper name and extract id from HashMap
             String uname = rb.getText().toString();
             final String key = keys.get(uname);
+
+            //Add listener to relevant staff member
             mStaffRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    //Save team id and update housekeeper status
                     teamID = dataSnapshot.child("teamID").getValue(String.class);
                     mStaffRef.child(key).child("teamID").setValue("Absent");
                     removeFromTeam(key);
@@ -175,11 +207,14 @@ public class ReportAbsences extends AppCompatActivity {
     }
 
     public void removeFromTeam(final String key) {
+        //Reference to members of the housekeeper's team in database
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).child("members");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Iterate through members
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    //Remove staff key if current value matches housekeeper
                     if (ds.getValue(String.class).equals(key)) {
                         mTeamRef.child(ds.getKey()).removeValue();
                         removeTeam(key);
@@ -198,6 +233,7 @@ public class ReportAbsences extends AppCompatActivity {
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Remove team if there is no members anymore
                 if (dataSnapshot.exists() == false) {
                     FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamID).removeValue();
                 }

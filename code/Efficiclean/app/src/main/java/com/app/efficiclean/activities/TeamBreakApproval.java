@@ -48,6 +48,7 @@ public class TeamBreakApproval extends AppCompatActivity {
             breakLength = extras.getInt("breakLength");
         }
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }

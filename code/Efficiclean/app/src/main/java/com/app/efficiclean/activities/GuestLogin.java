@@ -46,6 +46,7 @@ public class GuestLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_login);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -53,6 +54,7 @@ public class GuestLogin extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Initiate OneSignal messageing application
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
@@ -79,6 +81,7 @@ public class GuestLogin extends AppCompatActivity {
                 String fString = forename.getText().toString().trim();
                 String sString = surname.getText().toString().trim();
 
+                //Display loading spinner
                 spinner.bringToFront();
                 spinner.invalidate();
                 spinner.setVisibility(View.VISIBLE);
@@ -86,6 +89,7 @@ public class GuestLogin extends AppCompatActivity {
             }
         });
 
+        //Create job dispatcher to run our services
         jobDispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
 
         //Get instance of Firebase database
@@ -106,6 +110,7 @@ public class GuestLogin extends AppCompatActivity {
 
                 //Login user if not null
                 if (user != null) {
+                    //Run our services
                     scheduleReset();
                     allocateTeams();
                     updateJobPriorities();
@@ -114,25 +119,31 @@ public class GuestLogin extends AppCompatActivity {
                     allocateBreaks();
                     initiateQueue();
                     allocateMarkingTask();
+
+                    //Send unique user id to OneSignal platform
                     OneSignal.sendTag("uid", user.getUid());
 
                     //Create Bundle to pass information to next activity
                     bundle.putString("hotelID", hotelID.getText().toString().trim());
                     bundle.putSerializable("thisGuest", guest);
 
-                    Log.v("Room", guest.getRoomNumber());
+                    //Listen to value at the guest's room number in the database
                     mRootRef.child(hotelID.getText().toString()).child("rooms").child(guest.getRoomNumber()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             String status = dataSnapshot.child("status").getValue(String.class);
                             Intent guestHomePage;
                             if (status.equals("Completed")) {
+                                //Intent if guest's room has been serviced today
                                 guestHomePage = new Intent(GuestLogin.this, GuestCompleted.class);
                             } else if (status.equals("Idle") == false && status.equals("Do Not Disturb") == false) {
+                                //Intent if guest's room currently has a job on the queue
                                 guestHomePage = new Intent(GuestLogin.this, GuestPleaseService.class);
                             } else {
+                                //Intent to bring guest's to their home page
                                 guestHomePage = new Intent(GuestLogin.this, GuestHome.class);
                             }
+                            //Hide spinner and change activity
                             spinner.setVisibility(View.GONE);
                             guestHomePage.putExtras(bundle);
                             startActivity(guestHomePage);
@@ -257,26 +268,32 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public int[] getTimes(int hour, int minute) {
+        //Create instance with inputted hour and time and instance of current time
         Calendar currentTime = Calendar.getInstance();
         Calendar midnight = Calendar.getInstance();
         midnight.set(Calendar.HOUR_OF_DAY, hour);
         midnight.set(Calendar.MINUTE, minute);
 
+        //Get amount of seconds until inputted time
         long difference = midnight.getTimeInMillis() - currentTime.getTimeInMillis();
 
         int startSeconds = (int) (difference / 1000);
         int endSeconds = startSeconds + 86400;
 
+        //Create array with start and end times
         int[] times = {startSeconds, endSeconds};
         return times;
     }
 
     public void scheduleReset() {
+        //Get start time of service and recurring time
         int[] times = getTimes(23, 45);
 
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for ResetSystemStatus class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(ResetSystemStatus.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -294,11 +311,14 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void allocateTeams() {
+        //Get start time of service and recurring time
         int[] times = getTimes(23, 55);
 
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for TeamAllocator class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(TeamAllocator.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -316,9 +336,11 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void updateJobPriorities() {
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for UpdateJobPriorities class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(UpdateJobPriorities.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -336,9 +358,11 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void updateTeamPriorities() {
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for UpdateTeamPriorities class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(UpdateTeamPriorities.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -356,9 +380,11 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void updateBreakStatus() {
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for UpdateBreakStatus class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(UpdateBreakStatus.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -378,10 +404,12 @@ public class GuestLogin extends AppCompatActivity {
     public void allocateBreaks() {
         int[] times = getTimes(12, 0);
 
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
         if (times[0] >= 0 && times[1] >= 0) {
+            //Create job for BreakAllocator class
             Job job = jobDispatcher.newJobBuilder()
                     .setService(BreakAllocator.class)
                     .setLifetime(Lifetime.FOREVER)
@@ -400,9 +428,11 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void initiateQueue() {
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for QueueHandlerService class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(QueueHandlerService.class)
                 .setLifetime(Lifetime.FOREVER)
@@ -420,9 +450,11 @@ public class GuestLogin extends AppCompatActivity {
     }
 
     public void allocateMarkingTask() {
+        //Create bundle to pass variables to service
         Bundle extras = new Bundle();
         extras.putString("hid", hid);
 
+        //Create job for CheckRooms class
         Job job = jobDispatcher.newJobBuilder()
                 .setService(CheckRooms.class)
                 .setLifetime(Lifetime.FOREVER)

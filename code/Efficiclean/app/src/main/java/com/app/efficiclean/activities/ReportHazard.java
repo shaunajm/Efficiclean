@@ -35,9 +35,12 @@ public class ReportHazard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_staff_report_hazard);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Set screen orientation based on layout
         if(getResources().getBoolean(R.bool.landscape_only)){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
@@ -45,6 +48,7 @@ public class ReportHazard extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -55,6 +59,7 @@ public class ReportHazard extends AppCompatActivity {
 
         description = (EditText) findViewById(com.app.efficiclean.R.id.etDescription);
 
+        //Add listener to submit button
         reportHazard = (Button) findViewById(R.id.btHazardSubmit);
         reportHazard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,10 +68,12 @@ public class ReportHazard extends AppCompatActivity {
             }
         });
 
+        //Make reference to team branch in Firebase
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams").child(teamKey);
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Store datasnapshot of teams
                 team = dataSnapshot.getValue(Team.class);
             }
 
@@ -76,6 +83,7 @@ public class ReportHazard extends AppCompatActivity {
             }
         });
 
+        //Reference to supervisor values in database
         mSupervisorRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor");
 
         mAuth = FirebaseAuth.getInstance();
@@ -121,11 +129,16 @@ public class ReportHazard extends AppCompatActivity {
     }
 
     public void assignToSupervisor() {
+        //Get job of team
         Job job = team.getCurrentJob();
+
+        //Create new HazardApproval and set values
         HazardApproval approval = new HazardApproval();
         approval.setJob(job);
         approval.setCreatedBy(teamKey);
         approval.setDescription(description.getText().toString());
+
+        //Send approval to the supervisor and update values in the database
         DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
         mRoomRef.child(job.getRoomNumber()).child("status").setValue("Waiting");
         mSupervisorRef.child(supervisorKey).child("approvals").push().setValue(approval);
@@ -133,6 +146,8 @@ public class ReportHazard extends AppCompatActivity {
             mTeamRef.child("status").setValue("Waiting");
         }
         mTeamRef.child("currentJob").removeValue();
+
+        //Display popup to user
         Toast.makeText(ReportHazard.this, "This room has been marked hazardous and an approval request has been sent to the supervisor.",
                 Toast.LENGTH_LONG).show();
         Intent i = new Intent(ReportHazard.this, StaffHome.class);
