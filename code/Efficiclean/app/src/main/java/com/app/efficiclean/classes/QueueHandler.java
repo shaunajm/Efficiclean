@@ -24,10 +24,6 @@ public class QueueHandler implements Observer {
             Team team = tQueue.dequeue();
             job.assignTo(team.key);
             team.setCurrentJob(job);
-            /*
-            for (String staffKey : team.getMembers()) {
-                NotificationHandler.sendNotification(hotelID, staffKey, "You have been assigned a job: Room " + job.getRoomNumber());
-            }*/
             DatabaseReference mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
             DatabaseReference mRoomRef = FirebaseDatabase.getInstance().getReference(hotelID).child("rooms");
             mRoomRef.child(job.getRoomNumber()).child("status").setValue("In Process");
