@@ -108,6 +108,7 @@ public class TodaysTeams extends AppCompatActivity {
     }
 
     public void getTeams() {
+        //Reference to teams value in database
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -124,12 +125,17 @@ public class TodaysTeams extends AppCompatActivity {
     }
 
     public void setTeams() {
+        //Reference TableLayout and template for dynamic TextView
         TableLayout table = (TableLayout) findViewById(R.id.tbTodaysTeams);
         TextView template = (TextView) findViewById(R.id.tvTeamRow);
 
+        //Remove all TableRows except heading
         table.removeViews(1, table.getChildCount() - 1);
         for(DataSnapshot ds : teams.getChildren()) {
+            //Get team values and create new table row
             Team team = ds.getValue(Team.class);
+
+            //Make sure team has members
             if (ds.hasChild("members")) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
@@ -138,6 +144,7 @@ public class TodaysTeams extends AppCompatActivity {
 
                 String text = "";
 
+                //Generate text to be displayed
                 for (String staffKey : team.getMembers()) {
                     if (staffKey != null) {
                         if (text.equals("")) {
@@ -148,7 +155,9 @@ public class TodaysTeams extends AppCompatActivity {
                     }
                 }
 
+                //Check to make sure that there is text to be displayed
                 if (text.equals("") == false) {
+                    //Create new TableRow and add it to the TableLayout
                     TextView roomNumber = new TextView(this);
                     roomNumber.setText(text);
                     roomNumber.setTextSize(template.getTextSize() / 2);

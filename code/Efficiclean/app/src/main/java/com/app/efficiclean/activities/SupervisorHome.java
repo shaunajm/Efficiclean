@@ -40,6 +40,8 @@ public class SupervisorHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.app.efficiclean.R.layout.activity_supervisor_home);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -51,6 +53,7 @@ public class SupervisorHome extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -124,6 +127,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
+        //Reference staff values in database
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -138,6 +142,7 @@ public class SupervisorHome extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -168,6 +173,7 @@ public class SupervisorHome extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        //Display confirmation popup when guest goes to sign out
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setMessage("Are you sure you want to sign out?")
@@ -192,6 +198,7 @@ public class SupervisorHome extends AppCompatActivity {
     }
 
     public void getTeams() {
+        //Reference to teams value in database
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -208,11 +215,16 @@ public class SupervisorHome extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
+        //Reference TableLayout and template for dynamic TextView
         TableLayout table = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeamProgress);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
+        //Remove all TableRows except heading
         table.removeViews(1, table.getChildCount() - 1);
+
+        //Iterate through teams
         for(DataSnapshot ds : teams.getChildren()) {
+            //Get team values and create new table row
             Team team = ds.getValue(Team.class);
             TableRow tr = new TableRow(this);
             tr.setLayoutParams(new TableLayout.LayoutParams(
@@ -221,6 +233,7 @@ public class SupervisorHome extends AppCompatActivity {
 
             String text = "";
 
+            //Generate text to be displayed
             for (String staffKey : team.getMembers()) {
                 if (staffKey != null) {
                     if (text.equals("")) {
@@ -231,10 +244,12 @@ public class SupervisorHome extends AppCompatActivity {
                 }
             }
 
+            //Check to make sure that there is text to be displayed
             if (text.equals("") == false) {
                 text = text + " : " + Integer.toString(team.getCleanCounter());
 
                 if (template != null) {
+                    //Create new TableRow and add it to the TableLayout
                     TextView roomNumber = new TextView(this);
                     roomNumber.setText(text);
                     roomNumber.setTextSize(template.getTextSize() / 2);

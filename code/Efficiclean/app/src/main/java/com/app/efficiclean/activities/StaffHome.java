@@ -61,6 +61,7 @@ public class StaffHome extends AppCompatActivity {
             staffKey = extras.getString("staffKey");
         }
 
+        //Get TableLayouts from layout file
         tb1 = (TableLayout) findViewById(com.app.efficiclean.R.id.tbTeams);
         tb2 = (TableLayout) findViewById(com.app.efficiclean.R.id.tbQueue);
 
@@ -91,9 +92,11 @@ public class StaffHome extends AppCompatActivity {
         btCurrentJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Get team status and key from the database
                 String teamKey = staff.child(staffKey).child("teamID").getValue(String.class);
                 String teamStatus = teams.child(teamKey).child("status").getValue(String.class);
 
+                //Set intent to correct activity based on what job is currently assigned to housekeeping team
                 Intent i;
                 if (teamStatus.equals("Checking Rooms") && staff.child(staffKey).hasChild("currentJob") == false) {
                     i = new Intent(StaffHome.this, StaffMarkRoom.class);
@@ -120,6 +123,7 @@ public class StaffHome extends AppCompatActivity {
             }
         };
 
+        //Reference to staff details in database
         mStaffRef = FirebaseDatabase.getInstance().getReference(hotelID).child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -134,6 +138,7 @@ public class StaffHome extends AppCompatActivity {
             }
         });
 
+        //Reference to jobs in database
         mJobRef = FirebaseDatabase.getInstance().getReference(hotelID).child("jobs");
         mJobRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -165,6 +170,7 @@ public class StaffHome extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        //Display confirmation popup when guest goes to sign out
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setMessage("Are you sure you want to sign out?")
@@ -196,10 +202,12 @@ public class StaffHome extends AppCompatActivity {
     }
 
     public void getTeams() {
+        //Reference to teams value in database
         mTeamRef = FirebaseDatabase.getInstance().getReference(hotelID).child("teams");
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Only populate one TableLayout for mobile, two for tablet
                 teams = dataSnapshot;
                 setQueue();
                 if (tb1 != null) {
@@ -217,9 +225,13 @@ public class StaffHome extends AppCompatActivity {
     public void setTeams() {
         TextView template = (TextView) findViewById(com.app.efficiclean.R.id.tvTeamsRow1);
 
+        //Remove all TableRows except heading
         tb1.removeViews(1, tb1.getChildCount() - 1);
         for(DataSnapshot ds : teams.getChildren()) {
+            //Get team values and create new table row
             Team team = ds.getValue(Team.class);
+
+            //Make sure team has members
             if (ds.hasChild("members")) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
@@ -228,6 +240,7 @@ public class StaffHome extends AppCompatActivity {
 
                 String text = "";
 
+                //Generate text to be displayed
                 for (String staffKey : team.getMembers()) {
                     if (staffKey != null) {
                         if (text.equals("")) {
@@ -238,7 +251,9 @@ public class StaffHome extends AppCompatActivity {
                     }
                 }
 
+                //Check to make sure that there is text to be displayed
                 if (text.equals("") == false) {
+                    //Create new TableRow and add it to the TableLayout
                     TextView roomNumber = new TextView(this);
                     roomNumber.setText(text);
                     roomNumber.setTextSize(template.getTextSize() / 2);
@@ -262,9 +277,13 @@ public class StaffHome extends AppCompatActivity {
     public void setQueue() {
         TextView template = (TextView) findViewById(R.id.tvQueueRow1);
 
+        //Remove all TableRows except heading
         tb2.removeViews(1, tb2.getChildCount() - 1);
         for(DataSnapshot ds : teams.getChildren()) {
+            //Get team values and create new table row
             Team team = ds.getValue(Team.class);
+
+            //Make sure team has members and is available
             if (team.getStatus().equals("Waiting") && ds.hasChild("members")) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
@@ -273,6 +292,7 @@ public class StaffHome extends AppCompatActivity {
 
                 String text = "";
 
+                //Generate text to be displayed
                 for (String staffKey : team.getMembers()) {
                     if (staffKey != null) {
                         if (text.equals("")) {
@@ -283,7 +303,9 @@ public class StaffHome extends AppCompatActivity {
                     }
                 }
 
+                //Check to make sure that there is text to be displayed
                 if (template != null) {
+                    //Create new TableRow and add it to the TableLayout
                     TextView roomNumber = new TextView(this);
                     roomNumber.setText(text);
                     roomNumber.setTextSize(template.getTextSize() / 2);

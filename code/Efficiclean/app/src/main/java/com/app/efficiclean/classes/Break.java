@@ -39,9 +39,11 @@ public class Break {
     }
 
     public void setBreakTime(String timeString) {
+        //Get hour and minute values from formatted string
         int hour = Integer.parseInt(timeString.substring(0, 2));
         int minute = Integer.parseInt(timeString.substring(2, 4));
 
+        //Create time instance for break
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
         time.set(Calendar.MINUTE, minute);

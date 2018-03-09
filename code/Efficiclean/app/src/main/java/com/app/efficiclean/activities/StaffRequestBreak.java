@@ -46,12 +46,14 @@ public class StaffRequestBreak extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             staffKey = extras.getString("staffKey");
         }
 
+        //Reference to page layout elements
         header = (TextView) findViewById(R.id.tvTeam);
         breakTime = (EditText) findViewById(R.id.etTime);
         breakOptions = (RadioGroup) findViewById(R.id.rgBreakLength);
@@ -60,6 +62,7 @@ public class StaffRequestBreak extends AppCompatActivity {
         requestBreak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Make sure that the user has selected a break length
                 if (breakOptions.getCheckedRadioButtonId() != 0) {
                     requestToSupervisor();
                 } else {
@@ -69,11 +72,13 @@ public class StaffRequestBreak extends AppCompatActivity {
             }
         });
 
+        //Make references to staff values in database
         mRootRef = FirebaseDatabase.getInstance().getReference(hotelID);
         mStaffRef = mRootRef.child("staff");
         mStaffRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Store staff datasnapshot and get relevant teamID
                 staff = dataSnapshot;
                 teamID = staff.child(staffKey).child("teamID").getValue(String.class);
                 getTeam();
@@ -85,6 +90,7 @@ public class StaffRequestBreak extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -128,10 +134,12 @@ public class StaffRequestBreak extends AppCompatActivity {
     }
 
     public void getTeam() {
+        //Reference user's housekeeping team in database
         mTeamRef = mRootRef.child("teams").child(teamID);
         mTeamRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Get break remaining for the text and format string to be displayed
                 breakRemaining = dataSnapshot.child("breakRemaining").getValue(int.class);
                 String text = "Team: ";
                 for (DataSnapshot ds : dataSnapshot.child("members").getChildren()) {
@@ -153,17 +161,24 @@ public class StaffRequestBreak extends AppCompatActivity {
     }
 
     public void requestToSupervisor() {
+        //Get user's selected break length and break time
         RadioButton selectedTime = (RadioButton) findViewById(breakOptions.getCheckedRadioButtonId());
         requestedTime = breakTime.getText().toString();
+
+        //Check that option is selected and time is in correct format
         if (requestedTime.length() == 4 && selectedTime != null) {
+            //Make sure time is before cut-off point for requesting breaks
             if (Integer.parseInt(requestedTime.substring(0, 2)) <= 16
                     && Integer.parseInt(requestedTime.substring(2, 4)) <= 59) {
+                //Create new break and set values
                 Break breakRequest = new Break();
                 breakRequest.setBreakLength(Integer.parseInt(selectedTime.getText().toString().substring(0, 2)));
                 breakRequest.setBreakTime(requestedTime);
                 breakRequest.setTeamID(teamID);
 
+                //Make sure that team has enough minutes left to request a break of that length
                 if (breakRequest.getBreakLength() <= breakRemaining) {
+                    //Create request and push to Firebase
                     DatabaseReference mBreakRef = mRootRef.child("breakRequests");
                     mBreakRef.push().setValue(breakRequest);
 
