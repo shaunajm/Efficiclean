@@ -34,6 +34,8 @@ public class StaffMarkRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_markroom);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -45,6 +47,7 @@ public class StaffMarkRoom extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -52,8 +55,11 @@ public class StaffMarkRoom extends AppCompatActivity {
         }
 
         roomNumber = (EditText) findViewById(R.id.etRoomNumber);
+
+        //Reference radio group of room statuses
         status = (RadioGroup) findViewById(R.id.rgStatus);
 
+        //Add click listener to mark room button
         markRoom = (Button) findViewById(R.id.btMarkRoom);
         markRoom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +75,7 @@ public class StaffMarkRoom extends AppCompatActivity {
             }
         });
 
+        //Add click listener to finish check button
         finishCheck = (Button) findViewById(R.id.btFinishCheck);
         finishCheck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +84,7 @@ public class StaffMarkRoom extends AppCompatActivity {
             }
         });
 
+        //Get instance of Firebase database
         mRootRef = FirebaseDatabase.getInstance().getReference(hotelID);
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -105,6 +113,7 @@ public class StaffMarkRoom extends AppCompatActivity {
 
         mJobRef = mRootRef.child("jobs");
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -148,15 +157,20 @@ public class StaffMarkRoom extends AppCompatActivity {
     }
 
     public void addJob() {
+        //Get values from selected Radiobutton
         RadioButton rb = (RadioButton) findViewById(status.getCheckedRadioButtonId());
         String roomStatus = rb.getText().toString();
         String rNumber = roomNumber.getText().toString();
-        if (rooms.hasChild(rNumber)) {
+
+        //Make sure guest inputted valid room number
+        if (rooms.hasChild(rNumber) && rb != null) {
             Log.v("Status", rooms.child(rNumber).child("status").getValue(String.class));
+            //Make sure that room has not already been marked
             if (rooms.child(rNumber).child("status").getValue(String.class).equals("Idle")) {
                 if (roomStatus.equals("Do not Disturb")) {
                     mRoomRef.child(rNumber).child("status").setValue("Do Not Disturb");
                 } else {
+                    //Create new job and add it to database
                     Job job = new Job();
                     job.setRoomNumber(rNumber);
                     job.setPriority(0);

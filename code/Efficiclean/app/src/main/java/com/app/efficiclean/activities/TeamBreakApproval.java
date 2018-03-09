@@ -35,9 +35,12 @@ public class TeamBreakApproval extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_approve_team_break);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -65,9 +68,11 @@ public class TeamBreakApproval extends AppCompatActivity {
         TextView length = (TextView) findViewById(R.id.tvLength);
         length.setText("Length: " + breakLength + " minutes");
 
+        //Reference display file check boxes
         approve = (CheckBox) findViewById(R.id.cbApprove);
         disapprove = (CheckBox) findViewById(R.id.cbDisapprove);
 
+        //Add toggle functionality to block both check boxes being selected
         approve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -86,6 +91,7 @@ public class TeamBreakApproval extends AppCompatActivity {
             }
         });
 
+        //Reference other elements from activity layouts
         reason = (EditText) findViewById(R.id.etReason);
 
         submit = (Button) findViewById(R.id.btTeamBreakSubmit);
@@ -103,6 +109,7 @@ public class TeamBreakApproval extends AppCompatActivity {
             }
         });
 
+        //Reference to root of current hotel
         mRootRef = FirebaseDatabase.getInstance().getReference(hotelID);
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,6 +124,7 @@ public class TeamBreakApproval extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
@@ -160,12 +168,14 @@ public class TeamBreakApproval extends AppCompatActivity {
     }
 
     public void approvedSubmit() {
+        //Get Firebase values for team
         int breakRemaining = teams.child(teamID).child("breakRemaining").getValue(int.class);
 
         if (breakRemaining >= breakLength) {
             mRootRef.child("breakRequests").child(breakKey).child("accepted").setValue(true);
             for (DataSnapshot member : teams.child(teamID).child("members").getChildren()) {
                 String staffKey = member.getValue(String.class);
+                //Send notification using OneSignal to all team members
                 NotificationHandler.sendNotification(hotelID,
                         staffKey,
                         "Your requested break starting at " +
@@ -186,9 +196,11 @@ public class TeamBreakApproval extends AppCompatActivity {
     }
 
     public void disapprovedSubmit() {
+        //Get Firebase values for team
         mRootRef.child("breakRequests").child(breakKey).removeValue();
         for (DataSnapshot member : teams.child(teamID).child("members").getChildren()) {
             String staffKey = member.getValue(String.class);
+            //Send notification using OneSignal to all team members
             NotificationHandler.sendNotification(hotelID,
                     staffKey,
                     "Your requested break starting at " +
@@ -196,6 +208,7 @@ public class TeamBreakApproval extends AppCompatActivity {
                             "has been denied. Reason: " +
                             reason.getText().toString());
         }
+        //Return to SupervisorHome
         Intent i = new Intent(TeamBreakApproval.this, SupervisorHome.class);
         i.putExtras(extras);
         startActivity(i);

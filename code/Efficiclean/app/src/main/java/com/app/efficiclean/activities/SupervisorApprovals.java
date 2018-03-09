@@ -35,6 +35,8 @@ public class SupervisorApprovals extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supervisor_approvals);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -46,12 +48,14 @@ public class SupervisorApprovals extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
             supervisorKey = extras.getString("staffKey");
         }
 
+        //Reference to supervisor in Firebase database
         mSuperRef = FirebaseDatabase.getInstance().getReference(hotelID).child("supervisor").child(supervisorKey);
         mSuperRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -71,6 +75,7 @@ public class SupervisorApprovals extends AppCompatActivity {
             mAuth.signOut();
         }
 
+        //Create Firebase authenticator
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth fbAuth) {
@@ -109,19 +114,25 @@ public class SupervisorApprovals extends AppCompatActivity {
     }
 
     public void setRoomApprovals(){
+        //Reference TableLayout and template for dynamic TextView
         TableLayout table = (TableLayout) findViewById(R.id.tbToBeApproved);
         TextView template = (TextView) findViewById(R.id.tvRow1);
 
+        //Remove all TableRows except heading
         table.removeViews(1, table.getChildCount() - 1);
+
+        //Iterate through current rooms to be approved
         for(final String key : supervisor.approvals.keySet()) {
             final Approval approval = supervisor.approvals.get(key);
 
+            //Filter approvals by priority to only get clean approvals
             if (approval.getPriorityCounter() == 0) {
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(new TableLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
 
+                //Create TextView for room numbers based on template
                 TextView roomNumber = new TextView(this);
                 roomNumber.setText(approval.getJob().getRoomNumber());
                 roomNumber.setTextSize(template.getTextSize() / 2);
@@ -135,6 +146,7 @@ public class SupervisorApprovals extends AppCompatActivity {
                 roomNumber.setBackground(template.getBackground());
                 roomNumber.setGravity(template.getGravity());
 
+                //Add click listener for table row
                 tr.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -147,6 +159,7 @@ public class SupervisorApprovals extends AppCompatActivity {
                     }
                 });
 
+                //Add tables to TableLayout
                 tr.addView(roomNumber);
                 table.addView(tr);
 

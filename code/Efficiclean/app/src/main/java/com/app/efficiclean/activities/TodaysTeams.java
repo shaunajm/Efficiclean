@@ -30,6 +30,8 @@ public class TodaysTeams extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_todays_teams);
+
+        //Display back button in navbar
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -41,6 +43,7 @@ public class TodaysTeams extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
+        //Extract variables from intent bundle
         extras = getIntent().getExtras();
         if (extras != null) {
             hotelID = extras.getString("hotelID");
@@ -61,6 +64,7 @@ public class TodaysTeams extends AppCompatActivity {
             }
         });
 
+        //Create Firebase authenticator
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             mAuth.signOut();
