@@ -438,9 +438,9 @@ public class GuestLogin extends AppCompatActivity {
                 .setLifetime(Lifetime.FOREVER)
                 .setRecurring(true)
                 .setTag(hid + " QUEUE SERVICE")
-                .setTrigger(Trigger.executionWindow(60, 60))
+                .setTrigger(Trigger.executionWindow(60, 86400))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(true)
+                .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
                 .setExtras(extras)
                 .build();
