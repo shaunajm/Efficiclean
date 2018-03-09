@@ -9,10 +9,11 @@
 
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="876dp"
+            android:layout_height="48dp"
             android:text="Your current room is: 101"
-            android:textSize="40sp"
+            android:textAlignment="center"
+            android:textSize="36sp"
             android:ems="10"
             android:id="@+id/tvCurrentRoom" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
@@ -28,7 +29,7 @@
             android:layout_height="80dp"
             android:id="@+id/btMarkClean" android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent" android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginTop="40dp"
+            app:layout_constraintLeft_toLeftOf="parent" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrentRoom"/>
 
     <Button
